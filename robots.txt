@@ -1,0 +1,34 @@
+User-agent: *
+
+# 允许抓取的常规目录
+Allow: /
+Allow: /ads.txt
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/
+Allow: /friends/
+Allow: /about/
+
+# 禁止抓取资源文件
+Disallow: /js/
+Disallow: /css/
+Disallow: /libs/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /medias/
+Disallow: /images/
+Disallow: /download/
+Disallow: /_data/
+Disallow: /_draft/
+
+# 禁止抓取 rss 链接（rss 只用于订阅本站，与搜索引擎无关）
+Disallow: /atom.xml
+
+# 禁止抓取站内搜索结果
+Disallow: /#searchModal
+
+# 方便搜索引擎抓取的站点地图
+Sitemap: http://exp-blog.com/sitemap.xml
+Sitemap: http://exp-blog.com/baidusitemap.xml
+Sitemap: https://lyy289065406.github.io/articles/sitemap.xml
+Sitemap: https://lyy289065406.github.io/articles/baidusitemap.xml
