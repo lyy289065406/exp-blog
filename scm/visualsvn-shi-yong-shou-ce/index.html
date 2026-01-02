@@ -1,0 +1,2246 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="VisualSVN 使用手册, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>VisualSVN 使用手册 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/scm/VisualSVN.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">VisualSVN 使用手册</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                
+                                    <span class="chip bg-color">版本控制</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/SVN/">
+                                
+                                    <span class="chip bg-color">SVN</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category">
+                                软件配置管理
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2012-02-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    24 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-VisualSVN-Server-简介"><a href="#1-VisualSVN-Server-简介" class="headerlink" title="1. VisualSVN Server 简介"></a>1. VisualSVN Server 简介</h2><p>介绍 VisualSVN Server之前，首先说说 Subversion。</p>
+<p>Subversion 是一个自由，开源的版本控制系统。在 Subversion 管理下，文件和目录可以超越时空。Subversion 将文件存放在中心版本库里。这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况。这样就可以籍此将数据恢复到以前的版本，并可以查看数据的更改细节：做了哪些修改，谁做的修改，等等。正因为如此，许多人将版本控制系统当作一种神奇的“时间机器”。</p>
+<p>Subversion的版本库可以通过网络访问，从而使用户可以在不同的电脑上进行操作。从某种程度上来说，允许用户在各自的空间里修改和管理同一组数据可以促进团队协作。因为修改不再是单线进行（单线进行也就是必须一个一个进行），开发进度会进展迅速。此外，由于所有的工作都已版本化，也就不必担心由于错误的更改而影响软件质量—如果出现不正确的更改，只要撤销那一次更改操作即可。</p>
+<p>某些版本控制系统本身也是软件配置管理系统（如SCM），这种系统经过精巧的设计，专门用来管理源代码树，并且具备许多与软件开发有关的特性—比如，对编程语言的支持，或者提供程序构建工具。不过Subversion并不是这样的系统。它是一个通用系统，可以管理任何类型的文件集。</p>
+<p>VisualSVN和Subversion一样，都是版本控制器SVN的服务端，一个重要区别是VisualSVN比Subversion配置起来容易的多了。</p>
+<p>如果直接使用Subversion，那么在Windows 系统上，要想让它随系统启动，就要封装SVN Server为Windws service，还要通过修改配置文件来控制用户权限，另外如果要想以Web方式（http协议）访问，一般还要安装配置Apache，如果是新手，岂不是很头痛？</p>
+<p>而VisualSVN Serve集成了Subversion和Apache，省去了以上所有的麻烦。安装的时候SVN Server已经封装为Windws service，Apache服务器的配置也只是在图像界面上，指定认证方式、访问端口等简单操作；另外，用户权限的管理也是通过图像界面来配置。</p>
+<p>需要知道的是，VisualSVN和VisualSVN Server又有一定区别，两者虽然同是SVN的**<em>服务端**</em>，但前者是收费的，后者是免费的。</p>
+<p>还有一点， 用VisualSVN Server所搭建的服务器仅能在局域网下工作，这是团队开发中必须要注意的，所有成员都必须在同一局域网才能进行资源的同步与共享。一旦客户机与服务机跨越了路由，便无法相连。</p>
+<h2 id="2-TortoiseSVN简介"><a href="#2-TortoiseSVN简介" class="headerlink" title="2. TortoiseSVN简介"></a>2. TortoiseSVN简介</h2><p>TortoiseSVN 是 Subversion 版本控制系统的一个免费开源**<em>客户端**</em>，可以超越时间的管理文件和目录。</p>
+<p>实际上安装TortoiseSVN后，它是以一种类似“<strong>右键插件</strong>”的方式存在，使用TortoiseSVN能够更方便地管理SVN服务器上的资源，在团队开发中能够更有效实时地共享所有资源。</p>
+<p>这里使用TortoiseSVN的一个主要原因是为了使用它的一个基本功能：把代码或资源迁入SVN服务器以达到同步共享的目的。</p>
+<h2 id="3-VisualSVN-Server的安装"><a href="#3-VisualSVN-Server的安装" class="headerlink" title="3. VisualSVN Server的安装"></a>3. VisualSVN Server的安装</h2><p>先到网上下载VisualSVN Server的最新版（当前为2.1.10）。</p>
+<p>运行 VisualSVN-Server-2.1.10.msi 安装程序后，点击Next按钮继续。</p>
+<p><img src="./01.png" alt="图3-1"></p>
+<p>勾选“I accept the terms in the License Agreement”选择框，点击Next按钮继续下一步操作。</p>
+<p><img src="./02.png" alt="图3-2"></p>
+<p>选择完全安装方式，点击Next按钮继续。</p>
+<p><img src="./03.png" alt="图3-3"></p>
+<p>到这里开始要注意：</p>
+<ul>
+<li>“Location”为VisualSVN Server的安装目录，可任意选择。</li>
+<li>“Repositories”为SVN代码仓库的位置，即在使用时共享资料的位置，因此基于方便使用的考虑，不建议该位置设置太深（一般在磁盘根目录下再建一层即可），否则以后使用时同步资源库不方便。</li>
+<li>“Server Port”为服务端口选择，后面有一个选择框“Use secure connection”。不勾选该选择框为使用快速链接【http协议】，此时供选择的端口有80/81/8080三个；勾选该选择框为使用安全链接【https协议】，这时的端口只有433/8433二个可用。</li>
+</ul>
+<p>一般建议选择安全链接【https协议】，即勾选选择框，端口使用默认的即可。设置完毕点击Next按钮继续下一步，然后一直到安装完成即可。</p>
+<p><img src="./04.png" alt="图3-4"></p>
+<p><img src="./05.png" alt="图3-5"></p>
+<p><img src="./06.png" alt="图3-6"></p>
+<h2 id="4-VisualSVN-Server的配置"><a href="#4-VisualSVN-Server的配置" class="headerlink" title="4. VisualSVN Server的配置"></a>4. VisualSVN Server的配置</h2><p>安装完VisualSVN Server后，运行VisualSVN Server Manger，启动界面，其中：</p>
+<ul>
+<li>“Status”为SVN服务器状态，包括运行状态和服务器URL地址。</li>
+<li>“Logging”为服务器日志。</li>
+<li>“Subversion Authentication”为账户（User和Groups）信息。</li>
+<li>“Repositories”为SVN代码库信息。</li>
+</ul>
+<p><img src="./07.png" alt="图4-1"></p>
+<p>首先添加一个代码库。右击“Repository”，出现下图所示的右键菜单，任意选择一种方式均可创建一个新的代码库。</p>
+<p><img src="./08.png" alt="图4-2"></p>
+<p>然后在文本框中输入代码库名称。</p>
+<p>需要注意的是，若选择框“Creat default structure”被选中，则在代码库StartKit下面会创建trunk、branches、tags三个子目录；不选中，则只创建空的代码库StartKit。点击OK按钮，代码库StartKit则创建成功。</p>
+<p><img src="./09.png" alt="图4-3"></p>
+<p>创建完代码库后，没有任何内容在里面。添加内容的方法会在后面说明，这里暂且略过。</p>
+<p><img src="./10.png" alt="图4-4"></p>
+<p>下面，开始创建用户Users。在左侧的Users上点击右键，出现下图所示的右键菜单，任意选择一种方式均可创建一个新的用户。</p>
+<p><img src="./11.png" alt="图4-5"></p>
+<p>然后设置新用户的用户名和密码。输入信息后，点击OK按钮，就创建一个用户了。按照这种方式，创建4个用户：starter、Developer1、tester1、manager1。</p>
+<p><img src="./12.png" alt="图4-6"></p>
+<p>然后把这些用户授权给刚才创建的代码库StartKit。只有被授权的用户才能使用StartKit代码库内的资源，与其他用户进行资源共享。具体方法如下：</p>
+<p>首先右击刚才创建的代码库StartKit, 选择“Properties”，弹出如下界面：</p>
+<p><img src="./13.png" alt="图4-7"></p>
+<p>点击”Add…”按钮，然后选择刚才创建的4个新用户，点击OK按钮则完成了授权工作。</p>
+<blockquote>
+<p>大家可能注意到了图中的Groups。是的，我们也可以先创建组，把用户添加到各个组中，然后对组进行授权，操作比较简单，在此略过。</p>
+</blockquote>
+<p><img src="./14.png" alt="图4-8"></p>
+<p>把用户授权给代码库后，还要继续对每个用户（或组）进行详细的权限设置：</p>
+<ul>
+<li>“No Access”为禁止该用户访问代码库。</li>
+<li>“Read Only”为虽然用户可以访问代码库，但只有读资源的权限。</li>
+<li>“Read / Write”为用户不但可以访问代码库，还能对其中的资源进行读或写。</li>
+</ul>
+<p>需要注意的是，在用户列表中存在一个“Everyone”用户，为缺省用户，暂时无视之即可。</p>
+<p><img src="./15.png" alt="图4-9"></p>
+<p>设置完权限后，点击“确定”按钮，这4个用户就具有了访问StartKit代码库的不同权限。</p>
+<hr>
+<p>本例中各个用户的权限说明：</p>
+<ul>
+<li>用户starter：在团队中是新来者，不希望他向代码库中提交新代码，所以他只能读取代码库中的代码，不能提交代码。</li>
+<li>用户tester1：是测试人员，不负责代码编写，所以也是只读权限。</li>
+<li>用户Developer1：是开发人员，自然具有读写的权限。</li>
+<li>用户manager1：是项目经理，自然具有读写的权限。</li>
+</ul>
+<p>在实际的项目开发过程中，Developer和tester往往不可能只有一个人，这时候使用组来授权会更加方便。</p>
+<h2 id="5-TortoiseSVN的安装"><a href="#5-TortoiseSVN的安装" class="headerlink" title="5. TortoiseSVN的安装"></a>5. TortoiseSVN的安装</h2><p>先到网上下载TortoiseSVN的最新版（当前为1.7.2）。</p>
+<p>运行 TortoiseSVN-1.7.4.22459-x64-svn-1.7.2.msi安装程序后，点击Next按钮继续。</p>
+<p><img src="./16.png" alt="图5-1"></p>
+<p>此时点选“I accept the terms in the License Agreement”选择框，点击Next按钮继续下一步操作。</p>
+<p><img src="./17.png" alt="图5-2"></p>
+<p>然后选择安装目录，任意即可。设置完毕点击Next按钮继续下一步，然后一直到安装完成。</p>
+<p><img src="./18.png" alt="图5-3"></p>
+<p><img src="./19.png" alt="图5-4"></p>
+<p>点击Finish按钮后TortoiseSVN即安装完毕，但此时可能会提示重启系统，其实不重启也没有关系。</p>
+<p><img src="./20.png" alt="图5-5"></p>
+<h2 id="6-VisualSVN-Server与TortoiseSVN的基本组合使用"><a href="#6-VisualSVN-Server与TortoiseSVN的基本组合使用" class="headerlink" title="6. VisualSVN Server与TortoiseSVN的基本组合使用"></a>6. VisualSVN Server与TortoiseSVN的基本组合使用</h2><p><font color="red">注意在使用SVN服务之前，要先确保关闭Windows防火墙，否则可能出现无法连接到SVN服务器的情况</font>。</p>
+<p><strong>关闭Windows防火墙的方法是</strong>：</p>
+<blockquote>
+<p>右击计算机 -&gt; 属性 -&gt; 系统和安全 -&gt; Windows防火墙 -&gt; 打开或关闭Windows防火墙</p>
+</blockquote>
+<hr>
+<p>为方便下文说明，<strong>这里重新配置了一下VisualSVN Server</strong>：</p>
+<p>SVN资源库为CodeLib（代码库）和FileLib（文件库），其所在的位置可在VisualSVN Server启动界面查得：</p>
+<p><img src="./89.png" alt="图6-1"></p>
+<p>用户及其权限分别为：（Everyone是缺省用户，暂无视之）</p>
+<ul>
+<li>CaiZhenBiao      Read Only</li>
+<li>DengWeiWen      Read Only</li>
+<li>LiaoQuanBin      Read/Write</li>
+<li>LiJianCong       Read Only</li>
+</ul>
+<p>这里设置4个用户的密码均为123456。</p>
+<p><img src="./21.png" alt="图6-2"></p>
+<p>然后说一下用TortoiseSVN把源代码迁入SVN服务器的例子。</p>
+<p>首先在Eclipse新建项目TestSVN：</p>
+<p><img src="./22.png" alt="图6-3"></p>
+<p>然后打开Eclipse的工作空间，可以找到项目TestSVN的文件夹，如下图：</p>
+<p><img src="./23.png" alt="图6-4"></p>
+<p>右击要迁入SVN服务器的项目文件夹TestSVN，可以看到TortoiseSVN出现在右键选项中。若选择Setting则可进行相关的设置，这里不做详细说明。我们选择Import把项目TestSVN迁入SVN服务器。</p>
+<p><img src="./24.png" alt="图6-5"></p>
+<p>此时弹出如下图所示的界面， URL ： <a target="_blank" rel="noopener" href="https://exp-pc/svn/CodeLib">https://Exp-PC/svn/CodeLib</a> 就是当前要迁入的SVN服务器地址。其中 <a target="_blank" rel="noopener" href="https://exp-pc/">https://Exp-PC/</a> 是服务器名，svn是代码库的根目录，CodeLib就是刚才添加的代码库。</p>
+<p><img src="./25.png" alt="图6-6"></p>
+<p>注意上图中左下角的“Include ignored files”，在第一次迁入源代码时没有用，可以不勾选。但是，在以后提交代码的时候是非常有用的。</p>
+<p>点击OK按钮后则自动把TestSVN项目迁入了SVN服务器。迁入过程如下图所示。迁入完成后再点击OK关闭窗口。</p>
+<p><img src="./26.png" alt="图6-7"></p>
+<p>此时在VisualSVN Server中点击CodeLib，可在右方看到刚才迁入SVN服务器的源代码（如下图），若没有显示，右键刷新即可。</p>
+<p><strong>注意</strong>：也可从这里的灰色条栏中看到当前代码库CodeLib的URL地址。</p>
+<p><img src="./27.png" alt="图6-8"></p>
+<p>不难发现项目TestSVN的项目文件夹没有了，在CodeLib中只保留了其项目内容。这是因为“根文件夹默认不上传”，因此要把整个TestSVN项目（包括项目文件夹在内）都上传到SVN服务器，可以把整个项目复制到任意一个空文件夹A中，使得文件夹A作为根文件夹，再右击文件夹A进行上传。效果如下图所示。</p>
+<blockquote>
+<p>资源上传到SVN服务器的是资源的副本，因此一旦资源被上传，即使在本地删除也不会对服务器中的资源有任何影响。</p>
+</blockquote>
+<p><img src="./28.png" alt="图6-9"></p>
+<h2 id="7-资源的同步与共享"><a href="#7-资源的同步与共享" class="headerlink" title="7. 资源的同步与共享"></a>7. 资源的同步与共享</h2><p>第6节 介绍了如何利用TortoiseSVN把源代码上传到SVN服务器，其实上传非代码的其他资源也是同样的方法，把所需上传的资源（如Word、Excel、*.rar等）放在文件夹内，右键Import即可。同样要注意的是“根文件夹默认不上传”。</p>
+<p>本节主要介绍怎样读取已上传到SVN服务器的指定资源的方法，<strong>主要有三种</strong>：</p>
+<ul>
+<li>（1）浏览器连接SVN服务器查看和下载资源；</li>
+<li>（2）TortoiseSVN的Checkout功能导出SVN服务器资源；</li>
+<li>（3）Eclipse连接SVN服务器查看和导出资源。</li>
+</ul>
+<p>方法（3）要在Eclipse安装SVN插件后（见 第8节）才能使用，这将在 第9节 和 第10节 介绍。<strong>所以在本节中主要介绍方法（1）和方法（2）</strong>。</p>
+<hr>
+<h3 id="7-1-浏览器连接SVN服务器查看和下载资源"><a href="#7-1-浏览器连接SVN服务器查看和下载资源" class="headerlink" title="7.1. 浏览器连接SVN服务器查看和下载资源"></a>7.1. 浏览器连接SVN服务器查看和下载资源</h3><p>要通过浏览器连接SVN服务器，首先需要获取SVN服务器的URL地址，URL地址的获取方法如下图所示：</p>
+<p>打开VisualSVN Server界面，右击想要连接的代码库CodeLib，点选“Copy URL to Clipboard”即把代码库的URL复制到剪贴板。</p>
+<p><img src="./29.png" alt="图7-1-1"></p>
+<p>然后把URL黏贴到浏览器地址栏回车即可。</p>
+<blockquote>
+<p>部分浏览器可能会拦截，如火狐浏览器可能会出现下图的警告。此时点击“我已充分了解可能的风险”，然后点击“添加例外”，“确认安全例外”即可。 同时请确认windows防火墙已关闭。 其他浏览器也是类似的信任安全操作。</p>
+</blockquote>
+<p><img src="./30.png" alt="图7-1-2"></p>
+<p>通过浏览器拦截后，会弹出身份认证窗口。此时只需要把刚才在VisualSVN Server中设置的4个用户之中的一个账号密码输入即可。然后浏览器就会反馈出当前SVN服务器所保有的资源。</p>
+<p><img src="./31.png" alt="图7-1-3"></p>
+<p><img src="./32.png" alt="图7-1-4"></p>
+<p>下载界面如下：</p>
+<p><img src="./33.png" alt="图7-1-5"></p>
+<hr>
+<h3 id="7-2-TortoiseSVN的Checkout功能导出SVN服务器资源"><a href="#7-2-TortoiseSVN的Checkout功能导出SVN服务器资源" class="headerlink" title="7.2. TortoiseSVN的Checkout功能导出SVN服务器资源"></a>7.2. TortoiseSVN的Checkout功能导出SVN服务器资源</h3><p>在任意空白位置点击鼠标右键，在弹出的功能菜单中选择“SVN Checkout”。</p>
+<p><img src="./34.png" alt="图7-2-1"></p>
+<p><img src="./35.png" alt="图7-2-2"></p>
+<p>如上图所示（下述的“检出”实质就是把SVN服务器上的资源复制一份副本到本地）：</p>
+<ul>
+<li>“URL of repository”为要检出资源的SVN资源库地址。</li>
+<li>“Checkout directory”为要检出到的位置，可自由选择。</li>
+<li>“Checkout Depth”为检出资源的深度，默认为把整个数据库的资源都检出。若要指定检出的项目，可点击“Choose item”按钮进行选择，只勾选需要检出的资源，然后点选OK按钮。</li>
+<li>“Revision”为版本控制选项，功能很重要，将在第11节叙述相关作用。</li>
+<li>“Show log”为显示被选中的服务器的操作日志。</li>
+</ul>
+<p><img src="./36.png" alt="图7-2-3"></p>
+<p><img src="./37.png" alt="图7-2-4"></p>
+<p><img src="./38.png" alt="图7-2-5"></p>
+<p>如上图为检出过程。</p>
+<p>如下图为检出后的资源文件。其中左下角的Icon若为“绿色√”说明本地资源与服务器资源一致。当本地资源被修改后，“绿色√”变成“红色！”，说明本地资源与服务器资源不一致。</p>
+<p>而关联本地与服务器资源一致性的功能由“.svn”文件夹实现，该文件夹默认为隐藏。当删除“.svn”文件夹后本地与服务器断开连接，Icon消失。</p>
+<p><img src="./39.png" alt="图7-2-6"></p>
+<p><img src="./40.png" alt="图7-2-7"></p>
+<p><img src="./41.png" alt="图7-2-8"></p>
+<h2 id="8-Eclipse的SVN插件安装"><a href="#8-Eclipse的SVN插件安装" class="headerlink" title="8. Eclipse的SVN插件安装"></a>8. Eclipse的SVN插件安装</h2><p>首先安装Eclipse关于SVN的插件。这里使用Eclipse在线安装插件的方法。</p>
+<p>Google搜索“SVN  Eclipse插件”即可很容易找到SVN插件的安装地址，当前的安装地址为：<a target="_blank" rel="noopener" href="http://subclipse.tigris.org/update_1.6.x">http://subclipse.tigris.org/update_1.6.x</a> 。</p>
+<p>然后打开Eclipse -&gt; Help -&gt; Install New Software。</p>
+<p><img src="./42.png" alt="图8-1"></p>
+<p>把地址 <a target="_blank" rel="noopener" href="http://subclipse.tigris.org/update_1.6.x">http://subclipse.tigris.org/update_1.6.x</a> 复制到“Work with”下按回车，等待加载如下图的3个插件，点击 “Select all”按钮选中全部，然后点击Next按钮执行下一步，按提示操作即可完成安装。可能安装的时间较漫长，请耐心等待。</p>
+<p><img src="./43.png" alt="图8-2"></p>
+<h2 id="9-Eclipse与SVN服务器的连接"><a href="#9-Eclipse与SVN服务器的连接" class="headerlink" title="9. Eclipse与SVN服务器的连接"></a>9. Eclipse与SVN服务器的连接</h2><p>安装SVN插件后，找到Eclipse左下角的“+”（快速视图菜单），再点击打开快速视图菜单，选择Other。在弹出的界面中输入“SVN”，点选搜索到的“SVN资源库”，点击OK按钮确认。</p>
+<p><img src="./44.png" alt="图9-1"></p>
+<p><img src="./45.png" alt="图9-2"></p>
+<p>此时会出现SVN资源库窗口（如下图）。在空白处右击，选择“新建”，在点选“资源库位置”。然后在弹出的窗口输入SVN服务器的地址，这里使用前面创建的代码库的URL地址：<a target="_blank" rel="noopener" href="https://exp-pc/svn/CodeLib">https://Exp-PC/svn/CodeLib</a> 。地址无误则点击Finish按钮确定。</p>
+<p><img src="./46.png" alt="图9-3"></p>
+<p><img src="./47.png" alt="图9-4"></p>
+<p><img src="./48.png" alt="图9-5"></p>
+<p>此时会弹出如下图所示的对话框，选择“永久接受”，然后输入用户名和密码。这里必须使用授权给当前正在同步的SVN资源库的用户。 前面第6节中，配置给CodeLib代码库的用户有4个，这里选择其中的一个即可，为避免以后再输入账户密码，可选择“保存密码”。</p>
+<p><img src="./49.png" alt="图9-6"></p>
+<p><img src="./50.png" alt="图9-7"></p>
+<p>此时已经可以看到SVN服务器上的代码库，展开则可看到保存在SVN服务器的资源。</p>
+<p><img src="./51.png" alt="图9-8"></p>
+<h2 id="10-利用SVN插件进行代码的同步与共享"><a href="#10-利用SVN插件进行代码的同步与共享" class="headerlink" title="10. 利用SVN插件进行代码的同步与共享"></a>10. 利用SVN插件进行代码的同步与共享</h2><h3 id="10-1-从SVN服务器上把代码同步到本地"><a href="#10-1-从SVN服务器上把代码同步到本地" class="headerlink" title="10.1. 从SVN服务器上把代码同步到本地"></a>10.1. 从SVN服务器上把代码同步到本地</h3><p>打开Eclipse的“SVN资源库”，找到要下载的源代码项目，右击该项目的根文件夹，选择“检出为”则可把服务器上的项目同步到本地。</p>
+<p><img src="./52.png" alt="图10-1-1"></p>
+<p><img src="./53.png" alt="图10-1-2"></p>
+<p>如上图所示，检出时会提示命名项目名称，任意命名均可（只要与本地已有项目不重名）。命名完毕后直接按Finish按钮。</p>
+<p>此时返回本地Project目录，即可看到刚才从SVN服务器同步下来的TestSVN项目。</p>
+<p>如下图所示，从服务器上同步到本地的项目，可以在左边项目列表看到该源代码的来源，以及最后被更新的时间和用户信息。</p>
+<p><img src="./54.png" alt="图10-1-3"></p>
+<hr>
+<h3 id="10-2-把本地的代码共享到SVN服务器"><a href="#10-2-把本地的代码共享到SVN服务器" class="headerlink" title="10.2. 把本地的代码共享到SVN服务器"></a>10.2. 把本地的代码共享到SVN服务器</h3><p>新建项目TestSVNUpdata，右击项目文件夹，选择Teamshare project在弹出的界面中选择“SVN”，点击Next按钮继续。</p>
+<p><img src="./55.png" alt="图10-2-1"></p>
+<p><img src="./56.png" alt="图10-2-2"></p>
+<p>如下图所示，选择“使用已有资源库位置”，然后在资源库地址列表中点选要上传的SVN服务器，点击Next按钮继续下一步。若资源库地址列表为空，则选择“创建新的资源库的位置”，输入要上传的SVN服务器的URL地址即可。</p>
+<p><img src="./57.png" alt="图10-2-3"></p>
+<p>到这步选择“使用项目名做为文件夹名”，点Finish后自动切换到Synchronize标签，其中Synchronize显示的是为等待同步到服务器的项目，这里只有项目TestSVNUpdata可供选择。右击TestSVNUpdata项目文件夹，选择“提交”。</p>
+<p><img src="./58.png" alt="图10-2-4"></p>
+<p><img src="./59.png" alt="图10-2-5"></p>
+<p>然后弹出下图的界面，勾选全部，点击OK按钮。</p>
+<p><img src="./60.png" alt="图10-2-6"></p>
+<p>切换回到“SVN资源库”标签，右击刚才所上传到的SVN资源库，选择“刷新”，则可看到刚才上传的项目，上传成功。</p>
+<p><img src="./61.png" alt="图10-2-7"></p>
+<hr>
+<h3 id="10-3-本地代码与服务器代码的更新和冲突处理"><a href="#10-3-本地代码与服务器代码的更新和冲突处理" class="headerlink" title="10.3. 本地代码与服务器代码的更新和冲突处理"></a>10.3. 本地代码与服务器代码的更新和冲突处理</h3><p>在说明更新和冲突处理之前，先解释一下各种SVN图标含义。</p>
+<p>当本地的项目是从SVN服务器上更新下来的时候，若本地或SVN服务器的代码有被修改过，则当进行如此操作时：在“Project Explorer”标签的本地项目上点击右键  Team  与资源库同步（“与资源库同步”仅是在本地和服务器进行比对，暂时并不会使得本地或服务器代码有任何改变）。</p>
+<p>这时会在“Synchronize”标签中列出本地与SVN服务器上不一致的文件列表。文件列表中各个文件的右方会根据不同的情况出现不同的Icon（即SVN图标），它们的含义分别为：</p>
+<ul>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./62.png">灰色向右箭头：本地修改过；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./63.png">蓝色向左箭头：SVN上修改过；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./64.png">灰色向右且中间有个加号的箭头：本地比SVN上多出的文件；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./65.png">蓝色向左且中间有个加号的箭头：SVN上比本地多出的文件；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./66.png">灰色向右且中间有个减号的箭头：本地删除了而SVN上未删除的文件；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./67.png">蓝色向左且中间有个减号的箭头：SVN上删除了而本地未删除的文件；</li>
+<li><img style="float: left; box-shadow: 0; margin: 0;" src="./68.png">红色双向箭头：SVN上修改过,本地也修改过的文件。</li>
+</ul>
+<hr>
+<h4 id="10-3-1-更新处理"><a href="#10-3-1-更新处理" class="headerlink" title="10.3.1. 更新处理"></a>10.3.1. 更新处理</h4><p>更新主要有两种操作形式：</p>
+<ul>
+<li>（1）从本地提交到服务器；</li>
+<li>（2）从服务器覆盖/更新到本地。</li>
+</ul>
+<p>前者主要用于开发进度的更新，后者主要用于从服务器的备份恢复本地错误。两种操作都比较简单，在核对完本地和服务器代码后，只需在“Synchronize”标签中选中需要更新的文件（或文件夹），然后点击右击，找到“Team”，此时选择“提交”则是进行操作（1），选择“覆盖/更新”则是进行操作（2）。具体要进行哪种操作应该视情况而定，这里不再详细说明。</p>
+<hr>
+<h4 id="10-3-2-冲突处理"><a href="#10-3-2-冲突处理" class="headerlink" title="10.3.2. 冲突处理"></a>10.3.2. 冲突处理</h4><p>产生冲突的原因很多，最普遍的一个原因就是：假设服务器上有源代码x，开发者A从服务器上复制了x的副本x1到本地Ax进行开发，开发者B从服务器上复制了x的副本x2到本地Bx进行开发。</p>
+<p>当开发者A首先完成了他的开发任务时，此时其本地Ax的源代码就是x1*，当他x1*提交到服务器上后，服务器的源代码就被更新为x1*。</p>
+<p>此后开发者B也完成了它的开发任务，此时其本地Bx的源代码就是x2*，当他试图把x2*提交到服务器上时，就出现了冲突。因为此时服务器的代码不再是x，而是被A修改过的x1*。x1*中不但有A增加的代码，原本x中还可能有被A删改过的地方。</p>
+<p>此时B要提交代码x2*，就必须根据服务器的代码x1*先把x2*进行恰当的修改，使得修改后的x2**不但包含B的开发部分，还比包含A开发的x1*部分。</p>
+<p>如下图所示为产生冲突的一种情况，Eclipse的SVN插件自动指出了本地与服务器不同或冲突的部分，B就能根据这些提示在本地进行修改再提交。结合下图在本地进行如下修改：</p>
+<ul>
+<li>（a）本地第6行由于是在本地被无故修改的，因此根据服务器进行恢复</li>
+<li>（b）本地第8行需要保留，因此不修改</li>
+<li>（c）服务器第8行需要被保留，因此复制到本地</li>
+<li>（d）服务器第10行不需要保留，因此不复制到本地</li>
+<li>（e）服务器第12行需要保留，复制到本地</li>
+<li>（f）本地第10行不需要保留，删除</li>
+</ul>
+<p><img src="./69.png" alt="图10-3-2-1"></p>
+<p>修改后如下图所示，此时冲突已解决，本地保存后，右击代码文件 -&gt; Team -&gt; 提交，即可更新到服务器。</p>
+<p><img src="./70.png" alt="图10-3-2-2"></p>
+<h2 id="11-版本控制"><a href="#11-版本控制" class="headerlink" title="11. *版本控制"></a>11. *版本控制</h2><p>版本控制已在 第7.2节 介绍TortoiseSVN的Checkout功能时粗略提及过，本节将详细介绍如何利用Eclipse的SVN插件进行版本控制。TortoiseSVN的版本控制原理雷同，因此不再详细介绍，读者可自行摸索。</p>
+<p>以下为示例。</p>
+<p>如下图所示，首先在Eclipse建立一个新的本地项目“版本控制测试”。</p>
+<p><img src="./71.png" alt="图11-1"></p>
+<p>然后把该项目上传到SVN服务器：右击项目文件夹 -&gt; Team -&gt; Share project。</p>
+<p><img src="./72.png" alt="图11-2"></p>
+<p>然后按下图依次进行操作。</p>
+<p><img src="./73.png" alt="图11-3"></p>
+<p><img src="./74.png" alt="图11-4"></p>
+<p><img src="./75.png" alt="图11-5"></p>
+<p>到这步为止，为当前提交到服务器的项目在“编辑提交注释”一栏中填写版本信息。这步很重要，是作为以后版本控制的依据。</p>
+<p><img src="./76.png" alt="图11-6"></p>
+<p>填写完版本信息后，点击Finish按钮，自动跳转到“Synchronize”标签（同步标签），在同步列表中出现等待同步到服务器的项目。右击“版本控制测试”项目的文件夹，选择“提交”，然后按提示操作即可把“版本控制测试”项目连同其版本信息写入SVN服务器。</p>
+<blockquote>
+<p>若提交对话框的注释栏为空，请重新填写版本信息，也可利用下拉选择。</p>
+</blockquote>
+<p><img src="./77.png" alt="图11-7"></p>
+<p>此时SVN服务器上只有“版本控制测试”项目的1.0版本。</p>
+<p>现在回到本地，现在对本地的“版本控制测试”项目进行修改：</p>
+<p><img src="./78.png" alt="图11-8"></p>
+<p>然后右击项目文件夹，选择“Team”，选择“与资源库同步”。自动跳转到“Synchronize”标签（同步标签）。右击“版本控制测试”项目的文件夹，选择“提交”。在出现的提交界面中填写新的版本号。</p>
+<p><img src="./79.png" alt="图11-9"></p>
+<p>确认上传后，现在SVN服务器已经有了“版本测试控制”项目的1.0版本和2.0版本。虽然在SVN资源库中依然只有一个“版本测试控制”项目，这是因为SVN资源库默认是显示项目的最新版本。</p>
+<p><img src="./80.png" alt="图11-10"></p>
+<p><strong>注意</strong>此时服务器上有两个版本1.0和2.0，而本地上只有最新的版本2.0。</p>
+<p>下面我们试图把本地的版本恢复到1.0：</p>
+<p>在资源库中右击“版本控制测试”，选择“检出为”。</p>
+<p>可以看到“Check out HEAD revision”默认是被勾选的，表示从服务器检出最新版本（当前为2.0）的项目到本地。</p>
+<ul>
+<li>“Depth”为检出深度，默认为选中的整个资源文件，按需设置，这里为默认值。</li>
+<li>“Check out HEAD revision”下方有“Revision”，这里是填写希望检出的版本号，这里先不急着填，先点击“显示日志”。</li>
+</ul>
+<p><img src="./81.png" alt="图11-11"></p>
+<p><img src="./82.png" alt="图11-12"></p>
+<p><img src="./83.png" alt="图11-13"></p>
+<p><img src="./84.png" alt="图11-14"></p>
+<p>如上面几张图所示，可以看到点击“显示日志”后，出现了关于项目“版本控制测试”的修改日志列表，日志列表下方对应的是当前被选中的版本号的详细修改信息。但是出现了两个“最初版本1.0”和一个“版本2.0”。现在希望把本地项目恢复到1.0版本，应该选择哪个呢？</p>
+<p>不难发现，最底下的“最初版本1.0”的修改信息只有1个空文件夹，那是之前我们把项目第一次同步到服务器时产生的：我们实际上分开了两步上传，先在服务器创建了项目文件夹，然后再上传项目文件，而这两次操作我们都编写了同一个版本号信息，因此会出现这种情况。</p>
+<p>而中间的“最初版本1.0”的修改信息则是整个项目的内容，那么显然现在我们要恢复到的是中间的“最初版本1.0”，即修订号为85的版本。</p>
+<p>至于“版本2.0”的修改信息只有“VersionTest.java”一个文件，这也是因为我们只对这个文件做了修改的缘故。</p>
+<p>现在我们选择“最初版本1.0”（修订号为85）的版本，点击OK按钮。自动返回到检出界面，而“Check out HEAD revision”已不再被勾选，“Revision”一栏自动被填写了对应修订号85。点击Finish按钮，提示覆盖本地项目，点击OK按钮即可。</p>
+<p><img src="./85.png" alt="图11-15"></p>
+<p><img src="./86.png" alt="图11-16"></p>
+<p>返回本地项目查看，已被恢复至1.0版本（如下图）。</p>
+<p><img src="./87.png" alt="图11-17"></p>
+<p>类似地，现在也可以从服务器中把最新的版本2.0重新检出到本地，方法一样，具体步骤不再阐明。</p>
+<p><img src="./88.png" alt="图11-18"></p>
+<hr>
+<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/4128863">本文全文下载</a></li>
+<li><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10533477">配套PPT讲义下载</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/scm/visualsvn-shi-yong-shou-ce/">https://exp-blog.com/scm/visualsvn-shi-yong-shou-ce/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                    
+                                        <span class="chip bg-color">版本控制</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/SVN/">
+                                    
+                                        <span class="chip bg-color">SVN</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/net/corba-jie-kou-xue-xi-bi-ji/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/net/01.jpg" class="responsive-img" alt="Corba 接口学习笔记">
+                        
+                        <span class="card-title">Corba 接口学习笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2013-03-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="post-category">
+                                    网络协议
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Corba/">
+                        <span class="chip bg-color">Corba</span>
+                    </a>
+                    
+                    <a href="/tags/ORB/">
+                        <span class="chip bg-color">ORB</span>
+                    </a>
+                    
+                    <a href="/tags/IDL/">
+                        <span class="chip bg-color">IDL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/algorithm/poj/poj1004-financial-management/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/algorithm/poj/1004.webp" class="responsive-img" alt="POJ 1004 - Financial Management">
+                        
+                        <span class="card-title">POJ 1004 - Financial Management</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2011-12-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                    <a href="/tags/POJ/">
+                        <span class="chip bg-color">POJ</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">
+                        <span class="chip bg-color">解题报告</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

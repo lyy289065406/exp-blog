@@ -1,0 +1,2146 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ansible-Tower 部署笔记, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Ansible-Tower 部署笔记 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/scm/Ansible-Tower.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Ansible-Tower 部署笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Ansible/">
+                                
+                                    <span class="chip bg-color">Ansible</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                
+                                    <span class="chip bg-color">版本控制</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category">
+                                软件配置管理
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-22
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    9 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>作为时下最流行的自动化运维工具之一，Ansible 在业界应该是无人不知无人不晓的了。</p>
+<p>作为一款轻量化的开源软件，它只需要简单地通过 SSH（对 Linux 平台）或 PowerShell（对 Windows 平台），无需被控主机安装客户端，就能实现远程操控、部署、升级等配置管理。</p>
+<p>通过编写简单的 playbooks（yml） 脚本就能轻松对成千上万的主机进行区域管控、日常巡检等任务。</p>
+<p>而 Ansible-Tower （旧称 AWX）作为其配套界面，使得 Ansible 更容易上手。</p>
+<p><img src="./01.png"></p>
+<p>这里提供一些官方资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ansible.com/">Ansible 官网</a> : <a target="_blank" rel="noopener" href="https://www.ansible.com/">https://www.ansible.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ansible.com/products/tower">Ansible-Tower 官网</a> : <a target="_blank" rel="noopener" href="https://www.ansible.com/products/tower">https://www.ansible.com/products/tower</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.ansible.com/">Ansible 官方文档（全）</a> : <a target="_blank" rel="noopener" href="https://docs.ansible.com/">https://docs.ansible.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/index.htmll">Ansible 官方教程（英文版）</a> : <a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/index.html">https://docs.ansible.com/ansible/latest/index.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro.html">Ansible 官方教程（中文版）</a> : <a target="_blank" rel="noopener" href="http://www.ansible.com.cn/docs/intro.html">http://www.ansible.com.cn/docs/intro.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ansible">Ansible Github</a> : <a target="_blank" rel="noopener" href="https://github.com/ansible">https://github.com/ansible</a></li>
+</ul>
+<h2 id="0x10-部署说明"><a href="#0x10-部署说明" class="headerlink" title="0x10 部署说明"></a>0x10 部署说明</h2><p>本文主要记录了在 ubuntu 上部署 Ansible 和 Ansible-Tower 的过程。</p>
+<p>虽然 Ansible-Tower 支持在多种操作系统版本上部署，但对于 ubuntu 只支持 14.0 和 16.0 两个版本（而 Ansible 则是支持到 ubuntu 18.0）。</p>
+<p>为了可以同时安装 Ansible 和 Ansible-Tower ，本文选择了 ubuntu 16.0 系统进行安装。</p>
+<h3 id="0x11-安装环境"><a href="#0x11-安装环境" class="headerlink" title="0x11 安装环境"></a>0x11 安装环境</h3><ul>
+<li><strong>操作系统</strong>：Ubuntu 16.04.5 LTS</li>
+<li><strong>预装软件</strong>：python 2.7、openssh</li>
+</ul>
+<h3 id="0x12-安装清单"><a href="#0x12-安装清单" class="headerlink" title="0x12 安装清单"></a>0x12 安装清单</h3><ul>
+<li>pywinrm （要求版本至少为 0.2.2，若不管理 windows 机器则无需安装）</li>
+<li>Ansible-2.7.5 （ 要求 python 版本 2.6 或 2.7 ）</li>
+<li>PostgreSQL-9.6</li>
+<li>Ansible-Tower-3.3.3 （ 要求 Ansible 版本至少为 2.2，PostgreSQL版本至少为 9.6 ）</li>
+</ul>
+<blockquote>
+<p><strong>预装组件要求可查看官方手册指引</strong>：<a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible-tower/latest/html/quickinstall/prepare.html">https://docs.ansible.com/ansible-tower/latest/html/quickinstall/prepare.html</a></p>
+</blockquote>
+<h2 id="0x20-安装步骤"><a href="#0x20-安装步骤" class="headerlink" title="0x20 安装步骤"></a>0x20 安装步骤</h2><p>注意下述步骤直接依次复制执行即可完成整个部署流程，其中对于命令行前缀：</p>
+<ul>
+<li>【#】表示 root 用户</li>
+<li>【$】表示普通用户</li>
+</ul>
+<h3 id="0x21-安装-pywinrm（可选）"><a href="#0x21-安装-pywinrm（可选）" class="headerlink" title="0x21 安装 pywinrm（可选）"></a>0x21 安装 pywinrm（可选）</h3><pre><code># apt install python-pip            # 安装 pip
+# pip install --upgrade pip            # 更新 pip
+# pip install "pywinrm&gt;=0.2.2"        # 使用 pip 安装 pywinrm，此模块用于远程管理 windows 机器</code></pre>
+<h3 id="0x22-添加相关用户并授权"><a href="#0x22-添加相关用户并授权" class="headerlink" title="0x22 添加相关用户并授权"></a>0x22 添加相关用户并授权</h3><pre><code># adduser ansible                    # 添加 ansible 专用用户
+# chmod u+w /etc/sudoers            # 修改 sudo 配置文件为可写
+# vi /etc/sudoers                    # 修改 sudo 配置文件，对 ansible 和 postgres 用户授权，便于后面安装
+root ALL=(ALL:ALL) ALL
+ansible ALL=(ALL:ALL) ALL
+awx ALL=(ALL:ALL) ALL                # 安装 Ansible-Tower 时自动创建的用户
+postgres ALL=(ALL:ALL) ALL            # 安装 PostgreSQL 时自动创建的用户
+
+
+# chmod u-w /etc/sudoers</code></pre>
+<h3 id="0x23-安装-Ansbile-2-7-5"><a href="#0x23-安装-Ansbile-2-7-5" class="headerlink" title="0x23 安装 Ansbile-2.7.5"></a>0x23 安装 Ansbile-2.7.5</h3><blockquote>
+<p><strong>相关过程整理自官方手册</strong>：<a target="_blank" rel="noopener" href="https://ansible-tran.readthedocs.io/en/latest/docs/intro_installation.html#apt-ubuntu">https://ansible-tran.readthedocs.io/en/latest/docs/intro_installation.html#apt-ubuntu</a></p>
+</blockquote>
+<pre><code># su - ansible                                        # 切换到 ansible 用户
+$ sudo apt-get install software-properties-common     # 在早期 Ubuntu 发行版中, “software-properties-common” 名为 “python-software-properties”，根据实际情况修改
+$ sudo apt-add-repository ppa:ansible/ansible
+$ sudo apt-get update
+$ sudo apt-get install ansible                        # 安装
+$ ansible --version                                    # 若安装成功，核验版本
+ansible 2.7.5
+config file = /etc/ansible/ansible.cfg
+configured module search path = [u'/home/ansible/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+ansible python module location = /usr/lib/python2.7/dist-packages/ansible
+executable location = /usr/bin/ansible
+python version = 2.7.15rc1 (default, Nov 12 2018, 14:31:15) [GCC 7.3.0]</code></pre>
+<p><strong>关于 Asible 的相关配置</strong>：</p>
+<ul>
+<li>配置文件位置为 <code>/etc/ansible/ansible.cfg</code></li>
+<li>主机清单文件为 <code>/etc/ansible/hosts</code> （用于配置主机分组、连接方式等）</li>
+<li>playbooks 目录位置默认为 <code>/etc/ansible/</code> ，若目录不存在，可手工创建</li>
+</ul>
+<h3 id="0x24-安装-PostgreSQL-9-6"><a href="#0x24-安装-PostgreSQL-9-6" class="headerlink" title="0x24 安装 PostgreSQL-9.6"></a>0x24 安装 PostgreSQL-9.6</h3><blockquote>
+<p><strong>部分过程参考自 CSDN</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zpf336/article/details/50843674">https://blog.csdn.net/zpf336/article/details/50843674</a></p>
+</blockquote>
+<pre><code># 注意 Ubuntu 16.0 默认的 PostgreSQL 安装源是 9.5 版本的，不符合要求，需要更新安装源后再安装
+$ sudo add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main"
+$ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install postgresql-9.6
+
+
+# 安装完成后会自动新增数据库用户 postgres
+$ sudo su postgres                                    
+$ psql postgres                                 # 登录数据库
+ALTER USER postgres with PASSWORD 'postgres';     # 修改 postgres 用户的数据库密码
+\q                                                 # 退出数据库
+
+
+# 修改数据库配置（ 默认只允许本地连接，由于只有 Ansible-Tower 用，因此无需更改相关连接配置 ）
+$ vi /etc/postgresql/&lt;pg_version&gt;/main/postgresql.conf    # 此处的 &lt;pg_version&gt; 根据实际安装的 PostgreSQL 版本修改
+password_encryption = on                                # 去掉注释，启用密码验证登录方式
+
+
+# 重启数据库使配置生效
+$ sudo systemctl unmask postgresql
+$ sudo systemctl restart postgresql
+
+
+$ psql -U postgres -h 127.0.0.1                        # 测试本地账密登录
+CREATE USER ansible WITH PASSWORD 'ansible';         # 创建 Ansible-Tower 用的数据库用户 ansible
+CREATE DATABASE tower OWNER ansible;                 # 创建 Ansible-Tower 用的数据库 tower
+GRANT ALL PRIVILEGES ON DATABASE tower TO ansible;    # 把 tower 库的所有权限授权给 ansible 用户
+\q                                                    # 退出数据库
+
+
+# 测试使用 ansible 用户登录 tower 数据库：
+$ psql -U ansible -h 127.0.0.1 -d tower
+\q
+
+
+# 可选（需图形界面支持）
+$ sudo apt-get install pgadmin3        # 可安装 PostgreSQL 库的图形客户端
+$ pgadmin3                             # 启动客户端</code></pre>
+<h3 id="0x25-安装-Ansible-Tower-3-3-3"><a href="#0x25-安装-Ansible-Tower-3-3-3" class="headerlink" title="0x25 安装 Ansible-Tower-3.3.3"></a>0x25 安装 Ansible-Tower-3.3.3</h3><blockquote>
+<p><strong>相关过程整理自官方手册</strong>：<a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible-tower/latest/html/quickinstall/download_tower.html">https://docs.ansible.com/ansible-tower/latest/html/quickinstall/download_tower.html</a></p>
+</blockquote>
+<blockquote>
+<p><strong>部分过程参考自 CSDN</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/CodyGuo/article/details/78875717">https://blog.csdn.net/CodyGuo/article/details/78875717</a></p>
+</blockquote>
+<p>在 ubuntu 系统下，Ansible-Tower 只能下载 Ansible 的 playbooks 脚本，由 Ansible 在线安装。</p>
+<p>playbooks 脚本可从 <a target="_blank" rel="noopener" href="https://releases.ansible.com/ansible-tower/setup/?extIdCarryOver=true&amp;sc_cid=701f2000001OH6uAAG"><strong>此处</strong></a> 提取（目前最后的 latest 版是3.3.3）。</p>
+<p>下载最后版本 <a target="_blank" rel="noopener" href="https://releases.ansible.com/ansible-tower/setup/?extIdCarryOver=true&amp;sc_cid=701f2000001OH6uAAG"><code>ansible-tower-setup-latest.tar.gz</code></a> 后，上传到任意目录即可。</p>
+<pre><code># 上传到 ansible-tower-setup-latest.tar.gz 到 /tmp 目录
+$ sudo su ansible                                    # 切换 ansible 用户执行安装过程
+$ tar xvzf ansible-tower-setup-latest.tar.gz        # 解包
+$ cd ansible-tower-setup-&lt;tower_version&gt;            # tower_version 根据实际的 Ansible-Tower 版本号修改
+$ vi inventory                                         # 修改安装配置，根据前面流程设置的参数对号入座即可
+[tower]
+localhost ansible_connection=local
+
+[database]
+
+[all:vars]
+admin_password='admin'
+pg_host='127.0.0.1'
+pg_port='5432'
+pg_database='tower'
+pg_username='ansible'
+pg_password='ansible'
+
+rabbitmq_username=tower
+rabbitmq_password='admin'
+rabbitmq_cookie=cookiemonster
+
+
+
+
+# 执行安装
+$ sudo ./setup.sh</code></pre>
+<h3 id="0x26-Ansible-Tower授权"><a href="#0x26-Ansible-Tower授权" class="headerlink" title="0x26 Ansible-Tower授权"></a>0x26 Ansible-Tower授权</h3><ul>
+<li>安装成功后，可通过访问 <code>https://&lt;host_ip&gt;/</code> 登录 Ansible-Tower （<strong>只能使用 HTTPS 协议</strong>）</li>
+<li>登录账密在前面安装时已配置为：admin/admin （登录成功后，可以在【Users】里面修改）</li>
+<li>登录成功后需要导入 License 授权，License 可以在官网申请，官方提供了 10 个管理节点的 <a target="_blank" rel="noopener" href="https://www.ansible.com/products/tower/trial?utm_campaign=Ansible+Tower+Product+Page&amp;utm_source=Website&amp;utm_medium=Ansible+Tower+Product+Page+Top+Banner+CTA&amp;hsCtaTracking=c2fa5df2-93a1-436f-bc6b-3b6c3814a3b2%7C63159af0-e463-4910-8b16-3a0c19224977">免费 License</a></li>
+</ul>
+<h2 id="0x30-附：被控主机为-Windows-时的额外配置"><a href="#0x30-附：被控主机为-Windows-时的额外配置" class="headerlink" title="0x30 附：被控主机为 Windows 时的额外配置"></a>0x30 附：被控主机为 Windows 时的额外配置</h2><p>为了控制 Windows 主机，作为被控端的 Windows 必须具备以下几个条件：</p>
+<ul>
+<li>操作系统版本限制为：桌面版 Windows 7、8.1、10 ；服务器版 Windows Server 2008、2012、2016</li>
+<li>Windows上必须已经安装了 PowerShell 3.0 或更新版本</li>
+<li>Windows上必须已经安装了 .NET Framework 4.0 或更新版本</li>
+<li>WinRM 服务已经被创建并启动服务，相关服务端口没有被防火墙等拦截</li>
+</ul>
+<p><strong>相关内容参考自</strong>：</p>
+<ul>
+<li>官方指引手册（英文版）：<a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html">https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html</a></li>
+<li>官方指引手册（中文版）：<a target="_blank" rel="noopener" href="https://ansible-tran.readthedocs.io/en/latest/docs/intro_windows.html#">https://ansible-tran.readthedocs.io/en/latest/docs/intro_windows.html#</a></li>
+<li>百度百家号：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1580415145694814528&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1580415145694814528&amp;wfr=spider&amp;for=pc</a></li>
+</ul>
+<h3 id="0x31-查看-PowerShell-与-NET-版本并升级"><a href="#0x31-查看-PowerShell-与-NET-版本并升级" class="headerlink" title="0x31 查看 PowerShell 与 .NET 版本并升级"></a>0x31 查看 PowerShell 与 .NET 版本并升级</h3><ul>
+<li>运行 PowerShell  （注意不是 CMD，一般 Win8 之后都默认安装）</li>
+<li>输入命令 <code>Get-Host</code> 可查看当前 PowerShell 版本</li>
+<li>输入命令 <code>$PSVersionTable.CLRVersion</code> 可查看当前 .NET Framework 版本</li>
+<li>若 PowerShell 版本不满足要求，可参考 <a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#upgrading-powershell-and-net-framework"><strong>此处</strong></a> 的升级步骤进行升级</li>
+</ul>
+<p><img src="./02.png"></p>
+<h3 id="0x32-安装并查看-WinRM-服务"><a href="#0x32-安装并查看-WinRM-服务" class="headerlink" title="0x32 安装并查看 WinRM 服务"></a>0x32 安装并查看 WinRM 服务</h3><ul>
+<li>详细安装步骤可参考 <a target="_blank" rel="noopener" href="https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#winrm-setup"><strong>这里</strong></a></li>
+<li>为方便起见，Ansible 官方已提供了 WinRM 的自动安装与配置脚本：<a target="_blank" rel="noopener" href="https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1">https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1</a></li>
+<li>下载脚本后，在 PowerShell 执行命令即可完成安装： <code>powershell.exe -ExecutionPolicy ByPass -File ConfigureRemotingForAnsible.ps1</code></li>
+<li>安装完成后，输入命令 <code>winrm enumerate winrm/config/Listener</code> 或 <code>winrm qc</code> 可查看 WinRM 的服务状态</li>
+<li>确认 WinRM 正在监听 HTTPS 5986 端口即配置成功，注意防火墙也要开放相关端口</li>
+</ul>
+<p><img src="./03.png"></p>
+<h3 id="0x33-Ansible-测试-WinRM-连接"><a href="#0x33-Ansible-测试-WinRM-连接" class="headerlink" title="0x33 Ansible 测试 WinRM 连接"></a>0x33 Ansible 测试 WinRM 连接</h3><blockquote>
+<p>注意，Ansible 主机必须已安装 pywinrm，相关步骤详见 <a href="http://exp-blog.com/2019/01/19/pid-3070/#2">这里</a></p>
+</blockquote>
+<p><strong>测试方法：</strong>修改 Ansible 主机的配置文件 <code>/etc/ansible/hosts</code>，在其末尾添加一行（其中 <code>${win_ip}</code>、 <code>${win_username}</code>、 <code>${win_password}</code> 需根据实际情况修改）：</p>
+<pre><code>${win_ip} ansible_user="${win_username}" ansible_password="${win_password}" ansible_port="5986" ansible_connection="winrm" ansible_winrm_server_cert_validation="ignore" ansible_winrm_transport="ssl"</code></pre>
+<p>然后执行命令 <code>ansible ${win_ip} -m win_ping</code> 即可，若响应为 pong 则配置成功：</p>
+<p><img src="./04.png"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/">https://exp-blog.com/scm/ansibletower-bu-shu-bi-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Ansible/">
+                                    
+                                        <span class="chip bg-color">Ansible</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">
+                                    
+                                        <span class="chip bg-color">版本控制</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/re/windows-nei-he-xue-xi-qing-dan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/featureimages/9.jpg" class="responsive-img" alt="WINDOWS 内核学习顺序指引清单">
+                        
+                        <span class="card-title">WINDOWS 内核学习顺序指引清单</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-11-22
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    系统工程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CE/">
+                        <span class="chip bg-color">CE</span>
+                    </a>
+                    
+                    <a href="/tags/RING/">
+                        <span class="chip bg-color">RING</span>
+                    </a>
+                    
+                    <a href="/tags/HOOK/">
+                        <span class="chip bg-color">HOOK</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%A9%B1%E5%8A%A8/">
+                        <span class="chip bg-color">驱动</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%86%85%E6%A0%B8/">
+                        <span class="chip bg-color">内核</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/website/ji-yi-ci-ttfb-de-you-hua-guo-cheng/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/05.jpg" class="responsive-img" alt="WordPress 的 TTFB 过长？记一次 TTFB 的优化过程">
+                        
+                        <span class="card-title">WordPress 的 TTFB 过长？记一次 TTFB 的优化过程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-09-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WordPress/">
+                        <span class="chip bg-color">WordPress</span>
+                    </a>
+                    
+                    <a href="/tags/TTFB/">
+                        <span class="chip bg-color">TTFB</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

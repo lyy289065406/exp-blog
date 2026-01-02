@@ -1,0 +1,2177 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="快速搭建本地大模型与知识库, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>快速搭建本地大模型与知识库 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/ai/15.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">快速搭建本地大模型与知识库</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                
+                                    <span class="chip bg-color">大模型</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/">
+                                
+                                    <span class="chip bg-color">知识库</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/LLM/">
+                                
+                                    <span class="chip bg-color">LLM</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/RAG/">
+                                
+                                    <span class="chip bg-color">RAG</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-07-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>如今，AI 应用领域发展迅速，大模型（LLM，Large Language Models）已经成为推动技术进步的重要力量。</p>
+<p>说到大模型，OpenAI 的 GPT 系列无疑是其中的佼佼者。它通过海量数据训练，能够完成高质量的语言处理任务，比如聊天问答、文本生成、翻译等。</p>
+<p>去年，ChatGPT 推出了一个支持定制个人知识库的功能，采用了检索增强（RAG，Retrieval-Augmented Generation）技术。简单来说，就是模型在生成回答之前，会先从知识库中查找相关信息，这样一来，输出的内容不仅更准确，信息量也更大。</p>
+<p>不过，由于网络环境、隐私和政策等因素，线上知识库的使用受到不少限制。因此，越来越多的人开始尝试在本地部署自己的大模型和知识库。</p>
+<p>但问题来了，目前市面上的大模型五花八门，缺乏统一的管理标准。虽然有很多开源免费的选择，但部署到本地的门槛并不低。直到 Ollama 的出现，情况才有所改观。</p>
+<p>Ollama 是一个大模型的管理框架，它的作用有点像 Docker：你可以把每个标准化的大模型看作一个“镜像”，而 Ollama 则可以通过一行命令快速拉取并运行这些大模型。</p>
+<p>不过，Ollama 本身是基于命令行的工具，为了方便我们对大模型进行微调和使用，还需要借助 AnythingLLM。</p>
+<p>AnythingLLM 提供了一个 ChatBot 界面，它能够将我们输入的结构化知识转换成大模型可以理解的语言（也就是嵌入向量），从而实现高效的交互。</p>
+<p>在本文中，将会引导大家何利用 Ollama 快速搭建本地的大模型服务，并结合 AnythingLLM 构建一个私人定制知识库。</p>
+<h2 id="0x10-部署-Ollama"><a href="#0x10-部署-Ollama" class="headerlink" title="0x10 部署 Ollama"></a>0x10 部署 Ollama</h2><h3 id="0x11-安装"><a href="#0x11-安装" class="headerlink" title="0x11 安装"></a>0x11 安装</h3><p>到 Ollama 官网 <a target="_blank" rel="noopener" href="https://ollama.com/">https://ollama.com/</a> 下载安装包即可：</p>
+<p><img src="./01.jpg"></p>
+<p>它强制安装在 <code>C:\Users\&lt;username&gt;\AppData\Local\Programs\Ollama</code>，安装完成后可在终端输入命令验证：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./03.jpg"></p>
+<p>Ollama 安装后是默认开机启动的，如果不希望自启，可以到目录下：</p>
+<p><code>%AppData%\Microsoft\Windows\Start Menu\Programs</code></p>
+<p>找到 Ollama 并将其删除。</p>
+<p><img src="./33.jpg"></p>
+<h3 id="0x12-修改大模型存储位置"><a href="#0x12-修改大模型存储位置" class="headerlink" title="0x12 修改大模型存储位置"></a>0x12 修改大模型存储位置</h3><p>默认情况下，Ollama 下载的大模型存储在 <code>C:\Users\&lt;username&gt;\.ollama\models</code>，如果不想 C 盘越来越大，建议先修改 Ollama 的大模型存储目录：</p>
+<ul>
+<li>新增系统环境变量 <code>OLLAMA_MODELS</code></li>
+<li>路径设置为非 C 盘的空目录即可（建议全英文）</li>
+<li>重启电脑（必须，否则 Ollama 不会读取这个新变量）</li>
+</ul>
+<p><img src="./02.jpg"></p>
+<h3 id="0x13-下载大模型"><a href="#0x13-下载大模型" class="headerlink" title="0x13 下载大模型"></a>0x13 下载大模型</h3><p>Ollama 的大模型管理有点类似 docker 镜像，可以到官方的<a target="_blank" rel="noopener" href="https://ollama.com/library">在线模型库</a>找到适合自己的大模型：</p>
+<p><img src="./04.jpg"></p>
+<p>这里有几个推荐的大模型：</p>
+<ul>
+<li><code>deepseek-r1</code>: 国产之光，截至 2025 为止最好的开源大模型，效果和 GPT4 相当，中文场景甚至已经超越 ChatGPT4</li>
+<li><code>llama3</code>: Ollama 官方的大模型</li>
+<li><code>llama2-chinese</code>: 官方针对中文特化训练的大模型</li>
+<li><code>qwen2</code>: 阿里的 通义千问 大模型</li>
+</ul>
+<blockquote>
+<p>找不到 openai 或者 chatgpt 的大模型是正常的，人家是商业闭源大模型</p>
+</blockquote>
+<p>在终端执行命令下载大模型：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama pull [MODEL_NAME]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看已下载的大模型列表：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama list<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./05.jpg"></p>
+<p>顺带一提，删除大模型的命令为：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama rm ${NAME}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>必须使用 NAME，如果用 ID 删除不了</p>
+</blockquote>
+<h3 id="0x14-运行大模型"><a href="#0x14-运行大模型" class="headerlink" title="0x14 运行大模型"></a>0x14 运行大模型</h3><p>有两种运行模式，其中<strong>聊天模式</strong>命令为：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama run [MODEL_NAME]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此模式不但启动了大模型的后台服务，还可以在终端直接和大模型对话。</p>
+<p>这里运行阿里的 通义千问 大模型： <code>ollama run qwen2</code>。</p>
+<p>首次执行大概要几十秒启动，看到 <code>&gt;&gt;&gt;</code> 就可以开始聊天了：</p>
+<p><img src="./07.jpg"></p>
+<p>在终端输入 <code>Ctrl + d</code> 或 <code>/bye</code> 退出对话交互。</p>
+<blockquote>
+<p>只是退出对话交互，后台大模型服务还在。</p>
+</blockquote>
+<hr>
+<p>另一种模式是<strong>服务模式</strong>，命令为：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ollama serve<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此模式仅提供服务给 LLM 知识库，所以终端只会看到 web 日志，无法直接和大模型对话：</p>
+<p><img src="./10.jpg"></p>
+<p>在终端输入 <code>Ctrl + c</code> 终止命令。</p>
+<blockquote>
+<p>大模型服务因为在前台运行，也会一起终止。</p>
+</blockquote>
+<details>
+<summary><b>关于端口占用报错的解决方法</b></summary>
+<br>
+
+<p>当在 Windows 中通过 <code>ollama run</code> 命令运行 Ollama 时，有三个进程会被激活：</p>
+<ul>
+<li>托盘服务： <code>Ollama</code></li>
+<li>用户进程： <code>ollama.exe</code></li>
+<li>后台大模型服务： <code>ollama_llama_server.exe</code></li>
+</ul>
+<p><img src="./26.jpg"></p>
+<p>仅仅在终端退出对话，因为 <code>ollama_llama_server.exe</code> 服务还在后台运行，若直接运行 <code>ollama serve</code> 就会报错：</p>
+<pre class="line-numbers language-text"><code class="language-text">Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解决方法是右击右下角的托盘完全终止大模型的后台服务：</p>
+<p><img src="./09.jpg"></p>
+</details>
+
+<p>至此，大模型服务已经准备好了。</p>
+<p>接着为了定制大模型成为我们的知识库，需要安装 AnythingLLM。</p>
+<h2 id="0x20-部署-AnythingLLM"><a href="#0x20-部署-AnythingLLM" class="headerlink" title="0x20 部署 AnythingLLM"></a>0x20 部署 AnythingLLM</h2><h3 id="0x21-安装"><a href="#0x21-安装" class="headerlink" title="0x21 安装"></a>0x21 安装</h3><p>到 AnythingLLM 官网 <a target="_blank" rel="noopener" href="https://useanything.com/">https://useanything.com/</a> 下载安装即可。</p>
+<h3 id="0x22-选择大模型"><a href="#0x22-选择大模型" class="headerlink" title="0x22 选择大模型"></a>0x22 选择大模型</h3><p>首次启动时，提示选择一个大模型。</p>
+<p>AnythingLLM 支持接入的大模型品类非常多，例如在线的商业大模型 OpenAI，只需要生成并填入 <a target="_blank" rel="noopener" href="https://platform.openai.com/settings/profile?tab=api-keys">APIKey</a> 、再选择 ChatGPT 模型就可以了：</p>
+<p><img src="./11.jpg"></p>
+<p>但是国内如果没有科学上网加持，一般是无法使用的，所以这里需要重新选择为前面本地搭建的 Ollama 服务：</p>
+<p><img src="./25.png"></p>
+<p>之后亦可在左下角 设置 <code>-&gt;</code> LLM 首选项中更换大模型：</p>
+<ol>
+<li>在 <code>LLM 提供商</code> 选择前面搭建在本地的 Ollama 服务</li>
+<li>在 <code>Ollama Model</code> 选择前面下载的 <code>qwen2:latest</code> 大模型</li>
+</ol>
+<p><img src="./12.jpg"></p>
+<h3 id="0x23-选择嵌入式模型"><a href="#0x23-选择嵌入式模型" class="headerlink" title="0x23 选择嵌入式模型"></a>0x23 选择嵌入式模型</h3><p>当我们把知识库资料上传到 AnythingLLM 后，AnythingLLM 会对每一份资料中提取关键数据、并转译成神经网络可以理解的特征向量。</p>
+<p>而所谓的嵌入式模型，它在其中起到转译器的作用：将资料中的文本、图像或其他数据转换为密集的数值向量。</p>
+<p>每一个向量代表一组数据特征，它们对知识库的检索能力至关重要。</p>
+<p>更换嵌入式模型的入口在左下角 设置 <code>-&gt;</code> Embedder 首选项，这里保持默认值 <code>AnythingLLM Embedder</code> 即可：</p>
+<p><img src="./14.jpg"></p>
+<details>
+<summary><b>关于嵌入式向量</b></summary>
+<br>
+
+<p>嵌入式向量（Embeddings），它是一种将复杂的事物（如单词、图像、用户、产品等）转化为可以被计算机理解的形式的方法。</p>
+<p>想象一下，如果你要向一个外星人解释 “猫” 是什么，你可能会说它是一种小型的、有毛的、有四条腿的动物，喜欢喵喵叫。但对于计算机来说，它并不能像人类那样理解这些词语。我们需要一种方法，能把 “猫” 转化为计算机可以理解的形式。这就是嵌入式向量的作用。</p>
+<p>嵌入式向量其实就是一个数学上的向量，包含了很多数字。每个数字都代表了一种特性。比如，在描述 “猫” 的嵌入式向量中，可能有一个数字代表它的大小，另一个数字代表它的毛色，还有一个数字代表它的叫声等等。这些数字是通过机器学习模型从大量的数据中学习得到的。</p>
+<p>嵌入式向量的一个重要特性是，相似的事物会有相似的嵌入式向量。比如，“猫” 和 “狗” 在很多方面都很相似（都是小型的、有毛的、有四条腿的动物），所以他们的嵌入式向量也会很接近。这使得我们可以用嵌入式向量来寻找相似的事物，或者理解事物之间的关系。</p>
+<p>总的来说，嵌入式向量是一种将复杂的事物转化为计算机可以理解的形式的方法。通过嵌入式向量，我们可以更好地理解和处理各种复杂的问题，如自然语言处理、推荐系统、图像识别等。</p>
+<p><img src="./14.webp"></p>
+<p>嵌入式模型的应用很普遍：</p>
+<ul>
+<li>在《<a href="https://exp-blog.com/ai/ai-quan-zi-dong-kao-qin-yuan-li-yu-shi-xian/">AI 全自动考勤原理与实现</a>》中，把每一个人脸特征 Embedding 为一个 n 维向量就使用了这个技术</li>
+<li>在《<a href="https://exp-blog.com/ai/sd-ru-men-02-ai-hui-hua-mo-xing-sao-mang/">SD 零基础入门系列</a>》中，Embedding 主要用于优化画风，甚至后来发展到 LoRA 模型之后，被广泛用于绘制某一固定特定人物角色特征</li>
+</ul>
+</details>
+
+
+<h3 id="0x24-选择向量数据库"><a href="#0x24-选择向量数据库" class="headerlink" title="0x24 选择向量数据库"></a>0x24 选择向量数据库</h3><p>通过嵌入式模型转译资料得到的特征向量，会统一存储到向量数据库中，以便之后检索知识之用。</p>
+<p>更换向量数据库的入口在左下角 设置 <code>-&gt;</code> 向量数据库，这里保持默认值 <code>LanceDB</code>，确保全部向量存储在本地：</p>
+<p><img src="./15.jpg"></p>
+<h3 id="0x25-界面汉化"><a href="#0x25-界面汉化" class="headerlink" title="0x25 界面汉化"></a>0x25 界面汉化</h3><p>最后为了便于使用，可以在左下角 设置 <code>-&gt;</code> 外观 中修改界面语言为中文：</p>
+<p><img src="./17.jpg"></p>
+<p>至此 AnythingLLM 的安装和基本配置已经完成，接下来可以定制知识库了。</p>
+<h2 id="0x30-知识库定制"><a href="#0x30-知识库定制" class="headerlink" title="0x30 知识库定制"></a>0x30 知识库定制</h2><h3 id="0x31-新建知识库"><a href="#0x31-新建知识库" class="headerlink" title="0x31 新建知识库"></a>0x31 新建知识库</h3><p>在 AnythingLLM 的聊天界面中，点击左上角的 新建工作区 即可（一个工作区可以认为是一个独立的知识库）：</p>
+<p><img src="./27.jpg"></p>
+<p>其实此时已经可以和大模型对话了，我们前面选择的是 qwen2 大模型，所以它现在只有阿里通义千问的基本能力：</p>
+<p><img src="./28.jpg"></p>
+<p>我们接下来要赋予它专业的知识能力。</p>
+<h3 id="0x32-上传知识"><a href="#0x32-上传知识" class="headerlink" title="0x32 上传知识"></a>0x32 上传知识</h3><p>点击工作区名字旁边的上传按钮：</p>
+<p><img src="./29.jpg"></p>
+<p>有两种上传知识材料的方法：</p>
+<ul>
+<li>上传本地材料： 点击 <code>Click to upload or drag and drop</code></li>
+<li>爬取网络材料： 输入 URL 并点击 <code>Fetch website</code></li>
+</ul>
+<p><img src="./18.jpg"></p>
+<p>但无论以什么方式上传，知识材料都会被转译为特征向量缓存在左侧区域，此时需要添加到右侧知识库中：</p>
+<ol>
+<li>选中要添加到知识库的材料</li>
+<li>点击 <code>Move to Workspace</code></li>
+<li>点击 <code>Save and Embed</code></li>
+<li>等待知识被添加到向量数据库</li>
+</ol>
+<p><img src="./22.jpg"></p>
+<p>回到聊天界面和 AI 重新对话，在对话结束后点击 <code>Show Citation</code> 即可查看这次回答引用了多少知识：</p>
+<p><img src="./24.jpg"></p>
+<h3 id="0x33-查询模式"><a href="#0x33-查询模式" class="headerlink" title="0x33 查询模式"></a>0x33 查询模式</h3><p>有时候我们不希望大模型过于发散地回答问题（尤其某些大模型经常不懂装懂地回答一些似是而非的问题），这时可以设置成【<strong>查询</strong>】模式，只有当上传的材料里面存在相关知识时才作答，提高精准度。</p>
+<p>点击工作区名字旁边的设置按钮 <code>-&gt;</code> 聊天设置 <code>-&gt;</code> 聊天设置 <code>-&gt;</code> 查询，最后点击 <code>Update Workspace</code> 保存设置即可：</p>
+<p><img src="./30.jpg"></p>
+<p>另外还能下调 <code>LLM Temperature</code> 的值，使得回答内容更忠实于上传的材料、而非无中生有：</p>
+<p><img src="./31.jpg"></p>
+<h3 id="0x34-关于回答质量"><a href="#0x34-关于回答质量" class="headerlink" title="0x34 关于回答质量"></a>0x34 关于回答质量</h3><p>当我们发现回答质量不高时，可能有几种原因：</p>
+<ul>
+<li>上传的材料质量太低，尤其是网页抓取的内容，因为站点有可能设置了反爬，根本拉不到、或者拉了很多 html 内容，导致知识库被污染</li>
+<li>向量数据库参数设置不当，可以尝试微调上下文相关片段和相似性阈值：</li>
+</ul>
+<p><img src="./32.jpg"></p>
+<ul>
+<li>提问的姿势不对：</li>
+</ul>
+<p>如前文所述，知识库采用了检索增强生成（RAG）技术，该技术在生成式大模型的基础上增强了检索相关信息片段的能力。</p>
+<p>简单来说，<strong>知识库其实没有通读并充分理解我们所上传的内容</strong>，它更像是一个信息检索工具。</p>
+<p>RAG 的原理其实很简单：它把用户上传的文件先切割成一个个小块（chunk）、为这些小块生成特征向量，然后都保存到向量数据库中。</p>
+<p>当我们问一个问题时，它会根据语义的相关性、找出最接近的“信息块”，然后由大模型基于这些信息构建回答。问题越具体、找到的信息块就越准确。</p>
+<p>但 RAG 最大的缺陷是它没有信息块之间关联关系，以致当我们提出一个抽象或宏观的问题时，它没有办法整合各个信息块推导出答案。</p>
+<blockquote>
+<p>最近微软发布的 <a target="_blank" rel="noopener" href="https://github.com/microsoft/graphrag">GraphRAG</a> 就是解决了传统 RAG 固有缺陷，它在信息块之间建立了知识图谱，实现信息的分层聚合，从而在一定程度上解决抽象问题的应答能力。</p>
+</blockquote>
+<p><img src="./33.webp"></p>
+<h2 id="0xF0-参考文档"><a href="#0xF0-参考文档" class="headerlink" title="0xF0 参考文档"></a>0xF0 参考文档</h2><ul>
+<li>《<a target="_blank" rel="noopener" href="https://www.53ai.com/news/qianyanjishu/1328.html">更改 ollama 模型存储路径</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://github.com/ollama/ollama/issues/3575">ollama issue</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://github.com/microsoft/graphrag">Graph RAG</a>》</li>
+</ul>
+<h3 id="0xF1-名词解释"><a href="#0xF1-名词解释" class="headerlink" title="0xF1 名词解释"></a>0xF1 名词解释</h3><ul>
+<li>大模型： 指的是参数数量庞大的模型，通常是指在自然语言处理（NLP）或其他 AI 领域中的深度学习模型，如 GPT 系列、BERT 等。</li>
+<li>嵌入式模型： 指的是将文本、图像或其他数据转换为密集的数值向量的模型。这些向量捕捉输入数据的重要特征，并用于各种机器学习任务。</li>
+<li>向量库： 是一个存储大量向量的数据库，这些向量通常由嵌入式模型生成。在检索任务中，向量库可以用来快速查找与查询最相关的项。</li>
+<li>知识库： 是结构化或半结构化的信息存储，包含事实、关系等数据。在 NLP 中，知识库用于增强模型的语义理解能力。</li>
+<li>LLM： 即大型语言模型（Large Language Models），这类模型使用大量文本数据进行训练，能够执行多种语言任务，如文本生成、翻译、问答等。</li>
+<li>RAG： 即 Retrieval-Augmented Generation，是一种模型，结合了检索和生成的方法。它通常使用 LLM 进行生成，同时使用向量库或知识库进行信息检索，以辅助生成过程，提高回答的准确性和相关性。</li>
+</ul>
+<h3 id="0xF2-关系"><a href="#0xF2-关系" class="headerlink" title="0xF2 关系"></a>0xF2 关系</h3><ul>
+<li>大模型和 LLM 是同一概念的不同称呼，特指大规模的语言模型</li>
+<li>嵌入式模型用于生成存储在向量库中的向量</li>
+<li>知识库可以是构成RAG模型中检索组件的一部分，提供背景知识以辅助 LLM 进行更准确的生成</li>
+<li>RAG 模型是一个桥梁，利用 LLM 进行生成，同时结合向量库或知识库来增强其输出的信息量和质量</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/ai/build-ollama-anythingllm/">https://exp-blog.com/ai/build-ollama-anythingllm/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/">
+                                    
+                                        <span class="chip bg-color">大模型</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/">
+                                    
+                                        <span class="chip bg-color">知识库</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/LLM/">
+                                    
+                                        <span class="chip bg-color">LLM</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/RAG/">
+                                    
+                                        <span class="chip bg-color">RAG</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/game/ro/run-ro-on-steamdeck/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/game/ro/SDRO.jpg" class="responsive-img" alt="掌上仙境？教你如何在 SteamDeck 原生系统上运行 RO ！">
+                        
+                        <span class="card-title">掌上仙境？教你如何在 SteamDeck 原生系统上运行 RO ！</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在我二十年前还在被窝偷偷玩着 GameBoy 的时候，我就在想，如果 RO 能够装在掌机里，我就不需要因为电脑被锁起来而发愁了... 时至今日也总算以另一种方式得偿所愿了吧...
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-08-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                    仙境传说
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SD/">
+                        <span class="chip bg-color">SD</span>
+                    </a>
+                    
+                    <a href="/tags/Ragnarok/">
+                        <span class="chip bg-color">Ragnarok</span>
+                    </a>
+                    
+                    <a href="/tags/RO/">
+                        <span class="chip bg-color">RO</span>
+                    </a>
+                    
+                    <a href="/tags/SteamDeck/">
+                        <span class="chip bg-color">SteamDeck</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/game/ro/ro-bi-ji-rathena-lian-ji-jiao-cheng/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/game/ro/networking.webp" class="responsive-img" alt="「RO 笔记」rAthena 联机教程">
+                        
+                        <span class="card-title">「RO 笔记」rAthena 联机教程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            很多同学刚入坑 rAthena 时，最关心的一个问题是：能不能联机？怎么联机？本教程将详细讲解在单机模式之外的三种联机模式 ...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                    仙境传说
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ragnarok/">
+                        <span class="chip bg-color">Ragnarok</span>
+                    </a>
+                    
+                    <a href="/tags/rAthena/">
+                        <span class="chip bg-color">rAthena</span>
+                    </a>
+                    
+                    <a href="/tags/Pandas/">
+                        <span class="chip bg-color">Pandas</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%81%94%E6%9C%BA/">
+                        <span class="chip bg-color">联机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

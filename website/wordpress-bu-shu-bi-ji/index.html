@@ -1,0 +1,2319 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="LAMP + WordPress 部署笔记, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>LAMP + WordPress 部署笔记 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/website/01.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">LAMP + WordPress 部署笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/WordPress/">
+                                
+                                    <span class="chip bg-color">WordPress</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/LAMP/">
+                                
+                                    <span class="chip bg-color">LAMP</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                网站建设
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-06-28
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>现在网上虽然有大量WAMP、LAMP、LNMP环境部署的文章，但是不少都过期了或者没有完整的体系、或者没有说明环境版本、再不然就是太罗嗦找不到部署重点。因为环境和版本的各种问题，我在云服务器上面部署的时候碰了不少壁。</p>
+<p>这篇笔记是我在全新安装的、干净的Centos7.4系统的基础下，重复部署了5次<font color="red">LAMP</font>环境之后总结出来的，尽量只罗列出安装环境所用到的每个命令步骤以及说明，不含多余的东西，<font color="red">安装目录也基本使用了默认目录，没有去改动，便于大家复制部署</font>。</p>
+<p>至于WAMP与LNMP不在本文讨论范围内，主要因为WAMP比较简单。而就个人而已，相比于Nginx更习惯Apache，所以最终选了LAMP。</p>
+<h2 id="2-安装软件说明"><a href="#2-安装软件说明" class="headerlink" title="2. 安装软件说明"></a>2. 安装软件说明</h2><table>
+<thead>
+<tr>
+<th align="center">英文缩写</th>
+<th align="center">释义</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">适用平台</td>
+<td align="center">本地物理机/本地虚拟机/云服务器</td>
+<td align="center">本文使用的是 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/cvm">腾讯云CVM服务器</a></td>
+</tr>
+<tr>
+<td align="center"><del>WAMP</del></td>
+<td align="center"><del>Windows + Apache + Mysql + PHP</del></td>
+<td align="center"><del>Web应用软件集成环境（Window系统）</del></td>
+</tr>
+<tr>
+<td align="center"><del>LNMP</del></td>
+<td align="center"><del>Linux + Nginx + Mysql + PHP</del></td>
+<td align="center"><del>Web应用软件集成环境（Linux系统）</del></td>
+</tr>
+<tr>
+<td align="center">LAMP</td>
+<td align="center">Linux + Apache + Mysql + PHP</td>
+<td align="center">Web应用软件集成环境（Linux系统）</td>
+</tr>
+<tr>
+<td align="center">L</td>
+<td align="center">Linux系统</td>
+<td align="center">本文使用的版本号是Centos 7.4.1708</td>
+</tr>
+<tr>
+<td align="center">A</td>
+<td align="center">Apache</td>
+<td align="center">本文使用的版本号是2.4.6</td>
+</tr>
+<tr>
+<td align="center">M</td>
+<td align="center">MariaDB / Mysql</td>
+<td align="center">本文使用的是MariaDB 5.5.56</td>
+</tr>
+<tr>
+<td align="center">P</td>
+<td align="center">PHP</td>
+<td align="center">本文使用的版本号是5.6.36</td>
+</tr>
+</tbody></table>
+<h3 id="2-1-关于MariaDB数据库"><a href="#2-1-关于MariaDB数据库" class="headerlink" title="2.1. 关于MariaDB数据库"></a>2.1. 关于MariaDB数据库</h3><p>MariaDB 是 Mysql 的分支版本，完全兼容 Mysql。</p>
+<p>本文的操作系统是基于 Centos 的，Centos 默认使用的就是 MarriDB。之所以不使用 Mysql，是因为 Mysql 被 Oracle 收购后存在闭源风险，因此建议使用 MariaDB。</p>
+<h3 id="2-2-关于PHP版本"><a href="#2-2-关于PHP版本" class="headerlink" title="2.2. 关于PHP版本"></a>2.2. 关于PHP版本</h3><p>另外，出于系统安全起见，这里特别提及一下PHP的版本号问题：</p>
+<p>2018年01月22日公布了一个 <strong>CVE-2018-5711: PHP GD库拒绝服务漏洞</strong>：</p>
+<p><a target="_blank" rel="noopener" href="https://help.aliyun.com/noticelist/articleid/20788282.html">https://help.aliyun.com/noticelist/articleid/20788282.html</a></p>
+<p>大概意思就是若PHP开启了GD库模块，那么就有可能被一张恶意GIF搞到CPU满荷死机（现在WordPress普遍都会使用timthumb.php对缩略图进行缓存优化以加速网站访问，这个功能会用到GD库）。</p>
+<p><strong>受这个BUG影响的PHP版本</strong>：</p>
+<ul>
+<li>PHP 5 &lt; 5.6.33版本</li>
+<li>PHP 7.0 &lt; 7.0.27版本</li>
+<li>PHP 7.1 &lt; 7.1.13版本</li>
+<li>PHP 7.2 &lt; 7.2.1版本</li>
+</ul>
+<p>这篇文章我使用的是5.6.36版本。之所以没有选择最新的PHP 7.x版本，是因为LAMP环境下，PHP还要安装与之配套版本的phpMyAdmin让PHP访问数据库。而我没有刻意去找与 7.x配套的phpMyAdmin，所以用了5.6.36。其实5.x还是没什么所谓，只要注意不要安装有问题的版本就好。</p>
+<p>顺便一提，<strong>windows环境</strong>还要区分<strong>线程安全版本</strong>和<strong>非线程安全版本</strong>，至于为什么自行百度。但本文说的是<strong>Linux环境，就无需考虑了</strong>。</p>
+<h2 id="3-LAMP环境安装"><a href="#3-LAMP环境安装" class="headerlink" title="3. LAMP环境安装"></a>3. LAMP环境安装</h2><h3 id="3-1-安装操作系统：Linux-CentOS-Linux-release-7-4-1708-Core"><a href="#3-1-安装操作系统：Linux-CentOS-Linux-release-7-4-1708-Core" class="headerlink" title="3.1. 安装操作系统：Linux - CentOS Linux release 7.4.1708 (Core)"></a>3.1. 安装操作系统：Linux - CentOS Linux release 7.4.1708 (Core)</h3><p>操作系统安装过程略，因为无论是在本地物理机、虚拟机，还是在云服务器，都是可以傻瓜式安装，此处就不多言了。</p>
+<p>查看系统版本号:</p>
+<blockquote>
+<p>cat /etc/redhat-release</p>
+</blockquote>
+<p>更新操作系统（可选，建议）：</p>
+<blockquote>
+<p>yum clean all<br>yum -y update</p>
+</blockquote>
+<h3 id="3-2-安装Apache-2-4-6-CentOS"><a href="#3-2-安装Apache-2-4-6-CentOS" class="headerlink" title="3.2. 安装Apache/2.4.6 (CentOS)"></a>3.2. 安装Apache/2.4.6 (CentOS)</h3><p>安装默认Apache：</p>
+<blockquote>
+<p>yum -y install httpd</p>
+</blockquote>
+<p>查看Apache版本号：</p>
+<blockquote>
+<p>apachectl -v</p>
+</blockquote>
+<p>启动Apache：</p>
+<blockquote>
+<p>systemctl start httpd</p>
+</blockquote>
+<p>使得Apache开机启动：</p>
+<blockquote>
+<p>systemctl enable httpd</p>
+</blockquote>
+<p>测试Apache是否安装成功，浏览器打开网址：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a></p>
+</blockquote>
+<p>注意，若打不开，检查下：</p>
+<ul>
+<li>① 防火墙要开放80端口入网规则</li>
+<li>② 若是云服务器IP要改成公网地址</li>
+<li>③ 若是云服务器要配置安全组策略开放80端口</li>
+</ul>
+<p>为WordPress开启mod_rewrite模块功能（用于支持“固定链接”和“站点网络”功能），使用vi打开Apache配置文件：</p>
+<blockquote>
+<p>vi /etc/httpd/conf/httpd.conf</p>
+</blockquote>
+<p>定位到&lt;directory&gt;段修改下列语句，其他部分不用修改。</p>
+<blockquote>
+<p>AllowOverride <strong>None</strong>   修改为  AllowOverride <strong>All</strong></p>
+</blockquote>
+<p>定位到&lt;directory “/var/www”&gt;段修改下列语句，其他部分不用修改。</p>
+<blockquote>
+<p>AllowOverride <strong>None</strong>   修改为  AllowOverride <strong>All</strong></p>
+</blockquote>
+<p>定位到&lt;directory “/var/www/html”&gt;段修改下列语句，其他部分不用修改。</p>
+<blockquote>
+<p>AllowOverride <strong>None</strong>   修改为  AllowOverride <strong>All</strong></p>
+</blockquote>
+<p><strong>至此Apache安装完成</strong>。</p>
+<p><strong>注意</strong>（这些先记下来，不用动，后面有用）：</p>
+<ul>
+<li>① 此时Centos会多了一个<font color="red">用户apache，用户组为apache</font>。</li>
+<li>② Apache的<font color="red">html项目默认路径</font>为：</li>
+</ul>
+<blockquote>
+<p>/var/www/html</p>
+</blockquote>
+<h3 id="3-3-安装MariaDB-5-5-56"><a href="#3-3-安装MariaDB-5-5-56" class="headerlink" title="3.3. 安装MariaDB-5.5.56"></a>3.3. 安装MariaDB-5.5.56</h3><p>安装默认MariaDB：</p>
+<blockquote>
+<p>yum install mariadb-server mariadb</p>
+</blockquote>
+<p>启动MariaDB：</p>
+<blockquote>
+<p>systemctl start mariadb</p>
+</blockquote>
+<p>因首次安装，配置MariaDB：</p>
+<blockquote>
+<p>mysql_secure_installation</p>
+</blockquote>
+<p>此时会问你几个问题：</p>
+<blockquote>
+<p><strong>Enter current password for root (enter for none):</strong><br>　　要求输入root用户当前密码，<strong>由于没有，直接回车不要输入任何东西</strong>，不然不能往下<br><strong>Set root password? [Y/n]</strong><br>　　是否设置root用户密码，<strong>选Y</strong>， 然后自己设置密码<br><strong>Remove anonymous users? [Y/n]</strong><br>　　是否移除anonymous 用户，<strong>选Y</strong>，这个用户仅用于测试，在服务器上可能有提权隐患<br><strong>Disallow root login remotely? [Y/n]</strong><br>　　是否禁止root用户远程登录，<strong>选Y</strong>， 为了安全起见，等下再建一个用户用于远程访问。<br>　　一般情况下服务器也不应该开放3306端口（除非要迁移数据），容易被攻击。<br><strong>Remove test database and access to it? [Y/n]</strong><br>　　是否移除测试数据库，<strong>选Y</strong>， 没什么用<br><strong>Reload privilege tables now? [Y/n]</strong><br>　　是否重载权限表使所有设置生效，<strong>选Y</strong></p>
+</blockquote>
+<p>使得MariaDB开机启动：</p>
+<blockquote>
+<p>systemctl enable mariadb</p>
+</blockquote>
+<p>连接MariaDB数据库，输入刚才设置的密码：</p>
+<blockquote>
+<p>mysql -u root -p</p>
+</blockquote>
+<p>创建wordpress数据库（后面部署WordPress要用到，记住<font color="red">数据库名wordpress</font>）：</p>
+<blockquote>
+<p>create database <font color="red">wordpress</font>;</p>
+</blockquote>
+<p>建议创建一个WordPress专用的<font color="red">数据库用户wpUser</font> ，而不要用root用户：</p>
+<blockquote>
+<p>create user <font color="red">wpUser</font> identified by '<font color="red">wpPasswd</font>';</p>
+</blockquote>
+<p>授予其wordpress数据库所有权限并可用于远程登陆（但<strong>平时不要开放远程登陆端口</strong>，可通过防火墙或云服务的安全组策略对3306端口进行拦截）：</p>
+<blockquote>
+<p>grant all privileges on <font color="red">wordpress.</font> to '<font color="red">wpUser</font>'@'<font color="red">%</font>' identified by '<font color="red">wpPasswd</font>' with grant option;</p>
+</blockquote>
+<p>刷新权限表使前面设置生效：</p>
+<blockquote>
+<p>flush privileges;</p>
+</blockquote>
+<p>断开数据库连接：</p>
+<blockquote>
+<p>exit;</p>
+</blockquote>
+<p><strong>至此MariaDB安装完成</strong>。</p>
+<h3 id="3-4-安装PHP-5-6-36"><a href="#3-4-安装PHP-5-6-36" class="headerlink" title="3.4. 安装PHP 5.6.36"></a>3.4. 安装PHP 5.6.36</h3><p>由于PHP官网的源可能比较旧（默认是5.4），这里换一个安装源：</p>
+<blockquote>
+<p>rpm -Uvh <a target="_blank" rel="noopener" href="https://mirror.webtatic.com/yum/el7/webtatic-release.rpm">https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</a></p>
+</blockquote>
+<p>若报错：<em>epel-release &gt;= 7 is needed by webtatic-release-7-3.noarch</em> , 先安装这个工具（<strong>安装完后重新跑前一个命令</strong>）：</p>
+<blockquote>
+<p>yum -y install epel-release</p>
+</blockquote>
+<p>然后看一下有没有我们要装的PHP版本（所列印表单的第二列就是版本号，若看到PHP 5.6相关组件都是大于5.6.33 版本的，则可以安装）：</p>
+<blockquote>
+<p>yum list php*</p>
+</blockquote>
+<p>安装PHP 5.6的组件（这些模块就是从列表中选的，注意不用加后缀）：</p>
+<blockquote>
+<p>yum install php56w php56w-mysql php56w-gd libjpeg* php56w-ldap php56w-odbc php56w-pear php56w-xml php56w-xmlrpc php56w-mbstring php56w-bcmath </p>
+</blockquote>
+<p>PHP 5.6还要额外安装一个加密组件：</p>
+<blockquote>
+<p>yum groupinstall “development tools”<br>yum -y install mhash mhash-devel mcrypt</p>
+</blockquote>
+<p>另外PHP的配置文件在这里（暂时<strong>不需要动</strong>）：</p>
+<blockquote>
+<p>/etc/php.ini</p>
+</blockquote>
+<p>查看PHP版本号：</p>
+<blockquote>
+<p>php -v</p>
+</blockquote>
+<p><strong>至此PHP安装完成</strong>。</p>
+<h3 id="3-5-安装phpMyAdmin"><a href="#3-5-安装phpMyAdmin" class="headerlink" title="3.5. 安装phpMyAdmin"></a>3.5. 安装phpMyAdmin</h3><p>这个工具是通过web界面管理数据库的（Web版本的数据库客户端工具），依赖于PHP，所以版本要与PHP配套。Centos7自带的phpmyadmin可用于PHP5.x，直接安装就可以了：</p>
+<blockquote>
+<p>yum -y install phpmyadmin</p>
+</blockquote>
+<p>安装完后重启下Apache服务：</p>
+<blockquote>
+<p>systemctl restart httpd.service</p>
+</blockquote>
+<p>测试phpMyAdmin是否安装成功，浏览器打开网址：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/phpMyAdmin/index.php">http://127.0.0.1/phpMyAdmin/index.php</a></p>
+</blockquote>
+<p>注意，若打不开，检查下：</p>
+<ul>
+<li>① 防火墙要开放80、3306端口入网规则</li>
+<li>② 若是云服务器IP要改成公网地址</li>
+<li>③ 若是云服务器要配置安全组策略开放80、3306端口</li>
+<li>④ 若部署在云服务器，不建议放权打开这个地址</li>
+</ul>
+<p>使用vi命令修改phpMyAdmin的配置文件用于连接数据库：</p>
+<blockquote>
+<p>vi /etc/phpMyAdmin config.inc.php</p>
+</blockquote>
+<p>由于使用MariaDB / Mysql数据库，很多选项保持默认值即可，只要把刚才设置的数据库帐密设置进去即可：</p>
+<blockquote>
+<p>$cfg['Servers'][$i]['user'] = '<font color="red">wpUser</font>';<br>cfg['Servers'][$i]['password'] = '<font color="red">wpPasswd</font>';</p>
+</blockquote>
+<p>最后重启下Apache服务：</p>
+<blockquote>
+<p>systemctl restart httpd.service</p>
+</blockquote>
+<p><strong>至此phpMyAdmin安装完成，LAMP环境安装完成</strong>。</p>
+<h3 id="3-6-安装WordPress-4-9-4中文版"><a href="#3-6-安装WordPress-4-9-4中文版" class="headerlink" title="3.6. 安装WordPress 4.9.4中文版"></a>3.6. 安装WordPress 4.9.4中文版</h3><p>由于Centos7的官方源都是英文版，可以去WordPress的官网下载中文版：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://cn.wordpress.org/txt-download/">https://cn.wordpress.org/txt-download/</a></p>
+</blockquote>
+<p>下载回来后，上传并解压到Apache的html项目目录下：</p>
+<blockquote>
+<p>/var/www/html</p>
+</blockquote>
+<p>上传可使用FTP（后面再说安装步骤），也可使用rz工具（<strong>推荐，更方便</strong>），rz安装命令如下：</p>
+<blockquote>
+<p>yum install lrzsz</p>
+</blockquote>
+<p>上传wordpress压缩包：</p>
+<blockquote>
+<p>rz</p>
+</blockquote>
+<p><strong>上传后，这里有两种处理方式</strong>：</p>
+<ul>
+<li>① 直接解压 wordpress根目录到/var/www/html目录下，以后用于访问wordpress站点的URL为：<a target="_blank" rel="noopener" href="http://127.0.0.1/wordpress">http://127.0.0.1/wordpress</a></li>
+<li>② 不要wordpress根目录，只把里面的内容解压到/var/www/html目录下，以后用于访问wordpress站点的URL为：<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a></li>
+</ul>
+<p>本文选择的是第 ② 种，因为我只需要部署wordpress一个web项目，而且注册了域名。如果所有URL地址都加了wordpress目录，别人访问麻烦而且丑。</p>
+<p>解压wordpress，并删除wordpress根目录：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">unzip wordpress.zip
+<span class="token function">mv</span> -r ./wordpress/* <span class="token keyword">.</span>
+<span class="token function">rm</span> -rf wordpress/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>如下图所示，此时我的wordpress部署位置是这样的（<strong>直接在/var/www/html目录下，且没有wordpress目录</strong>）：</p>
+<p><img src="./01.png" alt="WordPress安装位置"></p>
+<p>通过确认Apache配置文件/etc/httpd/conf/httpd.conf，可以发现这两个配置项：</p>
+<blockquote>
+<p>user apache<br>group apache</p>
+</blockquote>
+<p>说明WordPress以后会以apache用户在/var/www目录下进行读写操作，因此为了避免因为权限问题导致读写失败，需修改目录权限。</p>
+<p>设置http根目录/var/www的所有组为apache：</p>
+<blockquote>
+<p>chown -R :apache /var/www</p>
+</blockquote>
+<p>设置http根目录/var/www的所有者为apache：</p>
+<blockquote>
+<p>chown -R apache /var/www</p>
+</blockquote>
+<p>设置http根目录/var/www的所有组下所有用户具有读写权限：</p>
+<blockquote>
+<p>chmod -R 775 /var/www</p>
+</blockquote>
+<h3 id="3-7-安装FTP"><a href="#3-7-安装FTP" class="headerlink" title="3.7. 安装FTP"></a>3.7. 安装FTP</h3><p>一般情况下，到这里为止WordPress就不会因为权限问题、因为无法读写/var/www目录，导致无法升级安装主题、插件。</p>
+<p>但如果WordPress还是提示需要FTP进行安装升级，可以继续加一个FTP用户。</p>
+<p>安装FTP服务：</p>
+<blockquote>
+<p>yum install -y vsftpd</p>
+</blockquote>
+<p>启动FTP：</p>
+<blockquote>
+<p>systemctl start vsftpd.service</p>
+</blockquote>
+<p>使得FTP开机启动：</p>
+<blockquote>
+<p>systemctl enable vsftpd.service</p>
+</blockquote>
+<p>为了安全起见，取消FTP匿名登录：</p>
+<blockquote>
+<p>vi /etc/vsftpd/vsftpd.conf<br><em>把第一行的 anonymous_enable=YES ，修改为NO</em></p>
+</blockquote>
+<p>如果这里图方便，可以为root用户开放FTP权限，<strong>编辑这两个文件，用#注释root</strong>即可（<font color="red">但是如果是在云服务器，不建议这么做</font>）：</p>
+<blockquote>
+<p>vi /etc/vsftpd ftpusers<br>vi /etc/vsftpd user_list</p>
+</blockquote>
+<p>添加一个Apache专用的FTP<font color="red">用户apacheftp</font>：</p>
+<blockquote>
+<p>adduser -d /var/www -g apache -s /sbin/nologin <font color="red">apacheftp</font><br><em>命令解析：使用命令(adduser)添加apacheftp用户，不能登录系统(-s /sbin/nologin)，用户文件夹在(-d /var/www)，属于组apache(-g apache)</em></p>
+</blockquote>
+<p>若出现这个提示，不用管：</p>
+<blockquote>
+<p>adduser: warning: the home directory already exists.<br>ot copying any file from skel directory into it.</p>
+</blockquote>
+<p>设置<font color="red">apacheftp</font>用户密码：</p>
+<blockquote>
+<p>passwd <font color="red">apacheftp</font></p>
+</blockquote>
+<p>添加用户<font color="red">apacheftp</font>到ftp用户组， 这样apacheftp就同时属于ftp和apache两个组：</p>
+<blockquote>
+<p>usermod -a -G ftp <font color="red">apacheftp</font></p>
+</blockquote>
+<p>重启FTP服务：</p>
+<blockquote>
+<p>systemctl restart vsftpd.service</p>
+</blockquote>
+<p>最后打开浏览器：<a target="_blank" rel="noopener" href="http://127.0.0.1/">http://127.0.0.1</a> ，就可以开始配置Wordpress了。</p>
+<p>初始安装会在页面要求设置数据库的库名、帐密，设置为前文设置的值即可。</p>
+<p>若以后需要更改数据库配置，可在 <strong>/var/www/html/wp-config.php</strong>　中进行修改。</p>
+<p><strong>至此WordPress安装完成</strong>。</p>
+<h3 id="3-8-可选：安装防火墙firewalld"><a href="#3-8-可选：安装防火墙firewalld" class="headerlink" title="3.8. 可选：安装防火墙firewalld"></a>3.8. 可选：安装防火墙firewalld</h3><p>服务器上为了安全起见，建议打开防火墙，Centos默认已安装好firewalld，但处于关闭状态。</p>
+<p>查看防火墙状态：</p>
+<blockquote>
+<p>firewall-cmd --state</p>
+</blockquote>
+<p>开启防火墙：</p>
+<blockquote>
+<p>systemctl start firewalld</p>
+</blockquote>
+<p>永久放开HTTP 80端口、FTP服务（含20/21端口）、远程登录 22端口、Telnet 23端口：</p>
+<blockquote>
+<p>firewall-cmd --add-port=80/tcp --permanent<br>firewall-cmd --add-service=ftp --permanent<br>firewall-cmd --add-port=22/tcp --permanent<br>firewall-cmd --add-port=23/tcp --permanent</p>
+</blockquote>
+<p>重载防火墙规则：</p>
+<blockquote>
+<p>firewall-cmd --reload</p>
+</blockquote>
+<p>查看当前的防火墙规则：</p>
+<blockquote>
+<p>iptables -L -n</p>
+</blockquote>
+<p>设置防火墙为开机启动：</p>
+<blockquote>
+<p>systemctl enable firewalld</p>
+</blockquote>
+<p><font color="red">至此LAMP + WordPress的基本环境全部部署完成</font>。</p>
+<h2 id="4-后话：几个重要的配置文件"><a href="#4-后话：几个重要的配置文件" class="headerlink" title="4. 后话：几个重要的配置文件"></a>4. 后话：几个重要的配置文件</h2><p>① Apache-httpd服务的配置文件，主要用于配置Apache的rewrite模块功能：</p>
+<blockquote>
+<p>/etc/httpd/conf/httpd.conf</p>
+</blockquote>
+<p>② PHP的配置文件（若在win环境用于打开关闭php的扩展模块； 若在linux环境没什么用，要用哪些模块需要直接安装即可）：</p>
+<blockquote>
+<p>/etc/php.ini</p>
+</blockquote>
+<p>③ phpMyAdmin配置文件，其利用PHP在网页连接数据库，若数据库配置变更需要修改此配置文件：</p>
+<blockquote>
+<p>/etc/phpMyAdmin/config.inc.php</p>
+</blockquote>
+<p>④ Wordpress配置文件，若数据库配置变更需要修改此配置文件，另外wordpress的某些自定义配置也需要用到此配置文件：</p>
+<blockquote>
+<p>/var/www/html/wp-config.php</p>
+</blockquote>
+<p>⑤ Mariadb配置文件，后续需要优化数据库时要修改这些配置文件：</p>
+<blockquote>
+<p>/etc/my.cnf　# 此配置文件引用了 /etc/my.cnf.d 目录下的配置，不建议改动，避免Mariadb升级时覆盖掉<br>/etc/my.cnf.d/server.cnf　　# 一般情况下修改这个配置文件即可<br>/etc/my.cnf.d/client.cnf<br>/etc/my.cnf.d/mysql-clients.cnf</p>
+</blockquote>
+<h2 id="5-资源下载"><a href="#5-资源下载" class="headerlink" title="5. 资源下载"></a>5. 资源下载</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10484861">本文全文下载</a></p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/website/wordpress-bu-shu-bi-ji/">https://exp-blog.com/website/wordpress-bu-shu-bi-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/WordPress/">
+                                    
+                                        <span class="chip bg-color">WordPress</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/LAMP/">
+                                    
+                                        <span class="chip bg-color">LAMP</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/website/wordpress-cha-jian-tui-jian/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/02.jpg" class="responsive-img" alt="WordPress 插件推荐">
+                        
+                        <span class="card-title">WordPress 插件推荐</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-06-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%8F%92%E4%BB%B6/">
+                        <span class="chip bg-color">插件</span>
+                    </a>
+                    
+                    <a href="/tags/WordPress/">
+                        <span class="chip bg-color">WordPress</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/algorithm/n-huang-hou-wen-ti/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/algorithm/04.png" class="responsive-img" alt="N 皇后问题 – 构造法原理与证明： 时间复杂度 O(1)">
+                        
+                        <span class="card-title">N 皇后问题 – 构造法原理与证明： 时间复杂度 O(1)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                    <a href="/tags/N-%E7%9A%87%E5%90%8E/">
+                        <span class="chip bg-color">N 皇后</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

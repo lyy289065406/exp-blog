@@ -1,0 +1,2401 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="「Openkore 笔记」入门篇 - 基础知识科普, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>「Openkore 笔记」入门篇 - 基础知识科普 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/game/openkore/04.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">「Openkore 笔记」入门篇 - 基础知识科普</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Ragnarok/">
+                                
+                                    <span class="chip bg-color">Ragnarok</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/RO/">
+                                
+                                    <span class="chip bg-color">RO</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/openkore/">
+                                
+                                    <span class="chip bg-color">openkore</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/rAthena/">
+                                
+                                    <span class="chip bg-color">rAthena</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                仙境传说
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-11-06
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>最近打算用 <a target="_blank" rel="noopener" href="https://github.com/rathena/rathena">rAthena</a> 做强化学习训练，但是苦于封装游戏交互逻辑比较费事费力。</p>
+<p>于是我就想找到以前的 RO Bot，因为它们肯定内置了交互逻辑。但是过去差不多 20 年了，以前的 Bot 99% 都废了，从哪里能翻出来也是一个问题。</p>
+<p>一个偶然的机会，发现 <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore">Openkore</a> 社区还活跃着，而且 OpenKore 和传统的 Bot 还不太一样，它是纯命令行交互、没有 UI 界面，这就为我以后为了 “训练强化学习模型而封装交互逻辑接口” 提供了可能性。</p>
+<ul>
+<li>Openkore <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore">源码</a></li>
+<li>Openkore <a target="_blank" rel="noopener" href="https://openkore.com/wiki/Main_Page">wiki</a> </li>
+<li>Openkore <a target="_blank" rel="noopener" href="https://forums.openkore.com/">论坛</a></li>
+</ul>
+<p><img src="./02.gif"></p>
+<h2 id="1-环境安装"><a href="#1-环境安装" class="headerlink" title="1. 环境安装"></a>1. 环境安装</h2><p>可参考官方文档： <a target="_blank" rel="noopener" href="https://openkore.com/wiki/How_to_run_OpenKore">How to run OpenKore</a></p>
+<h2 id="2-关键配置"><a href="#2-关键配置" class="headerlink" title="2. 关键配置"></a>2. 关键配置</h2><p>在 Openkore 的<a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore">源码</a>中，必须要修改的只有两个文件：</p>
+<ul>
+<li><code>tables/servers.txt</code>: 服务器参数配置（必须）</li>
+<li><code>control/config.txt</code>: 连接到服务器的账号配置（登录时自动填写）</li>
+<li><code>control/*.txt</code>: Bot 行为策略配置（可选）</li>
+</ul>
+<h2 id="3-服务器参数配置（必须）"><a href="#3-服务器参数配置（必须）" class="headerlink" title="3. 服务器参数配置（必须）"></a>3. 服务器参数配置（必须）</h2><p>在 <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore">Openkore</a> 的 <code>tables/servers.txt</code> 中主要配置了所有 RO 服务器连接信息。</p>
+<details>
+<summary><b>查看详情参数配置说明</b></summary>
+<br>
+
+<p>每一个服务器配置的<a target="_blank" rel="noopener" href="https://openkore.com/wiki/Connectivity_Guide#Configuring_Openkore">完整配置模板</a>如下：</p>
+<pre class="line-numbers language-text"><code class="language-text">[&lt;server name&gt;]
+ip <number/host>
+port <number>
+version <number>
+master_version <number> 
+serverType <serverType name>
+serverEncoding <encoding>
+charBlockSize <number>
+addTableFolders <folder path>
+
+# following options are optional
+private <boolean>
+recvpackets <file name>
+chatLangCode <boolean>
+storageEncryptKey <encrypt key>
+field_<location> <filename>
+clientHash <hex string>
+captcha <boolean>
+
+gameGuard <number>
+
+secureLogin <boolean>
+secureLogin_type <type>
+secureLogin_requestCode <hex string>
+secureLogin_account <boolean>
+
+preLoginCode <boolean>
+
+paddedPackets <boolean>
+paddedPackets_attackID <packet switches>
+paddedPackets_skillUseID <packet switches>
+
+masterLogin_packet <packet switch>
+
+OTP_ip <IP_or_hosthame>
+OTP_port <number>
+
+dead <boolean>
+dead_message <any text>
+title <any text>
+
+pinCode <boolean>
+charDeleteDateType <boolean>
+blockingPlayerCancel <boolean>
+rankingSystemType <boolean>
+itemListType <boolean>
+ignoreAntiCheatWarning <boolean><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例如对于 <code>PACKETVER = 20211103</code> 的 rAthena 服务端，其服务器连接配置就是:</p>
+<pre class="line-numbers language-text"><code class="language-text">[z_YourRO - xxxxxx]
+ip ${Your_Server_Public_IP}
+port 6900
+master_version 1
+version 28
+serverType kRO_RagexeRE_2021_11_03
+serverEncoding GBK
+gameGuard 0
+storageEncryptKey 0x050B6F79, 0x0202C179, 0x00E20120, 0x04FA43E3, 0x0179B6C8, 0x05973DF2, 0x007D8D6B, 0x08CB9ED9
+addTableFolders kRO/Ragexe_2021_11_03;iRO
+charBlockSize 175
+pinCode 0
+charDeleteDateType 1
+rankingSystemType 1
+private 1
+# sendCryptKeys ${PACKET_OBFUSCATION_KEY1},{PACKET_OBFUSCATION_KEY3},{PACKET_OBFUSCATION_KEY2}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="3-1-必填选项"><a href="#3-1-必填选项" class="headerlink" title="3.1. 必填选项"></a>3.1. 必填选项</h3><h4 id="3-1-1-server-name"><a href="#3-1-1-server-name" class="headerlink" title="3.1.1 server name"></a>3.1.1 server name</h4><p>服务配置的名称，名字可任意设定，这个名字在连接时、会出现在服务器选单中。由于选单是按字母序排序的，故其首字母可以控制这份服务器配置在选单中出现的位置。</p>
+<p><img src="./03.jpg"></p>
+<blockquote>
+<p>尽量避免更改已存在的服务名称，以免破坏已存在的配置。建议可以新增一条服务配置记录。</p>
+</blockquote>
+<h4 id="3-1-2-ip"><a href="#3-1-2-ip" class="headerlink" title="3.1.2. ip"></a>3.1.2. ip</h4><p>需要登录的 RO 服务器 IP，又分几种情况：</p>
+<ul>
+<li>本地提供服务（docker 服务暴露到宿主机也算）: 固定值 host.docker.internal</li>
+<li>docker 内提供服务（没有暴露到宿主机）: 该服务需要使用 <a href="./docker-compose.yml">docker-compose.yml</a> 的网段，并指定任意一个 IP</li>
+<li>局域网提供服务: 配置为局域网的 IP</li>
+<li>云主机提供服务: 配置为云主机的公网 IP</li>
+<li>通过反向代理提供服务: 配置为代理的公网 IP</li>
+</ul>
+<blockquote>
+<p><code>127.0.0.1</code> 是 openkore-docker 容器本地的 IP，除非用这个仓库作为基础镜像搭建 RO 服务端，不然不论哪种情况都不应配置为 <code>127.0.0.1</code></p>
+</blockquote>
+<h4 id="3-1-3-port"><a href="#3-1-3-port" class="headerlink" title="3.1.3. port"></a>3.1.3. port</h4><p>需要登录的 RO 服务器端口，默认是 6900，非必要不需要改。</p>
+<h4 id="3-1-4-version-和-master-version"><a href="#3-1-4-version-和-master-version" class="headerlink" title="3.1.4. version 和 master_version"></a>3.1.4. version 和 master_version</h4><p>根据<a target="_blank" rel="noopener" href="https://openkore.com/wiki/Connectivity_Guide">官方</a>的介绍，这两个值需要通过 WPE 或 Wireshark 抓取封包获得，以 <a target="_blank" rel="noopener" href="https://docs.ragnarok.buzz/01-developer/02-tools/WPE_v3.0.zip">WPE</a> 为例：</p>
+<p>运行 RO 客户端 ragnarok.exe，但是停在输入帐密的界面，不要登录。然后运行 WPE，点击 Target Programs 按钮：</p>
+<p><img src="./07.jpg"></p>
+<p>找到 ragnarok.exe 并双击选中为抓包目标（部分补丁可能改过进程名，如: xxxRO.exe、xxxx.dll、xxxxx.bin 等，按实际选择即可）</p>
+<p><img src="./08.jpg"></p>
+<p>点击 WPE 的抓包按钮，然后切换到 RO 的登录界面登录，在输入框随便输入帐密（可以不正确）、点击登录</p>
+<p><img src="./09.jpg"></p>
+<p>再切换到 WPE ，点击停止抓包按钮：</p>
+<p><img src="./10.jpg"></p>
+<p>此时可以看到刚才登录时抓到的包：</p>
+<p><img src="./11.jpg"></p>
+<p>如上图这个发送出去的封包（可以看到 RO 登录帐密是明文传输的，没有做加密处理），其中：</p>
+<ol>
+<li>对应 <code>version</code>，需要按照小端序（little-endian）将这 4 个十六进制数重新排列。这里为 <code>14 00 00 00</code>，小端序就是从有到左倒过来 <code>00 00 00 14</code>，转成十进制就是 <code>20</code></li>
+<li>对应 <code>ip</code>，RO 登录服务 IP，如果前面配 IP 不知道取什么值，可以在这里获取</li>
+<li>对应 <code>port</code>，RO 登录服务端口，如果前面配端口知道取什么值，可以在这里获取</li>
+<li>对应 <code>master_version</code>，固定是最后 1 个十六进制数，这里为 <code>10</code>，转成十进制就是 <code>2</code></li>
+</ol>
+<blockquote>
+<p>事实上只有官服才会校验版本，实测在 rAthena 系列中配置为任意值都会不影响 openkore 登录。</p>
+</blockquote>
+<h4 id="3-1-5-serverType"><a href="#3-1-5-serverType" class="headerlink" title="3.1.5. serverType"></a>3.1.5. serverType</h4><p>服务器类型。每个官服都有自己的服务器类型，rAthena 必须根据可执行文件的编译日期使用 kRO 服务器类型，而且还需要 openkore 支持。</p>
+<p>根据<a target="_blank" rel="noopener" href="https://openkore.com/wiki/serverType#kRO_serverTypes_for_private_servers">官方说明</a>，rAthena 私服的固定格式为：</p>
+<pre class="line-numbers language-text"><code class="language-text">kRO_RagexeRE_&lt;year&gt;_&lt;month&gt;_&lt;date&gt;&lt;letter&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>官方提供了一张<a target="_blank" rel="noopener" href="https://openkore.com/wiki/serverType#Server_Version">枚举表</a>，建议通过 <a target="_blank" rel="noopener" href="https://docs.ragnarok.buzz/01-developer/02-tools/PEViewer.zip">PEViewer</a> 等工具查看 ragnarok.exe 文件头中的编译日期、然后根据日期查表获得对应的的 serverType。</p>
+<p><img src="./13.jpg"></p>
+<p>但是枚举表更新有延迟，通过 <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore/issues/3792">github issue</a> 得知，目前 openkore 支持 kRO 最新的版本是 2021-11-03，对应网络文件是 <code>./openkore/src/Network/Receive/kRO/RagexeRE_2021_11_03.pm</code>、包解码文件是 <code>openkore/tables/kRO/Ragexe_2021_11_03/recvpackets.txt</code>。</p>
+<p>对应 rAthena 的 PACKETVER 也是 20211103:</p>
+<p><img src="././12.jpg"></p>
+<blockquote>
+<p>RO 服务器发送给客户端的网络数据是一个字节流，openkore 必须能够识别字节流中的消息才能对其进行处理。但是每条消息的大小可能因服务器而异，recvpackets.txt 则包含了每条消息的大小信息，以便 openkore 可以正确地将字节流拆分成消息。recvpackets.txt 的生成方式详见官方<a target="_blank" rel="noopener" href="https://openkore.com/wiki/Packet_Length_Extractor">说明</a>。</p>
+</blockquote>
+<p>如果 serverType 配置不当，可能会出现以下异常：</p>
+<ul>
+<li>Packet Tokenizer: Unknown switch: xxxx</li>
+<li>几秒钟后断开连接</li>
+<li>openkore 无法识别 NPC、玩家和怪物（显示为未知）</li>
+</ul>
+<p>此时需要利用 Packet Extractor 或 JCV’s RO Tools 生成对应的 recvpackets 后、再配置其 serverType。</p>
+<blockquote>
+<p>实测 serverType = kRO_RagexeRE_2021_11_03 时，依然能兼容 PACKETVER = 20211117 版本的包解码。</p>
+</blockquote>
+<h4 id="3-1-6-serverEncoding"><a href="#3-1-6-serverEncoding" class="headerlink" title="3.1.6. serverEncoding"></a>3.1.6. serverEncoding</h4><p>服务端使用的编码，编码列表可以在<a target="_blank" rel="noopener" href="https://openkore.com/wiki/encoding">这里</a>选择。如果发现连接后乱码，需要变更编码配置。</p>
+<p>一般中文搭建的 rAthena 服务端都是 GBK 编码。</p>
+<h4 id="3-1-7-charBlockSize"><a href="#3-1-7-charBlockSize" class="headerlink" title="3.1.7. charBlockSize"></a>3.1.7. charBlockSize</h4><p>在角色选择界面上，用于描述每个字符的数据块（received_characters）的长度（以字节为单位）。</p>
+<p>这个值每个版本迭代都可能会变化，因为它的来源就是 rAthena 源码中 mmo_char_tobuf 所生成的结构体的块大小，但是这个大小在不同版本中都是动态不固定的。</p>
+<p>一般的服务器运营者很难获取到这个值，即使是运维人员、甚至是开发人员也不好获取。</p>
+<p>官方有在维护一张各个版本的<a target="_blank" rel="noopener" href="https://openkore.com/wiki/charBlockSize">枚举值表</a>，但是因为有人在<a target="_blank" rel="noopener" href="https://forums.openkore.com/viewtopic.php?t=9806">论坛</a>里面建议 openkore 自动获得这个值，所以目前这个值已经处于半弃用状态了。</p>
+<p>20211117 版本的 rAthena 可以配置为最后一个枚举值 175。</p>
+<h4 id="3-1-8-addTableFolders"><a href="#3-1-8-addTableFolders" class="headerlink" title="3.1.8. addTableFolders"></a>3.1.8. addTableFolders</h4><p>当 openkore 的启动命令行没有声明 <code>--tables</code> 参数时，使用这个选项的值做默认配置。</p>
+<p>对于 rAthena 搭建的服务器，一般配置为 <code>addTableFolders kRO/Ragexe_2021_11_03;iRO</code></p>
+<p>其中 <code>;</code> 是指添加了两个目录，openkore 会按照给出的顺序加载目标文件夹，如果有重复的文件名，只有首先加载的文件生效。</p>
+<p>在这个例子中，<code>kRO/Ragexe_2021_11_03</code> 和 <code>iRO</code> 两个文件夹中都有 <code>recvpackets.txt</code>，那么 openkore 会优先使用 kRO 中的文件。</p>
+<blockquote>
+<p>为了使这些设置生效，这些文件夹必须存在于 openkore 的 <code>tables</code> 目录下。但是由于 docker 没有暴露这些文件夹到主机，所以 volumes 目录下看不到，可以通过 <code>bin/terminal.sh|ps1</code> 进入容器找到这些目录。</p>
+</blockquote>
+<h3 id="3-2-可选选项"><a href="#3-2-可选选项" class="headerlink" title="3.2. 可选选项"></a>3.2. 可选选项</h3><h4 id="3-2-1-sendCryptKeys"><a href="#3-2-1-sendCryptKeys" class="headerlink" title="3.2.1 sendCryptKeys"></a>3.2.1 sendCryptKeys</h4><p>官方没有针对这个配置做说明，是一个隐藏选项。</p>
+<p>当服务端采用<a href="https://exp-blog.com/game/ro/cong-ling-kai-shi-diff-ragnarok-deng-ru-qi-jiao-cheng">封包加密</a>通信时，服务端或者客户端都会依次设置 3 个密钥，例如: <code>0a19cadf</code>, <code>393a136d</code>, <code>270c507c</code>：</p>
+<p><img src="./15.png"></p>
+<p>此时 openkore 需要设置 sendCryptKeys 才能连接到服务端，而<a target="_blank" rel="noopener" href="https://forums.openkore.com/viewtopic.php?t=212793">密钥顺序</a>需要配置为 <code>1, 3, 2</code>，例如这个例子：</p>
+<pre class="line-numbers language-text"><code class="language-text">sendCryptKeys 0a19cadf, 270c507c, 393a136d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-2-2-private"><a href="#3-2-2-private" class="headerlink" title="3.2.2. private"></a>3.2.2. private</h4><p>如果 openkore 连接到地图服务器报错，则可以启用这个选项。</p>
+<p>rAthena 搭建的私服一般设置为 <code>1</code>。</p>
+<h4 id="3-2-3-recvpackets"><a href="#3-2-3-recvpackets" class="headerlink" title="3.2.3. recvpackets"></a>3.2.3. recvpackets</h4><p>指定 recvpackets.txt 的文件名，非必要不修改，使用默认就好。</p>
+<h4 id="3-2-4-chatLangCode"><a href="#3-2-4-chatLangCode" class="headerlink" title="3.2.4. chatLangCode"></a>3.2.4. chatLangCode</h4><p>启用聊天消息中的语言代码支持（一个管道和两个十六进制数字），一般不设置。</p>
+<p>例如有 1 条聊天消息为： <code>Hello, xxx|01</code>， 最后的 <code>|01</code> 就是语言代码。</p>
+<p>但是 openkore 并没有给出语言代码的枚举表，所以实际上这个选项没有意义。</p>
+<h4 id="3-2-5-storageEncryptKey"><a href="#3-2-5-storageEncryptKey" class="headerlink" title="3.2.5. storageEncryptKey"></a>3.2.5. storageEncryptKey</h4><p>指定服务器的存储加密密钥，用于加解密数据包。</p>
+<p>这个值官方没有提及怎么获取，估计是逆向得到的。</p>
+<p>在将来可能会发生变化，但是目前固定值为 <code>0x050B6F79, 0x0202C179, 0x00E20120, 0x04FA43E3, 0x0179B6C8, 0x05973DF2, 0x007D8D6B, 0x08CB9ED9</code>。</p>
+<h4 id="3-2-6-field-lt-location-gt"><a href="#3-2-6-field-lt-location-gt" class="headerlink" title="3.2.6. field_<location>"></a>3.2.6. field_<code>&lt;location&gt;</code></h4><p>这个选项用于设置地图别名，例如： <code>field_morocc morocc-old</code></p>
+<p>如果你的服务器使用过时或修改过的地图数据，它将非常有用。</p>
+<h4 id="3-2-7-clientHash"><a href="#3-2-7-clientHash" class="headerlink" title="3.2.7. clientHash"></a>3.2.7. clientHash</h4><p>在 rAthena 的服务端 login_athena.conf 配置中，可以通过启用 client_hash_check 验证客户端 exe 文件的 MD5 指纹避免恶意玩家篡改登陆器登录：</p>
+<p><img src="./14.png"></p>
+<p>此时 openkore 可以通过设置 clientHash 伪造指纹，绕过这个识别机制。</p>
+<p>但是对于同时使用 rAthena 搭建、又通过 openkore 的做机器人的服主，建议在 rAthena 开启 client_hash_check 的同时，设置 client_hash 的 group_id 策略，如上图例子：</p>
+<ul>
+<li>对于 <code>group_id = 0, 1</code> 的正常玩家做 clientHash 指纹校验</li>
+<li>对于 <code>group_id = 97</code> 的机器人玩家不做校验</li>
+<li>对于 <code>group_id = 98, 99</code> 的 GM 不做校验</li>
+</ul>
+<p>这样 openkore 就不需要设置 clientHash，而且还能区分机器人和正常玩家、进行统一管理。</p>
+<h4 id="3-2-8-captcha"><a href="#3-2-8-captcha" class="headerlink" title="3.2.8. captcha"></a>3.2.8. captcha</h4><p>验证码的应用场景可以参考<a target="_blank" rel="noopener" href="https://openkore.com/wiki/captcha">官方例子</a>。</p>
+<p>当开启这个选项时，挂机过程中一旦 openkore 被反外挂程序识别出来并要求填写验证码时：</p>
+<ul>
+<li>验证码的图片会自动下载到<strong>日志目录</strong> <a href="../../../logs"><code>logs</code></a></li>
+<li>人工查阅验证码图片</li>
+<li>在 openkore 的控制台手动输入验证码</li>
+</ul>
+<h4 id="3-2-9-gameGuard"><a href="#3-2-9-gameGuard" class="headerlink" title="3.2.9. gameGuard"></a>3.2.9. gameGuard</h4><p>服务器是否启用了反外挂。</p>
+<p>此选项在配置 <a target="_blank" rel="noopener" href="https://openkore.com/wiki/Poseidon">Poseidon</a> 代理时才有用，一般情况下，rAthena 搭建的服务器、其客户端在 <a href="https://exp-blog.com/game/ro/cong-ling-kai-shi-diff-ragnarok-deng-ru-qi-jiao-cheng/">DIFF</a> 的时候都会去掉反外挂，因此固定配置 <code>gameGuard 0</code> 即可。</p>
+<h4 id="3-2-10-secureLogin"><a href="#3-2-10-secureLogin" class="headerlink" title="3.2.10. secureLogin"></a>3.2.10. secureLogin</h4><p>关于 <a target="_blank" rel="noopener" href="https://openkore.com/wiki/secureLogin"><code>secureLogin**</code></a> 官方已有<a target="_blank" rel="noopener" href="https://openkore.com/wiki/secureLogin">详细解释</a>，这四个选项一般只有在连接官服的时候才有用，rAthena 搭建的服务器用不到。</p>
+<p>就效果来说，这四个选项是为了让 OpenKore 能够以加密的方式进行保护账户信息的登录过程，这里大概说明一下：</p>
+<ol>
+<li>secureLogin: 这个选项定义了登录时所使用的数据包类型。具体值和对应的数据包包含：<ul>
+<li>0：不使用安全登录模式，登录时使用 <code>0064</code> 标识的 master_login 登录行为</li>
+<li>1：登录时使用 <code>01DD</code> 标识的 master_login 登录行为</li>
+<li>3：登录时使用 <code>01FA</code> 标识的 master_login 登录行为</li>
+</ul>
+</li>
+</ol>
+<p>在 RO 中，每当有一项操作需要在服务器和客户端之间进行交互（如登录游戏，移动角色等），都会有一个特定的数据包被发送，这些标识符决定了数据包的功能和它们的格式结构。因此这里不管是 <code>01DD</code> 还是 <code>01FA</code>，都是 RO 服务端和客户端之间加密通信的标识符，区别只是两者的预设值不同、决定了后续发送数据包的类型和内容也不同。</p>
+<ol start="2">
+<li>secureLogin_type: 当 <code>secureLogin = 1 or 3</code> 时，选择发送数据包的内容：<ul>
+<li>0：不使用标准类型的数据包</li>
+<li>1：标准数据包 <code>04 02 7B 8A A8 90 2F D8 E8 30 F8 A5 25 7A 0D 3B CE 52</code></li>
+<li>2：标准数据包 <code>04 02 27 6A 2C CE AF 88 01 87 CB B1 FC D5 90 C4 ED D2</code></li>
+<li>3：标准数据包 <code>04 02 42 00 B0 CA 10 49 3D 89 49 42 82 57 B1 68 5B 85</code></li>
+<li>4：标准数据包 <code>04 02 22 37 D7 FC 8E 9B 05 79 60 AE 02 33 6D 0D 82 C6</code></li>
+<li>5：标准数据包 <code>04 02 C7 0A 94 C2 7A CC 38 9A 47 F5 54 39 7C A4 D0 39</code></li>
+</ul>
+</li>
+<li>secureLogin_requestCode: 当需要自定义数据包内容时，则令 <code>secureLogin_type = 0</code>，然后在 secureLogin_requestCode 指定任何值即可（必须是以空格分隔的十六进制代码序列）</li>
+<li>secureLogin_account: 当且仅当 <code>secureLogin = 3</code> 时才有用，但是官方没有提有什么用。</li>
+</ol>
+<h4 id="3-2-11-preLoginCode"><a href="#3-2-11-preLoginCode" class="headerlink" title="3.2.11. preLoginCode"></a>3.2.11. preLoginCode</h4><p>如果你的服务在 master_login 登录前发送了一个数据包，此选项应该设置为 <code>1</code>。 但是目前没有任何地方用到这个选项。</p>
+<blockquote>
+<p>master_login 就是指客户端输入帐密登录的那个界面的登录行为</p>
+</blockquote>
+<h4 id="3-2-12-masterLogin-packet"><a href="#3-2-12-masterLogin-packet" class="headerlink" title="3.2.12. masterLogin_packet"></a>3.2.12. masterLogin_packet</h4><p>覆盖 master_login 数据包（但不改变其结构）。</p>
+<p>如果与 <code>0064</code> 标识不同，则需要使用 <a target="_blank" rel="noopener" href="https://openkore.com/wiki/XKore">XKore</a> 模式 2（hook）的部署架构。</p>
+<h4 id="3-2-13-paddedPackets"><a href="#3-2-13-paddedPackets" class="headerlink" title="3.2.13. paddedPackets"></a>3.2.13. paddedPackets</h4><p>官方没有关于 paddedPackets、paddedPackets_attackID 和 paddedPackets_skillUseID 的选项说明。</p>
+<h4 id="3-2-14-OTP-ip-和-OTP-port"><a href="#3-2-14-OTP-ip-和-OTP-port" class="headerlink" title="3.2.14. OTP_ip 和 OTP_port"></a>3.2.14. OTP_ip 和 OTP_port</h4><p>含有一次性登录密码的登录服务 IP 和 端口。</p>
+<h4 id="3-2-15-dead-和-dead-message"><a href="#3-2-15-dead-和-dead-message" class="headerlink" title="3.2.15. dead 和 dead_message"></a>3.2.15. dead 和 dead_message</h4><p>如果 <code>dead = 1</code>，表示该服务器已经停止服务，使用 openkore 连接时不会出现在服务器清单中。</p>
+<p>如果存在 config.txt 引用了这种服务器，则会抛出 <code>dead_message</code> 定义的异常信息。</p>
+<h4 id="3-2-16-title"><a href="#3-2-16-title" class="headerlink" title="3.2.16. title"></a>3.2.16. title</h4><p>单纯改变 <code>[&lt;server name&gt;]</code> 在列表中显示的名称，但是 config.txt 记录的名称依然是 <code>[&lt;server name&gt;]</code> 设定的名称，列表排序还是按照 <code>[&lt;server name&gt;]</code> 的字典序。</p>
+<p>是当想修改服务器名称又不想令已有配置异常时，这个选项很有用。</p>
+<h4 id="3-2-17-pinCode"><a href="#3-2-17-pinCode" class="headerlink" title="3.2.17. pinCode"></a>3.2.17. pinCode</h4><p>当 RO 服务器需要使用 PIN 码登录时，此选项需要设置为 <code>1</code>。</p>
+<h4 id="3-2-18-charDeleteDateType"><a href="#3-2-18-charDeleteDateType" class="headerlink" title="3.2.18. charDeleteDateType"></a>3.2.18. charDeleteDateType</h4><p>当 RO 服务器需要使用当前日期和时间来删除人物角色时，此选项需要设置为 <code>1</code>。</p>
+<h4 id="3-2-19-blockingPlayerCancel"><a href="#3-2-19-blockingPlayerCancel" class="headerlink" title="3.2.19. blockingPlayerCancel"></a>3.2.19. blockingPlayerCancel</h4><p>当 RO 服务器需要客户端发送 blocking_player_cancel （<code>0447</code> 标识的数据包）时，此选项需要设置为 <code>1</code>。</p>
+<blockquote>
+<p>当且仅当 <a target="_blank" rel="noopener" href="https://openkore.com/wiki/XKore">XKore</a> 部署架构为模式 1 时无效</p>
+</blockquote>
+<p><img src="./16.png"></p>
+<h4 id="3-2-20-rankingSystemType"><a href="#3-2-20-rankingSystemType" class="headerlink" title="3.2.20. rankingSystemType"></a>3.2.20. rankingSystemType</h4><p>当 RO 服务器使用 rank_general（通用排名），而非 rank_killer（刺客排名）、rank_taekwon（跆拳道排名）、rank_alchemist（炼金术士排名）、rank_blacksmith（铁匠排名）时，此选项需要设置为 <code>1</code>。</p>
+<h4 id="3-2-21-itemListType"><a href="#3-2-21-itemListType" class="headerlink" title="3.2.21. itemListType"></a>3.2.21. itemListType</h4><p>如果 RO 服务器使用 <code>0B08 ~ 0B0B</code> 的 item_list 数据包、而非使用了常规的 item 数据包，此选项需要设置为 <code>1</code>。</p>
+<p>一个判断方法是，如果使用了非常规的 item 数据包，会报错 <code>Unknown switch: xxxx</code>（<code>xxxx</code> 为 <code>0B08 ~ 0B0B</code> 之间的任何多个值），而且无法使用背包和仓库道具，详见<a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore/issues/2998">这个 issue</a>。</p>
+<h4 id="3-2-22-itemListUseOldType"><a href="#3-2-22-itemListUseOldType" class="headerlink" title="3.2.22. itemListUseOldType"></a>3.2.22. itemListUseOldType</h4><p>在 item_list 中支持历史版本的道具类型，可见相关 <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore/pull/3700">issue</a>。</p>
+<h4 id="3-2-23-ignoreAntiCheatWarning"><a href="#3-2-23-ignoreAntiCheatWarning" class="headerlink" title="3.2.23. ignoreAntiCheatWarning"></a>3.2.23. ignoreAntiCheatWarning</h4><p>如果启用此选项，则禁用所有反作弊警告。</p>
+<p>当前仅适用于 EAC(Easy Anti-Cheat) 反作弊系统。</p>
+</details>
+
+
+<h2 id="4-连接到服务器"><a href="#4-连接到服务器" class="headerlink" title="4. 连接到服务器"></a>4. 连接到服务器</h2><p>在 <code>tables/servers.txt</code> 中配置好目标 RO 服务器的连接信息后，只需要执行 <code>perl /app/openkore/openkore.pl</code> 即可连接到 RO 服务器。</p>
+<p>连接过程中会通过交互的方式填写帐号配置:</p>
+<ul>
+<li>选择上一步中配置好的服务器：</li>
+</ul>
+<p><img src="./03.jpg"></p>
+<ul>
+<li>输入已有的游戏帐号和密码：</li>
+</ul>
+<p><img src="./04.jpg"></p>
+<ul>
+<li>选择区域服务器：</li>
+</ul>
+<p><img src="./05.jpg"></p>
+<ul>
+<li>选择角色：</li>
+</ul>
+<p><img src="./06.jpg"></p>
+<p>交互过程中会不断更新 <code>control/config.txt</code> 这个文件，完成后即成功登录，此时会根据 <code>control/*.txt</code> 预设的行为策略进行挂机。</p>
+<h2 id="5-Bot-行为策略配置（可选）"><a href="#5-Bot-行为策略配置（可选）" class="headerlink" title="5. Bot 行为策略配置（可选）"></a>5. Bot 行为策略配置（可选）</h2><p>在 <a target="_blank" rel="noopener" href="https://github.com/OpenKore/openkore">Openkore</a> 的 <code>control</code> 目录下的配置文件都是在 Bot 挂机时的行为策略控制配置：</p>
+<table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">配置文件</th>
+<th align="center">官方文档</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">核心配置</td>
+<td align="left">config.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/Category:config.txt">wiki</a></td>
+<td align="left">主配置文件，是 Bot 登录 RO 服务器的主配置文件，<br>连接信息主要在第一次登录时通过交互方式配置。</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">sys.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/Category:sys.txt">wiki</a></td>
+<td align="left">系统配置文件，是系统参数的配置文件，<br>例如语言、插件、总线等等的配置。</td>
+</tr>
+<tr>
+<td align="left">一般行为配置</td>
+<td align="left">items_control.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/items_control.txt">wiki</a></td>
+<td align="left">道具使用策略</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">mon_control.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/mon_control.txt">wiki</a></td>
+<td align="left">对抗魔物策略</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">priority.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/priority.txt">wiki</a></td>
+<td align="left">当被复数魔物攻击时、击杀它们的优先级</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">pickupitems.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/pickupitems.txt">wiki</a></td>
+<td align="left">自动拾取策略</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">routeweights.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/routeweights.txt">wiki</a></td>
+<td align="left">自动寻路所经过的地图的权重（倾向走或避开哪些地图）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">timeouts.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/timeouts.txt">wiki</a></td>
+<td align="left">超时配置文件（控制行为间隔，使得 bot 看起来更像真人）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">avoid.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/avoid.txt">wiki</a></td>
+<td align="left">自动避开特定玩家</td>
+</tr>
+<tr>
+<td align="left">特殊行为配置</td>
+<td align="left">arrowcraft.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/arrowcraft.txt">wiki</a></td>
+<td align="left">自动制作箭（仅弓箭手职业有用）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">shop.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/shop.txt">wiki</a></td>
+<td align="left">自动挂店（需要拥有 露天商店 技能）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">buyer_shop.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/buyer_shop.txt">wiki</a></td>
+<td align="left">自动挂店（采购商店，需要消耗<a target="_blank" rel="noopener" href="https://irowiki.org/wiki/Buying_Store">采购商店执照</a>）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">chat_resp.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/chat_resp.txt">wiki</a></td>
+<td align="left">自动聊天（此处可以接入 ChatGPT）</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">overallAuth.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/overallAuth.txt">wiki</a></td>
+<td align="left">授权 bot 是否允许在 openKore 的控制台里面聊天</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">responses.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/responses.txt">wiki</a></td>
+<td align="left">自动对聊天框的命令做出响应（回复消息、使用技能等）</td>
+</tr>
+<tr>
+<td align="left">其他配置</td>
+<td align="left">consolecolors.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/consolecolors.txt">wiki</a></td>
+<td align="left">控制台打印消息的颜色</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">poseidon.txt</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://openkore.com/wiki/Poseidon">wiki</a></td>
+<td align="left">海神服务器（在 RO 服务端和客户端之间搭建的一个<a target="_blank" rel="noopener" href="https://github.com/Casual-Ragnarok/poseidon">代理服务器</a>，用于截获游戏数据）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>这里的配置修改后，需要重新连接服务器才会生效</p>
+</blockquote>
+<h2 id="6-多帐号连接到服务器"><a href="#6-多帐号连接到服务器" class="headerlink" title="6. 多帐号连接到服务器"></a>6. 多帐号连接到服务器</h2><p>默认情况下，执行 <code>perl /app/openkore/openkore.pl</code> 只能使用默认配置连接到 RO 服务器。</p>
+<p>执行 <code>perl /app/openkore/openkore.pl -h</code> 可以查看更多参数指引：</p>
+<pre class="line-numbers language-text"><code class="language-text">Usage: openkore.pl [options...]
+
+General path options:
+--control=PATHS           Specify folders in which to look for control files.
+--tables=PATHS            Specify folders in which to look for table files.
+--plugins=PATH            Specify folders in which to look for plugins.
+For the above options, you can specify multiple paths, delimited by ':'.
+
+--fields=PATH             Specify the folder in which to look for field files.
+--logs=PATH               Save log files in the specified folder.
+
+Control files lookup options:
+--config=FILENAME         Which config.txt to use.
+--mon_control=FILENAME    Which mon_control.txt to use.
+--items_control=FILENAME  Which items_control.txt to use.
+--shop=FILENAME           Which shop.txt to use.
+--chat-log=FILENAME       Which chat log file to use.
+--console-log=FILENAME    Which console log file to use.
+--storage-log=FILENAME    Which storage log file to use.
+--sys=FILENAME            Which sys.txt to use.
+
+Other options:
+--interface=NAME          Which interface to use at startup.
+--lockdown                Disable potentially insecure features.
+--ai                      Starting AI mode (on, manual, off) (default: on)
+--command=COMMAND         Initial command to place on the AI queue
+--help                    Displays this help message.
+--version                 Displays the program version.
+
+Developer options:
+--no-connect              Do not connect to any servers.
+
+Options for the 'profiles' plugin:
+   --profile=PROFILE      profile to use (default: prompt)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>注意到其中两个参数可用于连接更多帐号：</p>
+<ul>
+<li><code>--control=${control 目录位置}</code>: 适用于多帐号使用不同的挂机策略</li>
+<li><code>--config=${config 文件位置}</code>: 适用于多帐号使用相同的挂机策略</li>
+</ul>
+<p>根据需求二选一即可。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/game/openkore/openkore-bi-ji-ru-men-pian/">https://exp-blog.com/game/openkore/openkore-bi-ji-ru-men-pian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Ragnarok/">
+                                    
+                                        <span class="chip bg-color">Ragnarok</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/RO/">
+                                    
+                                        <span class="chip bg-color">RO</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/openkore/">
+                                    
+                                        <span class="chip bg-color">openkore</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/rAthena/">
+                                    
+                                        <span class="chip bg-color">rAthena</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/ai/gym-bi-ji-00-ru-he-jiao-ai-wan-you-xi/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/ai/ai_battle.jpg" class="responsive-img" alt="「Gym 课程笔记 00」如何教 AI 玩游戏 ？（引子）">
+                        
+                        <span class="card-title">「Gym 课程笔记 00」如何教 AI 玩游戏 ？（引子）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            游戏圈早在 ChatGPT、Stable-Diffusion 在去年出圈之前，AI 辅助就已初现苗头；尤其自 OpenAI 面世之后，各类 AI Bot 更是如雨后春笋一般涌现 ...
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OpenAI/">
+                        <span class="chip bg-color">OpenAI</span>
+                    </a>
+                    
+                    <a href="/tags/Gym/">
+                        <span class="chip bg-color">Gym</span>
+                    </a>
+                    
+                    <a href="/tags/RL/">
+                        <span class="chip bg-color">RL</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">强化学习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/insights/wo-ceng-shi-shao-nian/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/insights/02.jpg" class="responsive-img" alt="我曾是少年">
+                        
+                        <span class="card-title">我曾是少年</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            「听他们每个人的故事，都像在看自己，他们的震惊、痛苦、无助，以及反复在希望和绝望中徘徊摇摆的状态，都是我切身经历过以及正在经历的一部分」—— 蔡磊《相信》
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" class="post-category">
+                                    心路历程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">随笔</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/">
+                        <span class="chip bg-color">读后感</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

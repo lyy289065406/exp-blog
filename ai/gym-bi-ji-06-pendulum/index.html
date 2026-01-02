@@ -1,0 +1,2628 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="「Gym 课程笔记 06」经典控制 - Pendulum 摆锤, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>「Gym 课程笔记 06」经典控制 - Pendulum 摆锤 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/ai/pendulum.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">「Gym 课程笔记 06」经典控制 - Pendulum 摆锤</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/OpenAI/">
+                                
+                                    <span class="chip bg-color">OpenAI</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Gym/">
+                                
+                                    <span class="chip bg-color">Gym</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/RL/">
+                                
+                                    <span class="chip bg-color">RL</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                
+                                    <span class="chip bg-color">强化学习</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/TD3/">
+                                
+                                    <span class="chip bg-color">TD3</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-03-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    29 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-问题描述"><a href="#0x00-问题描述" class="headerlink" title="0x00 问题描述"></a>0x00 问题描述</h2><p><a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">Pendulum</a> 是一个倒立摆问题：</p>
+<p>该系统由一个摆锤组成，摆锤的一端连接到固定点，另一端绕着固定点自由摆动。</p>
+<p>摆锤从一个随机位置开始，目标是在自由端施加扭矩，使其摆动到重心位于固定点的正上方的垂直位置（最高点），然后坚持得越久越好。</p>
+<p><img src="./pendulum_ui_epoch_0.gif"></p>
+<h2 id="0x10-问题解读"><a href="#0x10-问题解读" class="headerlink" title="0x10 问题解读"></a>0x10 问题解读</h2><p>从 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">Pendulum</a> 页面的描述中，可以得到以下信息：</p>
+<h3 id="0x11-环境说明"><a href="#0x11-环境说明" class="headerlink" title="0x11 环境说明"></a>0x11 环境说明</h3><p><img src="./04.jpg"></p>
+<p>首先看到这个这个表，它的含义是：</p>
+<ol>
+<li>在 python 通过以下语句可以创建 Pendulum（版本 v0）的预设环境：<ul>
+<li><code>import gymnasium</code></li>
+<li><code>env = gymnasium.make("Pendulum-v1")</code></li>
+</ul>
+</li>
+<li>而在这个预设环境中：<ul>
+<li>执行 <code>env.action_space</code> 可以得到动作空间（Action Space）为 <code>Box(-2.0, 2.0, (1,), float32)</code></li>
+<li>执行 <code>env.observation_space</code> 可以得到观测空间（Observation Space）为 <code>Box([-1. -1. -8.], [1. 1. 8.], (3,), float32)</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="0x12-动作空间"><a href="#0x12-动作空间" class="headerlink" title="0x12 动作空间"></a>0x12 动作空间</h3><p>文档中给出的动作空间为 <code>[-2.0, 2.0]</code> 的连续空间，表示施加在摆锤自由端上的扭矩，正值表示顺时针方向、负值表示逆时针方向。</p>
+<h3 id="0x13-观测空间"><a href="#0x13-观测空间" class="headerlink" title="0x13 观测空间"></a>0x13 观测空间</h3><p>观测空间 <code>observation_space</code> 的 3 个独立的观察值分别代表：</p>
+<ul>
+<li>0: <code>x = cos(theta)</code>： 摆锤自由端的 x 坐标，范围 <code>[-1.0, 1.0]</code></li>
+<li>1: <code>y = sin(theta)</code>： 摆锤自由端的 y 坐标，范围 <code>[-1.0, 1.0]</code></li>
+<li>2: <code>Angular Velocity</code>: 摆锤自由端的角速度，范围 <code>[-8.0, 8.0]</code>，顺时针为负、逆时针为正</li>
+</ul>
+<p><img src="./pendulum.png"></p>
+<p>从官方示意图中不难注意到：</p>
+<ul>
+<li>整个坐标系与数学上的二维坐标系相比，整体向右旋转了 90°，因此 x 轴的正向指向北方、y 轴的正向指向西方</li>
+<li>theta（即 <code>θ</code>） 就是摆锤与 x 轴正向的夹角</li>
+<li>tau（即 <code>τ</code>） 就是智能体每一步对摆锤施加的扭力</li>
+</ul>
+<h3 id="0x14-奖励"><a href="#0x14-奖励" class="headerlink" title="0x14 奖励"></a>0x14 奖励</h3><p><a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">Pendulum</a> 的目标是尽快到达垂直向上的位置、并维持最长的步数。</p>
+<blockquote>
+<p>v0 版本步数的上限值为 200。</p>
+</blockquote>
+<p>默认情况下，摆锤每一步获得的奖励，可以用以下公式计算：</p>
+<p><img src="./05.jpg"></p>
+<p>公式显示：</p>
+<ol>
+<li>只要摆锤未到达垂直向上位置，它的每一步都会受到负值惩罚，最大的惩罚值为垂直向下 -16.2736044</li>
+<li>当且进度摆锤到达垂直向上位置，它才不会受到惩罚，即垂直向上的奖励值为 0</li>
+</ol>
+<h3 id="0x15-初始状态"><a href="#0x15-初始状态" class="headerlink" title="0x15 初始状态"></a>0x15 初始状态</h3><p>初始状态中，摆锤可以出现在随机的任意位置。</p>
+<h3 id="0x16-回合终止"><a href="#0x16-回合终止" class="headerlink" title="0x16 回合终止"></a>0x16 回合终止</h3><p>当且仅当回合步数大于 200 才终止。</p>
+<h2 id="0x20-要点分析"><a href="#0x20-要点分析" class="headerlink" title="0x20 要点分析"></a>0x20 要点分析</h2><p>在这个问题中，目标是让智能体控制摆锤在到达垂直位置后、能维持更长的步数。</p>
+<p>看似描述很简单，但作为经典控制的最后一个大 BOSS，它其实隐含了不少难点：</p>
+<ol>
+<li>操作摆锤所施加的扭矩是连续的</li>
+<li>需要通过来回摆动抵抗重力、并加速至接近垂直向上位置</li>
+<li>接近垂直向上位置时减速</li>
+<li>精准控制摆锤在垂直向上位置（与 x 轴重叠）、并保持 200 步</li>
+</ol>
+<p>这些难点我们在 Gym 经典控制中的前 4 题其实都分别解决过：</p>
+<ol>
+<li><a href="../gym-bi-ji-02-acrobot/">Acrobot</a>： 学会抵抗重力摆动</li>
+<li><a href="../gym-bi-ji-03-cartpole/">Cart Pole</a>： 学会维持状态</li>
+<li><a href="../gym-bi-ji-04-mountaincar/">Mountain Car</a>： 学会借力（为了接近目标，先远离目标）</li>
+<li><a href="../gym-bi-ji-05-mountaincarcontinuous/">Mountain Car Continuous</a>： 学会连续动作空间</li>
+</ol>
+<p>在这基础上，<a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">Pendulum</a> 还新引入了一个难点： 学会精准控制。所以这是一道综合挑战。</p>
+<h2 id="0x30-训练算法"><a href="#0x30-训练算法" class="headerlink" title="0x30 训练算法"></a>0x30 训练算法</h2><p>由于这题是连续动作空间、连续状态空间问题，沿用 <a href="../gym-bi-ji-05-mountaincarcontinuous/">Mountain Car Continuous</a> 的 TD3 算法进行训练即可。</p>
+<h2 id="0x40-奖励分析"><a href="#0x40-奖励分析" class="headerlink" title="0x40 奖励分析"></a>0x40 奖励分析</h2><p>本题环境可以设置重力值，如模拟真实环境可设置 <code>gym.make('Pendulum-v1', g=9.81)</code>（默认情况下 <code>g = 10</code>）。</p>
+<p>因为重力的存在，若不施加任何扭矩，摆锤会自然垂直向下，而通过默认奖励公式可知：</p>
+<p><img src="./05.jpg"></p>
+<p>摆锤只要不是精准处于垂直向上位置，每一步都会得到一个负面奖励。</p>
+<p>分析这个奖励公式，影响每一步的奖励有三个因素：</p>
+<ol>
+<li>角度 theta 的平方</li>
+<li>角速度 theta_dt 的平方</li>
+<li>扭矩 torque 的平方</li>
+</ol>
+<blockquote>
+<p>扭矩就是施加在摆锤中心点的扭力、亦即智能体当前步的的动作，可以想象成摆锤中心是通过一台电机去驱动的</p>
+</blockquote>
+<p>之所以取平方，是为了消除负值：</p>
+<ul>
+<li>角速度 theta_dt（下文亦为 v）： 顺时针为负数、逆时针为正数</li>
+<li>扭矩 torque（亦为 tau）： 顺时针为负数、逆时针为正数</li>
+</ul>
+<p>故而可知：</p>
+<ul>
+<li>角度 theta 越大、奖励越少</li>
+<li>角速度 theta_dt 越大、奖励越少</li>
+<li>扭矩 torque 越大、奖励越少</li>
+</ul>
+<p>而公式中系数的大小说明了三个因素对奖励的影响大小： <code>角度 &gt; 角速度 &gt; 扭矩</code></p>
+<ul>
+<li>当摆锤越往上、角度越少、惩罚越少 —— 鼓励智能体向上摆</li>
+<li>角速度越大、惩罚越少 —— 鼓励智能体快速往上摆</li>
+<li>扭矩越大、惩罚越少 —— 加速智能体往上摆</li>
+</ul>
+<p>但如果摆过头、角度就会快速变大，惩罚就会增加越快。</p>
+<h2 id="0x50-奖励重塑"><a href="#0x50-奖励重塑" class="headerlink" title="0x50 奖励重塑"></a>0x50 奖励重塑</h2><h3 id="0x51-状态维持"><a href="#0x51-状态维持" class="headerlink" title="0x51 状态维持"></a>0x51 状态维持</h3><p>这种奖励模式和 <a href="../gym-bi-ji-02-acrobot/">Acrobot</a> 挑战是一样的，它适用于快速脱离 DEBUFF 的状态达到目标位置（一次性），但并不适合保持状态。</p>
+<p>我最初认为摆锤是可以通过训练自主摆到垂直向上位置的，难点在于维持住该状态。</p>
+<p>于是我参考此前用在 <a href="../gym-bi-ji-03-cartpole/">Cart Pole</a> 的维持做法，在原有奖励机制的基础上追加维持诱导：</p>
+<ol>
+<li>根据原奖励公式，当 <code>reward == 0</code> 时说明摆锤处于垂直向上位置</li>
+<li>此时判断摆锤的角速度是否接近 0，如果时则追加正向奖励</li>
+<li>如果摆锤连续多步都处于这个状态，则奖励持续递增，以激励维持状态</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">adjust</span><span class="token punctuation">(</span>obs<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> continue_cnt<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的 x 坐标</span>
+    y <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的 y 坐标</span>
+    v <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的角速度</span>
+
+    <span class="token comment" spellcheck="true"># 如果这一步的奖励为 0，说明达到垂直状态</span>
+    <span class="token keyword">if</span> reward <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+        continue_cnt <span class="token operator">+=</span> <span class="token number">1</span>   <span class="token comment" spellcheck="true"># 连续维持的步数 +1</span>
+
+        <span class="token comment" spellcheck="true"># 检查当前角速度是否接近 0，若是则说明可以维持在这个状态更久，给予更大奖励</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> <span class="token punctuation">(</span>continue_cnt <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 否则仅仅给予少量奖励，因为极可能无法维持在这个状态</span>
+        <span class="token keyword">else</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> continue_cnt
+
+    <span class="token comment" spellcheck="true"># 不在垂直状态，重置连续维持的步数</span>
+    <span class="token keyword">else</span> <span class="token punctuation">:</span>
+        continue_cnt <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>reward<span class="token punctuation">,</span> continue_cnt<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">is_close_to_zero</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> threshold<span class="token operator">=</span><span class="token number">1e</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> abs<span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token operator">&lt;</span> threshold<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是我草率了，训练下来发现，摆锤从来就没有在垂直向上的位置停留过：</p>
+<p><img src="./pendulum_ui_epoch_4.gif"></p>
+<p>我猜想：除了垂直向上位置之外、每一步都是负面惩罚，导致智能体很难发现哪种行为才会导致正面奖励。尤其是摆锤的运动环境是一个圆，一旦速度刹不住就会过界、往复循环，与垂直向上位置重合的几率几乎为 0，又何谈持续激励智能体保持在这个位置呢？于是智能体只是在疯狂打转、因为它发现怎么做都是错的。</p>
+<h2 id="0x52-梯度逼近"><a href="#0x52-梯度逼近" class="headerlink" title="0x52 梯度逼近"></a>0x52 梯度逼近</h2><p>由此我决定把默认的奖励机制完全推翻，重新设计如下：</p>
+<ul>
+<li>每步先重置奖励为 0，以舍弃默认的奖励机制</li>
+<li>当摆锤进入绿色区域时可获得奖励</li>
+<li>绿色区域内部根据摆锤的 位置和角速度 设定梯度奖励</li>
+<li>梯度范围设计稍微大一些，使得摆锤有更多机会发现奖励、逐步逼近目标</li>
+</ul>
+<p><img src="./01.png"></p>
+<pre class="line-numbers language-python"><code class="language-python">THRESHOLDS <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">0.01</span><span class="token punctuation">,</span> <span class="token number">0.05</span><span class="token punctuation">,</span> <span class="token number">0.1</span> <span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 对于垂直向上位置的接近程度，或角速度与 0 的接近程度</span>
+REWARD_XY <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">10</span> <span class="token punctuation">]</span>         <span class="token comment" spellcheck="true"># 根据位置距离设定梯度奖励</span>
+REWARD_V <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">100</span> <span class="token punctuation">]</span>       <span class="token comment" spellcheck="true"># 角速度越接近 0 的梯度奖励</span>
+
+<span class="token keyword">def</span> <span class="token function">adjust</span><span class="token punctuation">(</span>obs<span class="token punctuation">,</span> reward<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的 x 坐标</span>
+    y <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的 y 坐标</span>
+    v <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 自由端的角速度</span>
+    reward <span class="token operator">=</span> <span class="token number">0</span>      <span class="token comment" spellcheck="true"># 舍弃默认的奖励机制</span>
+
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>THRESHOLDS<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>x <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>y<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> REWARD_XY<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>        <span class="token comment" spellcheck="true"># 根据位置接近程度给予奖励</span>
+            reward <span class="token operator">+=</span> _adjust<span class="token punctuation">(</span>reward<span class="token punctuation">,</span> v<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 只有当位置接近时、追加角速度接近 0 的奖励（速度越小越容易维持在这个状态）</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">return</span> reward
+
+<span class="token keyword">def</span> <span class="token function">_adjust</span><span class="token punctuation">(</span>reward<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>THRESHOLDS<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> REWARD_V<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">return</span> reward<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是我又失策了，训练下来成功率仅有 40% ，和我心里预期相差太远：</p>
+<p><img src="./06.jpg"></p>
+<p>主要应该是因为忽略了重力在环境中的影响，摆锤更倾向在底部晃悠：</p>
+<p><img src="./pendulum_ui_epoch_6.gif"></p>
+<h3 id="0x53-滞留惩罚"><a href="#0x53-滞留惩罚" class="headerlink" title="0x53 滞留惩罚"></a>0x53 滞留惩罚</h3><p>为此我进一步添加了摆锤在三四象限的滞留惩罚，而且随着步数增长，惩罚越来越大，促使摆锤可以尽快进入一二象限获取奖励：</p>
+<pre class="line-numbers language-python"><code class="language-python">    <span class="token comment" spellcheck="true"># x 小于 0 说明摆锤在下方的三四象限</span>
+    <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+        reward <span class="token operator">-=</span> <span class="token punctuation">(</span>step <span class="token operator">*</span> <span class="token number">0.1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>即黄色区域是惩罚区，白色部分不惩罚，绿色部分是奖励区：</p>
+<p><img src="./02.png"></p>
+<p>但是因为我在绿色区域设计的奖励较高、而黄色区域设计的滞留惩罚较低，智能体为了抵消滞留惩罚，反而学会了无限转圈：</p>
+<p><img src="./pendulum_ui_epoch_1.gif"></p>
+<h3 id="0x54-速度惩罚"><a href="#0x54-速度惩罚" class="headerlink" title="0x54 速度惩罚"></a>0x54 速度惩罚</h3><p>虽然智能体意识到要脱离惩罚区域，但是和我预期的行为存在出入：光学会了转圈、没学会停留在奖励区域。</p>
+<p>除了平衡奖惩数值之外，我还想到了一个原因：会不会是因为摆锤的角速度太大了、导致智能体刹不住车呢？有没有一个中间速度，既让摆锤能够离开三四象限范围、又无法转圈呢？</p>
+<p>我捡起我粗糙的物理学大概算了一下：</p>
+<p>已知环境最大的角速度为 <code>[-8, 8]</code>，扭矩为 <code>[-2, 2]</code>，要计算满足脱离三四象限的最大速度，就需要计算摆锤从最低点摆动到水平位置、至少需要多大的速度。</p>
+<p>根据动能和势能公式：</p>
+<ul>
+<li>动能： <code>Ek = 1/2 * mv^2</code></li>
+<li>势能： <code>Ep = mgh</code></li>
+</ul>
+<p>摆锤从最低点开始出发、消耗动能 Ek 摆动到水平位置获得势能 Ep，假设摆锤的运动忽略空气阻力和摩擦力，使得动能 Ek 和势能 Ep 相互转化没有消耗，则可以得到 <code>Ek = Ep</code>， 即 <code>1/2 * mv^2 = mgh</code>，亦即 <code>v = √(2gh)</code>。</p>
+<p>本题环境中重力 <code>g = 9.81</code>、摆锤长度为 <code>L = 1</code>，即最低点到水平位置的高度 <code>h = L = 1</code>，</p>
+<p>代入公式算得 <code>v = 4.43</code>，换言之，摆锤从最低点摆动到水平位置（刚刚够脱离三四象限）、角速度至少需要 4.43 就可以了</p>
+<p>于是我想法是，在角速度大于 5 的时候，引入梯度速度惩罚，避免智能体放飞自我地去转圈圈：</p>
+<pre class="line-numbers language-python"><code class="language-python">THRESHOLD_V <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">10</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+REWARD_V <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token operator">-</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> THRESHOLD_V <span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>THRESHOLD_V<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        reward <span class="token operator">+=</span> REWARD_V<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+        <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这次成功率提升到 64% ，但还是和我心理预期存在差距：</p>
+<p><img src="./09.jpg"></p>
+<p>我验证模型时发现，在引入速度限制后，智能体害怕速度过高带来的额外惩罚。</p>
+<p>既然都要被处罚，智能体干脆就“咸鱼”不干了，还是趋向重新滞留在三四象限：</p>
+<p><img src="./pendulum_ui_epoch_2.gif"></p>
+<h3 id="0x55-死局"><a href="#0x55-死局" class="headerlink" title="0x55 死局"></a>0x55 死局</h3><p>智能体的行为让我陷入了进退两难的地步： </p>
+<ul>
+<li>如果引导它走出三四象限，必须给予它速度，但一旦控制不住就会转圈</li>
+<li>如果限制它速度，它又会滞留在三四象限</li>
+</ul>
+<p>难道真的是个死局？</p>
+<p>死局 … 死局 … 我好像抓住了什么 …</p>
+<p>是不是发现智能体行为不对时，我可以马上给一个 terminate 的状态让它马上失败呢？</p>
+<p>那什么情况下的行为明显不对呢：</p>
+<ul>
+<li>长时间滞留三四象限</li>
+<li>一直转圈</li>
+</ul>
+<p>滞留三四象限很好判断，至于要计算摆锤自由端 <code>x &lt; 0</code> 的步数即可。</p>
+<p>但是转圈不好判断，无法通过摆锤当前所在的象限或方向准确判断，因为摆锤来回借力时也会经过所有象限、运动过程中智能体也会时不时调整力矩方向，毫无规律。</p>
+<p>但是我观察到，摆锤一旦发生转圈行为，速度都是比较大的。</p>
+<p>根据动能和势能的计算公式，摆锤转圈需要最小的速度为 6.26，因此我可以间接判断： 当角速度 <code>&gt; 6</code> 超过一定步数时，马上失败。</p>
+<p>相关代码如下：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">adjust</span><span class="token punctuation">(</span>obs<span class="token punctuation">,</span> action<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> td<span class="token punctuation">:</span> TerminateDetector<span class="token punctuation">,</span> step<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    terminated <span class="token operator">=</span> <span class="token boolean">False</span>
+    x <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的 x 坐标</span>
+    y <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的 y 坐标</span>
+    v <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的角速度，顺时针为- 逆时针为+ </span>
+    a <span class="token operator">=</span> action<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 对自由端施加的扭矩，顺时针为- 逆时针为+ </span>
+
+    <span class="token comment" spellcheck="true"># 判断是否触发终止条件</span>
+    td<span class="token punctuation">.</span>update<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> v<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> td<span class="token punctuation">.</span>is_terminate<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        reward <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1000</span>
+        terminated <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>reward<span class="token punctuation">,</span> terminated<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># ... ... 之前的奖励逻辑</span>
+
+
+<span class="token comment" spellcheck="true"># 判断摆锤是否触发终止状态</span>
+<span class="token keyword">class</span> <span class="token class-name">TerminateDetector</span> <span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 若浪费步数在 三四 象限徘徊，明显不是最优解</span>
+    MAX_WANDER <span class="token operator">=</span> MAX_STEP <span class="token operator">/</span> <span class="token number">4</span>
+
+    <span class="token comment" spellcheck="true"># 限制最大角速度</span>
+    MAX_V <span class="token operator">=</span> <span class="token number">6</span>
+
+    <span class="token comment" spellcheck="true"># 若超过一定步数都是最大速度，说明摆锤在转圈</span>
+    MAX_SPEED <span class="token operator">=</span> MAX_STEP <span class="token operator">/</span> <span class="token number">4</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>quadrants <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">False</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">4</span>    <span class="token comment" spellcheck="true"># 摆锤经过的象限</span>
+        self<span class="token punctuation">.</span>cnt34 <span class="token operator">=</span> <span class="token number">0</span>                  <span class="token comment" spellcheck="true"># 三四象限徘徊计数</span>
+        self<span class="token punctuation">.</span>cnt_maxv <span class="token operator">=</span> <span class="token number">0</span>               <span class="token comment" spellcheck="true"># 最大角速度计数</span>
+
+
+    <span class="token comment" spellcheck="true"># 更新摆锤状态</span>
+    <span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> v<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>cnt34 <span class="token operator">+=</span> <span class="token number">1</span>
+
+        <span class="token keyword">if</span> abs<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token operator">>=</span> self<span class="token punctuation">.</span>MAX_V <span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>cnt_maxv <span class="token operator">+=</span> <span class="token number">1</span>
+
+
+    <span class="token keyword">def</span> <span class="token function">is_wander</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>cnt34 <span class="token operator">></span> self<span class="token punctuation">.</span>MAX_WANDER
+
+
+    <span class="token keyword">def</span> <span class="token function">is_overspeed</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>cnt_maxv <span class="token operator">></span> self<span class="token punctuation">.</span>MAX_SPEED
+
+
+    <span class="token keyword">def</span> <span class="token function">is_terminate</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>is_wander<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">or</span> self<span class="token punctuation">.</span>is_overspeed<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但重新训练 10000 次，成功率也只是提升到 70%。</p>
+<p><img src="./08.png"></p>
+<p>而且所谓的“成功”也仅仅是总奖励不为负，摆锤并没有和 x 轴完全重合：</p>
+<p><img src="./pendulum_ui_epoch_3.gif"></p>
+<p>而剩下的 30% 是由于智能体害怕失败而过早刹车减速，导致在 200 步内还没进入奖励区域：</p>
+<p><img src="./pendulum_ui_epoch_7.gif"></p>
+<h3 id="0x56-精度控制"><a href="#0x56-精度控制" class="headerlink" title="0x56 精度控制"></a>0x56 精度控制</h3><p>先解决 x 轴没有完全重合问题。</p>
+<p>这个问题的原因其实不难猜到，是因为我前面设计的精度阈值 <code>THRESHOLDS = [ 0.01, 0.05, 0.1 ]</code> 只有百分之一，确实太低了。</p>
+<p>我重新调整阈值，在绿色区域中：</p>
+<ol>
+<li>修改垂直向上位置附近的奖励梯度为千分之一，使摆锤在目标位置的重合度更高</li>
+<li>同时在该位置追加角速度接近 0 的梯度奖励，同样也是千分之一精度，使摆锤在目标位置的不容易离开</li>
+</ol>
+<p><img src="./02.png"></p>
+<p>对应的精度设置代码为：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 在垂直向上附近 0 - 0.009 范围内微调，越接近 0 奖励越大</span>
+TTOP_XY <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">1000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>      <span class="token comment" spellcheck="true"># 距离递增</span>
+RTOP_XY <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">100</span> <span class="token operator">-</span> i <span class="token operator">*</span> <span class="token number">10000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> TTOP_XY <span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 奖励递减</span>
+
+<span class="token comment" spellcheck="true"># 在垂直向上附近 0 - 0.009 范围内微调，越接近 0 奖励越大</span>
+TTOP_V <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">1000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>       <span class="token comment" spellcheck="true"># 速度递增</span>
+RTOP_V <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">100</span> <span class="token operator">-</span> i <span class="token operator">*</span> <span class="token number">10000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> TTOP_V <span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 奖励递减</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>引入精度控制后，摆锤通过训练已经能完美重合 x 轴：</p>
+<p><img src="./pendulum_ui_epoch_5.gif"></p>
+<h3 id="0x57-范围与方向"><a href="#0x57-范围与方向" class="headerlink" title="0x57 范围与方向"></a>0x57 范围与方向</h3><p>但是即使可以控制精度，现在的成功率也只有 70%，过早刹车的问题还未解决。</p>
+<p>我判断是因为没有足够的激励让智能体攀升至最高点，首先想到的是把距离梯度的范围扩大到所有象限：</p>
+<ol>
+<li>添加蓝色区域：把奖励梯度延伸到整个一二象限范围（低精度）</li>
+<li>修改黄色区域：三四象限也设置对应的惩罚梯度（低精度）</li>
+</ol>
+<p><img src="./03.png"></p>
+<p>但是这个做法我隐隐觉得效果不大，因为默认的奖励机制也是全象限的。</p>
+<p>福灵心至地，我想到了“趋势” 。</p>
+<p>我一直的想法都是只考虑当前的状态处于哪个象限、一二则奖，三四则罚。</p>
+<p>但是却忽略了一个因素： 智能体是否在向着目标努力 ？</p>
+<ul>
+<li>如果智能体处于三四象限，但是它的方向是向着最高点的，为什么要罚？</li>
+<li>如果智能体处于一二象限，但是它的方向是向着最低点的，为什么要奖？</li>
+</ul>
+<p>为了引入“趋势”，我观测了不少训练数据，终于发现：</p>
+<ul>
+<li>当智能体在左半侧向上运动时，即顺时针摆动，此时角速度 v 为负数、y 轴坐标为正数，故 <code>y * v &lt; 0</code> </li>
+<li>当智能体在右半侧向上运动时，即逆时针摆动，此时角速度 v 为正数、y 轴坐标为负数，故 <code>y * v &lt; 0</code> </li>
+</ul>
+<p>因此摆锤向着垂直向上的方向运动时，<code>y * v</code> 必定 <code>&lt; 0</code>。 </p>
+<p>用摆锤的“方向”，就能反映出它下一步行为的“趋势”！</p>
+<p>于是我在奖励函数由追加了一条： 只要智能体运动方向是往最高点去的，不管在哪个象限都取消处罚。</p>
+<p>最终的奖励代码如下：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#============================</span>
+<span class="token comment" spellcheck="true"># 1. 全局奖惩（目标方向控制）</span>
+<span class="token comment" spellcheck="true">#============================</span>
+<span class="token comment" spellcheck="true"># 1.1. 三四象限的坐标阶段阈值和奖励（越接近垂直向下，惩罚越重）</span>
+T34_XY <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">100</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+R34_XY <span class="token operator">=</span> <span class="token punctuation">[</span> i <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">-</span> <span class="token number">30</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> T34_XY <span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 1.2. 一二象限的坐标阶段阈值和奖励（越接近垂直向上，奖励越大）</span>
+T12_XY <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">100</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+R12_XY <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">20</span> <span class="token operator">-</span> i <span class="token operator">*</span> <span class="token number">10</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> T12_XY <span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 1.3. 角速度绝对值，避免速度过快刹不住。 小于 5 不奖不罚， 大于 5 惩罚</span>
+<span class="token comment" spellcheck="true">#      速度计算依据：摆锤从最低点摆动至脱离三四象限，至少需要 4.43 的角速度，所以更大的角速度是没必要的，可以避免摆锤刹不住而转圈</span>
+T1234_V <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">10</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">81</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+R1234_V <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token operator">-</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> T1234_V <span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true">#============================</span>
+<span class="token comment" spellcheck="true"># 2. 局部极致奖惩（精准控制）</span>
+<span class="token comment" spellcheck="true">#============================</span>
+<span class="token comment" spellcheck="true"># 2.1. 在垂直向上附近 0 - 0.009 范围内微调，越接近 0 奖励越大</span>
+TTOP_XY <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">1000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+RTOP_XY <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">100</span> <span class="token operator">-</span> i <span class="token operator">*</span> <span class="token number">10000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> TTOP_XY <span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 2.2. 在垂直向上附近 0 - 0.009 范围内微调，越接近 0 奖励越大</span>
+TTOP_V <span class="token operator">=</span> <span class="token punctuation">[</span> i<span class="token operator">/</span><span class="token number">1000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+RTOP_V <span class="token operator">=</span> <span class="token punctuation">[</span> <span class="token number">100</span> <span class="token operator">-</span> i <span class="token operator">*</span> <span class="token number">10000</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> TTOP_V <span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">adjust</span><span class="token punctuation">(</span>obs<span class="token punctuation">,</span> action<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> td<span class="token punctuation">:</span> TerminateDetector<span class="token punctuation">,</span> step<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    奖励重塑。
+    :params: obs 当前智能体处于的状态
+    :params: action 当前智能体准备执行的动作
+    :params: reward 执行当前 action 后、智能体当前步获得的奖励
+    :params: td 终止计算器
+    :params: step 当前步数
+    :return: 重塑后的 (reward, min_x, max_x)
+    '''</span>
+    terminated <span class="token operator">=</span> <span class="token boolean">False</span>
+    x <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的 x 坐标</span>
+    y <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的 y 坐标</span>
+    v <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 自由端的角速度，顺时针为- 逆时针为+ </span>
+    a <span class="token operator">=</span> action<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>           <span class="token comment" spellcheck="true"># 对自由端施加的扭矩，顺时针为- 逆时针为+ </span>
+    _y <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> y <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span>
+    _v <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> v <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span>
+    direction <span class="token operator">=</span> _y <span class="token operator">*</span> _v     <span class="token comment" spellcheck="true"># &lt; 0 向着垂直向上的方向， > 0 向着垂直向下的方向</span>
+
+    <span class="token comment" spellcheck="true"># 判断是否触发终止条件</span>
+    td<span class="token punctuation">.</span>update<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> v<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> td<span class="token punctuation">.</span>is_terminate<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        reward <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1000</span>
+        terminated <span class="token operator">=</span> <span class="token boolean">True</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>reward<span class="token punctuation">,</span> terminated<span class="token punctuation">)</span>
+
+    reward <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token comment" spellcheck="true"># 速度梯度惩罚</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>T1234_V<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> R1234_V<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+            <span class="token keyword">break</span>
+
+    <span class="token comment" spellcheck="true"># 三四象限</span>
+    <span class="token keyword">if</span> x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+
+        <span class="token comment" spellcheck="true"># 距离梯度惩罚</span>
+        <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>T34_XY<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> x<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>y<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                <span class="token keyword">if</span> direction <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>           <span class="token comment" spellcheck="true"># 如果方向接近目标，不处罚，奖励归 0</span>
+                    reward <span class="token operator">=</span> <span class="token number">0</span>               <span class="token comment" spellcheck="true">#（因为在三四象限需要加速，v 可能需要加速到比较大，故连带取消速度处罚）</span>
+                <span class="token keyword">else</span> <span class="token punctuation">:</span>
+                    reward <span class="token operator">+=</span> R34_XY<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>    <span class="token comment" spellcheck="true"># 如果方向远离目标，处罚</span>
+                <span class="token keyword">break</span>
+
+    <span class="token comment" spellcheck="true"># 一二象限</span>
+    <span class="token keyword">else</span> <span class="token punctuation">:</span>
+
+        <span class="token comment" spellcheck="true"># 距离梯度奖励（粗粒度距离奖励）</span>
+        <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>T12_XY<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> x<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>y<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                <span class="token keyword">if</span> direction <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+                    reward <span class="token operator">+=</span> R12_XY<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>   <span class="token comment" spellcheck="true"># 如果方向接近目标，奖励</span>
+                <span class="token keyword">else</span> <span class="token punctuation">:</span>
+                    <span class="token keyword">pass</span>                    <span class="token comment" spellcheck="true"># 如果方向远离目标，不奖</span>
+                <span class="token keyword">break</span>
+
+        <span class="token comment" spellcheck="true"># 距离梯度奖励（细粒度距离奖励，精细控制可以获得更大的追加奖励）</span>
+        <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>TTOP_XY<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> x<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>y<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                <span class="token keyword">if</span> direction <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+                    reward <span class="token operator">+=</span> RTOP_XY<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>          <span class="token comment" spellcheck="true"># 如果方向精确接近目标，追加奖励</span>
+                    reward <span class="token operator">+=</span> _adjust_v<span class="token punctuation">(</span>reward<span class="token punctuation">,</span> v<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 如果此时角速度很小，追加奖励</span>
+                <span class="token keyword">break</span>
+
+        <span class="token comment" spellcheck="true"># 完全在垂直正中且速度为 0，给予最大奖励</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token operator">and</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> <span class="token number">1000</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>reward<span class="token punctuation">,</span> terminated<span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 根据摆锤在接近垂直位置距离的同时、检查角速度</span>
+<span class="token comment" spellcheck="true"># 角速度越接近 0，等价于不易离开垂直位置，给予更高的追加奖励</span>
+<span class="token keyword">def</span> <span class="token function">_adjust_v</span><span class="token punctuation">(</span>reward<span class="token punctuation">,</span> v<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> threshold <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>TTOP_V<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_close_to_zero<span class="token punctuation">(</span>v<span class="token punctuation">,</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            reward <span class="token operator">+=</span> RTOP_V<span class="token punctuation">[</span>idx<span class="token punctuation">]</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">return</span> reward<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新训练后，成功率提升到 93% ： </p>
+<p><img src="./12.jpg"></p>
+<h3 id="0x58-迷惑"><a href="#0x58-迷惑" class="headerlink" title="0x58 迷惑"></a>0x58 迷惑</h3><p>在这一刻我真的迷惑了，还有 7% 究竟是何缘由？莫非“方向”还不是真正的决定性因素？</p>
+<p>虽然对深度学习而言，93% 的成功率已经挺高了，不过我不甘心、我隐隐觉得它是能够达到 100% 的。</p>
+<p>但凡是能够从环境参数中获取到的变量，我都放到奖励函数中了，究竟还遗漏了什么因素没有考虑进去？</p>
+<p>等等，“环境中” … 是不是还有 “环境外” ？</p>
+<p>我像是抓住了什么，但却没抓住。</p>
+<h2 id="0x60-返璞归真：跳出思维定势"><a href="#0x60-返璞归真：跳出思维定势" class="headerlink" title="0x60 返璞归真：跳出思维定势"></a>0x60 返璞归真：跳出思维定势</h2><p>我卡在这个问题近两周时间，一度怀疑是不是我的奖励函数写得不对。</p>
+<p>于是我尝试地寻找一些被前人总结出来的奖励函数原型，看看哪一种会更适配这个问题：</p>
+<table>
+<thead>
+<tr>
+<th align="center">奖励函数</th>
+<th align="left">说明</th>
+<th align="left">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">稀疏奖励</td>
+<td align="left">在大多数时间步骤中，智能体不会收到任何奖励信号，只有在达成某些重要的、往往难以达成的目标时才会获得奖励</td>
+<td align="left">如对弈时只有获胜得分、过程不得分就属于这类</td>
+</tr>
+<tr>
+<td align="center">形式化奖励</td>
+<td align="left">基于任务的具体要求和目标进行量化，并通过明确的数学或逻辑表达式定义</td>
+<td align="left">本题的默认奖励公式就属于这类</td>
+</tr>
+<tr>
+<td align="center">分布奖励</td>
+<td align="left">奖励分布在整个任务过程中，以鼓励代理朝着目标稳步前进</td>
+<td align="left">本题我所修改的梯度奖励就属于这类</td>
+</tr>
+<tr>
+<td align="center">奖励系数变化奖励</td>
+<td align="left">在学习过程中调整奖励系数或比例，以更好地指导学习过程</td>
+<td align="left">我在 <a href="../gym-bi-ji-03-cartpole/">Cart Pole</a> 中利用步长设计递减因子就属于这类</td>
+</tr>
+<tr>
+<td align="center">中间难度起点奖励</td>
+<td align="left">用于在任务的难度进程中设置起点，不从最简单或最困难开始，而是选择一个中等难度的起点。这有助于避免过早地智能体于极端条件，同时允许它通过探索和适应中等难度的任务来发展其策略</td>
+<td align="left">本系列的引子中，有一个《<a target="_blank" rel="noopener" href="https://www.youtube.com/embed/gN2lndQgzZ4">训练 AI 玩 Pokemon</a>》的案例，作者就是跳过了前期大木博士任务后开始训练的，因为他认为早期的 AI 要学会做 NPC 任务真的太难了</td>
+</tr>
+</tbody></table>
+<p>很明显，我上面进行的奖励重塑，大部分都是基于 “分布奖励” 的，经过我不断的训练实践、它在这题的极限就是 93%。</p>
+<p>而当我看到<strong>中间难度起点奖励</strong>时，一个可以达成 100% 的解决方案就在我脑海中成型了。</p>
+<h2 id="0x70-SoID-中间难度起点奖励"><a href="#0x70-SoID-中间难度起点奖励" class="headerlink" title="0x70 SoID - 中间难度起点奖励"></a>0x70 SoID - 中间难度起点奖励</h2><p>据我长时间观察训练的经验，智能体在前期训练时，一旦初始化落在三四象限，就会有更大几率出现滞留在下方，触发提前终止判定而被结束挑战：</p>
+<p><img src="./11.jpg"></p>
+<p>据我分析原因有二：</p>
+<ul>
+<li>在三四象限初始化时，动力不够，需要先来回摆动借力抵抗重力影响、累积速度冲刺</li>
+<li>三四象限全是负向激励，智能体探索到一二象限的正向激励比较困难，学习起来很慢</li>
+</ul>
+<p>换言之，在前期智能体还未建立起有效的行动策略的情况下，在三四象限初始化简直就是地狱开局，它需要尝试很久才能累积出经验。</p>
+<p>那是不是可以控制智能体在前期初始化时落在一二象限呢？毕竟一二象限初始化有以下优势：</p>
+<ul>
+<li>如果速度方向和目标位置相悖，通过重力的牵引加速，很容易就把重力势能转化为速度，重新回到最高点</li>
+<li>如果速度方向和目标位置一致，就会因为靠近目标位置，很容易探索到奖励梯度</li>
+</ul>
+<p>于是我设计了一个分阶段调整摆锤初始化分布的策略：</p>
+<ol>
+<li>在 0% - 20% 的训练回合，控制 80% 的初始状态：摆锤位于一二象限、速度向上</li>
+<li>在 20% - 40% 的训练回合，控制 60% 的初始状态：摆锤位于一二象限、速度向上</li>
+<li>在 40% - 60% 的训练回合，控制 40% 的初始状态：摆锤位于一二象限、速度向上</li>
+<li>在 60% - 80% 的训练回合，控制 20% 的初始状态：摆锤位于一二象限、速度向上</li>
+<li>在 80% - 100% 的训练回合，初始状态完全随机</li>
+</ol>
+<p>这样就能使得智能体在前期以相对简单的条件下学习如何达到和保持目标状态，初步建立起有效的策略框架。</p>
+<p>随着时间的推移，逐渐增加从三四象限开始的场景比例，使得智能体可以学习如何从更困难的初始条件恢复到目标状态。</p>
+<p>最后阶段通过完全随机的初始状态来训练，强化智能体的泛化能力，确保无论摆锤初始在何处，智能体都能尽可能地找到有效的策略来达到目标状态。</p>
+<p>简而言之，这个方案就是为智能体的学习任务提供了一条平滑的学习曲线，帮助它更好地学习在各种不同的初始条件下如何有效地达到目标状态，同时避免了一开始就面对过于困难的任务可能导致的学习困难或学习缓慢问题。</p>
+<p>相关实现代码如下：</p>
+<pre class="line-numbers language-python"><code class="language-python">cie <span class="token operator">=</span> CtrlInitEnv<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>env<span class="token punctuation">,</span> targs<span class="token punctuation">.</span>epoches<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 通过不断重试，获得各个阶段理想的初始状态，</span>
+init_obs <span class="token operator">=</span> cie<span class="token punctuation">.</span>reset<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span>                 <span class="token comment" spellcheck="true"># 以使用 “中间难度起点奖励(SoID)” 策略帮智能体建立行动策略框架</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">CtrlInitEnv</span> <span class="token punctuation">:</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> env<span class="token punctuation">,</span> max_epoches<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>env <span class="token operator">=</span> env
+        self<span class="token punctuation">.</span>max_epoches <span class="token operator">=</span> max_epoches
+        self<span class="token punctuation">.</span>stage_20 <span class="token operator">=</span> int<span class="token punctuation">(</span>max_epoches <span class="token operator">*</span> <span class="token number">0.2</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>stage_40 <span class="token operator">=</span> int<span class="token punctuation">(</span>max_epoches <span class="token operator">*</span> <span class="token number">0.4</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>stage_60 <span class="token operator">=</span> int<span class="token punctuation">(</span>max_epoches <span class="token operator">*</span> <span class="token number">0.6</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>stage_80 <span class="token operator">=</span> int<span class="token punctuation">(</span>max_epoches <span class="token operator">*</span> <span class="token number">0.8</span><span class="token punctuation">)</span>
+
+
+    <span class="token comment" spellcheck="true"># 因为摆锤受重力影响，总是趋向徘徊在三四象限，脱离三四象限的几率较低</span>
+    <span class="token comment" spellcheck="true"># 因此控制初始状态：</span>
+    <span class="token comment" spellcheck="true">#   前期尽量从一二象限开始，先建立智能体的行动策略框架</span>
+    <span class="token comment" spellcheck="true">#   中后期逐步引入三四象限的初始状态，使得智能体可以更好地挑战更高难度</span>
+    <span class="token keyword">def</span> <span class="token function">reset</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        obs <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> self<span class="token punctuation">.</span>_reinit<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">return</span> obs
+
+        <span class="token comment" spellcheck="true"># --------------------------</span>
+        <span class="token comment" spellcheck="true"># 通过循环控制获取期望的初始状态</span>
+        <span class="token comment" spellcheck="true"># --------------------------</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span> <span class="token punctuation">:</span>
+            x <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+            y <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+            v <span class="token operator">=</span> obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+            y <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> y <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span>
+            v <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> v <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">else</span> <span class="token operator">-</span><span class="token number">1</span>
+
+            <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">and</span> y <span class="token operator">*</span> v <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token punctuation">:</span>
+                <span class="token keyword">break</span>
+
+            <span class="token comment" spellcheck="true"># 重新生成初始状态</span>
+            obs <span class="token operator">=</span> self<span class="token punctuation">.</span>env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> obs
+
+
+    <span class="token keyword">def</span> <span class="token function">_reinit</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        reinit <span class="token operator">=</span> <span class="token boolean">False</span>
+
+        <span class="token comment" spellcheck="true"># 在前 20% 的训练回合，控制 80% 的初始状态都是一二象限、速度向上</span>
+        <span class="token keyword">if</span> epoch <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>stage_20 <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>p80<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                reinit <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment" spellcheck="true"># 在前 40% 的训练回合，控制 60% 的初始状态都是一二象限、速度向上</span>
+        <span class="token keyword">elif</span> epoch <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>stage_40 <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>p60<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                reinit <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment" spellcheck="true"># 在前 60% 的训练回合，控制 40% 的初始状态都是一二象限、速度向上</span>
+        <span class="token keyword">elif</span> epoch <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>stage_60 <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>p40<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                reinit <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment" spellcheck="true"># 在前 80% 的训练回合，控制 20% 的初始状态都是一二象限、速度向上</span>
+        <span class="token keyword">elif</span> epoch <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>stage_80 <span class="token punctuation">:</span>
+            <span class="token keyword">if</span> self<span class="token punctuation">.</span>p20<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+                reinit <span class="token operator">=</span> <span class="token boolean">True</span>
+
+        <span class="token comment" spellcheck="true"># 最后 20% 的训练回合，完全随机</span>
+        <span class="token keyword">else</span> <span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+
+        <span class="token keyword">return</span> reinit
+
+
+    <span class="token keyword">def</span> <span class="token function">p80</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>percentage<span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">p60</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>percentage<span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">p40</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>percentage<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">p20</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>percentage<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">percentage</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ratio<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> ratio<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于 gym 的 env 无法通过指定参数设置初始化的值，因此我这里通过 CtrlInitEnv 不断重试初始化，直到得到我期望的状态才开始这一回合的训练。</p>
+<p>训练 10000 回合后，终于在 9400 次训练中达到 100%:</p>
+<p><img src="./10.jpg"></p>
+<p>从上图可以注意到，这次训练在 400 和 9400 回合都达到了 100%，但是：</p>
+<ul>
+<li>400 回合的训练模型时不充分的，因为它还未处理过三四象限开局的场景，所以我没有用这个模型</li>
+<li>而 9400 回合的时候，开局已经完全初始化了，这个模型有能力应对任意开局的情况</li>
+</ul>
+<p><img src="./pendulum_ui_epoch_9.gif" alt="三四象限开局"></p>
+<p><img src="./pendulum_ui_epoch_8.gif" alt="一二象限 - 逆时针开局"></p>
+<p><img src="./pendulum_ui_epoch_10.gif" alt="一二象限 - 顺时针开局"></p>
+<h2 id="0x80-总结"><a href="#0x80-总结" class="headerlink" title="0x80 总结"></a>0x80 总结</h2><p><a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/pendulum/">Pendulum</a> 作为经典控制的最后一题，真的使我收益良多，它打开我训练的思路和视角。</p>
+<p>在寻找有效奖励函数的时候，我看到了《<a target="_blank" rel="noopener" href="https://cdn.aaai.org/ocs/7704/7704-34364-1-PB.pdf">Reinforcement Learning and the Reward Engineering Principle</a>》这篇文章，作者在里面提到一个<strong>奖励工程原则</strong>：</p>
+<pre class="line-numbers language-text"><code class="language-text">The Reward Engineering Principle: 
+
+As reinforcement-learning-based AI systems become more general and autonomous, 
+the design of reward mechanisms that elicit desired behaviours becomes both more important and more difficult.
+
+当强化学习基础的人工智能（AI）系统变得更加通用和自主时，
+如何设计奖励机制来激发期望的行为就变得越来越重要和困难。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>反观我解这题的过程、确实如此： 复杂环境中的任务会涉及到多个短期和长期目标，此时需要找到一个能够平衡短期和长期的奖励真的非常困难。</p>
+<p>最后总结一下这题最终得到的奖励函数形态：</p>
+<ol>
+<li>全象限梯度逼近（低精度）：<ul>
+<li>黄色区域：三四象限设置惩罚梯度，使得智能体倾向脱离区域</li>
+<li>蓝色区域：一二象限设置奖励梯度，诱导智能体探索高分区域</li>
+</ul>
+</li>
+<li>目标状态维持与精度控制（高精度）：<ul>
+<li>绿色区域：位置靠近目标设置奖励梯度，使摆锤在目标位置的重合度更高</li>
+<li>绿色区域：角速度接近 0 设置奖励梯度，使摆锤在目标位置的不容易离开</li>
+</ul>
+</li>
+<li>提前终止挑战：<ul>
+<li>在三四象限长时间滞留</li>
+<li>长时间不断转圈</li>
+</ul>
+</li>
+<li>额外：向着目标摆动不罚、离开目标摆动不奖</li>
+<li>平滑学习： 适当调整初始状态，先易后难，快速建立行为策略框架</li>
+</ol>
+<p><img src="./03.png"></p>
+<blockquote>
+<p>完整的训练源码： <a target="_blank" rel="noopener" href="https://github.com/Visuals-AI/gym-course-exercises/tree/master/py/01_Classic_Control/05_Pendulum">https://github.com/Visuals-AI/gym-course-exercises/tree/master/py/01_Classic_Control/05_Pendulum</a></p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/ai/gym-bi-ji-06-pendulum/">https://exp-blog.com/ai/gym-bi-ji-06-pendulum/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/OpenAI/">
+                                    
+                                        <span class="chip bg-color">OpenAI</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Gym/">
+                                    
+                                        <span class="chip bg-color">Gym</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/RL/">
+                                    
+                                        <span class="chip bg-color">RL</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                    
+                                        <span class="chip bg-color">强化学习</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/TD3/">
+                                    
+                                        <span class="chip bg-color">TD3</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/game/browedit/browedit3-bi-ji-01-intro-setup/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/game/browedit/BrowEdit3.png" class="responsive-img" alt="「BrowEdit3 入门教程 01」 安装、配置、界面介绍">
+                        
+                        <span class="card-title">「BrowEdit3 入门教程 01」 安装、配置、界面介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            BrowEdit3 是一款强大的地图编辑工具，专为 Ragnarok Online 地图设计而开发，对象、障碍、纹理、光影等元素皆可编辑。本系列教程将帮助大家认识 BrowEdit3 最基础的使用方法 ...
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-04-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                    仙境传说
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ragnarok/">
+                        <span class="chip bg-color">Ragnarok</span>
+                    </a>
+                    
+                    <a href="/tags/RO/">
+                        <span class="chip bg-color">RO</span>
+                    </a>
+                    
+                    <a href="/tags/BrowEdit3/">
+                        <span class="chip bg-color">BrowEdit3</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/ai/gym-bi-ji-05-mountaincarcontinuous/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/ai/mountain_car_continuous.jpg" class="responsive-img" alt="「Gym 课程笔记 05」经典控制 - Mountain Car 山地车（连续动作）">
+                        
+                        <span class="card-title">「Gym 课程笔记 05」经典控制 - Mountain Car 山地车（连续动作）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Mountain Car（连续）是控制一个无法直接攀登陡峭山坡的小车，必须利用山坡的反向坡度来获得足够的动量，使其尽快到达山顶。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/OpenAI/">
+                        <span class="chip bg-color">OpenAI</span>
+                    </a>
+                    
+                    <a href="/tags/Gym/">
+                        <span class="chip bg-color">Gym</span>
+                    </a>
+                    
+                    <a href="/tags/RL/">
+                        <span class="chip bg-color">RL</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">强化学习</span>
+                    </a>
+                    
+                    <a href="/tags/TD3/">
+                        <span class="chip bg-color">TD3</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

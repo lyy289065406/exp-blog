@@ -1,0 +1,2458 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="「SD 零基础入门 12」AI 动画初探：整个宇宙为你而闪烁, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>「SD 零基础入门 12」AI 动画初探：整个宇宙为你而闪烁 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/ai/12-3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">「SD 零基础入门 12」AI 动画初探：整个宇宙为你而闪烁</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/EbSynth/">
+                                
+                                    <span class="chip bg-color">EbSynth</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Deforum/">
+                                
+                                    <span class="chip bg-color">Deforum</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E8%BD%AC%E7%BB%98/">
+                                
+                                    <span class="chip bg-color">转绘</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-09-10
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    27 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-导航"><a href="#0x00-导航" class="headerlink" title="0x00 导航"></a>0x00 导航</h2><p>鉴于 AI 绘画的知识点较多，限于篇幅及便于分类组织，我会以一个系列文章的形式记录：</p>
+<ul>
+<li>系列 01：《<a href="https://exp-blog.com/ai/sd-ru-men-01-ai-hui-hua-yuan-li-yu-gong-ju/">AI 绘画原理与工具</a>》</li>
+<li>系列 02：《<a href="https://exp-blog.com/ai/sd-ru-men-02-ai-hui-hua-mo-xing-sao-mang/">AI 绘画模型扫盲</a>》</li>
+<li>系列 03：《<a href="https://exp-blog.com/ai/sd-ru-men-03-ai-hui-hua-mo-xing-tui-jian/">AI 绘画模型推荐</a>》</li>
+<li>系列 04：《<a href="https://exp-blog.com/ai/sd-ru-men-04-wen-sheng-tu/">文生图：不会念咒的炼丹师不是一个好画家</a>》</li>
+<li>系列 05：《<a href="https://exp-blog.com/ai/sd-ru-men-05-tu-sheng-tu/">图生图：突破次元圈限制</a>》</li>
+<li>系列 06：《<a href="https://exp-blog.com/ai/sd-ru-men-06-gao-qing-xiu-fu/">高清修复：轻松拥有 24K 钛合金画质</a>》</li>
+<li>系列 07：《<a href="https://exp-blog.com/ai/sd-ru-men-07-ti-shi-ci-jin-jie/">提示词进阶：渐变|交替|混合</a>》</li>
+<li>系列 08：《<a href="https://exp-blog.com/ai/sd-ru-men-08-lora/">LoRA 专题：五大应用场景</a>》</li>
+<li>系列 09：《<a href="https://exp-blog.com/ai/sd-ru-men-09-lora-train/">LoRA 训练：不会炼丹的魔法师不是一个好画家</a>》</li>
+<li>系列 10：《<a href="https://exp-blog.com/ai/sd-ru-men-10-controlnet/">ControlNet: 姿态控制</a>》</li>
+<li>系列 11：《<a href="https://exp-blog.com/ai/sd-ru-men-11-qrcode-logo/">ControlNet 进阶：打造炫酷的艺术字和二维码</a>》</li>
+<li><strong>系列 12</strong>：《<a href="https://exp-blog.com/ai/sd-ru-men-12-ai-dong-hua/">AI 动画初探：整个宇宙为你而闪烁</a>》</li>
+</ul>
+<blockquote>
+<p>你当前正在阅读的是<strong>系列 12</strong>：《<a href="https://exp-blog.com/ai/sd-ru-men-12-ai-dong-hua/">AI 动画初探：整个宇宙为你而闪烁</a>》</p>
+</blockquote>
+<h2 id="0x10-前言"><a href="#0x10-前言" class="headerlink" title="0x10 前言"></a>0x10 前言</h2><p>前些日子优酷主办了一个活动《<a target="_blank" rel="noopener" href="https://www.digitaling.com/projects/257459.html">优酷宠爱剧场：用 AIGC 做了 1 万份爱意</a>》，其中的宣传片《<a target="_blank" rel="noopener" href="https://www.xinpianchang.com/a12646641">让生活更有 AI 意</a>》在电影镜头中融入了 SD 风格过渡转绘、其效果不可谓不震撼。</p>
+<p>稍微分析下宣传视频中的效果实现原理：</p>
+<ul>
+<li>片头文字成像： 利用 ControlNet 可以实现，现在相关插件已经比较成熟了，不在本篇的讨论范围，可以参考系列《<a href="https://exp-blog.com/ai/sd-ru-men-11-qrcode-logo/">ControlNet 进阶：打造炫酷的艺术字和二维码</a>》</li>
+<li>真实视频、二次元化： 使用了画面风格转绘，如果单帧图像来看就是用二次元模型重绘了一遍，在系列的《<a href="https://exp-blog.com/ai/sd-ru-men-05-tu-sheng-tu/">图生图</a>》中就已经有过相关的阐述，但是要在视频中实现这个效果还是有相当难度的。目前在视频中可以可以实现这个效果的 SD 插件有 EbSynth、Mov2Mov、TemporalKit 等等。</li>
+<li>场景渐变、分镜过渡： 猜测使用了 Deforum、AnimateDiff 或 Runway-Gen2 的效果，它们都可以基于一帧的画面、以渐变的方式生成后续动画。但是一些长镜头应该还包含后期的商业效果在里面，毕竟现阶段的 SD 很难做出这么流畅的效果，因为扩散的过程不可控。</li>
+</ul>
+<p>为了验证猜想，我找了两个影视素材片段：</p>
+<p><img src="./xj_raw.gif" alt="仙剑 - 分镜片段"></p>
+<p><img src="./sd_raw.gif" alt="神雕 - 分镜片段"></p>
+<p>利用 EbSynth + Deforum 复现出了类似的效果：</p>
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./merge.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">SD + EbSynth + Deforum 成品</b>
+  </div>
+</div>
+
+<p>时间关系，demo 做出来的分镜过渡比较粗糙，但是耐心花时间去调试更多关键帧的 prompt 的话，完全可以做得更好。</p>
+<blockquote>
+<p>简单调试 10 秒的视频花了 1 天的时间，有更好的显卡支持的话可以适当提升效率</p>
+</blockquote>
+<h2 id="0x20-插件介绍"><a href="#0x20-插件介绍" class="headerlink" title="0x20 插件介绍"></a>0x20 插件介绍</h2><h3 id="0x21-EbSynth"><a href="#0x21-EbSynth" class="headerlink" title="0x21 EbSynth"></a>0x21 EbSynth</h3><p><a target="_blank" rel="noopener" href="https://ebsynth.com/">EbSynth</a> 最早被用于对一些视频做风格化的绘画滤镜处理，最近得以 AI 绘画的兴起、其潜力被重新发掘了出来，最常见的用法就是把真人视频次元化。它的原理是通过智能识别并提取视频里一些比较特殊的帧（关键帧），优先对它们进行风格化重绘，然后再在这些关键帧之间生成过渡帧来填充画面（这个其实和 Flash 动画的原理很相似）。</p>
+<p><img src="12.jpg"></p>
+<p>相比有着类似功能但却是一帧帧重绘的 Mov2Mov 而言，EbSynth 产出的效率更快，而且画面连续稳定的效果会更好、“闪帧” 的情况要比 Mov2Mov 改善了不少。</p>
+<details>
+<summary><b>“闪帧” 是什么？</b></summary>
+<br>
+
+<p>人眼因为有视觉暂留的特点，一般我们看视频觉得一个动作很丝滑，是因为这个动作在至少连续 24 帧的画面都只变化了一点点。但是如果帧与帧之间的画面变化幅度太大，人眼就会看到 A 动作瞬间从一个位置跳跃到另一个位置，这时就会看到残影。</p>
+<p>画面残影过多就会形成闪烁，也就是所谓的 “闪帧” —— 连续两帧之间差异过于明显了。</p>
+<p>而 AI 绘画的本质就是扩散，即使固定随机种子，相邻两帧的画面也不可能做到完全一致，所以类似 Mov2Mov 这种重绘所有帧的插件，“闪帧” 问题是难以避免的。</p>
+<p>而 EbSynth 之所以能改善这种问题，是因为用了蒙版遮罩主体以外大部分的要素，使得除了主体之外都不 “闪” 了，弱化了 “闪帧” 的问题。但是仔细看优酷的宣传片也不难发现，它里面的人物主体也存在 “闪帧” 的现象，只是画面过渡效果太多太快，轻易感觉不到。</p>
+</details>
+
+
+<h3 id="0x22-Deforum"><a href="#0x22-Deforum" class="headerlink" title="0x22 Deforum"></a>0x22 Deforum</h3><p><a target="_blank" rel="noopener" href="https://deforum.github.io/">Deforum</a> 是一款号称 “瞬息全宇宙” 的 SD 插件，只需要提供一帧的图像，它就可以基于设计多帧的文字提示、结合概率去噪扩散算法、随机生成各种风格的连续图像序列。</p>
+<p>如果说 EbSynth 的是基于<a href="https://exp-blog.com/ai/sd-ru-men-05-tu-sheng-tu/">图生图</a>使得画面在可控的范围内转绘，那么 Deforum 就是基于<a href="https://exp-blog.com/ai/sd-ru-men-04-wen-sheng-tu/">文生图</a>更富创造性的联想生成画面。</p>
+<p>在成品出来之前，你完全不会知道 Deforum 会画什么，你唯一能做的就是提前告诉它你希望在画面存在哪些要素、以及你的机位要如何变化而已。Deforum 牺牲了可控性、但是把 AI 本身的创造性发挥得淋漓尽致。</p>
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./deforum.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">Deforum Demo</b>
+  </div>
+</div>
+
+
+<h2 id="0x30-插件安装"><a href="#0x30-插件安装" class="headerlink" title="0x30 插件安装"></a>0x30 插件安装</h2><p>在开始处理视频之前，首先要为 SD 增设相关的插件：</p>
+<table>
+<thead>
+<tr>
+<th align="center">安装插件</th>
+<th align="center">插件依赖</th>
+<th align="center">模型依赖</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">EbSynth</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/">FFmpeg</a></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://ebsynth.com/">EbSynth</a></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/s9roll7/ebsynth_utility">Ebsynth Utility</a></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://pypi.org/project/transparent-background/">transparent-background</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/s9roll7/ebsynth_utility/issues/26">ckpt_base.pth</a></td>
+</tr>
+<tr>
+<td align="center">Deforum</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/deforum-art/sd-webui-deforum">sd-webui-deforum</a></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt">AdaBins_nyu.pt</a></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/intel-isl/DPT/releases/download/1_0/dpt_large-midas-2f21e586.pt">dpt_large-midas-2f21e586.pt</a></td>
+</tr>
+</tbody></table>
+<h3 id="0x31-EbSynth-安装"><a href="#0x31-EbSynth-安装" class="headerlink" title="0x31 EbSynth 安装"></a>0x31 EbSynth 安装</h3><h4 id="1-安装-FFmpeg"><a href="#1-安装-FFmpeg" class="headerlink" title="1. 安装 FFmpeg"></a>1. 安装 FFmpeg</h4><p>FFmpeg 是一款轻量级的视频编解码工具，可以在<a target="_blank" rel="noopener" href="https://www.gyan.dev/ffmpeg/builds/">官网</a>找到 <code>ffmpeg-git-full.7z</code>：</p>
+<p><img src="./01.jpg"></p>
+<p>下载后解压到电脑任意位置，例如 <code>S:\03_tool\ffmpeg</code>，然后把其中的 <code>bin</code> 目录加到系统环境变量就可以了：</p>
+<p><img src="./02.jpg"></p>
+<p>在 PowerShell 的命令行中执行 <code>ffmpeg -version</code> 能正常打印信息则安装成功：</p>
+<p><img src="./17.jpg"></p>
+<h4 id="2-安装-EbSynth"><a href="#2-安装-EbSynth" class="headerlink" title="2. 安装 EbSynth"></a>2. 安装 EbSynth</h4><p>到<a target="_blank" rel="noopener" href="https://ebsynth.com/">官网</a>下载（需要填写邮箱）、并解压到任意位置备用就可以了：</p>
+<p><img src="./03.jpg"></p>
+<h4 id="3-安装-Ebsynth-Utility"><a href="#3-安装-Ebsynth-Utility" class="headerlink" title="3. 安装 Ebsynth Utility"></a>3. 安装 Ebsynth Utility</h4><p>Ebsynth Utility 是 Ebsynth 配套的 SD 插件。</p>
+<p>运行 SD 后，在 Extensions <code>-&gt;</code> Install from URL <code>-&gt;</code> URL for extension’s git repository 中填入插件的源码地址：</p>
+<ul>
+<li>官方地址： <a target="_blank" rel="noopener" href="https://github.com/s9roll7/ebsynth_utility">https://github.com/s9roll7/ebsynth_utility</a></li>
+<li>国内镜像： <a target="_blank" rel="noopener" href="https://gitcode.net/ranting8323/ebsynth_utility">https://gitcode.net/ranting8323/ebsynth_utility</a></li>
+</ul>
+<p>然后点击 Install 按钮就可以了：</p>
+<p><img src="./04.jpg"></p>
+<p>安装完成后需要再点击 Settings <code>-&gt;</code> Reload UI 重启 WebUI，就可以看到新增的 Ebsynth Utility 插件了，插件内置了 8 步使用教程，下面再逐步展开：</p>
+<p><img src="./07.jpg"></p>
+<h4 id="4-安装-transparent-background"><a href="#4-安装-transparent-background" class="headerlink" title="4. 安装 transparent-background"></a>4. 安装 transparent-background</h4><p>这个是自动生成蒙版用的，也是 EbSynth 画面不 “闪帧” 的最大依仗。</p>
+<p>需要在 PowerShell 的命令行中用 python 安装： <code>python -m pip install transparent-background</code></p>
+<p>但是这里需要注意，如果你用的是 <a target="_blank" rel="noopener" href="https://space.bilibili.com/12566101">秋葉aaaki</a> 的 NovelAI，因为它内置了一个 Python，所以必须要用内置的 Python 安装才有效果。</p>
+<p>例如我的 NovelAI 安装目录为 <code>R:\AIDraw\novelai-webui-aki-v3</code>，那么需要在 PowerShell 中依次执行：</p>
+<pre class="line-numbers language-PowerShell"><code class="language-PowerShell">cd R:\AIDraw\novelai-webui-aki-v3
+.\py310\python.exe -m pip install transparent-background<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="./05.jpg"></p>
+<p>随后，生成蒙版还需要一个 ckpt_base.pth 模型，在 Ebsynth 的 <a target="_blank" rel="noopener" href="https://github.com/s9roll7/ebsynth_utility/issues/26">github issue</a> 中有提供下载路径。</p>
+<p>下载后更名为 ckpt_base.pth，然后再放到当前用户目录 <code>%USERPROFILE%/.transparent-background</code> 下即可：</p>
+<p><img src="./06.jpg"></p>
+<blockquote>
+<p>如果 <code>.transparent-background</code> 目录不存在，需要手动创建</p>
+</blockquote>
+<h3 id="0x32-Deforum-安装"><a href="#0x32-Deforum-安装" class="headerlink" title="0x32 Deforum 安装"></a>0x32 Deforum 安装</h3><p>Deforum 是 SD 插件。</p>
+<p>运行 SD 后，在 Extensions <code>-&gt;</code> Install from URL <code>-&gt;</code> URL for extension’s git repository 中填入插件的源码地址：</p>
+<ul>
+<li>NovelAI 专用版： <a target="_blank" rel="noopener" href="https://github.com/deforum-art/sd-webui-deforum">https://github.com/deforum-art/sd-webui-deforum</a></li>
+<li>非 NovelAI 版本： <a target="_blank" rel="noopener" href="https://github.com/deforum-art/deforum-stable-diffusion">https://github.com/deforum-art/deforum-stable-diffusion</a></li>
+</ul>
+<p>然后点击 Install 按钮就可以了，安装完成需要重启 NovelAI（不仅仅是重启 WebUI）。</p>
+<p>安装完成后，根据<a target="_blank" rel="noopener" href="https://github.com/deforum-art/deforum-for-automatic1111-webui-frame-noise-masking">官方</a>的说明，还需要下载两个模型 <a target="_blank" rel="noopener" href="https://cloudflare-ipfs.com/ipfs/Qmd2mMnDLWePKmgfS8m6ntAg4nhV5VkUyAydYBp8cWWeB7/AdaBins_nyu.pt">AdaBins_nyu.pt</a> 和 <a target="_blank" rel="noopener" href="https://github.com/intel-isl/DPT/releases/download/1_0/dpt_large-midas-2f21e586.pt">dpt_large-midas-2f21e586.pt</a> 到 <code>%{NovelAI}/models/Deforum/</code> 目录下，否则 Deforum 是无法进行扩散渲染的。</p>
+<p><img src="30.jpg"></p>
+<h2 id="0x40-准备"><a href="#0x40-准备" class="headerlink" title="0x40 准备"></a>0x40 准备</h2><h3 id="0x41-材料准备"><a href="#0x41-材料准备" class="headerlink" title="0x41 材料准备"></a>0x41 材料准备</h3><p>首先准备需要转绘的视频素材，由于只是演示，我这里准备了若干个几秒的影视经典镜头：</p>
+<p><img src="10.jpg"></p>
+<p>尽量不要贪多，后期混剪会把时长放大，再者我这些视频因为是高清的缘故，每秒的帧数达到 60 帧，6 秒钟就需要处理 360 张图片，而且分辨率达到了 <code>1920x1080</code>，制作起来非常耗时、且对显卡压力非常大。未有经验的同学建议用低分辨率低帧数先练练手。</p>
+<p>其次需要根据希望视频转绘的风格去选择模型，关于模型的介绍在系列的《<a href="https://exp-blog.com/ai/sd-ru-men-03-ai-hui-hua-mo-xing-tui-jian/">AI 绘画模型推荐</a>》已经详细介绍过了，这里我希望转绘成二次元风格的、而且对场景细节有一定的要求，故而选取了在细节描绘上有独特张力的二次元模型<a target="_blank" rel="noopener" href="https://civitai.com/models/24779/dark-sushi-mix-mix">大颗寿司（Dark Sushi）</a></p>
+<p><img src="11.jpg"></p>
+<h3 id="0x42-步骤大纲"><a href="#0x42-步骤大纲" class="headerlink" title="0x42 步骤大纲"></a>0x42 步骤大纲</h3><p>要达到《<a target="_blank" rel="noopener" href="https://www.digitaling.com/projects/257459.html">优酷宠爱剧场</a>》的效果，我揣摩步骤大概如下：</p>
+<ol>
+<li>使用 EbSynth 转绘各个分镜片段为二次元风格，同时为了达到渐变效果，先用蒙版先转绘主体、再去掉蒙版转绘全画</li>
+<li>使用 Deforum 做分镜之间的过渡帧联想，而拼接两个分镜的方法是：<ul>
+<li>前一个分镜的最后一帧，按时间线向后联想画外场景</li>
+<li>后一个分镜倒播，倒播的最后一帧，按时间线向后联想画外场景</li>
+<li>两个分镜联想的最终画面的 prompt 尽量相同，使得画面相似（主要是色调和元素布局）</li>
+<li>后一个分镜的联想片段再一次倒播</li>
+<li>两个分镜就能比较自然地拼接起来，拼接位置如果稍微不自然，可以在后期剪辑雾化</li>
+</ul>
+</li>
+</ol>
+<p>重复这上述步骤处理完所有独立的分镜片段，然后通过<a target="_blank" rel="noopener" href="https://www.capcut.cn/">剪映</a>等视频编辑工具串把每个场景串联起来。</p>
+<p><img src="./00.jpg"></p>
+<blockquote>
+<p>之所以后一个分镜要倒播，是因为 Deforum 只能顺着时间线往后联想</p>
+</blockquote>
+<p>下面开始实操演练一下。</p>
+<h2 id="0x50-EbSynth-风格转绘"><a href="#0x50-EbSynth-风格转绘" class="headerlink" title="0x50 EbSynth 风格转绘"></a>0x50 EbSynth 风格转绘</h2><p>首先需要建立一个 EbSynth 项目：在原视频的同目录下创建一个同名空目录即可。</p>
+<p>这里以 <code>O:\Desktop\Demo\xj.mp4</code> 为例，建立一个空文件夹 <code>O:\Desktop\Demo\xj</code>，这个就是 EbSynth 的项目根目录。</p>
+<blockquote>
+<p>EbSynth 的项目根目录不能有任何中文和空格，否则会报错。它用于存放转绘过程中生成的文件。</p>
+</blockquote>
+<p>然后打开 SD WebUI，切换到 Ebsynth Utility 插件，开始转绘视频：</p>
+<ol>
+<li>在 project settings 里面填写 EbSynth 项目路径、同时导入原视频</li>
+<li>切换到 configuration，这里可以控制 EbSynth 每一步的参数（左侧是每个 stage 的参数设置，右侧则是执行每个 stage）</li>
+</ol>
+<hr>
+<h3 id="0x51-把视频切成单帧"><a href="#0x51-把视频切成单帧" class="headerlink" title="0x51 把视频切成单帧"></a>0x51 把视频切成单帧</h3><p>首先点击<strong>左侧</strong>的 stage 1:</p>
+<ol>
+<li>Frame Width 和 Frame Height 是转绘的宽高，一般保持和原视频一致，默认 -1 就可以了</li>
+<li>Mask Threshold 设置透明蒙版阈值，建议选择 0.05，一般不超过 0.1</li>
+<li>点击<strong>右侧</strong>的 stage 1，然后拉到最下面点击 Generate 生成，然后等待即可</li>
+<li>此时会对视频进行拆帧（存储到 <code>video_frame</code>），同时自动识别并生成每一帧的主体部分生成对应的 Mask 蒙版（存储到 <code>video_mask</code>）</li>
+</ol>
+<blockquote>
+<p>这个过程比较漫长，视显卡性能、原画分辨率和原片时长，可能需要等待几十分钟以上</p>
+</blockquote>
+<p><img src="08.jpg"></p>
+<p>Mask Threshold 不是必须的，但它是 EbSynth 解决 “闪帧” 问题的核心方案。</p>
+<p>EbSynth 通过 Mask 蒙版把画面中的人物、主体等单独提取出来、使用图生图重绘，蒙版之外的背景则保持不变。</p>
+<p>在大多数情况下，画面闪烁的原因都是由于画面中和人物无关的部分一直在变化，人眼因为有视觉暂留的特点，导致这种情况被放大。其实只要背景不变、或者变化幅度相对缓慢，整个画面看上去就会舒服很多。</p>
+<p>如果发现 <code>video_mask</code> 蒙版文件里面和主体无关的杂质过多，可以调低 Mask Threshold 的阈值，然后重新生成。<strong>甚至可以直接用 PS 修改蒙版</strong>。</p>
+<p><img src="13.jpg"></p>
+<blockquote>
+<p>Mask Threshold 依赖前面安装的 transparent-background，如果没安装成功，<code>video_mask</code> 里面不会有任何内容，因为没有蒙版，重绘的就是全图了</p>
+</blockquote>
+<hr>
+<h3 id="0x52-提取关键帧"><a href="#0x52-提取关键帧" class="headerlink" title="0x52 提取关键帧"></a>0x52 提取关键帧</h3><p>关键帧是视频剪辑中常见的概念，之前接触过 Falsh 绘制的同学应该对其不陌生。</p>
+<p>一般而言，在画面中发生明显转场的地方都需要关键帧作为区分标志，而关键帧和关键帧之间的过渡帧，则可以根据画面变化的趋势方向自动填补生成。</p>
+<p>而 EbSynth 也是利用这个原理、优先重绘关键帧、然后生成过渡帧，在快速重绘视频的同时保持连贯性。</p>
+<p>首先点击<strong>左侧</strong>的 stage 2:</p>
+<ol>
+<li>Minimum keyframe gap： 最小关键帧间隔</li>
+<li>Maximum keyframe gap： 最大关键帧间隔</li>
+<li>Threshold of delta frame edge： 帧边缘检测阈值，用于自动筛选关键帧，使得帧间隔在最小值和最大值之间徘徊（关键帧之间的间距可以不一样）。阈值越小则关键帧间隔越窄，如果为 0 则取最小间隔。如果前面生成了蒙版，还会自动根据蒙版的变化幅度筛选关键帧。</li>
+<li>一般保持默认即可，点击<strong>右侧</strong>的 stage 2，然后拉到最下面点击 Generate 生成</li>
+</ol>
+<blockquote>
+<p>如果视频的动态成分、镜头切换较多，应该减少这些值以抓取更多的关键帧；但如果最终视频效果混乱、闪帧严重，就应该增大这些值、减少关键帧的抓取以保持画面稳定</p>
+</blockquote>
+<p><img src="14.jpg"></p>
+<p>在 <code>video_key</code> 里面可以看到被选取的关键帧和它们对应的编号，如果你对自动选出的帧不满意：</p>
+<ul>
+<li>增加关键帧，可以到 <code>video_frame</code> 复制你想要的帧过来</li>
+<li>减少关键帧，直接在 <code>video_key</code> 删除对应的帧即可</li>
+</ul>
+<p>一个建议是，确保每一个分镜的开头和结尾都有关键帧，以确保每个分镜的连贯性。</p>
+<hr>
+<h3 id="0x53-重绘关键帧"><a href="#0x53-重绘关键帧" class="headerlink" title="0x53 重绘关键帧"></a>0x53 重绘关键帧</h3><p>此时会发现<strong>左侧</strong>是没有 stage 3 的:</p>
+<ol>
+<li>先点击<strong>右侧</strong>的 stage 3，然后拉到最下面点击 Generate 生成</li>
+<li>上面会出现提示信息，需要到图生图中批量重绘关键帧</li>
+</ol>
+<p><img src="15.jpg"></p>
+<p>这里不着急批量重绘，可以先抽取一个关键帧进行调试。</p>
+<p>首先我们可以在 <code>video_key</code> 任意找一个关键帧，通过 Tagger 反推 Prompt :</p>
+<p><img src="16.jpg"></p>
+<p>把 Prompt 复制到<a href="https://exp-blog.com/ai/sd-ru-men-05-tu-sheng-tu/">图生图</a>之后，就可以开始调试效果了（关于<a href="https://exp-blog.com/ai/sd-ru-men-05-tu-sheng-tu/">图生图</a>的方法在系列的前面已经介绍过了，这里不再赘述）。</p>
+<p>调试的过程与 EbSynth 无关，但是有一些注意的地方：</p>
+<ol>
+<li>大模型必须选择转绘视频的模型调试，如这里前面选择的是二次元模型<a target="_blank" rel="noopener" href="https://civitai.com/models/24779/dark-sushi-mix-mix">大颗寿司（Dark Sushi）</a></li>
+<li>提示词无需太精确，因为调试完之后需要批处理重绘，提示词会应用到所有帧，如果太具体反而效果不好。建议是加一些控制画质的 <code>best_quality, masterpiece:1.2, hires, original</code>、或者不变的人物特征、固定的背景特征等。</li>
+<li>可以加 <a href="https://exp-blog.com/ai/sd-ru-men-08-lora/">LoRA</a> 和 <a href="https://exp-blog.com/ai/sd-ru-men-11-qrcode-logo/">ControlNet</a> 对人物进行控制，对应的方法在系列的前面也介绍过了，但是会占用额外的显存</li>
+<li>重绘幅度一般不要超过 0.5，否则对比原视频的画面变化太大，就会很突兀</li>
+<li>Resize by 选择 1，像素需要和原画保持一致</li>
+</ol>
+<p><img src="18.jpg"></p>
+<p>然后反复重绘、直到生成自己满意的图片，然后就可以<strong>固定随机种子</strong>，进行下一步了：</p>
+<ol>
+<li>若前面调试时把修改过【生成批次】或【每批数量】，此时必须都重新改为 1</li>
+<li>固定随机种子为调试最满意的图片种子</li>
+<li>在【脚本】中选择 ebsynth utility</li>
+<li>在 Project directory 指定当前的 Ebsynth 项目根目录，如这里为 <code>O:\Desktop\Demo\xj</code>，用于批量重绘关键帧</li>
+<li>重绘幅度一般不要超过 0.5</li>
+<li>Mask Mode 选择 Normal， Inpaint Area 选择 Only masked，表示只重绘蒙版区域（人物）</li>
+<li>设置 <a href="https://exp-blog.com/ai/sd-ru-men-11-qrcode-logo/">ControlNet</a> 权重，为了画面不混乱，这里建议 ControlNet 必须开启，但是需要在设置中允许 ControlNet 被其他脚本调用： Settings <code>-&gt;</code> ControlNet <code>-&gt;</code> Allow other script to control this extension</li>
+<li>其他设置参数保持默认即可</li>
+</ol>
+<blockquote>
+<p>关于 Mask 蒙版，个人经验建议是先用蒙版重绘一次；出成品后，回来这里再取消蒙版、全图重绘一次。此时就可以得到两个加工视频：一个是只有人物转绘，一个是全部转绘。这样做的好处是，在后期加工原视频时，可以起到逐步过渡的效果：人物先发生变化、再到整个画面发生变化，层次分明、总体感官会舒服很多。</p>
+</blockquote>
+<p><img src="19.jpg"></p>
+<p><img src="20.jpg"></p>
+<p>关键帧批量转绘后，会输出到 <code>img2img_key</code> 目录，可以去预览一下效果：</p>
+<p><img src="21.jpg"></p>
+<blockquote>
+<p>如果对某一关键帧的重绘效果不满意，可以单独重绘这一帧，然后同名覆盖到 <code>img2img_key</code> 目录下就可以了。关键帧的质量直接影响过渡帧生成的质量，所以这步很重要。理论上每个关键帧加入 ControlNet 做边缘控制，可以进一步抑制闪帧的问题（避免在同样的蒙版下画出肥瘦不一的人物）。</p>
+</blockquote>
+<hr>
+<h3 id="0x54-放大关键帧"><a href="#0x54-放大关键帧" class="headerlink" title="0x54 放大关键帧"></a>0x54 放大关键帧</h3><p>回到 Ebsynth Utility，注意到<strong>左侧</strong>只有 stage 3.5，没有 stage 4 5 6。</p>
+<p>其实 stage 3.5 是针对画面颜色的校正，防止 SD 过度扩散导致影响原视频的质感。</p>
+<p>理论上可以拖一张标准图片到这里让它自动校色，但是我觉得没什么变化，就先跳过了。</p>
+<p>直接点击<strong>右侧</strong>的 stage 4，提示我们利用后期放大功能让关键帧更清晰：</p>
+<p><img src="22.jpg"></p>
+<p>具体步骤如下：</p>
+<ol>
+<li>附加功能选项卡中的批量处理过程中，设置使用原始名称作为输出文件名： 勾选 Settings <code>-&gt;</code> Saving images/grids <code>-&gt;</code> Use original name for output filename during batch process in extras tab</li>
+</ol>
+<p><img src="23.jpg"></p>
+<ol start="2">
+<li>在 Extra 中对目录下的图片进行批量放大，其中输入/输出目录在 stage 4 的提示信息中可以找到：<ul>
+<li>Input directory： <code>O:\Desktop\Demo\xj\img2img_key</code></li>
+<li>Output directory： <code>O:\Desktop\Demo\xj\img2img_upscale_key</code></li>
+</ul>
+</li>
+<li>等比缩放 Scale by 此处设置为 1，即保持和原视频大小一样</li>
+<li>因为是二次元，放大算法选择 <code>R-ESRGAN 4x+ Anime6B</code> （关于放大算法，在系列的《<a href="https://exp-blog.com/ai/sd-ru-men-06-gao-qing-xiu-fu/">高清修复</a>》中已有详细说明）</li>
+<li>点击 Generate 生成，就可以在 <code>img2img_upscale_key</code> 找到所有被放大的关键帧：</li>
+</ol>
+<p><img src="24.jpg"></p>
+<hr>
+<h3 id="0x55-生成-ebs-文件"><a href="#0x55-生成-ebs-文件" class="headerlink" title="0x55 生成 ebs 文件"></a>0x55 生成 ebs 文件</h3><p>到这一步为止我们已经准备好 Ebsynth 需要的全部材料了，此时我们回到 Ebsynth Utility 。</p>
+<p>直接点击<strong>右侧</strong>的 stage 5，再点击 Generate 生成，就会在 Ebsynth 项目的根目录下生成 ebs 文件：</p>
+<p><img src="25.jpg"></p>
+<hr>
+<h3 id="0x56-生成过渡帧"><a href="#0x56-生成过渡帧" class="headerlink" title="0x56 生成过渡帧"></a>0x56 生成过渡帧</h3><p>打开 Ebsynth 项目的根目录，可以看到 1 个以上的 ebs 文件（数量根据关键帧的多寡而定）。</p>
+<p>依次用我们前面下载的 Ebsynth 程序打开它们：</p>
+<p><img src="27.jpg"></p>
+<p><img src="26.jpg"></p>
+<p>点击 Run All 按钮，即可自动生成过渡帧。</p>
+<blockquote>
+<p>ebs 文件需要按时间顺序逐个打开，一个运行完之后再打开第二个运行，否则有几率出现问题</p>
+</blockquote>
+<hr>
+<h3 id="0x57-合成视频"><a href="#0x57-合成视频" class="headerlink" title="0x57 合成视频"></a>0x57 合成视频</h3><p>当 Ebsynth 显示所有过渡帧的状态都变成 Synth 后，说明全部过渡帧已经生成完毕。</p>
+<p>此时回到 Ebsynth Utility，点击<strong>左侧</strong>的 stage 7：</p>
+<ol>
+<li>选择导出视频的格式，默认是 mp4</li>
+<li>点击<strong>右侧</strong>的 stage 7，再点击 Generate 生成，就会自动合成视频了</li>
+</ol>
+<p><img src="28.jpg"></p>
+<p>在项目根目录下可以找到生成的两个视频，带 <code>_with_snd</code> 后缀的是合成了原视频的声音，不带的则是无声版：</p>
+<p><img src="29.jpg"></p>
+<p>看看 Ebsynth 转绘这个分镜的效果：</p>
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./xj_ebsynth_with_mask.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">仙剑 - 蒙版转绘</b>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./xj_ebsynth.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">仙剑 - 全图转绘</b>
+  </div>
+</div>
+
+<p>整体感觉是不理想的，尤其全图转绘 “闪帧” 现象比较明显（虽然相比 Mov2Mov 已经改善了不少），不过这也是目前 AI 动画的硬伤，而且由于是基于技术原理的问题，目前没法在用户侧解决。</p>
+<p>但是我们只需要其中某一两秒的效果，所以后期截取一下还能接受，先留着备用。</p>
+<p>利用同样的操作，可以得到另一个分镜的转绘效果：</p>
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./sd_ebsynth_with_mask.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">神雕 - 蒙版转绘</b>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./sd_ebsynth.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">神雕 - 全图转绘</b>
+  </div>
+</div>
+
+<p>部分帧画得不好，不过后期那部分会渐变为真人，所以无所谓了。</p>
+<hr>
+<h3 id="0x58-替换背景（可选）"><a href="#0x58-替换背景（可选）" class="headerlink" title="0x58 替换背景（可选）"></a>0x58 替换背景（可选）</h3><p>理论上 stage 7 就是最后一步了，stage 8 是用来换背景的，适合那些机位固定的视频。</p>
+<p>我这里没有准备素材，这步就不演示了。</p>
+<h2 id="0x60-Deforum-联想场景"><a href="#0x60-Deforum-联想场景" class="headerlink" title="0x60 Deforum 联想场景"></a>0x60 Deforum 联想场景</h2><p>得到转绘的视频后，分别取两个分镜最后一帧的画面、作为初始画面，放到 Deforum 中联想后续的场景。</p>
+<p><img src="31.jpg" alt="仙剑 - Deforum 初始画面"></p>
+<p><img src="32.jpg" alt="神雕 - Deforum 初始画面"></p>
+<blockquote>
+<p>如果对最后一帧不满意，可以取中间某个关键帧当作最后一帧，后期把后面的画面全部剪掉就可以了。我这里取的是中间的关键帧。</p>
+</blockquote>
+<p>Deforum 的配置参数超级繁琐，需要有心理准备。</p>
+<h3 id="0x61-设置运行参数"><a href="#0x61-设置运行参数" class="headerlink" title="0x61 设置运行参数"></a>0x61 设置运行参数</h3><p>在 SD 切换到 Deforum，点击【Run 运行】标签 ：</p>
+<ol>
+<li>首先大模型选择和 Ebsynth 一样的<a target="_blank" rel="noopener" href="https://civitai.com/models/24779/dark-sushi-mix-mix">大颗寿司（Dark Sushi）</a>，同时选择推荐的采样器</li>
+<li>设置生成帧的宽高，和初始画面保持一致即可</li>
+<li>随机种子不建议固定，否则画面基本不会变化</li>
+<li>其他参数按需即可，文生图/图生图都有类似参数，可以保持默认不变</li>
+</ol>
+<p><img src="33.jpg"></p>
+<hr>
+<h3 id="0x62-设置生成关键帧的参数"><a href="#0x62-设置生成关键帧的参数" class="headerlink" title="0x62 设置生成关键帧的参数"></a>0x62 设置生成关键帧的参数</h3><p>所谓的关键帧就是指角色或者物体运动变化中关键动作所处的那一帧。</p>
+<p>在 Deforum 中，涉及到控制关键帧配置的语法都是一样的，有两种格式：</p>
+<ul>
+<li>插值： <code>0:(x), 12:(y), ...</code>，其中 <code>0:</code> 和 <code>12:</code> 分别表示帧数，可以任意指定；<code>x</code> 和 <code>y</code> 表示内插变量值（例如像素、CFG、重绘幅度等）</li>
+<li>函数表达式： <code>0:(1.02+0.02*sin(2*3.14*t/20)), 12:(0.5+0.02*sin(2*3.14*t/20)), ...</code></li>
+</ul>
+<p>把需要控制的多个关键帧全部列出来就可以了，需要注意序列的末尾不能是 <code>,</code> 。关键帧之间的过渡，Deforum 会自动根据设定的路径补帧。</p>
+<p>如果不需要控制关键帧，设置为 <code>0:(0)</code> 就可以了。而且在设置关键帧相关的配置时，所有的帧数都必须从 0 帧开始，否则渲染会报错。</p>
+<p>知道配置语法后，现在点击【Keyframes 关键帧】标签 ：</p>
+<ol>
+<li>Animation mode 动画模式推荐选择 3D</li>
+<li>Border mode 边缘像素生成模式：<ul>
+<li>warp: 从图像的相对边缘提取像素进行扭曲变形（推荐）</li>
+<li>replicate: 复制图像边缘像素</li>
+</ul>
+</li>
+<li>Max frames 生成动画的帧数，默认 120 帧 = 6 秒（20 帧/秒）</li>
+<li>Strength 强度，即控制下一帧受上一帧影响的程度，现在保持默认即可</li>
+<li>Motion 相机的运动方式（可以把你的眼睛当作为相机），这里也是 Deforum 最核心的功能：<ul>
+<li>Translation X：水平运动方式，括号内为在 X 轴移动的像素，负数画面向左移动，正数向右移动</li>
+<li>Translation Y：垂直运动方式，括号内为在 Y 轴移动的像素，负数画面向下移动，正数向上移动</li>
+<li>Translation Z：深度运动方式，括号内为在 Z 轴移动的像素，负数画面向外移动，正数向内移动</li>
+<li>Rotation 3D X: 三维角度旋转，括号内为围绕 X 轴旋转的角度，负数画面向下旋转，正数向上旋转</li>
+<li>Rotation 3D Y: 三维角度旋转，括号内为围绕 Y 轴旋转的角度，负数画面向左旋转，正数向右旋转</li>
+<li>Rotation 3D Z: 三维角度旋转，括号内为围绕 Z 轴旋转的角度，负数画面逆时针旋转，正数顺时针旋转</li>
+</ul>
+</li>
+</ol>
+<p>Motion 的配置只能自己慢慢调试，多测试几遍就对移动方向有感觉了，一般常用的就是 Translation X/Y。而且由于坐标轴是以相机为参考系，所以画面的动态是反向的。</p>
+<p><img src="34.jpg"></p>
+<blockquote>
+<p>这里需要注意的是，不要把相机太快的移出原画面，因为 Deforum 生成下一帧的像素、是依赖上一帧的，如果快速移走相机，就会因为像素不够而变成雪花。在 Deforum 的演示动画中，基本都是从中心缓慢移动镜头的，目的就是确保有足够丰富的像素生成下一帧画面。</p>
+</blockquote>
+<ol start="6">
+<li>Noise 噪点，控制每帧的噪点变化。噪点会影响像素的变化，噪点值越小，画面越稳定；噪点值越大，画面多样性越大。</li>
+</ol>
+<p>这里的 Noise schedule 有个万能公式是 <code>0:(-0.06*(cos(3.141*t/15)**100)+0.06)</code>，具体什么意思有待探讨。</p>
+<p><img src="35.jpg"></p>
+<ol start="7">
+<li>Coherence 颜色一致性，一般保持默认的 LAB 即可：<ul>
+<li>HSV: 平衡鲜艳颜色的算法，但可能产生不切实际的结果</li>
+<li>LAB: 更线性的算法，可以模仿人类对颜色空间的感知</li>
+<li>RGB: 有利于在红、绿、蓝通道中强制执行无偏的颜色量。如果采样过低，一些图像可能会产生彩色伪影</li>
+</ul>
+</li>
+</ol>
+<p><img src="36.jpg"></p>
+<ol start="8">
+<li>Amount schedule 模糊数值，一般尽可能小一点。需要根据生成动画的镜头速度而定，镜头速度块，模糊值设置大一些，画面衔接会比较舒服。</li>
+</ol>
+<p><img src="37.jpg"></p>
+<ol start="9">
+<li>FOV，相机运动速度。它根据 Translation Z 的值调整画面在三维中移动的比例，范围在 <code>-180 ~ +180</code>。接近 180 使得画面的深度更小、相机运动越慢；而接近 0 时将允许更大的深度、相机运动越快。</li>
+</ol>
+<p><img src="38.jpg"></p>
+<blockquote>
+<p>其实这部分核心就是配置相机的运动方式，其他参数在不熟悉之前都保持默认即可</p>
+</blockquote>
+<hr>
+<h3 id="0x63-设置生成关键帧的-prompt"><a href="#0x63-设置生成关键帧的-prompt" class="headerlink" title="0x63 设置生成关键帧的 prompt"></a>0x63 设置生成关键帧的 prompt</h3><p>点击【Prompts 提示词】标签，这一步是用 JSON 格式配置你期望的关键帧画面的提示词，格式为（最后一行末尾不能有 <code>,</code>）：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"关键帧数"</span><span class="token operator">:</span> <span class="token string">"prompt, prompt, prompt ..."</span><span class="token punctuation">,</span> 
+    <span class="token property">"关键帧数"</span><span class="token operator">:</span> <span class="token string">"prompt, prompt, prompt ..."</span><span class="token punctuation">,</span> 
+    ...
+    <span class="token property">"关键帧数"</span><span class="token operator">:</span> <span class="token string">"prompt, prompt, prompt ..."</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>关键帧数和前面配置的 Motion 的关键帧数没有对应关系，第一帧必须是 0 ，把初始画面反推的提示词写上去。最后一帧是前面设置的 Max frames，用最终期望画面倒推的 prompt，可以起到一定的引导作用。</p>
+<p>中间帧的 prompt 可以一步步从第 0 帧的逼近到 Max frames，建议设计好过渡场景的描述，交给 ChatGPT 生成就好。</p>
+<p>而反向提示词会自动应用到每一帧，无需在 JSON 里面指定。</p>
+<p><img src="39.jpg"></p>
+<blockquote>
+<p>提示词配置完之后，Deforum 大部分的参数都已经配置完了，这时记得存储一下配置，避免辛苦配置的一堆参数丢了。以后用 Deforum 时就可以基于这次的配置去修改、无需重新配置了。更多 Deforum 的配置技巧可以参考 <a target="_blank" rel="noopener" href="https://civitai.com/models/59785/deforum-chatgpt-prompter">这里</a>。</p>
+</blockquote>
+<hr>
+<h3 id="0x64-设置初始画面"><a href="#0x64-设置初始画面" class="headerlink" title="0x64 设置初始画面"></a>0x64 设置初始画面</h3><p>点击【Init 初始】标签：</p>
+<ol>
+<li>在 Image Init 下勾选 use Init，然后把前面选为初始画面的关键帧导入进来</li>
+<li>点击 Generate 就可以开始生成后续画面了，过程比较漫长，可以切换到控制台查看进度</li>
+<li>完成之后可以直接在页面上预览成品：</li>
+</ol>
+<p><img src="40.jpg"></p>
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./xj_deforum.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">仙剑 - 联想画面</b>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <video width="100%" controls="" loop="">
+    <source src="./sd_deforum.mp4" type="video/mp4">
+  </video>
+  <div class="caption">
+    <b class="center-caption">神雕 - 联想画面</b>
+  </div>
+</div>
+
+
+<h2 id="0x70-后期合成"><a href="#0x70-后期合成" class="headerlink" title="0x70 后期合成"></a>0x70 后期合成</h2><p>把 EbSynth 和 Deforum 生成的动画，根据之前规划的编排、在后期剪辑合成：</p>
+<p><img src="41.jpg"></p>
+<p>一些过渡不自然的地方，可以采取雾化、加速等处理，让视觉看上去更流畅舒服，最终就得到成品：</p>
+<video width="100%" controls="" loop="">
+  <source src="./merge.mp4" type="video/mp4">
+</video>
+
+<details>
+<summary><b>备用视频源</b></summary>
+<br>
+
+<iframe src="https://player.bilibili.com/player.html?autoplay=0&amp;bvid=BV1Hh4y1v72F" width="100%" height="460" title="SD+EbSynth+Deforum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true">
+</iframe>
+
+</details>
+
+
+<h2 id="0xF0-后记"><a href="#0xF0-后记" class="headerlink" title="0xF0 后记"></a>0xF0 后记</h2><ol>
+<li>制作动画时，做好每一帧的编排计划很重要，磨刀不误砍柴工</li>
+<li>最耗时是 EbSynth 生成蒙版、还有 Deforum 的 prompt 调试</li>
+<li>EbSynth 在多人情况下，原画分辨率是个问题，分辨率不够脸会糊，太高则显存占用大、而且极其耗时</li>
+<li>Ebsynth 每一步的目录和每一个文件都可以随便改，执行相关按钮动作时，只需要这些目录和文件存在就可以，所以过程中有很多操作空间</li>
+<li>Deforum 长镜头调试的耗时太长，很难做，只要色彩和元素位置差不多，可以直接切换画面过渡，优酷宣传片里面好几个分镜都是直接切换的</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/s9roll7/animatediff-cli-prompt-travel">AnimateDiff-cli-prompt-travel</a> 比 Deforum 更稳定、而且能够指定关键帧的图片，但可惜不是 SD 插件、而且只能用命令行生成</li>
+<li><a target="_blank" rel="noopener" href="https://research.runwayml.com/gen2">Runway-Gen2</a> 在广告领域比 Deforum 更出彩</li>
+<li>使用 SD 制作这类动画时，时间投入相比传统工艺并不会省事多少，效果甚至更差，只能说在后期的帮助下勉强做了一个成品出来。目前 SD 研究重点都是训练 AI 识别单张图片而非动画规律，这导致 AI 在自由创作领域表现良好、但是完成既定目标的效果一般。虽然时常说要保持 AI 的创造性，但是实际应用中根本不需要 AI 有很多创造性，甚至宽泛点说，AI 的自由度应该是超越人类思维的自由，只要让 AI 创作人类可以接受的东西，都属于剥夺了 AI 自由创作的权利，只能说 AI 在动画领域仅仅是「未来可期」</li>
+</ol>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/ai/sd-ru-men-12-ai-dong-hua/">https://exp-blog.com/ai/sd-ru-men-12-ai-dong-hua/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/EbSynth/">
+                                    
+                                        <span class="chip bg-color">EbSynth</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Deforum/">
+                                    
+                                        <span class="chip bg-color">Deforum</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E8%BD%AC%E7%BB%98/">
+                                    
+                                        <span class="chip bg-color">转绘</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/insights/wo-ceng-shi-shao-nian/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/insights/02.jpg" class="responsive-img" alt="我曾是少年">
+                        
+                        <span class="card-title">我曾是少年</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            「听他们每个人的故事，都像在看自己，他们的震惊、痛苦、无助，以及反复在希望和绝望中徘徊摇摆的状态，都是我切身经历过以及正在经历的一部分」—— 蔡磊《相信》
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" class="post-category">
+                                    心路历程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%9A%8F%E7%AC%94/">
+                        <span class="chip bg-color">随笔</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/">
+                        <span class="chip bg-color">读后感</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/ai/sd-ru-men-11-qrcode-logo/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/ai/11-2.jpg" class="responsive-img" alt="「SD 零基础入门 11」ControlNet 进阶：打造炫酷的艺术字和二维码">
+                        
+                        <span class="card-title">「SD 零基础入门 11」ControlNet 进阶：打造炫酷的艺术字和二维码</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            最近网上盛传各种炫酷的艺术二维码是怎么做的？Logo 和艺术字又是如何被无缝嵌入到风景人物里的？学完这一节，你将掌握所有这些吸引眼球的内容 ...
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ControlNet/">
+                        <span class="chip bg-color">ControlNet</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%89%BA%E6%9C%AF%E5%AD%97/">
+                        <span class="chip bg-color">艺术字</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81/">
+                        <span class="chip bg-color">二维码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

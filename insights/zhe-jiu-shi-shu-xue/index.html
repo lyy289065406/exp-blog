@@ -1,0 +1,2337 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="这，就是数学, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>这，就是数学 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/insights/math.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">这，就是数学</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                
+                                    <span class="chip bg-color-reproduced">转载</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                
+                                    <span class="chip bg-color">数学</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%BF%83%E8%B7%AF%E5%8E%86%E7%A8%8B/" class="post-category">
+                                心路历程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <a class="post-reproduced-label" href="https://www.toutiao.com/article/7135685679165751812" target="_blank">转载</a>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-11-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    26 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="转载来源"><a href="#转载来源" class="headerlink" title="转载来源"></a>转载来源</h2><ul>
+<li>原文： 《<a target="_blank" rel="noopener" href="https://www.toutiao.com/article/7135685679165751812">这，就是数学</a>》</li>
+<li>作者：刘润</li>
+</ul>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>请原谅我今天，冒昧地拉着你聊这个话题 —— <font color="blue">数学</font>。</p>
+<p>数学这个话题，是我一直想分享，但又不敢分享的。</p>
+<p>为什么？</p>
+<p><font color="blue">因为，它太难了</font>。</p>
+<p>这两个字，简直就是一个抽象扭曲的魔鬼。甚至，有同学在报考大学专业的时候说，<font color="blue">只要不学数学，选什么专业都行！</font></p>
+<p>我理解。我明白。</p>
+<p>可是，对大部分人来说，学数学，不是为了解开数学题，不是为了当数学家，而是为了培养数学思维。</p>
+<p>数学思维，不仅能让你登上更高的高度，开拓你的眼界，也能够帮你建立一些正确的常识，让你少走一些弯路，并且让你在人生的每一个岔路口，有更多更多的选择。</p>
+<p>今天我能够给企业做战略咨询，能够快速洞察一件事物的本质，其实，最最根本的能力，就来自于数学思维。</p>
+<p>可是，数学还是太难了，我学不会怎么办？</p>
+<p>解数学题也许很难，数学考试拿满分也许很难，但是，只要你愿意，培养自己的数学思维其实并不难。</p>
+<p><font color="blue">今天的文章会有些长，内容有点多，但我会尽可能地用我绵薄的知识，把它讲得更好玩一些。</font></p>
+<p><font color="blue">相信我，坚持看完，你会有一些小启发的。</font></p>
+<h2 id="0x01-数学，逻辑的产物"><a href="#0x01-数学，逻辑的产物" class="headerlink" title="0x01 数学，逻辑的产物"></a>0x01 数学，逻辑的产物</h2><p>什么？你还是抵触？为什么要抵触？</p>
+<p>好吧。我试着猜猜，你看看是不是这么回事。</p>
+<p><font color="blue">很多人学了十几年的数学，一离开学校，根本不知道数学到底有什么用。</font></p>
+<p>语文，也很难学。但学好语文，起码能写出动人的情书。</p>
+<p>英语，还是很难学。但学好英语，起码出国旅游的时候不需要请翻译。</p>
+<p>数学…我一直觉得数学挺简单的，加减乘除。</p>
+<p><font color="blue">直到…三角函数出现在我生命里的那一天。</font></p>
+<p><img src="./02.png"></p>
+<p>自打 sin 和 cos 出现起，老师不再亲切了，课本变成天书了，我的世界也开始变得灰暗了。谁能告诉我，学这些三角函数有什么用？我保证以后不碰三角形的物体还不行吗？</p>
+<p><font color="blue">为何数学恐怖如斯？</font></p>
+<p>不妨试着想象一下，数学，就是一座高楼大厦。</p>
+<p>那，这座大厦是怎么一步一步被搭建起来的呢？</p>
+<p>你看，数学的世界里，有很多的公理。</p>
+<p>比如说，任意两个点可以通过一条直线连接；任意线段能无限延长成一条直线；给定任意线段，可以以其一个端点作为圆心，该线段作为半径做一个圆；所有直角都全等；若两条直线都与第三条直线相交，并且在同一边的内角之和小于两个直角和，则这两条直线在这一边必定相交。</p>
+<p><font color="blue">头都晕了！</font></p>
+<p>但你可能已经想到了。<font color="blue">是的，这是欧氏几何的5条基本公理。</font></p>
+<p>从这5条公理出发，用纯逻辑推理的方法，可以推导出无数条定理。</p>
+<p>比如说，每一条线的角度都是180度；三角形的内角和等于 180 度；过直线外的一点，有且只有一条直线和已知直线平行……</p>
+<p>这就是一幢名叫欧氏几何的大厦。</p>
+<p>你发现了吗？<font color="blue">数学，本来就是逻辑的产物。</font></p>
+<p>可如果，我从这幢大厦里，随机地抽出一块产物递给你呢？</p>
+<p>这块产物原本是用来解决一个什么样的问题的？不知道。是从哪条公理推导出来的？也不知道。是怎么推导出来的？还是不知道。</p>
+<p>不知道怎么办？</p>
+<p><font color="blue">不需要知道，记下来就行了。</font>可谁又能记下一整座大厦呀。</p>
+<p>学的时候昏昏沉沉，考的时候自然天旋地转。</p>
+<p>可是，你相信吗？</p>
+<p><font color="blue">所有的数学，都是为了解决有趣的问题。</font></p>
+<p>你不信？</p>
+<p>我举个例子。</p>
+<h2 id="0x02-进制，是计数的智慧"><a href="#0x02-进制，是计数的智慧" class="headerlink" title="0x02 进制，是计数的智慧"></a>0x02 进制，是计数的智慧</h2><p>先抛一个问题吧。</p>
+<p>你知道，为什么计算机要用二进制吗？</p>
+<p>好吧。这个问题可能有点简单。因为计算机的各个门电路，只有 “开” 和 “关” 两种状态。那就用 “0” 来表示关，用 “1” 来表示开。简单、方便。</p>
+<p><font color="blue">既然这么简单，可为什么绝大部分的国家，到最后采用了十进制呢？</font></p>
+<p>是为了解决计数的问题。</p>
+<p>我今天采回了一批果子，和你们共享。你家分多少颗，他家分多少颗，这就得有个数。</p>
+<p>怎么记这个数呢？用计算器吗？进制诞生的时候，不光是没有计算器，恐怕是连本子都没有。</p>
+<p>那怎么办？</p>
+<p><font color="blue">于是，拥有高等智慧的人类，不约而同地望向了自己的双手。</font></p>
+<p>这十根手指，不就是天赐的计算器吗？分一颗，掰一根。分两颗，掰两根。</p>
+<p>分十一颗…好吧，再掰一轮。</p>
+<p><font color="blue">可是，既然十进制是天赐的宝物，为什么还有十二进制呢？</font></p>
+<p>比如说，星座，是十二进制的。生肖，也是十二进制的。</p>
+<p>为什么？是因为古代有一个特殊的种族，长了十二根手指吗？</p>
+<p>那倒不是。其实答案，依然在你的手上。</p>
+<p>如果，你不嫌弃的话，我想邀请你和我一起做这样的一套动作。</p>
+<p>第一步，张开你的右手。</p>
+<p>第二步，移动你的大拇指，放到食指最下面的指节上，并默念：1。然后向上移动你的大拇指，放到食指中间的指节上，并默念：2。再向上移动，并默念：3。</p>
+<p>第三步，移动你的大拇指，放到中指最下面的指节上，并默念：4。</p>
+<p>……</p>
+<p>最终，你会成功地数到12。</p>
+<p>怎么样？算出我的财运了吗？能和我说说吗？</p>
+<p>不闹了。这就是十二进制。不是有人长了十二根手指头，而是因为有的人习惯掰手指，有的人习惯点指节。</p>
+<p><font color="blue">那那那…为什么还有六十进制呢？</font></p>
+<p>比如说，闹钟，是六十进制的。甲子纪年法，也是六十进制的。</p>
+<p>不卖关子了。答案，仍然在你的手上。</p>
+<p>有的人习惯掰手指，有的人习惯点指节。那把 “掰手指” 和 “点指节” 结合一下，就是六十进制了。</p>
+<p>你看，用右手掰手指，能计五个数。用左手点指节，能计十二个数。</p>
+<p>是的，你已经想到了。五乘以十二，就是六十。</p>
+<p><font color="blue">你再猜猜，这个世界上，有没有二十进制呢？</font></p>
+<p>当然。人类有双手双脚，共计二十个指头，当然也会有二十进制的计数法。据说，玛雅人用的就是二十进制。</p>
+<p>至于二十进制为什么很少被使用的话…</p>
+<p>大概是因为用脚计数不文明吧。</p>
+<p><font color="blue">二进制，十进制，十二进制，六十进制，二十进制，都是为解决有趣的问题而生的。</font></p>
+<p>想象一下，如果小学的数学老师，真的带着你掰了一节课的手指，你还会忘记这些知识吗？</p>
+<p>我猜，不会的。因为你知道，那些数学公式，投射到现实世界里，到底是为了解决一个什么样的问题。</p>
+<p>我再举个例子。</p>
+<h2 id="0x03-口算，是汉语的音律"><a href="#0x03-口算，是汉语的音律" class="headerlink" title="0x03 口算，是汉语的音律"></a>0x03 口算，是汉语的音律</h2><p>也许，你觉得自己的数学成绩是一场灾难。</p>
+<p>可你知道吗？和世界上其他国家的同学比起来，你有着得天独厚的优势。</p>
+<p>为什么？</p>
+<p><font color="blue">因为汉语，在帮你学数学。</font></p>
+<p>看到这里，你可能会有点疑惑。学数学，和汉语有什么关系？</p>
+<p>我举个例子。</p>
+<p>如果你愿意的话，请口算一下，13 乘以 9，等于多少？</p>
+<p>没错，是 117。</p>
+<p>请问，你是怎么算出来的呢？</p>
+<p>我猜猜看，是不是 “三九二十七”，“一九得九”，二十七加九十，得出的 117 ？巧了，我也是这么算的。</p>
+<p>我想再问一个 “无聊” 的问题：这个 “三九二十七”，是哪来的？</p>
+<p><font color="blue">来自一张流淌在血液里的表格 —— 九九乘法表。</font></p>
+<p><img src="./05.png"></p>
+<p>是的。我和你一样，也背过这张九九乘法表。我们今天所拥有的口算能力，都建立在这张表的基础之上。</p>
+<p>可是你知道吗？如果你在一些外国友人的面前，通过口算得出了 13 乘以 9 等于 117，他会像看神仙一样看着你的。</p>
+<p>为什么？因为在这个世界上的很多国家，是没有九九乘法表的。</p>
+<p><font color="blue">没有九九乘法表？那怎么口算？</font></p>
+<p>挺新奇的。我试着讲给你听。</p>
+<p>比如说，古埃及人。</p>
+<p>很久很久以前，古埃及人还生活在国王的统治之下。耕田种地，那是要交税的。</p>
+<p>怎么交？</p>
+<p>按土地面积交。横着走 13 步，竖着走 9 步，就是这块土地的面积。</p>
+<p>可是，没有九九乘法表，13 乘以 9 要怎么算呢？</p>
+<p><font color="blue">古埃及人，是用堆石头的方法来解决的。</font></p>
+<p>怎么堆？</p>
+<p>第一行，先在左手边，放下 13 颗石子。再在右手边，放下 1 颗石子。</p>
+<p>那第二行呢？要怎么堆？</p>
+<p><font color="blue">翻倍。</font>先在左手边，放两次 13 颗，也就是 26 颗。再在右手边，放两次 1 颗，也就是 2 颗。</p>
+<p>第三行，也是同样的道理。左手边是 26 的翻倍 52 颗，右手边是 2 的翻倍 4 颗。</p>
+<p>那要堆到什么时候？</p>
+<p><font color="blue">堆到右手边能加出9的时候。</font></p>
+<p>你看，右手边的第一行，是1颗石子。第四行，是 8 颗石子。一共就是 9 颗。</p>
+<p>左手边的第一行，是 13 颗石子。第四行，是 104 颗。一共就是 117 颗。</p>
+<p>天啊，这也太神奇了。</p>
+<p>还有吗？</p>
+<p>再比如说，俄罗斯人。</p>
+<p><font color="blue">战斗民族是怎么解决乘法问题的呢？</font></p>
+<p>第一行，先在右手边，写上 13。再在左手边，写上 9。</p>
+<p>第二行，在右手边减半（6.5），但只取整数，写上 6。再在左手边，翻倍，写上 18。</p>
+<p>第三行，右手边就是 3，左手边就是 36。</p>
+<p>第四行，右手边就是 1，左手边就是 72。</p>
+<p><font color="blue">有趣的事情又出现了。</font></p>
+<p>右手边，有三个奇数：13，3，1。三个奇数的左手边，对应着三个数字：9，36，72。</p>
+<p><code>9 + 36 + 72</code>。没错，也是 117。</p>
+<p>其实，不光是古埃及和俄罗斯，这个世界上，还有各种各样五花八门的乘法计算方式。</p>
+<p>虽然，这些计算方式看上去很“怪异”。但是，准确且有效，就是计算的意义。</p>
+<p><font color="blue">可是，在效率上，几乎没有任何一种计算方式，能够媲美九九乘法表。</font></p>
+<p>既然如此，没有九九乘法表的国家，为什么不引进呢？</p>
+<p><font color="blue">答案是，语言。</font></p>
+<p>汉语中的数字，一、二、三 … 九，都是单音节的。英语中的数字，one， two， three … nine，既有单音节，又有双音节。</p>
+<p>我们小时候背的九九乘法表，朗朗上口，音律感特别强。</p>
+<p>想象一下，英语世界的孩子们要是背九九乘法表，那得乱成什么样？</p>
+<p>俄罗斯的孩子说，你们聊，我先走了。</p>
+<p>你发现了吗？数学的背后，就是一个又一个有趣的问题。</p>
+<p><font color="blue">数学，就是用来窥探万物本质的。</font></p>
+<h2 id="0x04-条件概率，是骗子的把戏"><a href="#0x04-条件概率，是骗子的把戏" class="headerlink" title="0x04 条件概率，是骗子的把戏"></a>0x04 条件概率，是骗子的把戏</h2><p>我到今天还能记起，我在南京大学的第一堂数学课。这堂课的名字叫做“概率”。</p>
+<p>概率？这不是高中就学过的知识吗？</p>
+<p>于是，数学老师用“条件概率”，给了我们一个下马威。</p>
+<p><font color="blue">什么是条件概率？</font></p>
+<p>老师出的那道题，是这么说的。</p>
+<p>“有一对父母，生了两个小孩。已知其中一个是女孩，请问，另外一个也是女孩的概率是多少？”</p>
+<p>非男即女，50% 吗？这应该明显不对，这道题不可能这么简单吧。</p>
+<p>25% ？也不对。</p>
+<p>那，怎么来思考这个问题呢？</p>
+<p><font color="blue">首先，站在最顶端的位置（父母）来思考。</font>生孩子，肯定是有先后的。先生一胎，再生二胎。非男即女，所以有四种不同的结果：男男、男女、女女、女男。每种结果的可能性各占 25%。</p>
+<p>这应该挺容易理解的。</p>
+<p>但是，题目中有一个隐藏的条件：<font color="blue">已知其中一个是女孩。</font></p>
+<p>什么意思？</p>
+<p>简单来说就是，不符合这个条件的样本“男男”，就不在讨论的范围之内。</p>
+<p>也就是说，只有 “男女、女女、女男” 三个样本。</p>
+<p><font color="blue">所以，其中一个是女孩，另外一个也是女孩的概率，是三分之一。</font></p>
+<p>这就是条件概率。</p>
+<p><font color="blue">头又开始痛了…</font></p>
+<p>不是说，窥探万物本质吗？条件概率，能窥探什么？生二胎的心理预期吗？</p>
+<p>别着急。我斗胆试着点一点。</p>
+<p>假如，你想知道中国有多少孩子喜欢书法。</p>
+<p>如果你在学校里发问卷，调查的结果可能是 20%。如果你在兴趣班里发问卷，调查的结果大概会高一些，40%。如果你在书法班发，那结果也许就是 80%。</p>
+<p>为什么？</p>
+<p>因为 “条件” 变了。</p>
+<p>那你猜猜看，哪个行业的人，用 “条件概率” 用得最熟练？</p>
+<p>好吧。小标题已经出卖了我。</p>
+<p>你大概也有过这样的经历。</p>
+<p>你接到一个陌生的来电，电话的那一头说，我是你的领导，我现在遇到了一点情况，给我转个几万块钱，周一我到办公室还你。</p>
+<p>浓重的口音，磕巴的发言，一点专业水准都没有。<font color="blue">简直是把 “骗子” 两个字写在了脸上。</font></p>
+<p>这么蠢，能骗得到人吗？</p>
+<p><font color="blue">还真能。因为骗子特别擅长用 “条件概率” 来管理他的样本。</font></p>
+<p>什么意思？</p>
+<p>在骗子眼里，这个世界上只有两种人。一种是容易上当的，一种是不容易上当的。</p>
+<p>和不容易上当的人通上一个小时的电话，你还是骗不了他。</p>
+<p>可如果，把这一个小时花在容易上当的人身上，成功率就能大大提高。</p>
+<p><font color="blue">也就是说，骗子要提前把容易上当的人，筛选出来。</font></p>
+<p>可是，容易上当的人，也不会把这几个字写在脸上啊。怎么筛选？</p>
+<p><font color="blue">一开始就表现得像一个骗子。</font></p>
+<p>我都表现得这么明显了，你居然还能跟我聊下去？</p>
+<p>要么，你是小爱同学。要么，你就是我的目标客户。</p>
+<p>如果你一听就知道我是骗子，很生气，啪的一声挂掉了电话。</p>
+<p>太好了，反正我也骗不到你，我们各自安好，不要浪费彼此的时间。</p>
+<p><font color="blue">聪明人，一下子就被筛除掉了。</font></p>
+<p>这就是骗子的小把戏。</p>
+<h2 id="0x05-数学期望，是赌徒的迷宫"><a href="#0x05-数学期望，是赌徒的迷宫" class="headerlink" title="0x05 数学期望，是赌徒的迷宫"></a>0x05 数学期望，是赌徒的迷宫</h2><p>聊到概率，就绕不开一项实验。</p>
+<p>这项实验叫做：带编号的立方体重复性概率试验。</p>
+<p><font color="blue">坊间俗称，赌大小。</font></p>
+<p>具体怎么赌呢？</p>
+<p>就像电视剧里播放的那样。庄家把三个骰子放进骰盅，用随机的力度、幅度、次数摇动骰盅，并在随机的时间之后停止。</p>
+<p><font color="blue">然后，请下注。</font></p>
+<p><img src="./08.png"></p>
+<p>是买大小好呢？还是买三个六好呢？</p>
+<p><font color="blue">这就涉及到了一个数学概念 —— 数学期望。</font></p>
+<p>怎么算呢？</p>
+<p>如果，你花一块钱买了大。</p>
+<p>买中，就能收益一块钱。买失，就会损失一块钱。买中大的概率，是 48.6%。（为了减轻头疼的症状，计算过程就不展开了）</p>
+<p>所以，买大的数学期望是：<code>1 * 48.6% + (-1) * 51.4% = -0.0278</code>。</p>
+<p>这就意味着，如果你不停地买，不停地买，每买一次，就要亏掉 0.0278 块钱。</p>
+<p>如果，你花一块钱买了三个六。</p>
+<p>买中，太厉害了，收益 149 块钱。买失，还是损失一块钱。看上去，是不是很划算？</p>
+<p>可是，买中三个六的概率，只有可怜的 0.46%。</p>
+<p>所以，买三个六的数学期望是：<code>149 * 0.46% + (-1) * 99.54% = -0.31</code>。</p>
+<p>这就意味着，如果你不停地买这种以小博大的三个六，每买一次，就要亏掉 0.31 块钱。</p>
+<p>买大小，买中的概率更大，可还是在亏损。</p>
+<p>买三个六，看起来很划算，其实比买大小亏得更多。</p>
+<p>那怎么买？</p>
+<p><font color="blue">这还用想？这是赌徒的迷宫，当然是站起来就走啊！</font></p>
+<p>这就是 “久赌必输” 的逻辑。</p>
+<h2 id="0x06-大数定律，是系统的好运"><a href="#0x06-大数定律，是系统的好运" class="headerlink" title="0x06 大数定律，是系统的好运"></a>0x06 大数定律，是系统的好运</h2><p>闹了半天，数学书里的这些东西，难道就是用来做坏事的吗？</p>
+<p>闹了半天，数学教的这些概率、数学期望，就是用来做坏事的吗？</p>
+<p>当然不是。<font color="blue">商业的底层逻辑，同样是数学。</font></p>
+<p>比如说，风险投资。风投，就是一种特别典型的，系统性地用概率和数学期望来赚钱的方式。</p>
+<p>什么意思？</p>
+<p>假如一家创业公司，成功的概率有5%，成功之后，利润是成本的20倍。</p>
+<p>那么，这家创业公司值不值得投资？</p>
+<p><font color="blue">理论上来说，值得。</font></p>
+<p>为什么？</p>
+<p>因为它的数学期望大于 1。</p>
+<p>可是，即便一件事情的数学期望大于1，这件事情值得去做。</p>
+<p>但是对于这位创业者来说，成功的概率只有 5%。</p>
+<p>这个概率实在是太小了。</p>
+<p>他的成功，是极度不确定的。</p>
+<p><font color="blue">5% 的成功率，就意味着还有 95% 的概率会失败。</font></p>
+<p>也就是说，我投资他，会有 95% 的概率血本无归。</p>
+<p>那怎么办呢？</p>
+<p><font color="blue">把个体的不确定性，变成群体的确定性。</font></p>
+<p><font color="blue">这就是 “大数定律”。</font></p>
+<p>你抛一枚均匀的硬币，落地后正面向上，或者反面向上的概率，都是 50%。</p>
+<p>那么你抛两次硬币，就一定会出现一次正面向上，一次反面向上吗？</p>
+<p>不一定。</p>
+<p>但是如果你抛 1000 次呢？</p>
+<p>结果几乎就是一定的了。</p>
+<p>正面向上和反面向上的次数，都接近于 500 次。</p>
+<p>只要你重复实验的次数足够多，最终的结果就会比较稳定，趋近于期望值。</p>
+<p><font color="blue">风险投资，也是这个道理。</font></p>
+<p>假如一个人创业，成功的概率是 5%。我投资他一个人，有 95% 的概率血本无归。</p>
+<p>那如果我投资 20 个这样的人呢？</p>
+<p>20 个人中，只要有 1 个人创业成功了，我就能赚到超过 20 倍的钱，对我来说就是划算的。</p>
+<p>那么，20 个人中，至少有 1 个人成功的概率是多少？</p>
+<p>是 64.2%。（<code>1 - 0.95^20 = 64.2%</code>）</p>
+<p><font color="blue">投资 1 个人，我投资成功的概率是 5%。</font></p>
+<p><font color="blue">而投资 20 个人，我投资成功的概率是 64.2%。</font></p>
+<p>我投资成功的概率就大大增加了。</p>
+<p>这就是风险投资的逻辑。</p>
+<p>在真实的商业世界中，每个创业者的个人水平不同、选择的赛道不同、商业的逻辑也不同。</p>
+<p>他们的成功概率都是不同的。有的人成功概率是 1%，有的人是 5%，而有的人是 8%。</p>
+<p><font color="blue">但总体来说，创业是九十九死一生的游戏。5% 的成功概率，已经算是高的了。</font></p>
+<p>投资人所做的事情，就是靠自己的经验和眼光，筛选出那些成功概率更高、回报倍数更高的人。</p>
+<p><font color="blue">然后，一次去投很多很多人，分散风险。</font></p>
+<p>这样他们大概率就能投资成功，获得巨大的回报。</p>
+<p>这就是把个体的不确定性，变为群体的确定性。</p>
+<p>风险投资，就是这样系统地靠大数定律赚钱的。</p>
+<h2 id="0x07-微积分，是动态的眼光"><a href="#0x07-微积分，是动态的眼光" class="headerlink" title="0x07 微积分，是动态的眼光"></a>0x07 微积分，是动态的眼光</h2><p>如果，在学生时代，你对数学老师说：</p>
+<p>老师，我觉得数学一点用都没有。<font color="blue">我不明白，学数学，到底是为了什么？</font></p>
+<p>我相信，大部分的数学老师，可能都会给出一个同样的回答：</p>
+<p><font color="blue">学数学，是为了锻炼你的数学思维。</font></p>
+<p>什么是数学思维？</p>
+<p>比如说，我们前面说到的公理体系，就是一种几何思维。你会明白，一家企业的 “大厦”，是怎样一步一步搭建出来的。</p>
+<p>再比如说，我们前面说到的概率体系，就是一种概率思维。你会明白，正确的事，是值得重复去做的。</p>
+<p>还有吗？</p>
+<p>好吧。这个问题太深奥了，我实在是没有办法穷举。</p>
+<p><font color="blue">再举三个例子吧。微积分、代数、博弈论。</font></p>
+<p>别怕，我们一个一个来说。</p>
+<p>很多人一听说微积分，想到那些复杂的微分方程、积分方程，就头疼。</p>
+<p><font color="blue">我们今天不聊方程，只聊微积分的思维方式。</font></p>
+<p>微积分的思维方式其实特别简单，也正是因为简单到了极致，所以非常漂亮。</p>
+<p>微积分是牛顿发明的。所以，他为什么要发明微积分呢？</p>
+<p>你可能会说，是为了在考试中虐待我们。</p>
+<p>不是的。</p>
+<p>其实在牛顿以前，人们对速度这些变量的了解，仅限于平均值的层面。</p>
+<p>比如说，我知道一段距离的长短，和走完这段距离的时间，就可以算出一个平均速度。</p>
+<p>但是，每个瞬间的速度，我是不了解的。</p>
+<p><font color="blue">于是，牛顿就发明了微分，用无穷小这种概念来帮助我们把握瞬间的规律。</font></p>
+<p>而积分跟微分正好相反，它反映的是瞬间变量的积累效应。</p>
+<p>说了半天，到底什么是微积分？</p>
+<p>我举个简单的例子。</p>
+<p>一个物体静止不动，你推它一把，会瞬间产生一个加速度。</p>
+<p>但有了加速度，并不会瞬间产生速度。</p>
+<p>加速度累积一段时间，才会有速度。</p>
+<p>而有了速度，并不会瞬间产生位移。</p>
+<p>速度累积一段时间，才会有位移。</p>
+<p>宏观上，我们看到的是位移。但是从最微观的角度来看，其实是从加速度开始的。</p>
+<p><font color="blue">加速度累积，变成速度。速度累积，变成位移。</font></p>
+<p><font color="blue">这，就是积分。</font></p>
+<p>反过来说，物体之所以会有位移，是因为速度在一段时间的累积。</p>
+<p>而物体之所以会有速度，是因为加速度在一段时间的累积。</p>
+<p>位移（相对于时间）的一阶导数，是速度。</p>
+<p>而速度（相对于时间）的一阶导数，是加速度。</p>
+<p>宏观上，我们看到的是位移，但是从微观上来看，其实是每一个瞬间速度的累积。</p>
+<p>而位移的导数，就是从宏观回到微观，去观察它“瞬间”的速度。</p>
+<p>这，就是微分。</p>
+<p><font color="blue">我的头…</font></p>
+<p><font color="blue">所以，微积分跟我有什么关系？</font></p>
+<p>理解了微积分，你看问题的眼光，就会从静态变为动态。</p>
+<p>什么意思？</p>
+<p><font color="blue">人类，就是微积分的例子。</font></p>
+<p>你今天晚上努力学习了，但是一晚上的努力，并不会直接变成你的能力。</p>
+<p>你的努力，得累积一段时间，才会变成你的能力。而你有了能力，也不会马上就出成绩。</p>
+<p>你的能力，得累积一段时间，才会变成你的成绩。而你有了一次成绩，还是不会马上就得到领导的赏识。</p>
+<p>你的成绩，得累积一段时间，才会得到领导赏识。</p>
+<p><font color="blue">从努力，到能力，到成绩，到赏识，它是有一个过程的，有一个积分的效应。</font></p>
+<p>日积月累，水滴石穿，不是尽人皆知的故事吗？</p>
+<p>不是的。你会发现，有很多人其实并不相信这个过程。</p>
+<p>“我今天这么努力地工作了，一分钟都没摸鱼，领导为什么还不赏识我？”</p>
+<p>“我已经推过这个飞轮了，为什么它还没有转起来？”</p>
+<p><font color="blue">他忘记了。忘记了过程的力量。</font></p>
+<p>反过来说，有些人可能一直以来工作都做得特别好。但是从某个时候开始，因为一些原因，慢慢开始懈怠了。</p>
+<p>他的努力程度下降了。但这个时候，他的能力并不会马上跟着下降。可能过了三四个月，才会慢慢显示出来。</p>
+<p>他会发现，做事情开始变得不能从心所欲了。然后又过了三四个月，他做出来的东西，领导开始越来越看不上了。</p>
+<p>他可能会觉得，这有什么大不了的，我不过就是这一件事没做好呗。</p>
+<p><font color="blue">但他忘记了。忘记了这仍然是一个 “过程”。</font></p>
+<p>早在七八个月前他不努力的时候，一切都埋下了种子。</p>
+<p><font color="blue">努力的时候，都希望瞬间被认可。</font></p>
+<p><font color="blue">出事的时候，却不去想几个月之前就开始忽视的蚁穴。</font></p>
+<h2 id="0x08-代数，是方向的价值"><a href="#0x08-代数，是方向的价值" class="headerlink" title="0x08 代数，是方向的价值"></a>0x08 代数，是方向的价值</h2><p>聊完微积分，我们再来聊聊代数。</p>
+<p>一开始，我们学的是自然数，包括0和正整数。 0，1，2，3，4，5…</p>
+<p>然后是整数，包括了自然数和负整数。… -3，-2，-1，0，1，2，3…</p>
+<p>然后是有理数，包括了整数和分数。</p>
+<p><font color="blue">在学习分数之前，数字在我们的认知中，是离散的，是数轴上一个又一个的点。</font></p>
+<p>而有了分数，数字就开始变得连续了。</p>
+<p>有理数之后，我们又学了无理数。无理数，就是无限不循环小数，比如π。</p>
+<p>任何一个有理数，都可以由两个数相除而得来。但是无理数是无限不循环的小数，你找不到任何规律。</p>
+<p><font color="blue">你会相信，世界不只是对和错、大和小。点和点之间，还有一个充满灰度的空间。</font></p>
+<p><font color="blue">你会相信，在这个世界上，有些事情就是复杂到没有规律的。</font></p>
+<p>π 就是 π，根号就是根号，它就是很复杂，复杂到没有任何一个简单粗暴的方式能来定义它。</p>
+<p>你要承认它的客观存在，承认这个世界的复杂性。</p>
+<p>你看，我们就是在各种数里，一步一步地理解了这个复杂的世界。</p>
+<p>再复杂一点。<font color="blue">数这个东西，除了大小，其实还有一个非常重要的属性：方向。</font></p>
+<p>在数学上，我们把有方向的数字叫做向量。</p>
+<p><font color="blue">数字，还非得加个方向，有意义吗？</font></p>
+<p>我举个例子。</p>
+<p>假如，你今天拖着一个箱子往东走。你力气很大，有 3000N。</p>
+<p>这时，有人非要跟你对着干。他把箱子往西拖，但力气没你大，只有 2000N。</p>
+<p>结果呢？</p>
+<p>这个箱子还是会跟着你往东走，只不过只剩下 1000N 的力，它的速度会慢下来。</p>
+<p><font color="blue">可如果拖着的不是箱子，而是人呢？</font></p>
+<p>两位得力战将，向着完全相反的方向发力。与其互相牵制，那可能还不如完全交给其中一个人来做。</p>
+<p>这挺容易理解。但还有一种情况。</p>
+<p>做同一件事情，有的人想往东走，有的人想往西走，有的人想往北走，你呢？</p>
+<p><font color="blue">你并不知道哪个方向是正确的。</font></p>
+<p>那怎么办？</p>
+<p>你就让他们都去干这件事吧。</p>
+<p>虽然大家的方向不同，会互相牵制，力的大小会有损耗。</p>
+<p>但是最终事情的走向，会是那个相对正确的方向。</p>
+<h2 id="0x09-博弈，是共赢的胸怀"><a href="#0x09-博弈，是共赢的胸怀" class="headerlink" title="0x09 博弈，是共赢的胸怀"></a>0x09 博弈，是共赢的胸怀</h2><p>最后，我们来说说博弈论。</p>
+<p>什么是博弈论？</p>
+<p>我们每天都要做很多很多大大小小的决策。</p>
+<p>比如说，我午饭是吃饭、吃面、还是吃饺子？</p>
+<p>这就是一个决策。</p>
+<p>这个决策只跟我自己有关，并不会涉及到别人。</p>
+<p>但总有一些决策，是需要涉及到别人的。</p>
+<p><font color="blue">涉及到别人的决策逻辑，我们把它叫做博弈论。</font></p>
+<p>比如说，围棋。</p>
+<p>每走一步棋，我的所得就是你的所失，我的所失就是你的所得。</p>
+<p><font color="blue">这是博弈论中典型的零和博弈。</font></p>
+<p>在零和博弈中，你要一直明白，你要的是全局的最优解，而不是局部的最优解。</p>
+<p>什么意思？</p>
+<p>下围棋的时候，不是在每一步上，你都要吃掉对方最多的子。</p>
+<p>你要让终局所得最多，就要步步为营，讲究策略。</p>
+<p>有时候让子是为了以退为进。始终记得，你是为了全局最优，而不是局部最优。</p>
+<p><font color="blue">这就是所谓的，善弈者，通盘无妙手。</font></p>
+<p>创业如是，商业如是，人生亦如是。</p>
+<p>不要总想着每一件事情都必须一帆风顺，如果你想得到最好的结果，可能在一些关键步数上就要做些妥协。</p>
+<p><font color="blue">除了零和博弈，还有一种博弈，叫做非零和博弈。</font></p>
+<p>非零和博弈讲究共赢。</p>
+<p>共赢的前提，是建立信任。但建立信任，其实特别不容易。</p>
+<p><font color="blue">为什么？因为考验人性。</font></p>
+<p>假如，市场上现在需要 100 万台冰箱。</p>
+<p>一个厂家发现了这个需求，决定马上生产 100 万台。</p>
+<p>另一个厂家发现了这个需求，也决定马上生产 100 万台。</p>
+<p>第三个厂家也是一样。</p>
+<p>……</p>
+<p>结果，每一个厂家都生产了 100 万台，供大于求，大部分厂家都会遭受很大的损失。</p>
+<p>如果这个时候，大家能够建立起信任，说好 10 个厂家，每个人都只生产 10 万台，这样正好能够满足需求，每个厂家都能够赚到钱，大家就能达成共赢。</p>
+<p>你看，大团圆结局。</p>
+<p><font color="blue">可是，你很清楚，总会有人打破约定的。</font>凭什么要求我只生产 10 万台？我偏不。</p>
+<p>只要有一个厂家没有遵守约定，别人都生产 10 万台，但是他生产 30 万台，这个时候，就多出来了 20 万台，大家就会因此遭受损失。</p>
+<p>建立这种信任，特别不容易，但是这件事情在商业世界里非常重要。</p>
+<p>那怎么才能建立信任呢？</p>
+<p>我斗胆提两个建议。</p>
+<p><font color="blue">第一个建议是，你要找到那些能够建立信任的伙伴。</font></p>
+<p>有些人，是永远都无法和他达成共赢的，这样的人你就要远离。</p>
+<p><font color="blue">第二个建议是，你要主动释放信任。</font></p>
+<p>你要先让别人知道你是值得信任的人，这样想要与你达成共赢的人，才会来找到你。</p>
+<h2 id="0xFF-最后的话"><a href="#0xFF-最后的话" class="headerlink" title="0xFF 最后的话"></a>0xFF 最后的话</h2><p>数学的星空，太浩瀚了。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/insights/zhe-jiu-shi-shu-xue/">https://exp-blog.com/insights/zhe-jiu-shi-shu-xue/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%BD%AC%E8%BD%BD/">
+                                    
+                                        <span class="chip bg-color-reproduced">转载</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                    
+                                        <span class="chip bg-color">数学</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/tools/adb-jie-suo-shou-ji-zhi-yin/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/tools/06.png" class="responsive-img" alt="利用 ADB 解锁手机指引">
+                        
+                        <span class="card-title">利用 ADB 解锁手机指引</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    开发/工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/adb/">
+                        <span class="chip bg-color">adb</span>
+                    </a>
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/tools/githubactions-zi-dong-fa-bu-jar-dao-maven-zhong-yang-cang-ku-quan-liu-cheng-zhi-yin/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/tools/03.webp" class="responsive-img" alt="Github Actions 自动发布 JAR 到 Maven 中央仓库全流程指引">
+                        
+                        <span class="card-title">Github Actions 自动发布 JAR 到 Maven 中央仓库全流程指引</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    开发/工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/maven/">
+                        <span class="chip bg-color">maven</span>
+                    </a>
+                    
+                    <a href="/tags/sonatype/">
+                        <span class="chip bg-color">sonatype</span>
+                    </a>
+                    
+                    <a href="/tags/CI-CD/">
+                        <span class="chip bg-color">CI/CD</span>
+                    </a>
+                    
+                    <a href="/tags/Actions/">
+                        <span class="chip bg-color">Actions</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

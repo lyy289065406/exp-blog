@@ -1,0 +1,2449 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="从零开始 DIFF Ragnarok 登入器教程（Nemo 版）, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>从零开始 DIFF Ragnarok 登入器教程（Nemo 版） | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/game/ro/02.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">从零开始 DIFF Ragnarok 登入器教程（Nemo 版）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Ragnarok/">
+                                
+                                    <span class="chip bg-color">Ragnarok</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/RO/">
+                                
+                                    <span class="chip bg-color">RO</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/DIFF/">
+                                
+                                    <span class="chip bg-color">DIFF</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Nemo/">
+                                
+                                    <span class="chip bg-color">Nemo</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                仙境传说
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-11-19
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-在-DIFF-之前-…"><a href="#0x00-在-DIFF-之前-…" class="headerlink" title="0x00 在 DIFF 之前 …"></a>0x00 在 DIFF 之前 …</h2><p>在解释什么是 DIFF 之前，我们需要先挑选一个用于 DIFF 的 Ragnarok 登入器。</p>
+<p>由于下面会用到 <a target="_blank" rel="noopener" href="http://nemo.herc.ws/">Nemo</a> 做 DIFF，所以可以去 <a target="_blank" rel="noopener" href="http://nemo.herc.ws/">Nemo</a> 的<a target="_blank" rel="noopener" href="http://nemo.herc.ws/">官网</a>寻找最新的韩服客户端：</p>
+<ul>
+<li>List of all <a target="_blank" rel="noopener" href="http://nemo.herc.ws/downloads/">downloads</a></li>
+<li><a target="_blank" rel="noopener" href="http://nemo.herc.ws/downloads/#downloadable-full-clients">Downloadable full clients</a></li>
+<li><a target="_blank" rel="noopener" href="http://nemo.herc.ws/downloads/#kro-mainsakray">Kro main/sakray</a></li>
+<li>选择最新的 KRO 完整客户端 RAG_SETUP_xxxxxx.exe 下载</li>
+<li>本地安装客户端</li>
+</ul>
+<p><img src="./01.png"></p>
+<blockquote>
+<p>一般情况下，不要下载 Kro zero 客户端，除非你知道它和 Kro main/sakray 的区别</p>
+</blockquote>
+<details>
+<summary>KRO:Sakray 和 KRO:Zero 的区别</summary>
+<br>
+
+<p>根据 Gravity 发布的情报：</p>
+<ul>
+<li>「RO」是指「Ragnarok Online」，等同于「KRO:Sakray」，是「主伺服器」</li>
+<li>「RO:Zero」是指「Ragnarok:Zero」，是新部署的「经典伺服器」</li>
+</ul>
+<p>「主伺服器」包含当前最新的内容（四转），但可能 Gravity 也觉得在三转之后职业系统平衡已经开始崩坏、四转之后更甚，所以「经典伺服器」应运而生。</p>
+<p>简单来说「经典伺服器」就是改善旧 RO 当时的系统，并且兼顾游戏平衡的伺服器（目前只开放进阶二转，且最高只有 Lv.130）。</p>
+<p>从媒体披露的数据来看，两者对比如下：</p>
+<ul>
+<li>Zero 基本免费</li>
+<li>Zero 的付费形态和 Sakray 不同</li>
+<li>Zero 排除了会直接影响平衡的付费道具</li>
+<li>Zero 商城主要贩卖服饰装备，预计会提供让游戏稍微便利一点的增值服务</li>
+<li>不会因为开发 Zero 而疏忽正服 Sakray 的服务</li>
+<li>Zero 的客户端（登入器）和正服 Sakray 不同</li>
+</ul>
+<blockquote>
+<p>资料来源：<a target="_blank" rel="noopener" href="https://ronews.ginyuki.com/2017/11/19/post_698.html">https://ronews.ginyuki.com/2017/11/19/post_698.html</a></p>
+</blockquote>
+</details>
+
+<hr>
+<p>但是前面所安装的客户端的启动程序 Ragexe.exe 是加壳的，无法定制改造。</p>
+<p>故这里需要还需要下载 <a target="_blank" rel="noopener" href="http://nemo.herc.ws/">Nemo</a> 已脱壳的 Ragexe.exe 启动程序：</p>
+<ul>
+<li>List of all <a target="_blank" rel="noopener" href="http://nemo.herc.ws/downloads/">downloads</a></li>
+<li><a target="_blank" rel="noopener" href="http://nemo.herc.ws/downloads/#downloadable-exe">Downloadable exe</a></li>
+<li>yyyy-MM-dd_Ragexe_xxxxxxxxxx</li>
+<li>Download methods</li>
+<li>Method 1 (not recommended)</li>
+<li>Download get_yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe and run it，这个是下载器</li>
+<li>用下载器可以真正下载一个 yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe 启动程序（已脱壳）</li>
+<li>yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe 就是接下来要 DIFF 的对象</li>
+</ul>
+<blockquote>
+<p>注意： <code>yyyy-MM-dd</code> 就是封包版本，对应服务端的 PACKETVER <code>yyyyMMdd</code></p>
+</blockquote>
+<p><img src="./02.png"></p>
+<h2 id="0x10-什么是-DIFF"><a href="#0x10-什么是-DIFF" class="headerlink" title="0x10 什么是 DIFF"></a>0x10 什么是 DIFF</h2><p>DIFF 就是对前面的 yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe 进行定制化改造、生成 Patch 的过程。当用其启动 KRO 客户端时，即可指向自己搭建的服务器进行游戏。</p>
+<p><img src="./03.png"></p>
+<p>再进一步说，其实 DIFF 就是逆向修改 exe 程序的过程，有过使用 OllyDbg 经验的同学都会知道逆向是非常繁琐、且对专业知识要求非常高的事情，即使它已经被脱壳了。</p>
+<p>因此针对 RO 逆向的工具 <a target="_blank" rel="noopener" href="https://gitlab.com/4144/Nemo.git">Nemo</a> 应运而生，它可以让任何人都能很方便地改造 Ragexe.exe。</p>
+<details>
+<summary>DIFF 的行业解释</summary>
+<br>
+
+<p>「DIFF」这个术语来源于「difference」，意指显示两个文件或数据集之间的差异。</p>
+<p>在软件开发和编程领域，「DIFF」常用于比较源代码文件的版本差异，例如常见的 git 版本差异文件就是 <code>*.diff</code>。</p>
+<p>而当提到「patch client」或客户端补丁时，「DIFF」指的是生成一个补丁文件，该文件包含了从一个版本到另一个版本所需的所有更改。</p>
+<p>在打补丁的过程中，「DIFF」文件是用来描述原始文件和修改后文件之间的变化，以便将这些变化应用到其他版本的文件上，从而实现更新而不需要替换整个文件。这种方法不仅节省了数据传输的带宽，也使得用户可以轻松地更新软件或系统。</p>
+</details>
+
+
+<h2 id="0x20-如何-DIFF"><a href="#0x20-如何-DIFF" class="headerlink" title="0x20 如何 DIFF"></a>0x20 如何 DIFF</h2><ol>
+<li>安装 <a target="_blank" rel="noopener" href="https://git-scm.com/">git</a></li>
+<li>下载最新的 Nemo: <code>git clone https://gitlab.com/4144/Nemo.git</code></li>
+<li>运行 NEMO.exe</li>
+<li>点击 Input Exe File 的 Browser 按钮，选择前面下载的 yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe</li>
+</ol>
+<p><img src="./04.png"></p>
+<ol start="5">
+<li>点击左下角 Load Client 按钮，自动读取 Ragexe 所有可定制的配置项：</li>
+</ol>
+<p><img src="./05.png"></p>
+<ol start="6">
+<li>【可选】在菜单点击 <code>Tools -&gt; Change Language -&gt; Chinese Traditional</code> 即可把 UI 不完全汉化</li>
+</ol>
+<blockquote>
+<p>目前汉化只支持繁体，不支持简体，主要是因为只有 Patches_Chinese Traditional.ini 内有汉化文本。为了便于核对，下文还是以英文演示</p>
+</blockquote>
+<p><img src="./06.png"><br><img src="./07.png"></p>
+<ol start="7">
+<li>这些配置项，有些是开关、有些需要修改值，只要点击红灯使其变绿灯、即可生效</li>
+</ol>
+<blockquote>
+<p>有些配置项是历史遗留的，会报错 missing ，因为已经找不到偏移地址了、就不要强求了</p>
+</blockquote>
+<p><img src="./08.png"></p>
+<ol start="8">
+<li>一般而言，第一次使用 NEMO 时基本都不知道哪些配置项有什么用，此时就可以通过 Load Profile 加载别人的配置项存档，再在其基础上进行修改：</li>
+</ol>
+<blockquote>
+<p>配置项存档命名为 yyyy-MM-dd_Ragexe_xxxxxxxxxx_patched.exe.log</p>
+</blockquote>
+<p><img src="./09.png"></p>
+<ol start="9">
+<li>修改过配置项后，可以通过 Save Profile 保存配置项存档、以供以后使用：</li>
+</ol>
+<p><img src="./11.png"><br><img src="./10.png"></p>
+<ol start="10">
+<li>定制配置项完成后，点击 Output Patched 的 Browser 按钮，设置要生成的 exe 文件名（任意即可）</li>
+<li>点击左下角的 Apply Selected 生成 Patch 补丁，得到经过 DIFF 改造的 RO 启动程序（将其放到 RO 客户端内即可运行）</li>
+</ol>
+<blockquote>
+<p>Apply Selected 的同时也会保存配置项存档</p>
+</blockquote>
+<p><img src="./12.png"></p>
+<h2 id="0x30-DIFF-常用配置项说明"><a href="#0x30-DIFF-常用配置项说明" class="headerlink" title="0x30 DIFF 常用配置项说明"></a>0x30 DIFF 常用配置项说明</h2><p>配置项会随着 <a target="_blank" rel="noopener" href="https://gitlab.com/4144/Nemo.git">Nemo</a> 更新而变化，这里只罗列比较重要的常用配置项：</p>
+<table>
+<thead>
+<tr>
+<th align="left">配置项</th>
+<th align="left">说明</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Chat Flood Allow</td>
+<td align="left">重复发言的限制次数</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Chat Flood Remove Limit</td>
+<td align="left">移除重复发言限制</td>
+<td align="left">若启用则 Chat Flood Allow 失效</td>
+</tr>
+<tr>
+<td align="left">Enable Proxy Support</td>
+<td align="left">启用代理服务器</td>
+<td align="left">RO 的客户端在直连到服务器端后，服务端会返回真实 IP 给客户端，客户端会自动修改连接用的 IP。<br>但若服务端打开了配置 <code>hide_server_ipaddress</code>、或藏在 nginx、docker 等后面，返回的 IP 就是服务端的局域网 IP 导致客户端无法访问。<br>此选项打开后，客户端不再理会服务端返回的 IP，仅使用 <code>clientinfo.xml</code> 中配置的 IP</td>
+</tr>
+<tr>
+<td align="left">Enable DNS Support (Recommended)</td>
+<td align="left">支持域名解析 IP</td>
+<td align="left">启用此配置项后，在 <code>clientinfo.xml</code> 里面配置 <code>&lt;address&gt;</code> 的时候，支持配置域名，而不是仅仅是 IP 地址。</td>
+</tr>
+<tr>
+<td align="left">Always load Korea ExternalSettings lua file (Recommended)</td>
+<td align="left">使用韩版的内部配置文件 <code>externalsettings_*.lub</code></td>
+<td align="left">该配置文件目前主要修改两个配置：<br>1. 是否开启猫族人物创建: <code>MakeableRace = { Doram = true }</code><br>2. web 服务器地址<code>AssistAddr = "IP:3000"</code>（用于获取人物数据和公会图标，若服务不通时，登入地图后聊天框会提示“读取账号设定数据时发生错误”）</td>
+</tr>
+<tr>
+<td align="left">Remove hardcoded address/port (Recommended)</td>
+<td align="left">移除硬编码的 IP 端口</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Force Send Client Hash Packet</td>
+<td align="left">发送客户端完整性校验码</td>
+<td align="left">可以强制客户端发送登入器 Ragexe.exe 的 MD5 HASH 给服务端，以便服务端确认客户端是否有被玩家篡改过。<br>此外也有在每次 DIFF 后提示玩家需要升级客户端的效果。<br>此机制需要服务端打开 <code>client_hash_check</code> 开关才可以正常使用，详见下文安全机制配置指引</td>
+</tr>
+<tr>
+<td align="left">Additional client validation (Recommended)</td>
+<td align="left">验证登入器的有效性</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Disable Ragexe Filename Check (Recommended)</td>
+<td align="left">移除 exe 登入器名称检测</td>
+<td align="left">韩服会强制检查游戏登入器的名字必须是 Ragexe.exe，如果不是这个名字则无法启动游戏</td>
+</tr>
+<tr>
+<td align="left">Disable 1rag1 type parameters (Recommended)</td>
+<td align="left">无需使用 1rag1 参数来启动游戏主程序</td>
+<td align="left">大多数时候我们可能希望玩家双击登入器就可以启动游戏，这种情况下就需要启用此配置项。<br>但是有时候我们又不希望玩家直接启动游戏主程序，而是应该先启动更新器，再通过更新器来启动游戏主程序，这样可以强迫玩家每次启动游戏都更新。<br>此时只要不勾选此配置项，玩家直接双击登入器是无法启动游戏的，必须在启动时带上 1rag1 参数才会启动游戏。</td>
+</tr>
+<tr>
+<td align="left">Disable Hallucination Wavy Screen (Recommended)</td>
+<td align="left">移除幻觉时的波浪效果</td>
+<td align="left">这个异常状态一般是小巴风特等会施展，<br>新版本不是波浪效果，而是上下左右颠倒，<br>因为会导致客户端非常卡，建议关闭</td>
+</tr>
+<tr>
+<td align="left">Use Ragnarok Icon</td>
+<td align="left">使用 RO 预设图标</td>
+<td align="left">使用仙境传说默认图标</td>
+</tr>
+<tr>
+<td align="left">Enable Title Bar Menu (legacy)</td>
+<td align="left">启用标题栏菜单</td>
+<td align="left">关闭后会屏蔽 Windows 标准窗口的顶栏。<br>包括：窗口名称、图标，最小化、最大化、关闭按钮</td>
+</tr>
+<tr>
+<td align="left">Use borderless mode in full screen (Recommended)</td>
+<td align="left">使用无边框窗口的全屏模式</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Custom Window Title</td>
+<td align="left">自定义游戏窗口标题</td>
+<td align="left">仅支持修改为英文，搭配 <a href="./c32asm.7z">c32asm</a> 工具可以修改为中文</td>
+</tr>
+<tr>
+<td align="left">Enable /who command (Recommended)</td>
+<td align="left">开启 <code>/who</code> 命令</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Fix Camera Angles (Recommended)</td>
+<td align="left">修正镜头角度（无限制）</td>
+<td align="left">在游戏中我们可以通过按住 Shift，然后用鼠标右键按住地面来拖动镜头角度。<br>但是一般情况下只会被限制在很小一个度数内，通过这个选项可以扩大镜头角度，让你最夸张的情况下可以把镜头拉到几乎平行</td>
+</tr>
+<tr>
+<td align="left">Increase Zoom Out Max</td>
+<td align="left">取消视野范围限制</td>
+<td align="left">用鼠标滚轮可以放大缩小游戏内的场景，若启用此选项，可以将滚动距离扩大到极限，使你在游戏中可以用滚轮把镜头拉得非常远</td>
+</tr>
+<tr>
+<td align="left">Read Data Folder First</td>
+<td align="left">优先读取 data 文件夹</td>
+<td align="left">当客户端读取数据的时候，优先读取 data 目录下的内容，当 data 目录下读取不到内容后再去 GRF 文件中读取。<br>如果不勾选此选项，只会读取 GRF 文件中的内容。</td>
+</tr>
+<tr>
+<td align="left">Always read msgstringtable.txt (Recommended)</td>
+<td align="left">总是读取 <code>msgstringtable.txt</code></td>
+<td align="left">游戏内大部分【文本提示】或【界面显示的内容】都是通过此文件配置的</td>
+</tr>
+<tr>
+<td align="left">Remove Gravity Ads (Recommended)</td>
+<td align="left">移除 Gravity 的广告</td>
+<td align="left">移除重力社的广告</td>
+</tr>
+<tr>
+<td align="left">Remove Gravity Logo (Recommended)</td>
+<td align="left">移除 Gravity 的 Logo</td>
+<td align="left">移除服务器线路选择界面，以及在登录界面的重力社 Logo</td>
+</tr>
+<tr>
+<td align="left">Disable Nagle Algorithm (Recommended)</td>
+<td align="left">关闭 <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2468335.htm">Nagle</a> 网卡缓冲</td>
+<td align="left">禁止客户端使用 <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2468335.htm">Nagle</a> 算法，这个算法会消耗更多的网络流量，来降低网络延迟。<br>一般都会启用此选项（也就是说我们更希望牺牲一点点延迟，来让 RO 客户端更省流量，这样服务器的带宽压力会稍微小一些）</td>
+</tr>
+<tr>
+<td align="left">Remove Hourly Announce (Recommended)</td>
+<td align="left">关闭健康游戏提示</td>
+<td align="left">当玩家持续游戏 1 个小时或者以上时候，游戏内会出现一个公告，告诉玩家应该下线休息了</td>
+</tr>
+<tr>
+<td align="left">Translate Client (Recommended)</td>
+<td align="left">翻译登入器写死的韩文</td>
+<td align="left">翻译客户端中的一些内嵌文本，游戏有一些提示文本是写死在 exe 中的，比如捕捉宠物时候的 “请选择要捕捉的魔物” 提示，默认情况下都是韩文。<br>当勾选此配置项后，Nemo 会根据它安装目录下的 <code>PatchesTranslateClient.txt</code> 文件，将韩文的内容翻译成英文</td>
+</tr>
+<tr>
+<td align="left">Skip License Screen</td>
+<td align="left">跳过授权条款界面</td>
+<td align="left">当 <code>clientinfo.xml</code> 中的 <code>&lt;langtype&gt;</code> 为 <code>4</code> 或 <code>6</code> 的时候，启动游戏时会显示一个“协议窗口”，启用此配置项可以不显示该协议窗口</td>
+</tr>
+<tr>
+<td align="left">Use Normal Guild Brackets (Recommended)</td>
+<td align="left">改变公会名称边框</td>
+<td align="left">当 <code>clientinfo.xml</code> 中的 <code>&lt;langtype&gt;</code> 为 <code>0</code> 的时候，公会的名称（显示在角色名字旁边）会用日本格式的方括号括起来。<br>当启用此配置项时，可以强制游戏使用标准的英文方括号</td>
+</tr>
+<tr>
+<td align="left">Use Ascii on All LangTypes (Recommended)</td>
+<td align="left">使用 ASCII 编码来显示文字</td>
+<td align="left">启用此选项可以让客户端无论 <code>clientinfo.xml</code> 中的 <code>&lt;langtype&gt;</code> 是多少、或字体是什么，都一律使用 ASCII 编码来展现字符串。<br>此选项一般都会启用</td>
+</tr>
+<tr>
+<td align="left">Fix Charset For Custom Fonts</td>
+<td align="left">修正定制字体的元编码</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Use Plain Text Descriptions (Recommended)</td>
+<td align="left">使用原编码读取文字档案</td>
+<td align="left">使用系统编码读取文件，当定制过 data 时建议开启，修改内容使用 GBK 存储</td>
+</tr>
+<tr>
+<td align="left">Enable Multiple GRFs (Recommended)</td>
+<td align="left">通过 <code>DATA.INI</code> 读取多个 GRF</td>
+<td align="left">客户端会根据 DATA.INI 中配置的顺序来加载一个或者多个 GRF 文件</td>
+</tr>
+<tr>
+<td align="left">@ Bug Fix (Recommended)</td>
+<td align="left">修复 @ 符号的 Bug</td>
+<td align="left">修正一个在聊天时使用 @ 符号的问题。<br>此选项一般都会启用</td>
+</tr>
+<tr>
+<td align="left">Extend Npc Dialog Box</td>
+<td align="left">增加 input 的字数限制</td>
+<td align="left">和 NPC 对话时，有时候会让玩家输入文字，默认情况下最多只能输入2052 个字符。<br>启用此配置项后，最多可以输入 4096 个字符</td>
+</tr>
+<tr>
+<td align="left">Ignore Missing Palette Error</td>
+<td align="left">忽略缺少染色档案的错误</td>
+<td align="left">忽略调色板文件的丢失错误<br>若启用此配置项，那么碰到丢失调色板文件时，就不会出现报错提示了</td>
+</tr>
+<tr>
+<td align="left">Enforce Official Login Background</td>
+<td align="left">使用官方登入背景</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Remove Serial Display (Recommended)</td>
+<td align="left">移除右下角序号提示</td>
+<td align="left">移除服务器选择界面、登录界面的序列号显示。<br>这个序列号在没有启用 <code>Remove Gravity Ads</code> 选项时，会被显示出来，在界面底部被黑条挡住，如果按住黑条往下移动，可以在右下角看到序列号。<br>如果启用了 <code>Remove Gravity Ads</code> 选项，那么这个序列号也会被一起移除掉</td>
+</tr>
+<tr>
+<td align="left">Hide Booking Button</td>
+<td align="left">隐藏【招募】按钮</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Hide SNS Button</td>
+<td align="left">隐藏【TWITTER】按鈕</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Restore Roulette</td>
+<td align="left">恢复右上方【转盘】按鈕</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Disable Help Message on Login (Recommended)</td>
+<td align="left">关闭登入游戏的教学提示</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Show Replay Button</td>
+<td align="left">登入游戏时显示播放录影按钮</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Enable Emblem hover for BG</td>
+<td align="left">在战场地图显示公会图标</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Disable kRO Site Launch</td>
+<td align="left">更新器不会修改游戏设置存档</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Use Default Web Browser In Cashshop</td>
+<td align="left">使用预设浏览器开启内置商城的链接</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Hide build info in client (Recommended)</td>
+<td align="left">隐藏客户端构建信息</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Restore old login packet (Recommended)</td>
+<td align="left">恢复旧版的登录封包</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Hide packets from peek (Recommended)</td>
+<td align="left">隐藏封包信息</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Disable packets id encryption</td>
+<td align="left">禁用封包加密</td>
+<td align="left">禁止韩服自带的封包加密机制，非必要建议关闭。<br>否则需要服务端配置封包版本和三个封包密钥，不然无法建立连接</td>
+</tr>
+<tr>
+<td align="left">Enable packets id encryption</td>
+<td align="left">设置封包加密密钥</td>
+<td align="left">需要关闭 <code>Disable packets id encryption</code>，同时设置与服务端一模一样的三个封包加密密钥。<br>若不使用封包加密机制，需把三个密钥设置为 <code>00000000</code> 覆盖原密钥。<br>详见下文安全机制配置指引</td>
+</tr>
+<tr>
+<td align="left">Send client flags to server (Recommended)</td>
+<td align="left">发送客户端类型封包到服务端</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Disable OTP Login Packet (Recommended)</td>
+<td align="left">关闭 OTP 登入封包</td>
+<td align="left">OTP（One Time Password）是造成新版登入器断线后无法重连的主要原因</td>
+</tr>
+<tr>
+<td align="left">Disable Game Guard (NProtect) (Recommended)</td>
+<td align="left">移除反外挂系统</td>
+<td align="left">韩服的反外挂系统，私服用不了，会导致游戏无法启动，必须关闭</td>
+</tr>
+<tr>
+<td align="left">Disable password encryption for lang types 4, 7</td>
+<td align="left">取消密码加密</td>
+<td align="left">当 <code>clientinfo.xml</code> 中的 <code>&lt;langtype&gt;</code> 为 <code>4</code> 或 <code>7</code> 时，取消密码加密</td>
+</tr>
+<tr>
+<td align="left">Load Custom lua file instead of <code>iteminfo*.lub</code> (Recommended)</td>
+<td align="left">修改 <code>iteminfo*.lub</code> 文件路径</td>
+<td align="left">当需要定制 <code>System/iteminfo*.lub</code> 的道具描述文件时，可以编辑此配置项</td>
+</tr>
+<tr>
+<td align="left">Change <code>MapInfo*.lub</code> path</td>
+<td align="left">修改 <code>mapinfo*.lub</code> 文件路径</td>
+<td align="left">当需要定制 <code>System/mapinfo*.lub</code> 的地图描述文件时，可以编辑此配置项。<br>该文件主要是控制进入地图时所浮现地图标题</td>
+</tr>
+<tr>
+<td align="left">Disable Map sign display</td>
+<td align="left">关闭进入地图时显示的地图标题</td>
+<td align="left">除此以外，游戏内的【ESC】<code>-&gt;</code>【设置】<code>-&gt;</code>【标记地图名称】也会影响过图时是否显示地图标题</td>
+</tr>
+<tr>
+<td align="left">Enable 44.1 kHz Audio Sampling Frequency</td>
+<td align="left">提升游戏音质</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Mvp Drop Item Use Identified Name</td>
+<td align="left">MVP 奖励道具使用已鉴定名称显示</td>
+<td align="left">-</td>
+</tr>
+<tr>
+<td align="left">Set fixed charset on drawing text messages</td>
+<td align="left">使用固定的编码绘制窗体文字</td>
+<td align="left">0: 英文; 1: 默认（跟随系统）; 129: 韩文; 204: 俄文; 134: 简中; 136: 繁中</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>所有配置项参考官方 [Patches_Chinese_Traditional.ini)[<a target="_blank" rel="noopener" href="https://gitlab.com/4144/Nemo/-/blob/master/Patches_Chinese%20Traditional.ini]">https://gitlab.com/4144/Nemo/-/blob/master/Patches_Chinese%20Traditional.ini]</a> 的说明</p>
+</blockquote>
+<h2 id="0x40-修改窗口标题（中文）"><a href="#0x40-修改窗口标题（中文）" class="headerlink" title="0x40 修改窗口标题（中文）"></a>0x40 修改窗口标题（中文）</h2><p><img src="./13.png"></p>
+<p>DIFF 虽然可以通过 <code>Custom Window Title</code> 选项修改，但是只允许填入英文（若输入中文会导致标题乱码）。</p>
+<p>但并非没有办法改为中文标题。</p>
+<p>DIFF 时首先输入中文的占位符，如 <code>Ragnarok Online [xxxxxxxx]</code>，其中 <code>xxxxxxxx</code> 是期望填入中文的位置。</p>
+<p>由于 Windows 中文系统默认是使用 GBK 编码，而 GBK 一个中文的字节长度 <code>=</code> 两个英文字符的字节长度，所以此处有 8 个 <code>x</code> 相当于预留 4 个中文字的位置。</p>
+<blockquote>
+<p>预留的长度可以根据实际情况变化</p>
+</blockquote>
+<p>保存 DIFF 生成的 exe 后：</p>
+<ol>
+<li>用 <a href="./c32asm.7z">c32asm</a> 以【十六进制文件打开】该 exe 文件</li>
+<li>搜索占位符 <code>[xxxxxxxx]</code></li>
+</ol>
+<p><img src="./14.png"></p>
+<ol start="3">
+<li>在任意文本编辑器写好中文标题，如 <code>随缘仙境</code></li>
+<li>选中占位符 <code>[xxxxxxxx]</code>，把中文标题粘贴进去完成替换</li>
+</ol>
+<p><img src="./15.png"></p>
+<ol start="5">
+<li>虽然在编辑器看到的是乱码，但是实际窗口标题已经是中文了</li>
+</ol>
+<blockquote>
+<p>十六进制编辑相当于反汇编，修改的内容不允许越界，否则会覆写后面的内容导致 exe 异常，DIFF 预留了多少个中文占位符，这里就最多就只能用多少个</p>
+</blockquote>
+<p><img src="./16.png"></p>
+<h2 id="0x50-添加安全机制"><a href="#0x50-添加安全机制" class="headerlink" title="0x50 添加安全机制"></a>0x50 添加安全机制</h2><h3 id="0x51-添加封包机制"><a href="#0x51-添加封包机制" class="headerlink" title="0x51 添加封包机制"></a>0x51 添加封包机制</h3><p>所谓的封包，就是服务端和客户端通讯之间的一组协议，在 RO 的基本封包中，包含了一个动作指令和一些附加信息。</p>
+<p>前面 DIFF 前下载的 yyyy-MM-dd_Ragexe_xxxxxxxxxx.exe 文件中，<code>yyyy-MM-dd</code> 就是封包版本，对应可以在服务端的 <code>defines_pre.hpp</code> 中配置 <code>#define PACKETVER yyyyMMdd</code></p>
+<p><img src="./22.png"></p>
+<p>但是封包版本只是为了确保服务端和客户端的是配套的，<strong>默认情况下没有封包密钥</strong>，所以并不安全，很容易被类似 WPE 的封包重发器破解，这样就无法防止外挂了。</p>
+<p>为此，可以使用 <a href="./PacketKeysGenerator.zip">封包密钥生成器</a> 生成高强度的封包密钥，并在 DIFF 时设置到客户端 exe 中：</p>
+<p><img src="./19.png"></p>
+<p>同时服务端的 <code>packets.hpp</code> 需要配置一模一样的三个封包密钥并重新编译：</p>
+<p><img src="./17.png"></p>
+<p>此后只有封包密钥配套的客户端才能连接到服务端，否则服务端会拒绝连接：</p>
+<p><img src="./18.png"></p>
+<blockquote>
+<p>DIFF 时如果不想使用封包机制，需要开启 <code>Disable packets id encryption</code> 配置项，某些 Nemo 版本还需要通过 <code>Enable packets id encryption</code> 把三个封包密钥设置为 <code>00000000</code></p>
+</blockquote>
+<h3 id="0x50-添加文件校验机制"><a href="#0x50-添加文件校验机制" class="headerlink" title="0x50 添加文件校验机制"></a>0x50 添加文件校验机制</h3><p>此外，如果想进一步增加安全性，DIFF 时可以启用 <code>Force Send Client Hash Packet</code> 配置项，强制发送客户端完整性校验码，避免恶意玩家篡改客户端登入器 Ragexe.exe。</p>
+<p>Windows 下，Ragexe.exe 的文件 MD5 可以使用 PowerShell 直接生成：</p>
+<p><code>Get-FileHash ${FILEPATH} -Algorithm MD5 | Format-List</code></p>
+<p>然后把 MD5 配置到服务端 <code>login_athena.conf</code> 的 <code>client_hash</code> 即可（注意 <code>client_hash_check</code> 需要同时打开）</p>
+<p><img src="./20.png"></p>
+<p>此后当客户端登入器的 MD5 不正确时，服务端会拒绝登录：</p>
+<p><img src="./21.png"></p>
+<blockquote>
+<p><code>client_hash</code> 可以根据角色权限等级设置是否校验，例如 GM 不校验，详见服务端的说明文档</p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/game/ro/cong-ling-kai-shi-diff-ragnarok-deng-ru-qi-jiao-cheng/">https://exp-blog.com/game/ro/cong-ling-kai-shi-diff-ragnarok-deng-ru-qi-jiao-cheng/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Ragnarok/">
+                                    
+                                        <span class="chip bg-color">Ragnarok</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/RO/">
+                                    
+                                        <span class="chip bg-color">RO</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/DIFF/">
+                                    
+                                        <span class="chip bg-color">DIFF</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Nemo/">
+                                    
+                                        <span class="chip bg-color">Nemo</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/game/ro/rathena-kai-fa-huan-jing-da-jian-zhi-yin-shou-ce/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/game/ro/01.png" class="responsive-img" alt="rAthena 开发环境搭建指引手册">
+                        
+                        <span class="card-title">rAthena 开发环境搭建指引手册</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            主要针对 Windows 环境如何使用 Visual Studio 编译并运行，官方说明比较简略，刚接触的同学只能靠自己摸索，这篇文章记录了完整的搭建过程以及中途可能会遇到的坑，仅供参考 ...
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-19
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                    仙境传说
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ragnarok/">
+                        <span class="chip bg-color">Ragnarok</span>
+                    </a>
+                    
+                    <a href="/tags/RO/">
+                        <span class="chip bg-color">RO</span>
+                    </a>
+                    
+                    <a href="/tags/rAthena/">
+                        <span class="chip bg-color">rAthena</span>
+                    </a>
+                    
+                    <a href="/tags/Pandas/">
+                        <span class="chip bg-color">Pandas</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/tools/adb-jie-suo-shou-ji-zhi-yin/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/tools/06.png" class="responsive-img" alt="利用 ADB 解锁手机指引">
+                        
+                        <span class="card-title">利用 ADB 解锁手机指引</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    开发/工具
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/adb/">
+                        <span class="chip bg-color">adb</span>
+                    </a>
+                    
+                    <a href="/tags/android/">
+                        <span class="chip bg-color">android</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

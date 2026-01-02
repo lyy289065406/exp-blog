@@ -1,0 +1,2548 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="「Gym 课程笔记 02」经典控制 - Acrobot 杂技机器人, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>「Gym 课程笔记 02」经典控制 - Acrobot 杂技机器人 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/ai/acrobot.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">「Gym 课程笔记 02」经典控制 - Acrobot 杂技机器人</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/OpenAI/">
+                                
+                                    <span class="chip bg-color">OpenAI</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Gym/">
+                                
+                                    <span class="chip bg-color">Gym</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/RL/">
+                                
+                                    <span class="chip bg-color">RL</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                
+                                    <span class="chip bg-color">强化学习</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/DQN/">
+                                
+                                    <span class="chip bg-color">DQN</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-12-12
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.9k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    33 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>由于这是实践的第一课，我会尽可能地记录得详细一些</p>
+</blockquote>
+<h2 id="0x00-问题描述"><a href="#0x00-问题描述" class="headerlink" title="0x00 问题描述"></a>0x00 问题描述</h2><p><a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/acrobot/">Acrobot</a> 是一个双节摆的模拟环境，它包含两个连在一起的摆杆，其中第一个摆杆固定在一个点上，第二个摆杆连接在第一个摆杆的另一端。</p>
+<p>目标是仅通过控制第一个摆杆与第二个摆杆之间的联接点的扭矩来使第二个摆杆在要求的步数之内达到一定高度。</p>
+<p><img src="./acrobot.gif"></p>
+<h2 id="0x10-问题解读"><a href="#0x10-问题解读" class="headerlink" title="0x10 问题解读"></a>0x10 问题解读</h2><p>从 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/acrobot/">Acrobot</a> 页面的描述中，我们可以得到不少关键信息：</p>
+<h3 id="0x11-环境说明"><a href="#0x11-环境说明" class="headerlink" title="0x11 环境说明"></a>0x11 环境说明</h3><p><img src="./01.png"></p>
+<p>首先看到这个这个表，它的含义是：</p>
+<ol>
+<li>在 python 通过以下语句可以创建 Acrobot 的预设环境：<ul>
+<li><code>import gymnasium</code></li>
+<li><code>env = gymnasium.make("Acrobot-v1")</code></li>
+</ul>
+</li>
+<li>而在这个预设环境中：<ul>
+<li>执行 <code>env.action_space</code> 可以得到动作空间（Action Space）为 <code>Discrete(3)</code></li>
+<li>执行 <code>env.observation_space</code> 可以得到观测空间（Observation Space）为 <code>Box([ -1. -1. -1. -1. -12.566371 -28.274334], [ 1. 1. 1. 1. 12.566371 28.274334], (6,), float32)</code></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>对于 “环境”、“动作空间”、“观测空间” 等术语我们已经在<a href="../gym-bi-ji-01-huan-jing-da-jian-yu-ji-ben-gai-nian/">第一节</a>里面解释过，这里就不再赘述其含义了。</p>
+</blockquote>
+<p><code>Acrobot-v1</code> 表示使用 Acrobot（版本 v1）的预设环境（不同版本的交互接口可能不一样）。</p>
+<p>预设环境的好处是不需要我们定义 “动作空间” 、“观测空间/状态空间”、“奖励系统”、“交互接口” 等等，因为它有一个统一标准，我们只需要关注 “训练算法” 本身，方便我们学习、交流和比对。</p>
+<p>但这也预示着，我们以后要训练自己的模型（如某个游戏的模型），我们除了要研究训练算法之外，还必须自己定义和构建环境与之交互。</p>
+<h3 id="0x12-动作空间"><a href="#0x12-动作空间" class="headerlink" title="0x12 动作空间"></a>0x12 动作空间</h3><p>动作空间需要结合 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/acrobot/">Acrobot</a> 文档给出的表格一起说明：</p>
+<p><img src="./02.png"></p>
+<p>从表格可知，<code>env.action_space</code> 只有 3 个值，它代表了可以施加在两个链接之间的活动关节上的力矩（torque）的大小：</p>
+<ul>
+<li>动作 0： 施加 -1 的力矩到活动关节上</li>
+<li>动作 1： 施加 0 的力矩到活动关节上</li>
+<li>动作 2： 施加 1 的力矩到活动关节上</li>
+</ul>
+<p>这些动作是离散的（<strong>离散空间</strong>），通过选择不同的动作，智能体可以控制 Acrobot 的行动，使其实现特定的运动目标，如摆动到一定高度。</p>
+<h3 id="0x13-观测空间"><a href="#0x13-观测空间" class="headerlink" title="0x13 观测空间"></a>0x13 观测空间</h3><p>这里先解释一下观测空间 <code>observation_space</code> 初始状态的含义： <code>Box([ -1. -1. -1. -1. -12.566371 -28.274334], [ 1. 1. 1. 1. 12.566371 28.274334], (6,), float32)</code></p>
+<p>Box 是 gym 定义的数据类型，代表一个 n 维的盒子，可以用来定义在每个维度上的连续值范围（<strong>连续空间</strong>）: </p>
+<ul>
+<li><code>[ -1. -1. -1. -1. -12.566371 -28.274334]</code> 是观察空间中每个维度的最小值</li>
+<li><code>[ 1. 1. 1. 1. 12.566371 28.274334]</code> 是观察空间中每个维度的最大值</li>
+<li><code>(6,)</code> 表示观察空间是一个六维的空间。这是一个元组，其中只有一个元素，即 <code>6</code>，表明有 6 个独立的观察值。</li>
+<li><code>float32</code> 表示这些值是 32 位浮点数</li>
+</ul>
+<p>同样地，观测空间需要结合 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/environments/classic_control/acrobot/">Acrobot</a> 文档给出的表格一起说明：</p>
+<p><img src="./03.png"></p>
+<p>从表格可知，<code>observation_space</code> 的 6 个独立的观察值分别代表：</p>
+<ul>
+<li>0: Cosine of theta1： 即 cosθ1，第一个关节角度的余弦值（这个角度是指第一个关节与垂直向下位置的夹角）</li>
+<li>1: Sine of theta1： 即 sinθ1，第一个关节角度的正弦值</li>
+<li>2: Cosine of theta2： 即 cosθ2，第二个关节角度的余弦值（这个角度是相对于第一个关节的）</li>
+<li>3: Sine of theta2： 即 sinθ2，第二个关节角度的正弦值</li>
+<li>4: Angular velocity of theta1： 第一个关节的角速度</li>
+<li>5: Angular velocity of theta2： 第二个关节的角速度</li>
+</ul>
+<p><img src="./04.png"></p>
+<p><img src="./05.png"></p>
+<blockquote>
+<p>数学模型可参考 <a target="_blank" rel="noopener" href="http://incompleteideas.net/book/11/node4.html">http://incompleteideas.net/book/11/node4.html</a></p>
+</blockquote>
+<h3 id="0x14-奖励"><a href="#0x14-奖励" class="headerlink" title="0x14 奖励"></a>0x14 奖励</h3><p>奖励是由预设环境设置的，目标是让自由端（第二关节的末端）以尽可能少的步数达到指定的目标高度，因此：</p>
+<ol>
+<li>所有未达到目标的步数都会获得 -1 的奖励</li>
+<li>达到目标高度会导致终止，奖励为 0 （这一步获得的奖励为 0，并非累计的负值清零）</li>
+<li>奖励阈值为 -100</li>
+</ol>
+<blockquote>
+<p>奖励阈值是一个性能评估的参考点，它可能被用来确定智能体是否在一个给定数量的步骤内表现得足够好。在这个问题中，未达标的步数都会获得 -1，说明如果智能体在 100 步内没有达到目标，则其性能被认为是不理想的。然而，这并不意味着回合在 100 步后自动结束，与后面的 “回合终止条件” 不矛盾。</p>
+</blockquote>
+<p>特别说明的是，第 2 点是 <strong>成功完成目标的这一步获得的奖励为 0，并非累计的负值清零</strong> 。</p>
+<p>在不少的强化学习问题中，成功完成任务通常会获得正面的奖励（即大于 0 的奖励），以鼓励智能体朝着目标方向努力。然而，在 Acrobot 问题中，成功的奖励是 0，这看起来似乎不够激励智能体。</p>
+<p>但实际上，这种奖励机制的设计有其内在逻辑的：</p>
+<ul>
+<li>负面奖励的积累：由于每个未成功的步骤都会得到 -1 的奖励，智能体会积累负面奖励。这种设计实际上鼓励智能体尽快完成任务，以避免累积更多的负面奖励。</li>
+<li>目标达成即停止积累负面奖励：在这个设置中，达到目标的奖励是 0，这意味着一旦达成目标，智能体便不再积累负面奖励。因此，达到目标本身就是一种激励，因为它停止了负面奖励的累积。</li>
+<li>总体奖励最大化：在强化学习中，智能体的目标通常是最大化整个回合的总奖励。在 Acrobot 的情境下，这意味着尽可能快地达到目标，以减少负面奖励的总量。</li>
+</ul>
+<p>因此，尽管一次性的奖励为 0 看起来诱惑不足，但在总体的学习过程和长期目标的背景下，这种奖励机制是有其合理性和效果的。强化学习的关键在于学习从初始状态到达目标状态的最有效路径，而不仅仅是关注单步的奖励。</p>
+<h3 id="0x15-初始状态"><a href="#0x15-初始状态" class="headerlink" title="0x15 初始状态"></a>0x15 初始状态</h3><p>初始状态中的每个参数（θ1、θ2 和两个角速度）均在 -0.1 和 0.1 之间统一初始化。</p>
+<p>这意味着在初始状态下，两个关节都指向下方，具有一定的随机性。</p>
+<h3 id="0x16-回合终止"><a href="#0x16-回合终止" class="headerlink" title="0x16 回合终止"></a>0x16 回合终止</h3><p>如果发生以下情况之一，则回合终止：</p>
+<ul>
+<li>终止： 自由端到达目标高度，数学表现为： <code>-cosθ1 - cos(θ2 + θ1) &gt; 1.0</code></li>
+<li>中止： 回合步数大于 500（v0 版本 为 200）</li>
+</ul>
+<h2 id="0x20-解题过程"><a href="#0x20-解题过程" class="headerlink" title="0x20 解题过程"></a>0x20 解题过程</h2><p>以上就是针对 Acrobot 的题目解读，现在我们要用强化学习去解决这个问题。</p>
+<p>传统的解法是我们需要设置夹角、长度、重量等各种变量，还要考虑初始速度、角动量、重力等因素影响，建立一个数学模型，然后求解。</p>
+<p>但是在强化学习模型中，这些过程变量如何影响 Acrobot 的状态，是构建 “环境” 时才需要考虑的事情，但是 Gym 已经将其封装成了一个预设环境，我们自然而然就无需再考虑了。</p>
+<p>我们真正要做的事情（或者让智能体做的事情），其实很简单，就是 “<strong>试错</strong>”，通过在无限的试错中不断积累经验学习，寻找出一条通向最优答案的道路。</p>
+<p>但具体要怎么做呢 ？</p>
+<p>首先我们要按照<a href="../gym-bi-ji-01-huan-jing-da-jian-yu-ji-ben-gai-nian/">第一节</a>的指引安装好环境，然后所有的强化学习模型训练，都是有一个统一的套路框架的：</p>
+<ol>
+<li>创建强化学习环境</li>
+<li>定义一个循环训练框架</li>
+<li>筛选一个合适的算法开始训练智能体（试错）</li>
+</ol>
+<h3 id="0x21-创建强化学习环境"><a href="#0x21-创建强化学习环境" class="headerlink" title="0x21 创建强化学习环境"></a>0x21 创建强化学习环境</h3><p>这步其实很简单，只需两行代码即可创建预设的环境：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> gymnasium <span class="token keyword">as</span> gym
+env <span class="token operator">=</span> gym<span class="token punctuation">.</span>make<span class="token punctuation">(</span><span class="token string">'Acrobot-v1'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><code>Acrobot-v1</code> 并不是随便定义的名称，而是 Gym 库中预定义的一个环境的名字：</p>
+<ul>
+<li>Acrobot: 从预设的强化学习环境中选择名为 Acrobot 的环境，这是一个经典的控制问题，涉及到一个双节摆系统</li>
+<li>v1: 表示该环境的版本号（Gym 库可能会更新环境，带来不同版本，其中包含了一些变化或改进）</li>
+</ul>
+<p>因此这两行代码就是在告诉 Gym 库，您想要创建并与 <code>Acrobot-v1</code> 环境进行交互。</p>
+<hr>
+<p>预设环境提供了一个标准化的框架（包括状态空间、动作空间和奖励系统）供人们在训练智能体（Agent）时可以和环境进行交互。</p>
+<p>我们需要实现自己的强化学习算法来训练一个智能体，使其学习如何在这个环境中做出最佳的决策。</p>
+<p>简而言之，这些环境提供的是问题设置和交互能力，而解决问题的学习算法则由我们来开发和实施。</p>
+<p>如果以后想训练一个其他游戏的模型，到时肯定没有预设环境的，那么就需要我们自己实现这个环境：</p>
+<ol>
+<li>继承并实现 <code>gym.Env</code> 类的接口：<ul>
+<li>定义观测空间/状态空间</li>
+<li>定义动作空间</li>
+<li>设置重置状态方法</li>
+<li>设置奖励系统</li>
+<li>设置终止条件</li>
+</ul>
+</li>
+<li>封装和游戏交互的 API，用于智能体获取状态信息和发送动作指令、同时通过决策的动作更新环境状态</li>
+</ol>
+<p>这个过程涉及到游戏开发，可能比较复杂，在零基础的前提下，很难实现一个环境（尤其是定义奖励系统）。</p>
+<p>故 Gym 帮我们分解成若干个基础的预设环境、先专注如何在哪些问题下如何选择最优的算法去解决基础问题；待到对强化学习有了基本认知之后，自然就懂得如何定制环境解决实际问题了。</p>
+<h3 id="0x22-定义一个循环训练框架"><a href="#0x22-定义一个循环训练框架" class="headerlink" title="0x22 定义一个循环训练框架"></a>0x22 定义一个循环训练框架</h3><p>对于大部分的强化学习模型，其训练框架都是大同小异的：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> gym
+
+<span class="token comment" spellcheck="true"># 创建预设环境</span>
+env <span class="token operator">=</span> gym<span class="token punctuation">.</span>make<span class="token punctuation">(</span><span class="token string">'Acrobot-v1'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 拟训练 1000 个回合</span>
+<span class="token keyword">for</span> episode <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 1. 每次训练都须 重置环境，获得初始状态的观测空间</span>
+    observation <span class="token operator">=</span> env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 开始回合训练</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span> <span class="token punctuation">:</span>
+
+        <span class="token comment" spellcheck="true"># FIXME: 2. 根据当前观测空间的状态、选择下一个动作（不同的强化学习算法，选择的策略也会不同）</span>
+        action <span class="token operator">=</span> select_next_action<span class="token punctuation">(</span>observation<span class="token punctuation">)</span> 
+
+        <span class="token comment" spellcheck="true"># 3. 与环境交互、执行下一步动作（旧版本的返回值只有 4 个值，没有 truncated）</span>
+        next_observation reward<span class="token punctuation">,</span> terminated<span class="token punctuation">,</span> truncated<span class="token punctuation">,</span> info <span class="token operator">=</span> env<span class="token punctuation">.</span>step<span class="token punctuation">(</span>action<span class="token punctuation">)</span>
+        done <span class="token operator">=</span> terminated <span class="token operator">or</span> truncated
+        <span class="token keyword">if</span> done<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+        <span class="token comment" spellcheck="true"># FIXME: 4. 更新/优化学习模型参数</span>
+        update<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 5. 更新当前观测空间的状态</span>
+        observation <span class="token operator">=</span> next_observation
+
+env<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 保存训练模型</span>
+torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ACROBOT_MODEL_PATH<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中第 2、4 步要根据所选择的强化学习算法进行调整。</p>
+<p>现在问题是，选什么算法合适呢 ？</p>
+<h3 id="0x23-筛选一个合适的算法开始训练智能体"><a href="#0x23-筛选一个合适的算法开始训练智能体" class="headerlink" title="0x23 筛选一个合适的算法开始训练智能体"></a>0x23 筛选一个合适的算法开始训练智能体</h3><p>其实没有绝对合适的算法，还是新手的我请教了 ChatGPT，它说选择强化学习算法通常取决于几个关键因素：</p>
+<ol>
+<li>问题类型:<ul>
+<li>连续 vs 离散: 对于离散动作空间，可以考虑使用 Q-Learning 或 Sarsa。对于连续动作空间，策略梯度方法或 Actor-Critic 方法可能更合适。</li>
+<li>单目标 vs 多目标: 多目标问题可能需要特定的算法来平衡不同目标之间的权衡。</li>
+</ul>
+</li>
+<li>环境特性:<ul>
+<li>确定性 vs 随机性: 确定性环境下，基于模型的方法可能表现更好。在高度随机或不确定的环境中，基于模型无关的方法可能更有效。</li>
+<li>完全观测 vs 部分观测: 如果环境是部分可观测的，可以考虑使用 POMDP（部分可观测的马尔可夫决策过程）模型。</li>
+</ul>
+</li>
+<li>性能和稳定性需求:<ul>
+<li>如果需要快速学习，可以考虑使用深度 Q 网络（DQN）或其变体。</li>
+<li>对于需要高稳定性的应用，可能更倾向于使用策略梯度方法，因为它们通常在学习过程中更稳定。</li>
+</ul>
+</li>
+</ol>
+<p>综合考虑这些因素，可以有助于选择最适合特定问题和环境的强化学习算法。</p>
+<p>通常，开始时使用一种较为简单的方法，然后根据需要逐步迁移到更复杂的算法。</p>
+<blockquote>
+<p>条条大路通罗马，所有问题都没有标准算法，更多算法可以参考系统的强化学习课程《<a target="_blank" rel="noopener" href="https://www.davidsilver.uk/teaching/">UCL Course on RL</a>》</p>
+</blockquote>
+<p>对于 Acrobot 问题，<strong>理论上</strong> Q-Learning 算法会更适合，主要是因为：</p>
+<ul>
+<li>Q-Learning 使用贪婪策略来更新 Q 值，即选择下一个状态中 Q 值最大的动作来进行更新，换言之，它侧重于找到最优解并且在理论上能够更快地收敛到最佳策略。</li>
+<li>Acrobot 问题需要找到快速摆动到目标位置的策略，Q-Learning 的贪婪特性可能在这方面表现更好。</li>
+</ul>
+<p>但是 Q 表是离散的，而 Acrobot 的状态空间是连续的，所以<strong>实际上</strong> Q-Learning 并不适用（除非将连续的状态映射到离散的索引上，但会把问题复杂化）。</p>
+<p>故而这里修改为使用 Q-Learning 的一个扩展算法 —— <strong>深度 Q 网络（DQN, Deep Q-Network）</strong>。</p>
+<p>DQN 在基本的 Q-Learning 框架上引入了深度学习，它使用深度神经网络来逼近 Q 表，使得 Q 表可以适用于具有大量连续状态和动作的问题、处理更复杂的、高维的输入（如视觉输入），并且能够更好地泛化到未见过的状态。</p>
+<h2 id="0x30-DQN-算法剖析"><a href="#0x30-DQN-算法剖析" class="headerlink" title="0x30 DQN 算法剖析"></a>0x30 DQN 算法剖析</h2><blockquote>
+<p>完整的训练源码见 <a target="_blank" rel="noopener" href="https://github.com/Visuals-AI/gym-course-exercises/blob/master/py/01_Classic_Control/01_Acrobot/train_DQN.py">train_DQN.py</a></p>
+</blockquote>
+<p>这里挑了算法的几个关键部分（看代码注释就可以了，不单独拎出来解释了）：</p>
+<h3 id="0x31-定义网络"><a href="#0x31-定义网络" class="headerlink" title="0x31 定义网络"></a>0x31 定义网络</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 神经网络模型： 简单的三层全连接网络</span>
+<span class="token comment" spellcheck="true"># 可以根据具体问题和实验结果进行调整层数、每层的神经元数量等</span>
+<span class="token keyword">class</span> <span class="token class-name">DQN</span><span class="token punctuation">(</span>nn<span class="token punctuation">.</span>Module<span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true"># 在 PyTorch 中，nn.Module 是所有神经网络模块的基类</span>
+
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> state_size<span class="token punctuation">,</span> action_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        super<span class="token punctuation">(</span>DQN<span class="token punctuation">,</span> self<span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>fc1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span>state_size<span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 定义第一个全连接层（fc1），它接收状态输入，并将其映射到24个隐藏单元</span>
+        self<span class="token punctuation">.</span>fc2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">)</span>            <span class="token comment" spellcheck="true"># 定义第二个全连接层（fc2），它进一步处理来自第一层的数据。</span>
+        self<span class="token punctuation">.</span>fc3 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Linear<span class="token punctuation">(</span><span class="token number">24</span><span class="token punctuation">,</span> action_size<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 定义第三个全连接层（fc3），它将隐藏层的输出映射到动作空间的大小，即为每个可能的动作生成一个 Q 值</span>
+
+
+    <span class="token comment" spellcheck="true"># 覆盖 nn.Module 中的 forward 方法（前向传播函数）</span>
+    <span class="token comment" spellcheck="true"># 在 PyTorch 中，只需定义前向传播函数，而后向传播函数（用于计算梯度）是由PyTorch的autograd自动定义的</span>
+    <span class="token keyword">def</span> <span class="token function">forward</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> torch<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fc1<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 应用了第一个全连接层，并对其输出应用了ReLU（修正线性单元）激活函数</span>
+        x <span class="token operator">=</span> torch<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>self<span class="token punctuation">.</span>fc2<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>     <span class="token comment" spellcheck="true"># 对第二个全连接层的输出应用了ReLU激活</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>fc3<span class="token punctuation">(</span>x<span class="token punctuation">)</span>              <span class="token comment" spellcheck="true"># 网络返回第三个全连接层的输出。这个输出代表了在给定状态下每个动作的预期Q值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="0x32-初始化训练参数和网络模型"><a href="#0x32-初始化训练参数和网络模型" class="headerlink" title="0x32 初始化训练参数和网络模型"></a>0x32 初始化训练参数和网络模型</h3><pre class="line-numbers language-python"><code class="language-python">self<span class="token punctuation">.</span>obs_size <span class="token operator">=</span> env<span class="token punctuation">.</span>observation_space<span class="token punctuation">.</span>shape<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>      <span class="token comment" spellcheck="true"># 状态空间维度</span>
+self<span class="token punctuation">.</span>action_size <span class="token operator">=</span> env<span class="token punctuation">.</span>action_space<span class="token punctuation">.</span>n               <span class="token comment" spellcheck="true"># 动作空间数量</span>
+
+self<span class="token punctuation">.</span>model <span class="token operator">=</span> DQN<span class="token punctuation">(</span>self<span class="token punctuation">.</span>obs_size<span class="token punctuation">,</span> self<span class="token punctuation">.</span>action_size<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># DQN 简单的三层网络模型（主模型）</span>
+self<span class="token punctuation">.</span>memory <span class="token operator">=</span> deque<span class="token punctuation">(</span>maxlen<span class="token operator">=</span><span class="token number">2000</span><span class="token punctuation">)</span>                    <span class="token comment" spellcheck="true"># 经验回放存储。本质是一个双端队列（deque），当存储超过2000个元素时，最旧的元素将被移除。经验回放是DQN中的一项关键技术，有助于打破经验间的相关性并提高学习的效率和稳定性。</span>
+self<span class="token punctuation">.</span>batch_size <span class="token operator">=</span> args<span class="token punctuation">.</span>batch_size                   <span class="token comment" spellcheck="true"># 从【经验回放存储】中一次抽取并用于训练网络的【经验样本数】</span>
+
+self<span class="token punctuation">.</span>device <span class="token operator">=</span> scan_device<span class="token punctuation">(</span>args<span class="token punctuation">.</span>cpu<span class="token punctuation">)</span>         <span class="token comment" spellcheck="true"># 检查 GPU 是否可用</span>
+self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>to<span class="token punctuation">(</span>self<span class="token punctuation">.</span>device<span class="token punctuation">)</span>                  <span class="token comment" spellcheck="true"># 将模型和优化器移动到 GPU （或 CPU）</span>
+
+self<span class="token punctuation">.</span>optimizer <span class="token operator">=</span> optim<span class="token punctuation">.</span>Adam<span class="token punctuation">(</span>self<span class="token punctuation">.</span>model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lr<span class="token operator">=</span><span class="token number">0.001</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 用于训练神经网络的优化器。这里使用的是Adam优化器，一个流行的梯度下降变种，lr=0.001设置了学习率为0.001。</span>
+self<span class="token punctuation">.</span>criterion <span class="token operator">=</span> nn<span class="token punctuation">.</span>MSELoss<span class="token punctuation">(</span><span class="token punctuation">)</span>                                   <span class="token comment" spellcheck="true"># 用于训练过程中的损失函数。这里使用的是均方误差损失（MSE Loss），它是评估神经网络预测值与实际值差异的常用方法。</span>
+
+self<span class="token punctuation">.</span>epoches <span class="token operator">=</span> args<span class="token punctuation">.</span>epoches                 <span class="token comment" spellcheck="true"># 总训练回合数</span>
+self<span class="token punctuation">.</span>last_epoch <span class="token operator">=</span> <span class="token number">0</span>                         <span class="token comment" spellcheck="true"># 最后一次记录的训练回合数</span>
+self<span class="token punctuation">.</span>zero <span class="token operator">=</span> self<span class="token punctuation">.</span>args<span class="token punctuation">.</span>zero                  <span class="token comment" spellcheck="true"># 强制从第 0 回合开始训练</span>
+self<span class="token punctuation">.</span>cur_epsilon <span class="token operator">=</span> args<span class="token punctuation">.</span>epsilon             <span class="token comment" spellcheck="true"># 当前探索率</span>
+self<span class="token punctuation">.</span>epsilon_decay <span class="token operator">=</span> args<span class="token punctuation">.</span>epsilon_decay     <span class="token comment" spellcheck="true"># 探索率的衰减率</span>
+self<span class="token punctuation">.</span>min_epsilon <span class="token operator">=</span> args<span class="token punctuation">.</span>min_epsilon         <span class="token comment" spellcheck="true"># 最小探索率</span>
+self<span class="token punctuation">.</span>gamma <span class="token operator">=</span> args<span class="token punctuation">.</span>gamma                     <span class="token comment" spellcheck="true"># 折扣因子</span>
+self<span class="token punctuation">.</span>render <span class="token operator">=</span> args<span class="token punctuation">.</span>render                   <span class="token comment" spellcheck="true"># 渲染 GUI 开关</span>
+self<span class="token punctuation">.</span>info <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>                              <span class="token comment" spellcheck="true"># 其他额外参数</span>
+
+
+<span class="token comment" spellcheck="true"># 在 DQN 中，通常会使用两个模型：</span>
+<span class="token comment" spellcheck="true">#   一个是用于进行实际决策的主模型（self.model）： 用于生成当前的 Q 值</span>
+<span class="token comment" spellcheck="true">#   另一个是目标模型（target_model）：用于计算期望的 Q 值，以提供更稳定的学习目标</span>
+self<span class="token punctuation">.</span>target_model <span class="token operator">=</span> DQN<span class="token punctuation">(</span>self<span class="token punctuation">.</span>obs_size<span class="token punctuation">,</span> self<span class="token punctuation">.</span>action_size<span class="token punctuation">)</span>    <span class="token comment" spellcheck="true"># 目标模型</span>
+self<span class="token punctuation">.</span>target_model<span class="token punctuation">.</span>to<span class="token punctuation">(</span>self<span class="token punctuation">.</span>device<span class="token punctuation">)</span>                           <span class="token comment" spellcheck="true"># 将模型移动到 GPU （或 CPU）</span>
+self<span class="token punctuation">.</span>update_target_every <span class="token operator">=</span> <span class="token number">5</span>                                <span class="token comment" spellcheck="true"># 定义更新目标模型的频率</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="0x33-选择下一步动作策略"><a href="#0x33-选择下一步动作策略" class="headerlink" title="0x33 选择下一步动作策略"></a>0x33 选择下一步动作策略</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">select_next_action</span><span class="token punctuation">(</span>targs<span class="token punctuation">:</span> TrainArgs<span class="token punctuation">,</span> obs<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    选择下一步要执行的动作。
+        DQN 一般使用 epsilon-greedy 策略：
+        智能体在选择动作时，有一定概率随机探索环境，而其余时间则根据已学习的策略选择最佳动作
+    :params: targs 用于训练的环境和模型关键参数
+    :params: obs 当前观测空间的状态
+    :return: 下一步要执行的动作
+    '''</span>
+
+    <span class="token comment" spellcheck="true"># 在观测空间随机选择一个动作（受当前探索率影响）</span>
+    <span class="token keyword">if</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> targs<span class="token punctuation">.</span>cur_epsilon <span class="token punctuation">:</span>
+        action <span class="token operator">=</span> targs<span class="token punctuation">.</span>env<span class="token punctuation">.</span>action_space<span class="token punctuation">.</span>sample<span class="token punctuation">(</span><span class="token punctuation">)</span>  
+
+    <span class="token comment" spellcheck="true"># 智能体根据当前经验、选择当前估计最优的动作</span>
+    <span class="token keyword">else</span> <span class="token punctuation">:</span>
+        action <span class="token operator">=</span> torch<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>      <span class="token comment" spellcheck="true"># 2. 使用torch.argmax选择具有最高预期Q值的动作（当前状态下的最佳动作）</span>
+            targs<span class="token punctuation">.</span>model<span class="token punctuation">(</span>obs<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true"># 1. 将观测空间当前状态 obs （张量）传递给神经网络模型（model），神经网络模型输出每个可能动作的预期Q值</span>
+        <span class="token punctuation">)</span><span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>                    <span class="token comment" spellcheck="true"># 3. 从张量中提取动作值</span>
+    <span class="token keyword">return</span> action<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="0x34-执行动作并获得反馈"><a href="#0x34-执行动作并获得反馈" class="headerlink" title="0x34 执行动作并获得反馈"></a>0x34 执行动作并获得反馈</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">exec_next_action</span><span class="token punctuation">(</span>targs<span class="token punctuation">:</span> TrainArgs<span class="token punctuation">,</span> action<span class="token punctuation">,</span> epoch<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> step_counter<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    执行下一步动作
+    :params: targs 用于训练的环境和模型关键参数
+    :params: action 下一步动作
+    :return: 执行动作后观测空间返回的状态
+    '''</span>
+
+    <span class="token comment" spellcheck="true"># 旧版本的 env.step(action) 返回值只有 4 个参数，没有 truncated</span>
+    <span class="token comment" spellcheck="true"># 但是 truncated 和 info 暂时没用，详见 https://stackoverflow.com/questions/73195438/openai-gyms-env-step-what-are-the-values</span>
+    next_raw_obs<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> terminated<span class="token punctuation">,</span> truncated<span class="token punctuation">,</span> info  <span class="token operator">=</span> targs<span class="token punctuation">.</span>env<span class="token punctuation">.</span>step<span class="token punctuation">(</span>action<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"[第 {epoch} 回合] 步数={step_counter}")</span>
+    <span class="token comment" spellcheck="true"># log.debug("执行结果：")</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"  状态空间变化：{next_raw_obs}")  # 执行动作后的新状态或观察。这是智能体在下一个时间步将观察到的环境状态。</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"  累计获得奖励：{reward}")        # 执行动作后获得的奖励。这是一个数值，指示执行该动作的效果好坏，是强化学习中的关键信号，作为当次动作的反馈。</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"  回合是否结束: {terminated}")    # 可能成功也可能失败，例如在一些游戏中，达到目标或失败会结束回合。</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"  回合是否中止: {truncated}")     # 回合因为某些约束调节提前中止，如步数限制等。</span>
+    <span class="token comment" spellcheck="true"># log.debug(f"  其他额外信息: {info}")          # 通常用 hash 表附带自定义的额外信息（如诊断信息、调试信息），暂时不需要用到的额外信息。</span>
+
+    next_obs <span class="token operator">=</span> to_tensor<span class="token punctuation">(</span>next_raw_obs<span class="token punctuation">,</span> targs<span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># 把观测空间状态数组送入神经网络所在的设备</span>
+    done <span class="token operator">=</span> terminated <span class="token operator">or</span> truncated                 <span class="token comment" spellcheck="true"># 在 Acrobot 问题中，如果超过 500 步未达成目标就会中止游戏</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>next_obs<span class="token punctuation">,</span> reward<span class="token punctuation">,</span> done<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="0x35-根据反馈更新-DQN-网络"><a href="#0x35-根据反馈更新-DQN-网络" class="headerlink" title="0x35 根据反馈更新 DQN 网络"></a>0x35 根据反馈更新 DQN 网络</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dqn</span><span class="token punctuation">(</span>targs<span class="token punctuation">:</span> TrainArgs<span class="token punctuation">,</span> total_loss<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    进行 DQN 学习（基于 Q 值的强化学习方法）：
+        这个过程是 DQN 学习算法的核心，它利用从环境中收集的经验来不断调整和优化网络，使得预测的 Q 值尽可能接近实际的 Q 值。
+        通过迭代这个过程，使得神经网络逐渐学习到一个策略，该策略可以最大化累积奖励。
+    :params: targs 用于训练的环境和模型关键参数
+    :params: action 下一步动作
+    :return: 执行动作后观测空间返回的状态
+    '''</span>
+
+    <span class="token comment" spellcheck="true"># 确保只有当【经验回放存储】中的样本数量超过批处理大小时，才进行学习过程</span>
+    <span class="token comment" spellcheck="true"># 这是为了确保有足够的样本来进行有效的批量学习</span>
+    <span class="token keyword">if</span> len<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>memory<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> targs<span class="token punctuation">.</span>batch_size <span class="token punctuation">:</span>
+        <span class="token keyword">return</span>
+
+    <span class="token comment" spellcheck="true"># 从【经验回放存储】中随机抽取 batch_size 个样本数</span>
+    <span class="token comment" spellcheck="true"># 这种随机抽样是为了减少样本间的相关性，增强学习的稳定性和效率</span>
+    transitions <span class="token operator">=</span> random<span class="token punctuation">.</span>sample<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>memory<span class="token punctuation">,</span> targs<span class="token punctuation">.</span>batch_size<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 解压 transitions 到单独的批次</span>
+    batch <span class="token operator">=</span> Transition<span class="token punctuation">(</span><span class="token operator">*</span>zip<span class="token punctuation">(</span><span class="token operator">*</span>transitions<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 将每个样本的组成部分 (obs, action, reward, next_obs, done) ，拆分转换为独立的批次</span>
+    <span class="token comment" spellcheck="true"># 目的是后续计算时可以批量进行、加速运算 （单个计算也可以，但是太慢了）</span>
+    obs_batch <span class="token operator">=</span> cat_batch_tensor<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>obs<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+    action_batch <span class="token operator">=</span> cat_batch_tensor<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>action<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>long<span class="token punctuation">,</span> up_dim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    reward_batch <span class="token operator">=</span> cat_batch_tensor<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>reward<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> up_dim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    next_obs_batch <span class="token operator">=</span> cat_batch_tensor<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>next_obs<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+    done_batch <span class="token operator">=</span> cat_batch_tensor<span class="token punctuation">(</span>batch<span class="token punctuation">.</span>done<span class="token punctuation">,</span> torch<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> up_dim<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 获得当前状态下的 Q 值（对当前状态的观测进行前向传播的结果，用于后续计算损失）</span>
+    current_Q_values <span class="token operator">=</span> get_current_Q_values<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>model<span class="token punctuation">,</span> obs_batch<span class="token punctuation">,</span> action_batch<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 计算下一个状态的最大预测 Q 值</span>
+    expected_q_values <span class="token operator">=</span> calculate_expected_Q_values<span class="token punctuation">(</span>
+        targs<span class="token punctuation">.</span>target_model<span class="token punctuation">,</span> targs<span class="token punctuation">.</span>gamma<span class="token punctuation">,</span> 
+        next_obs_batch<span class="token punctuation">,</span> reward_batch<span class="token punctuation">,</span> done_batch
+    <span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 计算 Huber 损失（亦称平滑 L1 损失，用于表示当前 Q 值和预期 Q 值之间的差异）</span>
+    <span class="token comment" spellcheck="true"># Huber 损失是均方误差和绝对误差的结合，对异常值不那么敏感</span>
+    loss <span class="token operator">=</span> F<span class="token punctuation">.</span>smooth_l1_loss<span class="token punctuation">(</span>
+        current_Q_values<span class="token punctuation">,</span>               <span class="token comment" spellcheck="true"># 是一个二维张量，其形状是 [batch_size, 1]，因为它是通过 gather 操作从网络输出中选取的特定动作的 Q 值</span>
+        expected_q_values<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 在张量中增加一个维度，其中第二个维度（列）的大小为 1，即使其形状从 [batch_size] 转换成 [batch_size, 1]</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 优化模型</span>
+    optimize_params<span class="token punctuation">(</span>targs<span class="token punctuation">.</span>model<span class="token punctuation">,</span> targs<span class="token punctuation">.</span>optimizer<span class="token punctuation">,</span> loss<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 累积损失更新</span>
+    total_loss <span class="token operator">+=</span> loss<span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">cat_batch_tensor</span><span class="token punctuation">(</span>batch_data<span class="token punctuation">,</span> data_type<span class="token punctuation">,</span> up_dim<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    连接一批张量
+    :params: batch_data 一批张量数据
+    :params: data_type 张量元素的数据类型
+    :params: up_dim 是否需要升维。当且仅当张量数据是 0 维标量时，才需要升维，否则 torch.cat 会报错
+    :return: 连接后的张量
+    '''</span>
+    batch_tensor <span class="token operator">=</span> <span class="token punctuation">[</span>torch<span class="token punctuation">.</span>tensor<span class="token punctuation">(</span><span class="token punctuation">[</span>d<span class="token punctuation">]</span><span class="token punctuation">,</span> dtype<span class="token operator">=</span>data_type<span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> batch_data<span class="token punctuation">]</span> \
+                <span class="token keyword">if</span> up_dim <span class="token keyword">else</span> \
+            <span class="token punctuation">[</span>d<span class="token punctuation">.</span>clone<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> d <span class="token keyword">in</span> batch_data<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> torch<span class="token punctuation">.</span>cat<span class="token punctuation">(</span>batch_tensor<span class="token punctuation">)</span>
+
+
+<span class="token keyword">def</span> <span class="token function">get_current_Q_values</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> obs_batch<span class="token punctuation">,</span> action_batch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    获取当前状态下的 Q 值（真实值）
+    :params: model 主网络/主模型。在 DQN 算法中，通常使用两个网络：主网络（用于选择动作和更新），目标网络（用于计算目标 Q 值）。
+    :params: obs_batch 观测空间的当前状态批量数据。
+    :params: action_batch 动作空间的批量数据
+    :return: 
+    '''</span>
+
+    <span class="token comment" spellcheck="true"># 步骤 1: 将观测数据（状态）输入到模型中，以获取每个状态下所有动作的预测 Q 值。</span>
+    <span class="token comment" spellcheck="true"># obs_batch 是当前状态的批量数据</span>
+    predicted_Q_values <span class="token operator">=</span> model<span class="token punctuation">(</span>obs_batch<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 步骤 2: 对动作张量进行处理，以使其维度与预测的 Q 值张量匹配。</span>
+    <span class="token comment" spellcheck="true"># action_batch 包含了每个状态下选择的动作。</span>
+    <span class="token comment" spellcheck="true"># unsqueeze(1) 是将 action_batch 从 [batch_size] 转换为 [batch_size, 1]</span>
+    <span class="token comment" spellcheck="true"># 这是为了在接下来的操作中能够选择正确的 Q 值。</span>
+    actions_unsqueezed <span class="token operator">=</span> action_batch<span class="token punctuation">.</span>unsqueeze<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 步骤 3: 从预测的 Q 值中选择对应于实际采取的动作的 Q 值。</span>
+    <span class="token comment" spellcheck="true"># gather 函数在这里用于实现这一点。</span>
+    <span class="token comment" spellcheck="true"># 第一个参数 1 表示操作在第二维度（动作维度）上进行。</span>
+    <span class="token comment" spellcheck="true"># actions_unsqueezed 用作索引，指定从每一行（每个状态）中选择哪个动作的 Q 值。</span>
+    cur_Q_values <span class="token operator">=</span> predicted_Q_values<span class="token punctuation">.</span>gather<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> actions_unsqueezed<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> cur_Q_values
+
+
+<span class="token keyword">def</span> <span class="token function">calculate_expected_Q_values</span><span class="token punctuation">(</span>target_model<span class="token punctuation">,</span> gamma<span class="token punctuation">,</span> next_obs_batch<span class="token punctuation">,</span> reward_batch<span class="token punctuation">,</span> done_batch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    计算下一个状态的最大预测 Q 值
+    :params: target_model 目标网络/目标模型。在 DQN 算法中，通常使用两个网络：主网络（用于选择动作和更新），目标网络（用于计算目标 Q 值）。目标网络的参数定期从主网络复制过来，但在更新间隔内保持不变。这有助于稳定学习过程。
+    :params: gamma 折扣因子: 用于折算未来奖励的在当前回合中的价值。
+    :params: next_obs_batch 执行动作后、观测空间的状态批量数据。
+    :params: reward_batch 执行动作后、获得奖励的批量数据
+    :params: done_batch 回合完成状态的批量数据
+    :return: 
+    '''</span>
+
+    <span class="token comment" spellcheck="true"># target_model(next_obs_batch): 将下一个状态的批量数据输入目标网络，得到每个状态下每个可能动作的预测 Q 值。</span>
+    <span class="token comment" spellcheck="true"># detach(): 用于切断这些 Q 值与计算图的联系。它会创建一个新的张量，它与原始数据共享内容，但不参与梯度计算。这在计算目标 Q 值时很常见，因为我们不希望在反向传播中更新目标网络。</span>
+    <span class="token comment" spellcheck="true"># max(1)：用于找出每个状态的所有动作 Q 值中的最大值。.max(1) 的 1 表示操作是在张量的第二个维度上进行的（即动作维度）</span>
+    <span class="token comment" spellcheck="true"># [0]：从 .max(1) 返回的结果中，只取最大值。因为 .max(1) 返回一个元组，其中第一个元素（索引为 0 的元素）是每一行的最大值。</span>
+    next_Q_values <span class="token operator">=</span> target_model<span class="token punctuation">(</span>next_obs_batch<span class="token punctuation">)</span><span class="token punctuation">.</span>detach<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true"># 这个公式基于贝尔曼方程（思路和动态规划一样）</span>
+    <span class="token comment" spellcheck="true"># 这个公式表明，一个动作的预期 Q 值等于即时奖励加上在下一个状态下所有可能动作的最大预期 Q 值的折扣值。这个折扣值反映了未来奖励的当前价值。</span>
+    expected_Q_values <span class="token operator">=</span> reward_batch <span class="token operator">+</span> <span class="token punctuation">(</span>gamma <span class="token operator">*</span> next_Q_values <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> done_batch<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 为什么要乘以 (1 - done_batch)</span>
+    <span class="token comment" spellcheck="true"># 当一个回合结束时（例如智能体到达了目标状态或触发了游戏结束的条件），在该状态下没有未来的奖励。</span>
+    <span class="token comment" spellcheck="true"># 乘以 (1 - done_batch) 确保了如果回合结束，未来奖励的贡献为零。</span>
+    <span class="token comment" spellcheck="true"># 换句话说，如果 done_batch 中的值为 1（表示回合结束），next_Q_values 将不会对计算的 expected_Q_values 产生影响。</span>
+    <span class="token keyword">return</span> expected_Q_values
+
+
+<span class="token keyword">def</span> <span class="token function">optimize_params</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> optimizer<span class="token punctuation">,</span> loss<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 优化模型</span>
+    optimizer<span class="token punctuation">.</span>zero_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 清除之前的梯度。PyTorch 会默认累积梯度，如果不清除梯度，新计算的梯度会被加到已存在的梯度上，在 DQN 中这会使得训练过程变得不稳定，甚至可能导致模型完全无法学习。</span>
+    loss<span class="token punctuation">.</span>backward<span class="token punctuation">(</span><span class="token punctuation">)</span>             <span class="token comment" spellcheck="true"># 反向传播，计算梯度</span>
+    <span class="token comment" spellcheck="true"># 梯度裁剪，防止梯度爆炸</span>
+    <span class="token comment" spellcheck="true"># 梯度爆炸会导致模型权重的大幅更新，使得模型无法收敛或表现出不稳定的行为</span>
+    <span class="token keyword">for</span> param <span class="token keyword">in</span> model<span class="token punctuation">.</span>parameters<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        param<span class="token punctuation">.</span>grad<span class="token punctuation">.</span>data<span class="token punctuation">.</span>clamp_<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 限制梯度值在 -1 到 1 的范围内，这是防止梯度值变得过大或过小、导致训练不稳定</span>
+    optimizer<span class="token punctuation">.</span>step<span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># 更新参数（梯度下降，指使用计算出的梯度来更新模型参数的过程）</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="0x40-记录训练过程"><a href="#0x40-记录训练过程" class="headerlink" title="0x40 记录训练过程"></a>0x40 记录训练过程</h2><p>在强化学习训练中，可以使用 <a target="_blank" rel="noopener" href="https://tensorboardx.readthedocs.io/en/latest/tensorboard.html">TensorBoard</a> 实时查看训练情况。</p>
+<blockquote>
+<p>TensorBoard 是一个用于可视化和监视深度学习模型训练过程的工具，它原版是 TensorFlow 中的一个功能，但后来 PyTorch 也对其提供了支持。</p>
+</blockquote>
+<p>TensorBoard 只需要在训练开始之前初始化即可：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 入参的 `logdir` 是记录训练过程各个参数的位置，默认为 `runs`</span>
+writer <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span>logdir<span class="token operator">=</span><span class="token string">"runs"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>然后在每个回合训练结束后，记录训练过程的参数，常见的参数有：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 记录探索率的变化：跟踪探索率的变化是很有用的，以确保它在训练过程中逐渐减小</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'通常/每回合探索率'</span><span class="token punctuation">,</span> targs<span class="token punctuation">.</span>cur_epsilon<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 记录每个回合的奖励：除了记录总奖励外，还要记录每个回合的奖励，以便更详细地了解每个回合的表现</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'通常/每回合总奖励'</span><span class="token punctuation">,</span> total_reward<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 记录每个回合的步数和耗时： 在 Acrobot 问题中这两个指标和 reward 是一样的，可以不看</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'通常/每回合步数'</span><span class="token punctuation">,</span> step_counter<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'通常/每回合完成时间'</span><span class="token punctuation">,</span> finish_time<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 记录损失值：每个回合的损失值，以监测模型学习的情况</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'通常/每回合平均损失'</span><span class="token punctuation">,</span> total_loss <span class="token operator">/</span> step_counter<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 记录学习率和其他超参数：这是 DQN 特有的指标</span>
+writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'特殊/每回合学习率'</span><span class="token punctuation">,</span> targs<span class="token punctuation">.</span>optimizer<span class="token punctuation">.</span>param_groups<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'lr'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 记录 Q 值的分布：这是 DQN 特有的指标，可以了解模型对每个 “状态-动作对” 的估计</span>
+writer<span class="token punctuation">.</span>add_histogram<span class="token punctuation">(</span><span class="token string">'特殊/每回合 Q 值分布'</span><span class="token punctuation">,</span> targs<span class="token punctuation">.</span>model<span class="token punctuation">(</span>obs<span class="token punctuation">)</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这些记录可以有助于了解模型的性能和训练过程，其中：</p>
+<ul>
+<li><code>add_scalar</code>： 用于记录简单的标量值（即单个数值），这在监控诸如损失、精确度或其他度量时非常有用。它在训练过程中用于跟踪随时间变化的单一值。</li>
+<li><code>add_histogram</code>： 用于记录值的分布，例如模型参数（如权重和偏置）或层的激活值。这对于理解和调试神经网络非常有帮助，因为它可以展示训练过程中这些值的分布是如何变化的。</li>
+<li>对于参数得 key 值格式为： <code>分组名/指标名</code>，其中 分组名 可以不要，其效果是在 UI 上面是否分组显示</li>
+</ul>
+<hr>
+<p>在训练过程中，启动另一个终端并执行命令：</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># logdir 要和前面初始化得位置一样
+tensorboard --logdir=runs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>会出现访问 <a target="_blank" rel="noopener" href="http://localhost:6006/">http://localhost:6006/</a> 的提示，在浏览器访问即可看到实时的训练参数：</p>
+<p><img src="./07.jpg"></p>
+<h2 id="0x50-保存训练模型"><a href="#0x50-保存训练模型" class="headerlink" title="0x50 保存训练模型"></a>0x50 保存训练模型</h2><p>在所有回合训练完成后，调用以下代码即可存储训练好的模型：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># model 为训练好的主模型</span>
+torch<span class="token punctuation">.</span>save<span class="token punctuation">(</span>model<span class="token punctuation">.</span>state_dict<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'./out/models/acrobot_model.pth'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>训练好的模型即可用来验证是否可以通关 Acrobot 。</p>
+<h2 id="0x60-验证训练结果"><a href="#0x60-验证训练结果" class="headerlink" title="0x60 验证训练结果"></a>0x60 验证训练结果</h2><blockquote>
+<p>完整的验证源码见 <a target="_blank" rel="noopener" href="https://github.com/Visuals-AI/gym-course-exercises/blob/master/py/01_Classic_Control/01_Acrobot/test_DQN.py">test_DQN.py</a></p>
+</blockquote>
+<p>这里挑几个关键部分解释（看代码注释就可以了，不单独拎出来解释了）：</p>
+<h3 id="0x61-创建验证环境"><a href="#0x61-创建验证环境" class="headerlink" title="0x61 创建验证环境"></a>0x61 创建验证环境</h3><p>这步其实很简单，只需两行代码即可：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> gymnasium <span class="token keyword">as</span> gym
+env <span class="token operator">=</span> gym<span class="token punctuation">.</span>make<span class="token punctuation">(</span><span class="token string">'Acrobot-v1'</span><span class="token punctuation">,</span> 
+                render_mode<span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"human"</span> <span class="token keyword">if</span> args<span class="token punctuation">.</span>render <span class="token keyword">else</span> None<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 验证时如果有需要，可以渲染 GUI 观察实时挑战情况</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>但是这里和训练模型时创建的环境有一点区别：可以追加 <code>render_mode="human"</code> 参数把可视化 GUI 渲染出来。</p>
+<blockquote>
+<p>训练时尽量不要渲染 GUI，会极其影响训练效率</p>
+</blockquote>
+<h3 id="0x62-验证模型"><a href="#0x62-验证模型" class="headerlink" title="0x62 验证模型"></a>0x62 验证模型</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test</span><span class="token punctuation">(</span>targs <span class="token punctuation">:</span> TrainArgs<span class="token punctuation">,</span> epoch<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">'''
+    验证模型是否完成挑战。
+    :params: targs 用于运行模型的环境和关键参数
+    :params: epoch 正在验证的回合数
+    :return: 是否完成挑战
+    '''</span>
+    raw_obs <span class="token operator">=</span> targs<span class="token punctuation">.</span>env<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 把观测空间的初始状态转换为 PyTorch 张量，并送入神经网络所在的设备</span>
+    obs <span class="token operator">=</span> to_tensor<span class="token punctuation">(</span>raw_obs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> targs<span class="token punctuation">)</span>
+
+
+    <span class="token comment" spellcheck="true"># Acrobot 问题的 v1 版本要求在 500 步内完成</span>
+    ACROBOT_V1_MAX_STEP <span class="token operator">=</span> <span class="token number">500</span>
+    step_counter <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span>ACROBOT_V1_MAX_STEP<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+
+        <span class="token comment" spellcheck="true"># 渲染 GUI（前提是 env 初始化时使用 human 模式）</span>
+        <span class="token keyword">if</span> targs<span class="token punctuation">.</span>render <span class="token punctuation">:</span>
+            targs<span class="token punctuation">.</span>env<span class="token punctuation">.</span>render<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true"># 使用模型推理下一步的动作</span>
+        <span class="token keyword">with</span> torch<span class="token punctuation">.</span>no_grad<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># no_grad 告诉 PyTorch 在这个块中不要计算梯度。</span>
+                                <span class="token comment" spellcheck="true"># 在推理过程中，是使用模型来预测输出，而不是通过反向传播来更新模型的权重。</span>
+
+            <span class="token comment" spellcheck="true"># 传递输入数据到模型</span>
+            model_output <span class="token operator">=</span> targs<span class="token punctuation">.</span>model<span class="token punctuation">(</span>obs<span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># 在模型的输出中找到具有最大 Q 值的动作的索引</span>
+            action_index <span class="token operator">=</span> model_output<span class="token punctuation">.</span>max<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+            <span class="token comment" spellcheck="true"># 调整张量形状为 (1, 1)</span>
+            action_index_reshaped <span class="token operator">=</span> action_index<span class="token punctuation">.</span>view<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+            <span class="token comment" spellcheck="true"># 获取单个动作值</span>
+            action <span class="token operator">=</span> action_index_reshaped<span class="token punctuation">.</span>item<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+        <span class="token comment" spellcheck="true"># 执行动作并获取下一个状态</span>
+        next_obs<span class="token punctuation">,</span> _<span class="token punctuation">,</span> done<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _ <span class="token operator">=</span> targs<span class="token punctuation">.</span>env<span class="token punctuation">.</span>step<span class="token punctuation">(</span>action<span class="token punctuation">)</span>
+        obs <span class="token operator">=</span> to_tensor<span class="token punctuation">(</span>next_obs<span class="token punctuation">,</span> targs<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> done<span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+        step_counter <span class="token operator">+=</span><span class="token number">1</span>
+        <span class="token comment" spellcheck="true"># log.debug(f"[第 {epoch} 回合] 已执行 {step_counter} 步: {action}")</span>
+
+
+    is_ok <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">if</span> step_counter <span class="token operator">&lt;</span> ACROBOT_V1_MAX_STEP <span class="token punctuation">:</span>
+        log<span class="token punctuation">.</span>info<span class="token punctuation">(</span>f<span class="token string">"[第 {epoch} 回合] 智能体在第 {step_counter} 步完成 Acrobot 挑战"</span><span class="token punctuation">)</span>
+        is_ok <span class="token operator">=</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span> <span class="token punctuation">:</span>
+        log<span class="token punctuation">.</span>warn<span class="token punctuation">(</span>f<span class="token string">"[第 {epoch} 回合] 智能体未能在 {ACROBOT_V1_MAX_STEP} 步内完成 Acrobot 挑战"</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> is_ok<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="./08.jpg"></p>
+<p>看得出这次训练效果还可以，挑战成功率达到了 84% ，但是训练还有优化空间、使得模型的性能可以更好。</p>
+<h3 id="0x63-改进思路"><a href="#0x63-改进思路" class="headerlink" title="0x63 改进思路"></a>0x63 改进思路</h3><p>强化学习是一个需要不断尝试和调整的过程，通常需要多次迭代才能得到令人满意的结果。针对性能问题、一些可能的改进方法是：</p>
+<ol>
+<li>调整超参数： 尝试不同的神经网络架构、学习率、折扣因子等，不同的超参数设置会对训练结果产生显著影响。</li>
+<li>增减训练次数： 需要观察 TensorBoard 是否训练次数过多导致过拟合、或者过少不足以让模型学到足够好的策略。</li>
+<li>使用更复杂的模型： 增加模型的容量或层数，以便更好地拟合环境。</li>
+<li>更换其他强化学习算法： 除了 DQN 之外，尝试使用 DDPG、PPO、A3C 等，这些算法可能在某些问题上表现更好。</li>
+<li>经验回放： 确保经验回放存储足够大、且样本具有多样性，以确保模型充分学习。</li>
+<li>网络参数优化问题： 如是否存在梯度爆炸、梯度消失等。</li>
+</ol>
+<p>具体调整的过程就不演示了，最后发现是训练 10000 回合后、过拟合导致成功率偏低。</p>
+<p>取训练次数在 5000 回合左右的模型、成功率就能达到 100% ：</p>
+<p><img src="./09.png"></p>
+<p><img src="./acrobot_ui_epoch_1.gif"></p>
+<blockquote>
+<p>过拟合：模型在训练数据上表现得非常好，准确率很高，但是当应用于未见过的新数据时，性能显著下降。由于模型学习了训练数据中的噪声（即不代表整体数据特征的随机变异），它对于新的、稍微不同的数据可能会表现出过度敏感或不准确的反应。</p>
+</blockquote>
+<h2 id="0x70-断点训练"><a href="#0x70-断点训练" class="headerlink" title="0x70 断点训练"></a>0x70 断点训练</h2><p>这里我是怎么取中间训练的结果的呢？是因为我实现了 <strong>断点训练</strong>。</p>
+<p>大量的重复训练需要耗时极长，几个小时、甚至几天时间都是有可能的（视显卡性能而定）。</p>
+<p>期间一旦突发情况导致训练中断，就只能重新训练了，此时断点训练就显得很重要了。</p>
+<p>原理其实很简单：</p>
+<ol>
+<li>在训练满一定回合数时，把当前各个超参数的值和模型保存到 checkpoint 文件</li>
+<li>在断点开始训练前，加载最后一个 checkpoint 文件的超参数和模型</li>
+</ol>
+<blockquote>
+<p>相关的源码见 <a target="_blank" rel="noopener" href="https://github.com/Visuals-AI/gym-course-exercises/blob/master/py/libs/bean/checkpoint.py">checkpoint.py</a></p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/ai/gym-bi-ji-02-acrobot/">https://exp-blog.com/ai/gym-bi-ji-02-acrobot/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/OpenAI/">
+                                    
+                                        <span class="chip bg-color">OpenAI</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Gym/">
+                                    
+                                        <span class="chip bg-color">Gym</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/RL/">
+                                    
+                                        <span class="chip bg-color">RL</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
+                                    
+                                        <span class="chip bg-color">强化学习</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/DQN/">
+                                    
+                                        <span class="chip bg-color">DQN</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/game/ro/ro-bi-ji-ge-ren-mian-ban-zhi-ye-ming-han-hua/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/game/ro/03.jpg" class="responsive-img" alt="「RO 笔记」汉化个人信息面板的职业名">
+                        
+                        <span class="card-title">「RO 笔记」汉化个人信息面板的职业名</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在游戏左上角的个人信息面板中，会显示当前角色的职业名称，但是在默认情况下，职业名称是英文的，不易于理解，要怎么修改为中文呢 ？
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-12-15
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/" class="post-category">
+                                    仙境传说
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Ragnarok/">
+                        <span class="chip bg-color">Ragnarok</span>
+                    </a>
+                    
+                    <a href="/tags/RO/">
+                        <span class="chip bg-color">RO</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B1%89%E5%8C%96/">
+                        <span class="chip bg-color">汉化</span>
+                    </a>
+                    
+                    <a href="/tags/DIFF/">
+                        <span class="chip bg-color">DIFF</span>
+                    </a>
+                    
+                    <a href="/tags/Nemo/">
+                        <span class="chip bg-color">Nemo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/finance/ge-shui-ji-suan/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/finance/02.jpg" class="responsive-img" alt="2023-2027 如何缴最少的税、拿最多的钱 ？">
+                        
+                        <span class="card-title">2023-2027 如何缴最少的税、拿最多的钱 ？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            你有算过你自己的工资缴的税是否合理吗？你知道中国的个税每年都在变吗？你知道全国每个省市的个税计算都不一样吗？一文帮你剖析所有疑惑！
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-12-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%87%91%E8%9E%8D/" class="post-category">
+                                    金融
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%AA%E7%A8%8E/">
+                        <span class="chip bg-color">个税</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%B8%AA%E4%BA%BA%E6%89%80%E5%BE%97%E7%A8%8E/">
+                        <span class="chip bg-color">个人所得税</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

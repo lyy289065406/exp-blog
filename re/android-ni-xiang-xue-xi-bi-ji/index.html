@@ -1,0 +1,2496 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Android 逆向学习笔记, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Android 逆向学习笔记 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/re/04.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Android 逆向学习笔记</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Android/">
+                                
+                                    <span class="chip bg-color">Android</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E9%80%86%E5%90%91/">
+                                
+                                    <span class="chip bg-color">逆向</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">
+                                
+                                    <span class="chip bg-color">反编译</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%A3%B3/">
+                                
+                                    <span class="chip bg-color">壳</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                系统工程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-01-28
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><table>
+<thead>
+<tr>
+<th align="left">条项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">APP</td>
+<td align="left">YZ.apk</td>
+</tr>
+<tr>
+<td align="left">目标 A</td>
+<td align="left">绕过 root 限制</td>
+</tr>
+<tr>
+<td align="left">目标 B</td>
+<td align="left">拿到 abService 签名 key 并通过中间人改至少改一个包（通过签名验证）</td>
+</tr>
+</tbody></table>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><table>
+<thead>
+<tr>
+<th align="left">内容</th>
+<th align="center">推荐度</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://developer.android.com/studio/run/managing-avds?hl=zh-cn">Android Studio 用户指南</a></td>
+<td align="center">低</td>
+<td align="left">IDE 说明文档，暂时还用不到</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018453184">Mac 上可测试开发的安卓模拟器</a></td>
+<td align="center">低</td>
+<td align="left">MAC上搭建安卓模拟环境</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://linux.cn/article-10024-1.html">在 VirtualBox 中安装 Android 系统</a></td>
+<td align="center">低</td>
+<td align="left">MAC上安装各种安卓模拟器失败后的折中方法</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/64ed26536601">Android 反编译及调试利器</a></td>
+<td align="center">低</td>
+<td align="left">一些常用工具</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.imooc.com/article/20990">微信 Android SDK 反编译还原源码 进行修改重新编译</a></td>
+<td align="center">低</td>
+<td align="left">非入门级的思路指导</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a></td>
+<td align="center">高</td>
+<td align="left">apk为什么要限制root，检测root的原理是什么</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/eb766d2bb837">Android 反编译后重新打包</a></td>
+<td align="center">高</td>
+<td align="left">入门级思路指导</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9931a1e77066">Android 逆向基础：Smali 语法</a></td>
+<td align="center">高</td>
+<td align="left">逆向后如何修改代码（非源码的中间代码）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://coderyuan.com/2018/04/19/smali-knowledge/">Smali 基础知识</a></td>
+<td align="center">高</td>
+<td align="left">逆向后如何修改代码（非源码的中间代码）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/dreamer2020/article/details/52761606">安卓 apk 反编译、修改、重新打包、签名全过程</a></td>
+<td align="center">高</td>
+<td align="left">反编译后如何重新封包（使用JDK）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30552993/article/details/83028285">Android 反编译 Apk，修改资源，重新打包，签名发布</a></td>
+<td align="center">中</td>
+<td align="left">反编译后如何重新封包（使用工具）</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="http://www.520monkey.com/archives/1081">Android逆向之旅 — IDA动态调试SO</a></td>
+<td align="center">高</td>
+<td align="left">分析某拍短视频的数据请求加密协议</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://bbs.pediy.com/thread-221536.htm">Inspeckage 安装教程</a></td>
+<td align="center">低</td>
+<td align="left">看看就好，可以不用到 Inspeckage</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://la0s.github.io/2018/07/17/Inspeckage/">深入 Android 动态分析工具 Inspeckage</a></td>
+<td align="center">低</td>
+<td align="left">实例教程</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://4hou.win/wordpress/?p=7516">Xposed知多少</a></td>
+<td align="center">低</td>
+<td align="left">入门科普</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e2589341f698">inspeckage xposed 插件分析 app 及微信 Log</a></td>
+<td align="center">低</td>
+<td align="left">Inspeckage 案例参考</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://laysent.com/blog/post/android-app-reverse-engineering-tutorial/">Android App 逆向工程初探</a></td>
+<td align="center">高</td>
+<td align="left">案例参考，逆向后如何找到 HTTP 签名算法</td>
+</tr>
+</tbody></table>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><table>
+<thead>
+<tr>
+<th align="left">工具</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">jadx</td>
+<td align="left">用于 apk 反编译（为可读的 java 源码）</td>
+</tr>
+<tr>
+<td align="left">apktool</td>
+<td align="left">用于 apk 反编译（为不易读的 Smali 中间码）<br>用于 Smali 重打包为 apk</td>
+</tr>
+<tr>
+<td align="left">JDK</td>
+<td align="left">keytool：用于生成自签名证书<br>jarsigner：用于给 apk 自签名</td>
+</tr>
+<tr>
+<td align="left">网易 MuMu</td>
+<td align="left">安卓模拟器（蓝叠不支持MAC，夜神又安装失败，最后没办法选了这个）</td>
+</tr>
+<tr>
+<td align="left">Xposed</td>
+<td align="left">用来胁持系统 API 的 hook 框架 （需要 root 系统才能装）</td>
+</tr>
+<tr>
+<td align="left">Inspeckage</td>
+<td align="left">Xposed 的一个模块，用于动态分析 app（事实上用不到）</td>
+</tr>
+<tr>
+<td align="left">TrustMeAlready</td>
+<td align="left">Xposed 的一个模块，用于绕过 SSL Pinning 防抓包（如果 APP 没有防抓包则用不到）<br>本来应该装 JustTrustMe 的，但是搜不到，用了这个替代</td>
+</tr>
+<tr>
+<td align="left">Burp Suite</td>
+<td align="left">用于抓包和中间人攻击</td>
+</tr>
+</tbody></table>
+<h2 id="【目标-A】绕过-root-限制"><a href="#【目标-A】绕过-root-限制" class="headerlink" title="【目标 A】绕过 root 限制"></a>【目标 A】绕过 root 限制</h2><h3 id="A-1-解题思路"><a href="#A-1-解题思路" class="headerlink" title="A.1. 解题思路"></a>A.1. 解题思路</h3><p>通过文章《<a target="_blank" rel="noopener" href="https://open.appscan.io/article-708.html">移动安全: 通过逆向 APK 绕过 Android root 检测</a>》可以知道，apk 的 root 检测都是通过（java）代码实现的，因此要绕过 root 的思路也很直白了：</p>
+<ul>
+<li>反编译 apk 安装包</li>
+<li>找到 root 检测代码</li>
+<li>修改检测逻辑，使其不生效（删除或固化其检测结果均可，只要没有多处埋点，一般只有程序入口一处）</li>
+<li>重新打包为 apk 安装包</li>
+<li>apk 自签名（apk 有防篡改机制，所有文件都会生成 hash 校验码，签名目的是重新生成这些校验码）</li>
+<li>在启用 root 的模拟器上验证</li>
+</ul>
+<h3 id="A-2-解题过程"><a href="#A-2-解题过程" class="headerlink" title="A.2. 解题过程"></a>A.2. 解题过程</h3><h4 id="A-2-1-找到-root-检测入口"><a href="#A-2-1-找到-root-检测入口" class="headerlink" title="A.2.1. 找到 root 检测入口"></a>A.2.1. 找到 root 检测入口</h4><p>首先需要 root 检测入口的点在哪。</p>
+<p>使用模拟器安装 YZ.apk 并运行，会提示【禁止在 Root 设备运行】，然后会直接关掉 APP 进程，而明显这就是我们需要绕过的逻辑。</p>
+<p><img src="01.jpg"></p>
+<p>鉴于已经有明显的检测提示【禁止在Root设备运行】，那么使用 jadx 反编译 YZ.apk，然后直接搜索源码哪里出现这个字符串即可，检测逻辑必定在附近。</p>
+<blockquote>
+<p>jadx 反编译得到的是 java 源码</p>
+</blockquote>
+<p><img src="02.jpg"></p>
+<p>为了方便后续操作，jadx → 另存为 Gradle 项目（这里导出保存目录为 yz_jadx）</p>
+<blockquote>
+<p>Gradle 的定位类似于 Maven</p>
+</blockquote>
+<p><img src="03.jpg"></p>
+<p>暂时不需要用到 IDE， 直接使用 ST3 打开导出的 Gradle 项目，全局搜索关键字【禁止在】，在文件 <code>src/main/res/values-zh/strings.xml</code> 找到唯一一条定义：【禁止在Root设备运行】</p>
+<p><img src="04.jpg"></p>
+<p>从目录编排上不难判断 <code>src/main/res/values-xx</code> 就是用于定义某国 xx 语言的提示字符串的 xml 配置文件，很明显这是一个多国语言的 APP。</p>
+<p>而且从 xml 格式和内容来看，很明显定义了两个变量：</p>
+<ul>
+<li><code>warn_root_disabled</code> = “禁止在Root设备运行”</li>
+<li><code>warn_emulator_disabled</code> = “禁止在模拟器上运行”</li>
+</ul>
+<p>与这两个变量相关的逻辑极可能都是我们需要绕过的。</p>
+<p><img src="05.jpg"></p>
+<p>再次全局搜索关键字【<code>warn_root_disabled</code>】，在文件 <code>src/main/java/com/xxx/oooooooooo/ui/main/MainActivity.java</code> 找到唯一一次代码引用：</p>
+<p><img src="06.jpg"></p>
+<p>查看 MainActivity.java 类的源码，发现明显被混淆过了。</p>
+<p>不过不难判断方法 <code>private void e()</code> 内实现了【root 检测】和【模拟器检测】。因为前面搜索到的两个目标变量都在这里出现了：</p>
+<ul>
+<li><code>warn_root_disabled</code> = “禁止在Root设备运行”</li>
+<li><code>warn_emulator_disabled</code> = “禁止在模拟器上运行”</li>
+</ul>
+<p><img src="07.jpg"></p>
+<h4 id="A-2-2-修改-root-检测逻辑（java源码）"><a href="#A-2-2-修改-root-检测逻辑（java源码）" class="headerlink" title="A.2.2. 修改 root 检测逻辑（java源码）"></a>A.2.2. 修改 root 检测逻辑（java源码）</h4><p>其实从源码不难解读到：</p>
+<ul>
+<li><code>e.b()</code> 是用于检测模拟器的</li>
+<li><code>e.a()</code> 是用于检测 root 的</li>
+<li><code>k.a()</code> 应该是输出提示消息到 UI 的</li>
+</ul>
+<p>而最开始在模拟器上运行 YZ.apk 所诱发的提示【禁止在Root设备运行】，明显就是 <code>k.a((int) R.string.warn_root_disabled);</code> 这行代码执行结果。</p>
+<p>那么要达到无法检测 root 的目标，只需要让 <code>k.a()</code> 所在的条件分支代码无法执行即可，例如这样修改代码：</p>
+<p><img src="08.jpg"></p>
+<p>但是修改 java 源码后，使用 <code>apktool b yz_jadx</code> 命令重新编译打包会报错：【brut.directory.PathNotExist: apktool.yml】</p>
+<p><img src="09.jpg"></p>
+<p>从 <a target="_blank" rel="noopener" href="https://github.com/eleydur0g13/apktool/issues/9">Github issue</a> 找到原因，这是因为 yz_jadx 是通过 jadx 逆向得到的项目，亦即 yz_jadx 并不是 <code>apktool d</code> 命令逆向生成的，导致 apktool 找不到 apktool.yml 文件，从而无法重新打包。</p>
+<h4 id="A-2-3-修改-root-检测逻辑（Smali中间码）"><a href="#A-2-3-修改-root-检测逻辑（Smali中间码）" class="headerlink" title="A.2.3. 修改 root 检测逻辑（Smali中间码）"></a>A.2.3. 修改 root 检测逻辑（Smali中间码）</h4><p>于是这里变更逆向的方法：使用 <code>apktool d YZ.apk</code> 命令反编译 YZ.apk ，得到目录名为 YZ 项目。</p>
+<p>在目录下果然可以找到 apktool.yml 文件，在里面还记录了每个类的 JDK 编译版本为 8 （即 1.8）。</p>
+<p><img src="10.jpg"></p>
+<p>需要注意的是，使用 apktool 逆向出来的代码不是 java，而是名为 smali 的中间码。</p>
+<p>根据前面所找到的 java 文件 <code>src/main/java/com/xxx/oooooooooo/ui/main/MainActivity.java</code>，可以对应找到的 smali 文件 <code>smali/com/xxx/oooooooooo/ui/main/MainActivity.smali</code>。</p>
+<p>稍微学习一下 smali 语法，不难找到 smali 的 <code>.method private e()V</code> 就是 java 的 <code>private void e()</code>。</p>
+<p>两种代码的对应关系整理如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">smali 中间码</th>
+<th align="left">java 源码</th>
+<th align="left">分析说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">01</td>
+<td align="left"><code>.method private e()V</code><br>  …<br><code>.end method</code></td>
+<td align="left"><code>private void e() {</code><br>  …<br><code>}</code></td>
+<td align="left">定义方法</td>
+</tr>
+<tr>
+<td align="center">02</td>
+<td align="left"><code>.locals 4</code></td>
+<td align="left">-</td>
+<td align="left">声明方法内的局部变量个数</td>
+</tr>
+<tr>
+<td align="center">03</td>
+<td align="left"><code>.prologue</code></td>
+<td align="left">-</td>
+<td align="left">声明代码块开始位置</td>
+</tr>
+<tr>
+<td align="center">04</td>
+<td align="left"><code>.line 178</code></td>
+<td align="left">-</td>
+<td align="left">声明对应 java 源码的行数</td>
+</tr>
+<tr>
+<td align="center">05</td>
+<td align="left"><code>const/4 v1, 0x1</code></td>
+<td align="left"><code>boolean z = true;</code></td>
+<td align="left">变量赋值，v1 即 z</td>
+</tr>
+<tr>
+<td align="center">06</td>
+<td align="left"><code>const/4 v0, 0x0</code></td>
+<td align="left"><code>boolean z2 = false;</code></td>
+<td align="left">变量赋值，v0 即 z2</td>
+</tr>
+<tr>
+<td align="center">07</td>
+<td align="left"><code>const-string v2, ""</code></td>
+<td align="left"><code>e.f4245a = ""</code></td>
+<td align="left">变量赋值，v2 即 e.f4245a</td>
+</tr>
+<tr>
+<td align="center">08</td>
+<td align="left"><code>sput-object v2, Lcom/xxx/oooooooooo/common/g/e;-&gt;a:Ljava/lang/String;</code></td>
+<td align="left">-</td>
+<td align="left">根据操作指令 sput-object 猜测是初始化类 e 内的 String 成员变量 a，类似于 <code>e.a = null</code> ，因此怀疑这是执行了类 e 的构造函数</td>
+</tr>
+<tr>
+<td align="center">09</td>
+<td align="left"><code>invoke-static {}, Lcom/xxx/oooooooooo/common/g/e;-&gt;b()Z</code><br><code>move-result v2</code></td>
+<td align="left"><code>e.b()</code></td>
+<td align="left">从上下文推测，实际效果是 <code>e.f4245a = e.b()</code>，即 e 的成员变量 f4245a 会因为 <code>b()</code> 的结果而改变，而 <code>b()</code> 的作用前面分析过是检测是否在模拟器运行</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left"><code>if-eqz v2, :cond_0</code></td>
+<td align="left"><code>if (e.b())</code></td>
+<td align="left">满足条件时，跳转到 <code>:cond_0</code> 位置</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="left"><code>const v0, 0x7f0d0464</code><br><code>invoke-static {v0}, Lcom/xxx/oooooooooo/c/k;→a(I)V</code><br><code>move v0, v1</code></td>
+<td align="left"><br><code>k.a((int) R.string.warn_emulator_disabled);</code><br><code>z2 = true;</code></td>
+<td align="left">0x7f0d0464 值为 2131559524，没意义，估计是初始化参数寄存器。<code>k.a()</code> 前面分析过是输出提示消息的，这里就是禁止模拟器运行分支，既是要绕过的目标之一，最后利用 z2 设置了分支 flag 标记</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="left"><code>:cond_0</code><br><code>invoke-static {}, Lcom/xxx/oooooooooo/common/g/e;→a()Z</code><br><code>move-result v2</code></td>
+<td align="left"><br><code>e.a()</code></td>
+<td align="left">从上下文推测，实际效果是 <code>e.f4245a = e.a()</code>，即 e 的成员变量 f4245a 会因为 a() 的结果而改变，而 <code>a()</code> 的作用前面分析过是检测是否在 root 环境运行</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="left"><code>if-eqz v2, :cond_2</code></td>
+<td align="left"><code>if (e.a())</code></td>
+<td align="left">满足条件时，跳转到 :cond_2 位置</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="left"><code>const v0, 0x7f0d0465</code><br><code>invoke-static {v0}, Lcom/xxx/oooooooooo/c/k;-&gt;a(I)V</code></td>
+<td align="left"><br><code>k.a((int) R.string.warn_root_disabled);</code></td>
+<td align="left">0x7f0d0465 值为 2131559525 ，没意义，估计是初始化参数寄存器，<code>k.a()</code> 前面分析过是输出提示消息的，这里就是禁止 root 运行分支，绕过目标之一</td>
+</tr>
+<tr>
+<td align="center">15</td>
+<td align="left"><code>:goto_0</code></td>
+<td align="left">-</td>
+<td align="left">从上下文分析，这个标签是从后面的代码回溯回来的</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="left"><code>if-eqz v1, :cond_1</code></td>
+<td align="left"><code>if (z)</code></td>
+<td align="left">满足条件时，跳转到 <code>:cond_1</code> 位置</td>
+</tr>
+<tr>
+<td align="center">17</td>
+<td align="left"><code>.line 192</code><br>…</td>
+<td align="left"><code>j.a().postDelayed(new Runnable() {</code><br><code>  public void run() {</code><br><code>    com.xxx.oooooooooo.common.a.a.c();</code><br><code>  }</code><br><code>}</code></td>
+<td align="left">这段代码的作用，根据上下文推测就是 终止进程</td>
+</tr>
+<tr>
+<td align="center">18</td>
+<td align="left"><code>:cond_1</code><br><code>return-void</code></td>
+<td align="left"><code>return;</code></td>
+<td align="left">直接从当前函数返回</td>
+</tr>
+<tr>
+<td align="center">19</td>
+<td align="left"><code>:cond_2</code><br><code>move v1, v0</code></td>
+<td align="left"><br><code>z = z2;</code></td>
+<td align="left">利用 z 设置了分支 flag 标记</td>
+</tr>
+<tr>
+<td align="center">20</td>
+<td align="left"><code>goto :goto_0</code></td>
+<td align="left">-</td>
+<td align="left">无条件跳转到 <code>:goto_0</code> 位置</td>
+</tr>
+</tbody></table>
+<p>更具体的对应关系见下图：</p>
+<p><img src="11.jpg"></p>
+<p>有了对应关系，结合前面修改 java 代码的思路，其实就很容易修改 smali 代码了：</p>
+<ul>
+<li>方案1：只要使得在执行 <code>if (z)</code> 时（对应上表16行），令 <code>z == false</code> 即可</li>
+<li>方案2：直接注释/删除掉终止进程的代码（对应上表17行）</li>
+</ul>
+<p>方案2其实是最简单的，但是我有个顾虑就是：smali 用 .line 标记了对应 java 源码的行数，我担心 smali 会像汇编一样，如果不使用类似 nop 的空语句去填充会使得重编译后的文件无法执行。</p>
+<p>因此我采用了方案1，不改动代码行数的前提下，通过跳转实现条件分支的绕过。</p>
+<p>其实方法也很简单，只需要把上表第 10 行和第 13 行的 <code>if-eqz</code> 条件跳转改成无条件跳转即可。</p>
+<table>
+<thead>
+<tr>
+<th align="left">修改前</th>
+<th align="left">修改后</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>if-eqz v2, :cond_0</code></td>
+<td align="left"><code>goto :cond_0</code></td>
+</tr>
+<tr>
+<td align="left"><code>if-eqz v2, :cond_2</code></td>
+<td align="left"><code>goto :cond_2</code></td>
+</tr>
+</tbody></table>
+<p><img src="12.jpg"></p>
+<h4 id="A-2-4-重新编译打包"><a href="#A-2-4-重新编译打包" class="headerlink" title="A.2.4. 重新编译打包"></a>A.2.4. 重新编译打包</h4><p>因为前面已经从 apktool.yml 知道这个 apk 原本是使用 JDK 1.8 编译的，</p>
+<p>重新编译前需要注意设置系统环境变量，把 JDK 版本切换到 1.8 ：</p>
+<p><img src="13.jpg"></p>
+<p>执行命令 apktool b YZ，在目录 YZ/dist/ 下会生成新的 YZ.apk 文件 ：</p>
+<p><img src="14.jpg"></p>
+<h4 id="A-2-5-签名"><a href="#A-2-5-签名" class="headerlink" title="A.2.5. 签名"></a>A.2.5. 签名</h4><p>新生成的 YZ.apk 是不能够安装的，原因是安卓有防篡改机制，会把所有文件的 Hash 校验码记录到 META-INF/MANIFEST.MF 文件。</p>
+<p>而刚刚我们修改过代码，Hash 校验码必定已经改变。</p>
+<p>而对安装包签名目的之一是重新生成 META-INF/MANIFEST.MF 。</p>
+<p><img src="15.jpg"></p>
+<p>签名采用自签名即可，可以直接使用 JDK 自带的工具执行。</p>
+<p>首先生成证书：<code>keytool -genkey -alias demo.keystore -keyalg RSA -validity 40000 -keystore demo.keystore</code></p>
+<p>根据提示随便填写即可。</p>
+<p><img src="16.jpg"></p>
+<p>然后使用这个证书对刚才重新编译的 YZ.apk 自签名：<code>jarsigner -verbose -keystore demo.keystore YZ.apk demo.keystore</code></p>
+<p>得到最终的 YZ.apk。</p>
+<p><img src="17.jpg"></p>
+<p>使用 jadx 打开签名后的 YZ.apk，可以确认到刚才的签名信息：</p>
+<p><img src="18.jpg"></p>
+<p>在模拟器上安装 YZ.apk 并运行，成功绕过 root 检测。</p>
+<h2 id="【目标-B】通过-abServer-签名验证"><a href="#【目标-B】通过-abServer-签名验证" class="headerlink" title="【目标 B】通过 abServer 签名验证"></a>【目标 B】通过 abServer 签名验证</h2><h3 id="B-1-解题思路"><a href="#B-1-解题思路" class="headerlink" title="B.1. 解题思路"></a>B.1. 解题思路</h3><ul>
+<li>在模拟器运行 YZ，并在 YZ 中执行某些操作</li>
+<li>利用 Burp Suite 对模拟器抓包</li>
+<li>观察所执行的操作对应触发的 HTTP 请求</li>
+<li>通过 HTTP 请求的特征（URL、参数等）在反编译代码中定位大概位置</li>
+<li>找到 HTTP 请求参数中 signature 签名值的来源，分析其生成算法</li>
+<li>篡改 HTTP 请求参数并对其签名，并通过算法生成新的 signature 并发送到服务器，实现中间人攻击</li>
+</ul>
+<h3 id="B-2-解题过程"><a href="#B-2-解题过程" class="headerlink" title="B.2. 解题过程"></a>B.2. 解题过程</h3><h4 id="B-2-1-搭建抓包环境"><a href="#B-2-1-搭建抓包环境" class="headerlink" title="B.2.1. 搭建抓包环境"></a>B.2.1. 搭建抓包环境</h4><p><strong>【搭建 xposed 环境（可选）】</strong></p>
+<p>在安卓模拟器上安装 Xposed，再安装 Inspeckage 和 TrustMeAlready 模块，然后通过 Inspeckage 启动 YZ ：</p>
+<p><img src="19.jpg"></p>
+<p>MAC 下的相关命令：</p>
+<ul>
+<li>重启 adb 服务并连接到 adb shell： <code>adb kill-server &amp;&amp; adb server &amp;&amp; adb shell</code></li>
+<li>转发 Inspeckage 的 web 服务端口：<code>adb forward tcp:8008 tcp:8008</code></li>
+<li>转发 Inspeckage 的 LogCat 服务端口：<code>adb forward tcp:8887 tcp:8887</code></li>
+</ul>
+<p><img src="20.jpg"></p>
+<p>此时通过浏览器打开 <a target="_blank" rel="noopener" href="http://127.0.0.1:8008/">http://127.0.0.1:8008/</a> 即可查看 YZ 详细的 APP 信息：</p>
+<p><img src="21.jpg"></p>
+<p><strong>【搭建 Burp Suite 环境（必须）】</strong></p>
+<p>依次点选：Burp Suite → Proxy → Options → Proxy Listeners → Add → Binding</p>
+<p>-【Bind to port】随便填写即可（如当前为 8080）<br>-【Bind to address】选择 Specific address 并选择局域网 IP （如当前为 192.168.1.104）</p>
+<p><img src="22.jpg"></p>
+<p>在网易 MuMu 依次点选： 设置 → WLAN → 长按 → 修改网络 → 高级选型 → 代理 → 手动</p>
+<p>-【代理服务器主机名】填写 Burp Suite 监听的 IP （如当前为 192.168.1.104）<br>-【代理服务器端口】填写 Burp Suite 监听的端口（如当前为 8080）</p>
+<p><img src="23.jpg"></p>
+<p>如上配置好后，即可从 Burp Suite → Proxy →  HTTP history 查看抓到的各个 HTTP 请求：</p>
+<p><img src="24.jpg"></p>
+<h4 id="B-2-2-观察-amp-分析包特征"><a href="#B-2-2-观察-amp-分析包特征" class="headerlink" title="B.2.2. 观察 &amp; 分析包特征"></a>B.2.2. 观察 &amp; 分析包特征</h4><p>不难发现，在启动 YZ 后，已经发出了相当一部分 HTTP 请求。观察这些请求参数的特征，几乎都带了 token 和 signature 两个参数。</p>
+<p>测试发现：</p>
+<ul>
+<li>token：当前会话的固定值，每次重新登录 YZ 后会变化</li>
+<li>signature：<br>  o 大部分都是 32 位，形似 MD5<br>  o 少量（如 <code>/bifrost/msg/scanWithSecurityMsg</code>） 是一个 RSA 的数字签名 （事实上从代码发现，签名用的是 SHA256withRSA，加密用的是 AES ）<br>  o 直接计算请求参数的 MD5 ，与 signature 并不一致，说明 signature 加了 salt<br>  o 不同请求的 signature 都不一样，但重发同一个请求，服务端均返回成功，说明 signature 没有用时间作为 salt<br>  o 修改请求参数中的任意内容并发送，服务端返回 400: signature is empty or is not equal ，结合前面几点推测，salt 可能是一个固定值<br>  o 修改 token 并发送，服务端返回 401: token is empty or not exists，推测 signature 的计算过程中并没有 token 参与</li>
+</ul>
+<p><img src="25.jpg"></p>
+<h4 id="B-2-3-代码逆向分析"><a href="#B-2-3-代码逆向分析" class="headerlink" title="B.2.3. 代码逆向分析"></a>B.2.3. 代码逆向分析</h4><p>从前一节分析已经知道，signature 含有两种（甚至以上的形式）：MD5 和 RSA 。</p>
+<p>要实现题目要求的中间人攻击，则需要成功伪造签名，亦即需要找到 signature 的计算方法。</p>
+<p>简单起见，下面以 MD5 形式的 signature 作为目标展开分析。</p>
+<p>这里从修改 YZ 个人信息入手，例如修改【电话】。</p>
+<p>保存修改后，在 Burp Suite 捕获到 URL 为【/xxx-abService/ab/employee/phone】的请求。</p>
+<p><img src="26.jpg"></p>
+<p>在逆向的 java 代码中全局查找关键字【/xxx-abService/ab/employee/phone】</p>
+<p>可以从 <code>src/main/java/com/xxx/oooooooooo/core/d/f.java</code> 类中找到唯一值【UPDATE_USER_PHONE(“/xxx-abService/ab/employee/phone”)】</p>
+<p>而且很明显，<code>src/main/java/com/xxx/oooooooooo/core/d/f.java</code> 类是定义了所有 URL 的枚举对象。</p>
+<blockquote>
+<p>注：为了便于分析代码逻辑（调用跳转等），建议先把逆向代码导入 Eclipse 等 IDE 再分析。</p>
+</blockquote>
+<p><img src="27.jpg"></p>
+<p>再全局查找关键字【UPDATE_USER_PHONE】，可以从 <code>src/main/java/com/xxx/oooooooooo/core/d/d.java</code> 类中找到唯一调用它的函数【<code>public c&lt;UserPhoneResponse&gt; c(String str, String str2)</code>】。</p>
+<p>简单分析代码可以知道：</p>
+<ul>
+<li><code>src/main/java/com/xxx/oooooooooo/core/d/d.java</code> 类是 abService 所有 API 的接口实现</li>
+<li>【<code>public c&lt;UserPhoneResponse&gt; c(String str, String str2)</code>】函数是接口  “<code>/xxx-abService/ab/employee/phone</code>“ 的实现</li>
+<li>该函数的主要作用是构造接口的 HTTP 请求参数 params （Builder 类使用了构造者模式，其作用就是填充 HTTP 结构体的内容）</li>
+<li>从实现逻辑看，只是构造了参数 params ，而 token 和 signature 参数并未被构造</li>
+<li>观察其他接口实现的函数，均未构造 token 和 signature 参数</li>
+<li>推测 token 和 signature 被封装到同一个地方实现，而最可疑的就是【<code>return a( .... )</code>】函数</li>
+</ul>
+<p><img src="28.jpg"></p>
+<p>因为逆向代码被混淆的关系，出现了很多同名类、同名方法，导致 Eclipse 的函数调用跳转功能出现偏差。</p>
+<p>若直接跳转到【<code>return a( .... )</code>】函数的实现，会跳到一个接口【<code>com.xxx.oooooooooo.data.api.g.java</code>】定义的方法【<code>c&lt;GroupsResponse&gt; a(long j, int i);</code>】</p>
+<p>事实上从函数定义的入参表就可以发现，这是不对的（当时分析代码的时候就被这里卡住了好长时间）。</p>
+<p><img src="29.jpg"></p>
+<p>因此这里只能通过人工分析【<code>return a( .... )</code>】函数的实现位置：</p>
+<ul>
+<li>由于函数 a 在调用时没有声明类名，它应该不是静态方法，因此应该在父类或本类中</li>
+<li>从实际传给函数 a 的入参推测，其函数定义应该形如【<code>c&lt;T&gt; a(Class&lt;T&gt; xxx, Builder yyy)</code>】</li>
+<li>但是因为代码混淆导致变量名随机化的关系，这个函数定义中可以确定用于全局搜索的部分只有【<code>&gt; a(Class&lt;</code>】<br>根据这些特征搜索，发现该函数的实现就是在本类的最开头的位置，名为【<code>private &lt;RESULT extends NoProguard&gt; c&lt;RESULT&gt; a(Class&lt;RESULT&gt; cls, Builder builder)</code>】</li>
+</ul>
+<p><img src="30.jpg"></p>
+<p>但是从设个函数中并不能直观地看到 token 和 signature 被构造的痕迹，不过可以发现 builder 参数确实被送到函数 a(builder) 中被处理了。</p>
+<p>遗憾的是，同样因为混淆的关系，这些 a 类、a 方法全部都关联到了错误的位置。</p>
+<p>不过可以从侧面分析还是可以得到一些信息的：</p>
+<ul>
+<li>首先这是一个模板函数，函数的出参命名为 <code>&lt;RESULT&gt;</code>，因此猜测【<code>this.f4523c.a( ... )</code>】原本应该是类似于【<code>response = this.APIs.call( request )</code>】的定义</li>
+<li>f4523c 的对象类型为 <code>com.xxx.oooooooooo.data.api.e.java</code> 类，这个类有不少诸如 ApiResponse、HttpResponse 的处理，佐证了前面的猜想</li>
+</ul>
+<p><img src="31.jpg"></p>
+<p>那么问题的关键再次回到函数【<code>this.f4523c.a( ... )</code>】的入参【<code>new a( ... )</code>】</p>
+<p>这个类定义在哪里? 它很可能就是为 Builder 添加  token 和 signature 的关键。</p>
+<p><img src="32.jpg"></p>
+<p>这里其实还有一个隐晦的提示，在 Java 中：</p>
+<ul>
+<li>同一个类中若 import 两个同名类，至少其中一个要使用全类路径</li>
+<li>同 package 下的非私有类可以无需 import 直接使用</li>
+</ul>
+<p>而【<code>new a( ... )</code>】的使用方式极可能就是后者，于是在 d.java 类的相同 package 下找到了 <code>src/main/java/com/xxx/oooooooooo/core/d/a.java</code> 类。</p>
+<p>在这个类中发现一些特征极可能就是我们要找的：</p>
+<ul>
+<li>import 中的 okhttp3 是用于处理 HTTP 请求的</li>
+<li>函数【<code>public Response intercept(Chain chain)</code>】中涉及了 POST/GET 请求下关于 token 和 signature 的处理逻辑</li>
+</ul>
+<p><img src="33.jpg"></p>
+<h4 id="B-2-4-签名算法"><a href="#B-2-4-签名算法" class="headerlink" title="B.2.4. 签名算法"></a>B.2.4. 签名算法</h4><p>分析这块代码可知，signature 一共有三种算法：</p>
+<ul>
+<li>POST 请求有两种算法</li>
+<li>GET 请求有一种算法（暂时不关注，下面就不分析了）</li>
+</ul>
+<p><img src="34.jpg"></p>
+<p>针对 POST 方法的 signature 的两种具体算法分析如下：</p>
+<ul>
+<li><code>signature = RSA(rsakey, token + params + millis)</code>   （暂时不关注，不再详细分析）</li>
+<li><code>signature = MD5("params" + params + "DnWX83SksBoctyoVDmEkyEDuzB6i2RUyWY4A9m**********xxxhin31rzDU")</code></li>
+</ul>
+<p><img src="35.jpg"></p>
+<p><img src="36.jpg"></p>
+<p>回到最开始的抓包请求：</p>
+<ul>
+<li>Method: POST</li>
+<li>URL： <code>/xxx-abService/ab/employee/phone</code></li>
+<li>token: 4E07B642-5209-CE11-52AB-3326EE2E0899</li>
+<li>params: <code>{"phoneNumber":"***********","userName":"******"}</code></li>
+<li>signature: da7ba0142b4a8d746147dd386c021725</li>
+</ul>
+<p>随便找一个 MD5 计算工具（如 <a target="_blank" rel="noopener" href="http://www.jsons.cn/md5/s/">http://www.jsons.cn/md5/s/</a> ），代入前面的公式计算，若得到相同的 signature，说明成功得到 signature 的签名算法，可以实现中间人攻击。</p>
+<blockquote>
+<p>注：测试发现 signature 必须全小写，大写不能通过验证。</p>
+</blockquote>
+<p><img src="37.jpg"></p>
+<p><img src="38.jpg"></p>
+<h4 id="B-2-5-实现中间人改包"><a href="#B-2-5-实现中间人改包" class="headerlink" title="B.2.5. 实现中间人改包"></a>B.2.5. 实现中间人改包</h4><ul>
+<li>修改 params 为 <code>{"phoneNumber":"00000000000","userName":"******"}</code></li>
+<li>计算 signature 签名值为 993fee1a8f4ca2a54fbc5ec589ede5bd</li>
+<li>通过 Burp Suite 发送请求，修改个人信息成功。</li>
+</ul>
+<p><img src="39.jpg"></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/re/android-ni-xiang-xue-xi-bi-ji/">https://exp-blog.com/re/android-ni-xiang-xue-xi-bi-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Android/">
+                                    
+                                        <span class="chip bg-color">Android</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E9%80%86%E5%90%91/">
+                                    
+                                        <span class="chip bg-color">逆向</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">
+                                    
+                                        <span class="chip bg-color">反编译</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%A3%B3/">
+                                    
+                                        <span class="chip bg-color">壳</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/website/gitbook-da-jian-ge-ren-wang-zhan/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/07.webp" class="responsive-img" alt="使用 GitBook 在 Github 搭建个人网站">
+                        
+                        <span class="card-title">使用 GitBook 在 Github 搭建个人网站</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            GitBook 支持 Markdown 转换为 HTML，结合 GitHub Pages 免费托管静态网站，实现极简、高效的个人博客。使用 GitBook 和 GitHub 搭建个人网站，可避免传统平台的限制和自建服务器的复杂性。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Github/">
+                        <span class="chip bg-color">Github</span>
+                    </a>
+                    
+                    <a href="/tags/GitBook/">
+                        <span class="chip bg-color">GitBook</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/safe/ctf/rootme/web-server/http-post/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/featureimages/21.jpg" class="responsive-img" alt="【Root-Me】 HTTP - POST">
+                        
+                        <span class="card-title">【Root-Me】 HTTP - POST</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">
+                        <span class="chip bg-color">解题报告</span>
+                    </a>
+                    
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                    <a href="/tags/Root-Me/">
+                        <span class="chip bg-color">Root-Me</span>
+                    </a>
+                    
+                    <a href="/tags/Web-Server/">
+                        <span class="chip bg-color">Web-Server</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

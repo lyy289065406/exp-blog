@@ -1,0 +1,2499 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="白帽子渗透测试入门资源：参考书、课程、工具、认证, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>白帽子渗透测试入门资源：参考书、课程、工具、认证 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/safe/white_hat.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">白帽子渗透测试入门资源：参考书、课程、工具、认证</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B8%97%E9%80%8F/">
+                                
+                                    <span class="chip bg-color">渗透</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E7%99%BD%E5%B8%BD%E5%AD%90/">
+                                
+                                    <span class="chip bg-color">白帽子</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Pwk/">
+                                
+                                    <span class="chip bg-color">Pwk</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/OSCP/">
+                                
+                                    <span class="chip bg-color">OSCP</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/CTF/">
+                                
+                                    <span class="chip bg-color">CTF</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AE%89%E5%85%A8/" class="post-category">
+                                安全
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-16
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>初入渗透测试领域，过程中遇到不少错综复杂的知识，也遇到不少坑，特此记录，慢慢整理慢慢填。</p>
+<h2 id="名词解析"><a href="#名词解析" class="headerlink" title="名词解析"></a>名词解析</h2><table>
+<thead>
+<tr>
+<th align="center">名词</th>
+<th align="center">全称</th>
+<th align="center">解析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/">PwK</a></td>
+<td align="center">Penetration Testing with Kali Linux</td>
+<td align="center">Kali-Linux 渗透测试培训课程</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/?utm_expid=.TeGY58QMT8CDoyMIsdzldg.0&amp;utm_referrer=https://xz.aliyun.com/t/1587/">OSCP</a></td>
+<td align="center">Offensive Security Certified Professional</td>
+<td align="center">攻防安全专家认证</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.owasp.org/">OWASP</a></td>
+<td align="center">Open Web Application Security Project</td>
+<td align="center">开放式Web应用程序安全项目<br>它提供有关计算机和互联网应用程序的公正、实际、<br>有成本效益的信息，如<a target="_blank" rel="noopener" href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_2017_Project">《2017 Top 10 应用风险评估报告》</a><br>其目的是协助个人、企业和机构来发现和使用可信赖软件</td>
+</tr>
+<tr>
+<td align="center">SCAP</td>
+<td align="center">Security Content Automation Protocol</td>
+<td align="center">安全内容自动化协议<br>已成立了<a target="_blank" rel="noopener" href="http://www.scap.org.cn/">SCAP中文社区</a>，集成了协议框架中的CVE、CCE、<br>CPE、CWE、CVSS、OVAL等6种网络安全相关标准数据库</td>
+</tr>
+<tr>
+<td align="center">CVE</td>
+<td align="center">Common Vulnerabilities and Exposures</td>
+<td align="center">公共漏洞与暴露<br>每个CVE都有唯一编号，是一个漏洞字典表</td>
+</tr>
+<tr>
+<td align="center">EXP</td>
+<td align="center">Exploit</td>
+<td align="center">安全术语，指可利用点（如漏洞、代码等）</td>
+</tr>
+<tr>
+<td align="center">vul</td>
+<td align="center">Vulnerabilities</td>
+<td align="center">安全术语，泛指漏洞</td>
+</tr>
+<tr>
+<td align="center">PoC</td>
+<td align="center">Proof of Concept</td>
+<td align="center">漏洞的概念证明，常见是一段可复盘漏洞的代码</td>
+</tr>
+<tr>
+<td align="center">payload</td>
+<td align="center">-</td>
+<td align="center">安全术语，有效载荷，泛指漏洞利用成功后所要做的事情<br>（如Cracker会做一些有害的或者恶性的动作）</td>
+</tr>
+<tr>
+<td align="center">shellcode</td>
+<td align="center">-</td>
+<td align="center">安全术语，payload的一种，让攻击者获得 shell<br>（由于其建立正向/反向shell而得名）</td>
+</tr>
+<tr>
+<td align="center">WAF</td>
+<td align="center">Web Application Firewall</td>
+<td align="center">Web应用防护系统（也称为：网站应用级入侵防御系统）</td>
+</tr>
+<tr>
+<td align="center">Fuzz</td>
+<td align="center">Fuzz testing</td>
+<td align="center">模糊测试，一种安全测试方法<br>它介于完全的手工测试和完全的自动化测试之间<br>而手工测试是指渗透测试，即模拟Cracker进入系统查找漏洞</td>
+</tr>
+<tr>
+<td align="center">社工</td>
+<td align="center">社会工程学攻击</td>
+<td align="center">安全术语，泛指通过心理战术，欺诈他人<br>以收集信息、行骗和入侵计算机系统的行为</td>
+</tr>
+<tr>
+<td align="center">XSS</td>
+<td align="center">Cross Site Scripting</td>
+<td align="center">跨站脚本攻击（缩写首字母为X是为了不与CSS混淆）<br>根据攻击特点分为：反射型XSS、存储型XSS、DOM-XSS</td>
+</tr>
+<tr>
+<td align="center">DoS</td>
+<td align="center">Denial of Service</td>
+<td align="center">拒绝服务攻击</td>
+</tr>
+<tr>
+<td align="center">DDoS</td>
+<td align="center">Distributed Denial of Service</td>
+<td align="center">分布式拒绝服务攻击</td>
+</tr>
+<tr>
+<td align="center">SQLi</td>
+<td align="center">SQL Inject</td>
+<td align="center">SQL注入式攻击</td>
+</tr>
+<tr>
+<td align="center">CSRF</td>
+<td align="center">Cross-site request forgery</td>
+<td align="center">跨站请求伪造攻击</td>
+</tr>
+<tr>
+<td align="center">CORS</td>
+<td align="center">Cross-Origin Resource Sharing</td>
+<td align="center">跨源资源共享</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://gdpr-info.eu/">GDPR</a></td>
+<td align="center">General Data Protection Regulation</td>
+<td align="center">通用数据保护条例，在2018-5-25由欧盟正式出台<br>该条例的适用范围极为广泛，任何收集、传输、保留<br>或处理涉及到欧盟所有成员国内的个人信息的机构组织<br>均受该条例的约束，号称<a target="_blank" rel="noopener" href="http://zhuanlan.51cto.com/art/201801/563326.htm">史上最严个人数据保护条例</a></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>想象自己是一个特工，你的目标是监控一个重要的人，有一天你怀疑目标家里的窗子可能没有关，于是你上前推了推，结果推开了，这是一个 <code>PoC</code>，于是你回去了，开始准备第二天的渗透计划，第二天你通过同样的漏洞渗透进了他家，仔细查看了所有的重要文件，离开时还安装了一个隐蔽的窃听器，这一天你所做的就是一个 <code>Exp</code>，你在他家所做的行为就是不同的 <code>Payload</code>，就把窃听器当作 <code>Shellcode</code> 吧！</p>
+</blockquote>
+<h2 id="Pwk课程与OSCP证书"><a href="#Pwk课程与OSCP证书" class="headerlink" title="Pwk课程与OSCP证书"></a>Pwk课程与OSCP证书</h2><p><a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/?utm_expid=.TeGY58QMT8CDoyMIsdzldg.0&amp;utm_referrer=https://xz.aliyun.com/t/1587/"><strong>OSCP认证</strong></a>：是一个专门针对 <a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/"><strong>PwK课程</strong></a> 的国际安全专业认证。该认证机构声称，OSCP认证是一个区别于所有其它认证的考试，考试全程采取手动操作实战的方式，而不设笔试环节。这是在安全领域含金量非常高的国际认证。</p>
+<p><strong>认证条件</strong>：无</p>
+<p><strong>考试模式</strong>：OSCP的认证考试也是另类的存在，考生拥有24小时的时间（实际是23小时45分钟）去完成考试，具体如何分配时间由考生自己决定。题目是5台主机（随机抽取），目标是攻入并拿到最高权限（ROOT/SYSTEM）。基于难度级别，成功执行的攻击会获得相应的积分。24小时结束之后，你还有24小时去完成并提交考试报告（需要详细说明攻击步骤和里程碑截屏来证明确实攻破并获得相应权限）。</p>
+<p><strong>考试费用</strong>：最低 $ 800 （30天实验室访问学习 + 考试认证）</p>
+<p><strong>相关链接</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-certifications/oscp-offensive-security-certified-professional/?utm_expid=.TeGY58QMT8CDoyMIsdzldg.0&amp;utm_referrer=https://xz.aliyun.com/t/1587/">OSCP概述</a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.offensive-security.com/information-security-training/penetration-testing-training-kali-linux/">PwK培训材料</a> </li>
+</ul>
+<h2 id="CTF"><a href="#CTF" class="headerlink" title="CTF"></a>CTF</h2><p>Capture The Flag，夺旗赛。</p>
+<p>通过在线靶场进行实战，磨炼网络安全技巧的一种竞技。这里推荐几个免费的 CTF 站点：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.root-me.org/?lang=en">Root Me</a></li>
+<li><a target="_blank" rel="noopener" href="https://cgctf.nuptsast.com/challenges#Web">CG-CTF</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vulhub/vulhub">Vulhub</a></li>
+</ul>
+<p>不建议找答案，勇敢地刷题吧！ 可以很好地锻炼发掘 EXP 的能（nao）力（dong）~</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><table>
+<thead>
+<tr>
+<th align="center">工具</th>
+<th align="center">简介</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Kali-Linux</td>
+<td align="center">渗透测试的必备工具包<br>Kali是一个基于 Debian 的 Linux 发行版，专门用于渗透测试的工具系统<br>大多数做安全测试的渗透和审计开源工具都被尽可能多地囊括在内</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.kali.org/downloads/">官网</a></td>
+</tr>
+<tr>
+<td align="center">CVEList</td>
+<td align="center">CVE字典表</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/CVEProject/cvelist">Github</a></td>
+</tr>
+<tr>
+<td align="center">SecLists</td>
+<td align="center">OWASP维护的一个安全信息列表集合<br>该集合包括了用于渗透的各种类型的列表，<br>这些列表包含了237个字典文件以及常用的 Web Shell 攻击载荷，<br>字典文件类型众多，如用户名、密码、域名、敏感数据特征码、模糊测试载荷等</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/danielmiessler/SecLists">Github</a></td>
+</tr>
+<tr>
+<td align="center">Exploit Database</td>
+<td align="center">可利用漏洞数据库（在线）<br>罗列了最新被发现的CVE和PoC等信息，可用于学习漏洞原理和复盘</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.exploit-db.com/">官网</a></td>
+</tr>
+<tr>
+<td align="center">SearchSploit</td>
+<td align="center">与 Exploit Database 配套的命令行工具包（已集成到Kali）<br>它把Exploit Database的数据保存在本地机器（攻击方），<br>通过搜集目标机器（防御方）的信息，在本地发现这些信息的EXP，<br>然后在本地机器提取对应的PoC上传到目标机器实现渗透</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.exploit-db.com/searchsploit">官网</a></td>
+</tr>
+<tr>
+<td align="center">Hydra</td>
+<td align="center">弱密码爆破工具（已集成到Kali）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">Github</a></td>
+</tr>
+<tr>
+<td align="center">Burp Suite</td>
+<td align="center">用于攻击web 应用程序的集成平台（谁用谁知道）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://portswigger.net/burp">官网</a><br><a target="_blank" rel="noopener" href="https://share.weiyun.com/5LDUkNW">破解版</a><br>密：gsqygf</td>
+</tr>
+<tr>
+<td align="center">Arachni</td>
+<td align="center">基于Ruby的Web漏洞扫描工具<br>算不上强大但有其特色，用于评估web应用程序的安全性<br>不仅能对基本的静态或CMS网站进行扫描，<br>还能识别大部分平台的指纹信息（硬盘序列号和网卡物理地址）</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://www.arachni-scanner.com/">官网</a><br><a target="_blank" rel="noopener" href="https://github.com/Arachni/arachni">Github</a></td>
+</tr>
+<tr>
+<td align="center">XSStrike</td>
+<td align="center">基于python的XSS漏洞扫描和利用工具<br>它对参数进行模糊测试之后构建合适的payload，<br>然后对参数进行穷举匹配，大多数payload都是由作者精心构造。<br>其内置爬虫功能，能够检测并尝试绕过WAF，且误报率极低</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/s0md3v/XSStrike">Github</a></td>
+</tr>
+<tr>
+<td align="center">XssPy</td>
+<td align="center">基于python的Web应用XSS漏洞智能扫描器<br>它不仅能检查主页或给定页面，还能够检查网站上的所有链接以及子域<br>微软、斯坦福、摩托罗拉、Informatica等很多大型企业机构都在用</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/faizann24/XssPy">Github</a></td>
+</tr>
+<tr>
+<td align="center">Wfuzz</td>
+<td align="center">Web Fuzzer：Web应用程序评估审查工具<br>它可以对任何字段的HTTP请求中的数据进行模糊处理</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/xmendez/wfuzz">Github</a></td>
+</tr>
+<tr>
+<td align="center">OpenSCAP</td>
+<td align="center">基于C/C++实现的SCAP协议开源框架<br>目的是为SCAP各个标准协议的使用者提供一套简单易用的接口</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://www.open-scap.org/">官网</a><br><a target="_blank" rel="noopener" href="http://www.scap.org.cn/">中文社区</a><br><a target="_blank" rel="noopener" href="https://github.com/OpenSCAP/openscap">Github</a></td>
+</tr>
+<tr>
+<td align="center">Hackvertor</td>
+<td align="center">黑客工具包<br>看看黑客们平时都在用什么工具</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://hackvertor.co.uk/public">官网</a></td>
+</tr>
+<tr>
+<td align="center">SSL/TLS安全评估报告</td>
+<td align="center">检查HTTPS网站的SSL证书安全性</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://myssl.com/">在线检查</a></td>
+</tr>
+<tr>
+<td align="center">SecurityHeaders</td>
+<td align="center">通过分析HTTP响应头，评估相关安全选项是否配置得当<br>可根据评估建议修改配置</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://securityheaders.com/">在线检查</a></td>
+</tr>
+<tr>
+<td align="center">URL Fuzzer</td>
+<td align="center">扫描Web服务器上的隐藏文件/目录是否存在敏感信息</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://pentest-tools.com/website-vulnerability-scanning/discover-hidden-directories-and-files">在线检查</a></td>
+</tr>
+<tr>
+<td align="center">MD5Online</td>
+<td align="center">MD5解密：通过已知的Hash字典逆向爆破<br>（论 MD5 加 salt 的重要性）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://www.md5online.org/">在线使用</a></td>
+</tr>
+<tr>
+<td align="center">truffleHog</td>
+<td align="center">排查 Git 项目中是否包含可疑的敏感信息</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/dxa4481/truffleHog">Github</a></td>
+</tr>
+<tr>
+<td align="center">BFG Repo-Cleaner</td>
+<td align="center">移除 Git 库中的大文件或污点提交</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://rtyley.github.io/bfg-repo-cleaner/">官网</a><br><a target="_blank" rel="noopener" href="https://help.github.com/articles/removing-sensitive-data-from-a-repository/">Github</a></td>
+</tr>
+<tr>
+<td align="center">brakeman</td>
+<td align="center">通过静态代码扫描发现代码里的SQL注入问题</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/presidentbeef/brakeman">Github</a></td>
+</tr>
+<tr>
+<td align="center">gixy</td>
+<td align="center">Nginx 配置文件静态分析器<br>防止安全配置错误，并自动进行缺陷检测</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/yandex/gixy">Github</a></td>
+</tr>
+<tr>
+<td align="center">bleach</td>
+<td align="center">HTML净化器<br>对HTML片段进行标签或属性过滤，预防XSS攻击</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/ecto/bleach">Github</a><br><a target="_blank" rel="noopener" href="https://pypi.org/project/bleach/">Python版</a><br><a target="_blank" rel="noopener" href="http://htmlpurifier.org/">PHP版</a></td>
+</tr>
+<tr>
+<td align="center">New PHP Snippet</td>
+<td align="center">PHP 在线运行环境</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://glot.io/new/php">在线使用</a></td>
+</tr>
+<tr>
+<td align="center">RequestBin</td>
+<td align="center">临时 HTTP 服务器，用于收集 HTTP 请求，XSS 利器</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://requestbin.fullcontact.com/">在线使用</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="参考书"><a href="#参考书" class="headerlink" title="参考书"></a>参考书</h2><table>
+<thead>
+<tr>
+<th align="center">参考书（Kali系列）</th>
+<th align="center">简介/版本</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Penetration Testing with Kali Linux (pwk.1.0)</td>
+<td align="center">Kali-Linux渗透测试学习指南<br>PwK 官方文档 v1.0.1 - 2014版</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5Z23CiY">腾讯微云</a><br>密码：4vi4bw</td>
+</tr>
+<tr>
+<td align="center">Instant Kali Linux</td>
+<td align="center">2013<br>Kali快速入门指导</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5ar7k9m">腾讯微云</a><br>密码：ryxi47</td>
+</tr>
+<tr>
+<td align="center">Basic Security Testing with Kali Linux</td>
+<td align="center">2014<br>基于Kali的安全测试</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5PrItbo">腾讯微云</a><br>密码：qw9ym8</td>
+</tr>
+<tr>
+<td align="center">Hacking with Kali - <br>Practical Penetration Testing Techniques</td>
+<td align="center">2014<br>渗透测试实践技术</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/55GnaFY">腾讯微云</a><br>密码：xk8a3z</td>
+</tr>
+<tr>
+<td align="center">Kali Linux Cookbook</td>
+<td align="center">2013<br>Kali指导手册</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5sAQ8mB">腾讯微云</a><br>密码：xhgjcd</td>
+</tr>
+<tr>
+<td align="center">Kali Linux Social Engineering</td>
+<td align="center">2013<br>基于Kali的社会工程</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5eT0MG3">腾讯微云</a><br>密码：gs4xay</td>
+</tr>
+<tr>
+<td align="center">Kali Linux：Assuring Security By Penetration Testing</td>
+<td align="center">2014<br>通过渗透测试确保安全</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5A6P3Ak">腾讯微云</a><br>密码：6nrp2k</td>
+</tr>
+<tr>
+<td align="center">Web Penetration Testing with Kali Linux</td>
+<td align="center">2013<br>web应用渗透测试</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5zhW9me">腾讯微云</a><br>密码：2cxp9c</td>
+</tr>
+</tbody></table>
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="center">参考书（Metasploit系列）</th>
+<th align="center">简介/版本</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Metasploit渗透测试魔鬼训练营</td>
+<td align="center">2013.国内中文原创<br>详细讲解了Metasploit渗透测试的<br>技术、方法和技巧，并提供实战的实验室环境</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5zAbIeM">腾讯微云</a><br>密码：i9ihtu</td>
+</tr>
+<tr>
+<td align="center">Metasploit The Penetration Tester's Guide</td>
+<td align="center">2011<br>渗透测试入门指导</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5bl1xRV">腾讯微云</a><br>密码：6gurxk</td>
+</tr>
+<tr>
+<td align="center">Metasploit Penetration Testing Cookbook</td>
+<td align="center">Jun.2012<br>渗透测试指导手册</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5KfMxPQ">腾讯微云</a><br>密码：r4q73x</td>
+</tr>
+</tbody></table>
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="center">参考书（BackTrack5系列）</th>
+<th align="center">简介/版本</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Offensive Security - <br>Penetration Testing with BackTrack (Lab Guide)</td>
+<td align="center">v3.2<br>渗透测试实验室指导手册</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5XzmA5I">腾讯微云</a><br>密码：fj9sqt</td>
+</tr>
+<tr>
+<td align="center">BackTrack 5 Wireless Penetration Testing Beginner's Guide</td>
+<td align="center">无线网络渗透测试入门指导</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5Ql8le1">腾讯微云</a><br>密码：pdeqfn</td>
+</tr>
+</tbody></table>
+<br>
+
+<table>
+<thead>
+<tr>
+<th align="center">参考书（其他）</th>
+<th align="center">简介/版本</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">影响力（中文版）</td>
+<td align="center">社会工程学<br>人为什么犯贱？</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5mcRzVn">腾讯微云</a><br>密码：ssyf25</td>
+</tr>
+<tr>
+<td align="center">欺骗的艺术（中文版）</td>
+<td align="center">社会工程学<br>世界著名黑客传奇</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5s0Wwqr">腾讯微云</a><br>密码：wtpih9</td>
+</tr>
+<tr>
+<td align="center">Learning Nessus for Penetration Testing</td>
+<td align="center">Jan.2014<br>基于Nessus的渗透测试</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5F4iVQ7">腾讯微云</a><br>密码：dak9um</td>
+</tr>
+<tr>
+<td align="center">PP.Penetration Testing with the Bash shell</td>
+<td align="center">May.2014<br>基于Bash的渗透测试</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/59Ltlbj">腾讯微云</a><br>密码：7saehu</td>
+</tr>
+<tr>
+<td align="center">The Basics of Hacking and Penetration Testing<br>( Ethical Hacking and Penetration Testing Made Easy )</td>
+<td align="center">2011<br>渗透测试的基本理论</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/50E2OGL">腾讯微云</a><br>密码：z9enyr</td>
+</tr>
+<tr>
+<td align="center">The Basics of Hacking and Penetration Testing<br>( Ethical Hacking and Penetration Testing Made Easy )</td>
+<td align="center">The 2nd Edition, 2013<br>渗透测试的基本理论</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5PKAJAU">腾讯微云</a><br>密码：5nwjt3</td>
+</tr>
+<tr>
+<td align="center">Advanced Penetration Testing For Highly-Secured <br>Environments The Ultimate Security Guide</td>
+<td align="center">2012<br>终极指南：高安全环境的渗透测试</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5VoihK7">腾讯微云</a><br>密码：3u3c9t</td>
+</tr>
+<tr>
+<td align="center">Gray Hat Hacking</td>
+<td align="center">The 2nd Edition<br>灰帽子黑客</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5EwizdA">腾讯微云</a><br>密码：4tvjgb</td>
+</tr>
+<tr>
+<td align="center">Hacking - Firewalls And Networks <br>How To Hack Into Remote Computers</td>
+<td align="center">防火墙突破：远程网络渗透</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5CAc1BG">腾讯微云</a><br>密码：k93xfx</td>
+</tr>
+<tr>
+<td align="center">Hacking The Art Of Exploitation</td>
+<td align="center">The 2nd Edition, 2018<br>漏洞利用的艺术</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5FDCNeP">腾讯微云</a><br>密码：5c5ee6</td>
+</tr>
+<tr>
+<td align="center">Hacking Wireless Networks For Dummies</td>
+<td align="center">2005<br>无线网络窃听</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5f7y3QF">腾讯微云</a><br>密码：px7hgj</td>
+</tr>
+<tr>
+<td align="center">Penetration Testing A Hands-On Introduction to Hacking</td>
+<td align="center">2014<br>渗透测试实践指导</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5Wbiij7">腾讯微云</a><br>密码：996jfr</td>
+</tr>
+<tr>
+<td align="center">Practical Hacking - Techniques and Countermeasures</td>
+<td align="center">黑客实践的技术与对策</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://share.weiyun.com/5ON5FQG">腾讯微云</a><br>密码：ne75b9</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="相关文献推荐"><a href="#相关文献推荐" class="headerlink" title="相关文献推荐"></a>相关文献推荐</h2><p><strong>社会工程：</strong></p>
+<ul>
+<li>信息安全之社会工程学（<strong>需梯子</strong>）：<a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2009/05/social-engineering-0-overview.html">常识扫盲</a>、<a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2009/05/social-engineering-1-gather-information.html">信息收集</a>、<a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2009/05/social-engineering-2-pretend.html">假冒身份</a>、<a target="_blank" rel="noopener" href="https://program-think.blogspot.com/2009/05/social-engineering-3-influence.html">施加影响</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/pongba/article/details/1662148">《影响力》——人为什么犯贱</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26113526">有哪些「社会工程学」攻击手段？</a></li>
+<li><a target="_blank" rel="noopener" href="https://guanjia.qq.com/news/n4/201505/12_18.html">防范社会工程学攻击的技巧与姿势</a></li>
+</ul>
+<p><strong>场景案例：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.douban.com/note/624958066/">Penetration Testing with Kali (PWK) 课程和 Offensive Security Certified Professional (OSCP) 考试回顾</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/24249045">XSS实战：我是如何拿下你的百度账号</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.kali.org.cn/thread-27331-1-1.html?tdsourcetag=s_pcqq_aiomsg">如何构建自己的渗透测试环境</a></li>
+<li><a target="_blank" rel="noopener" href="https://security.tencent.com/index.php/blog/msg/107">驱散前端安全梦魇——DOMXSS典型场景分析与修复指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/index.html">CSRF 攻击的应对之道</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2018/06/ddos.html">DDOS 攻击的防范教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/column/138074.html">海量日志中，如何实时在线检测未知异常行为？看瀚思的序列异常算法</a></li>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2860">记一次在实战靶机中使用SearchSploit的总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://henryhoggard.co.uk/blog/Paypal-2FA-Bypass">Paypal 2FA Bypass（通过删掉HTTP请求参数绕过验证）</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.antiy.com/response/Upatre.html">部分利用社工技巧的群发邮件样本关联分析</a></li>
+</ul>
+<p><strong>主机入侵：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.qa-knowhow.com/?p=4688">主机威胁入侵检测开源工具与规则</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/AlexTan_/article/details/52080171">OSSEC主要功能及原理+详细配置+日志文件分析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/opensource/os-cn-elk/index.html">集中式日志系统 ELK 协议栈详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://security.tencent.com/index.php/blog/msg/21">浅谈大型网络入侵检测建设</a></li>
+</ul>
+<p><strong>Linux提权：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://payatu.com/guide-linux-privilege-escalation/">A GUIDE TO LINUX PRIVILEGE ESCALATION</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.xmsec.cc/guide-linux-privilege-escalation/">Linux提权基础介绍</a>（是前一篇的译文）</li>
+<li><a target="_blank" rel="noopener" href="https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/">Basic Linux Privilege Escalation</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/23993.html">史上最全Linux提权后获取敏感信息方法</a>（是前一篇的译文）</li>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2512">初识linux提权</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.4hou.com/technology/2422.html">渗透测试中的Linux提权</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/sectool/121847.html">Linux提权？这四个脚本可以帮助你</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/129549.html">Linux提权：从入门到放弃</a></li>
+</ul>
+<p><strong>Windows提权：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.fuzzysecurity.com/tutorials/16.html">Windows Privilege Escalation Fundamentals</a></li>
+<li>Windows下的渗透测试之提权的基本套路<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/84852">[上]</a><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/84855">[下]</a>（是前一篇的译文）</li>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/2519">Windows提权笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://xapax.gitbooks.io/security/content/privilege_escalation_windows.html">Privilege Escalation Windows</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.4hou.com/system/10212.html">Windows 提权命令指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/vuls/87463.html">Windows提权的几种姿势</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.secist.com/archives/1070.html">内网渗透之如何玩转Meterpreter？</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/184289.html">Windows内核漏洞利用提权教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/203">Metasploit、Powershell之AlwaysInstallElevated提权实战</a></li>
+<li><a target="_blank" rel="noopener" href="http://drops.xmd5.com/static/drops/tips-2227.html">metasploit 渗透测试笔记(meterpreter篇)</a></li>
+</ul>
+<p><strong>WebShell：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/02aac12e459f">webshell原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.00theway.org/2017/07/11/bash%20%E5%8F%8D%E5%BC%B9shell/">bash反弹shell原理解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.wxwenku.com/d/244863">基于机器学习的web异常检测</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/rookie/190953.html">机器学习入门之像使用Print一样使用算法检测WebShell</a></li>
+<li><a target="_blank" rel="noopener" href="https://sec.ctrip.com/doc/%E6%B6%82%E5%AE%8F%E4%BC%9F-OSSEC%E4%B8%8Ewebshell%E7%9B%91%E6%8E%A7%E6%8E%A2%E7%B4%A2.pdf">OSSEC与webshell实时监控探索</a></li>
+</ul>
+<p><strong>HTTP相关：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Cookies">HTTP cookies</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jin5354/404forest/issues/54">HTTP 安全最佳实践</a></li>
+<li><a target="_blank" rel="noopener" href="http://cizixs.com/2016/12/12/restful-api-design-guide/">跟着 Github 学习 Restful HTTP API 设计</a></li>
+</ul>
+<p><strong>其他：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/mst-sec-lecture-notes/content/">米斯特白帽培训讲义</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.knownsec.com/Knownsec_RD_Checklist/">知道创宇研发技能表v3.1</a></li>
+<li><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/daxueba-kali-linux-tutorial/content/index.html">大学霸 Kali Linux 安全渗透教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/database/68877.html">大数据安全分析漫谈</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/network/124422.html">浅析ReDoS的原理与实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/155209.html">最好用的开源Web漏扫工具梳理</a></li>
+<li><a target="_blank" rel="noopener" href="https://itextpdf.com/blog/how-completely-remove-file-git-repository">How to completely remove a file from a Git repository</a></li>
+<li><a target="_blank" rel="noopener" href="http://mannix.top/2018/11/25/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7%E9%9B%86%E5%90%88/">渗透测试常用工具集合</a></li>
+</ul>
+<hr>
+<h2 id="资源下载"><a href="#资源下载" class="headerlink" title="资源下载"></a>资源下载</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://share.weiyun.com/5eRmvxa">腾讯微云（密码：mpgksn）</a></p>
+</blockquote>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/">https://exp-blog.com/safe/bai-mao-zi-shen-tou-ce-shi-ru-men-zi-yuan/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%B8%97%E9%80%8F/">
+                                    
+                                        <span class="chip bg-color">渗透</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E7%99%BD%E5%B8%BD%E5%AD%90/">
+                                    
+                                        <span class="chip bg-color">白帽子</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Pwk/">
+                                    
+                                        <span class="chip bg-color">Pwk</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/OSCP/">
+                                    
+                                        <span class="chip bg-color">OSCP</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/CTF/">
+                                    
+                                        <span class="chip bg-color">CTF</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/website/mariadb-zhou-qi-xing-beng-kui-chu-li-ji-lu/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/06.webp" class="responsive-img" alt="Mariadb 周期性崩溃问题处理：Error establishing a database connection">
+                        
+                        <span class="card-title">Mariadb 周期性崩溃问题处理：Error establishing a database connection</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-12-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WordPress/">
+                        <span class="chip bg-color">WordPress</span>
+                    </a>
+                    
+                    <a href="/tags/Mariadb/">
+                        <span class="chip bg-color">Mariadb</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/website/jin-yong-xmlrpc-bi-mian-ddos/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/04.png" class="responsive-img" alt="禁用 XMLRPC 避免 WP 站点被 DDOS 或暴力登录">
+                        
+                        <span class="card-title">禁用 XMLRPC 避免 WP 站点被 DDOS 或暴力登录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-12-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/WordPress/">
+                        <span class="chip bg-color">WordPress</span>
+                    </a>
+                    
+                    <a href="/tags/XMLRPC/">
+                        <span class="chip bg-color">XMLRPC</span>
+                    </a>
+                    
+                    <a href="/tags/DDOS/">
+                        <span class="chip bg-color">DDOS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

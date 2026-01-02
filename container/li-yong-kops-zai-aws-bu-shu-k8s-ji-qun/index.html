@@ -1,0 +1,2395 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="利用 kOps 在 AWS 部署 k8s 集群, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>利用 kOps 在 AWS 部署 k8s 集群 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/container/03.png')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">利用 kOps 在 AWS 部署 k8s 集群</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                
+                                    <span class="chip bg-color">容器</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/kubernetes/">
+                                
+                                    <span class="chip bg-color">kubernetes</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/k8s/">
+                                
+                                    <span class="chip bg-color">k8s</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/kops/">
+                                
+                                    <span class="chip bg-color">kops</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/aws/">
+                                
+                                    <span class="chip bg-color">aws</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%AE%B9%E5%99%A8/" class="post-category">
+                                容器
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-02-08
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    23 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="参数与版本"><a href="#参数与版本" class="headerlink" title="参数与版本"></a>参数与版本</h2><p>本文中涉及的所有工具或参数，如无特殊描述，均与下表相同：</p>
+<table>
+<thead>
+<tr>
+<th align="center">条目</th>
+<th align="center">参数值/版本号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">kOps</td>
+<td align="center">1.19.0</td>
+</tr>
+<tr>
+<td align="center">kubectl</td>
+<td align="center">1.19.7</td>
+</tr>
+<tr>
+<td align="center">k8s cluster version</td>
+<td align="center">1.19.7</td>
+</tr>
+<tr>
+<td align="center">k8s cluster name</td>
+<td align="center">exp.k8s.local</td>
+</tr>
+<tr>
+<td align="center">s3 name</td>
+<td align="center">exp.k8s.local-state</td>
+</tr>
+<tr>
+<td align="center">region</td>
+<td align="center">us-east-1</td>
+</tr>
+<tr>
+<td align="center">zone</td>
+<td align="center">us-east-1c</td>
+</tr>
+<tr>
+<td align="center">metrics-server</td>
+<td align="center">集群内置</td>
+</tr>
+<tr>
+<td align="center">dashboard</td>
+<td align="center">2.0.1</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>由于 k8s 更新迭代非常快，而且对版本要求很严格，因此本文主要为了叙述搭建 k8s 集群的方法，涉及到的版本和参数可能在若干年月后就过时了，所以在部署的时候，对于出现版本号和参数的地方一定要格外留意，尽量不要直接复制命令执行，否则最终搭建出来的集群很可能会出现各种兼容性问题。详细可参考《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/setup/release/version-skew-policy/">Kubernetes 版本及版本偏差支持策略</a>》。</p>
+</blockquote>
+<h2 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h2><table>
+<thead>
+<tr>
+<th align="center">工具</th>
+<th align="center">用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/">AWS</a></td>
+<td align="center">亚马逊云计算平台，类似于阿里云、腾讯云等，可以提供搭建 k8s 集群的云主机、S3 存储桶等资源</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/cli/">awscli</a></td>
+<td align="center">AWS 命令行工具，可用于管理 AWS 平台上的授权服务</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops">kOps</a></td>
+<td align="center">用于在 AWS 上搭建 k8s 集群的 oob（out-of-band） 工具，通过配置授权，它可以直接调度 AWS 上的资源，全自动创建并管理一个高可用的 k8s 集群</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a></td>
+<td align="center">k8s 命令行工具，可用于对 k8s 集群下发命令</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/kubernetes">kubernetes</a></td>
+<td align="center">简称 k8s，可跨多个主机管理容器化的应用程序的开源系统</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a></td>
+<td align="center">k8s 的 GUI 仪表板，可选插件</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server"><del>metrics-server</del></a></td>
+<td align="center">用于收集 k8s 集群指标（如 CPU、内存等）的可选插件，因已内置到 k8s 集群，<strong>不再推荐独立安装，避免出现版本兼容性问题</strong></td>
+</tr>
+</tbody></table>
+<p>关于 metrics-server 版本兼容性问题，可以参考《<a target="_blank" rel="noopener" href="https://www.bookstack.cn/read/kubernetes-practice-guide/troubleshooting-cases-schemaerror-when-using-kubectl-apply-or-edit.md">kubectl edit 或者 apply 报 SchemaError</a>》的说明，主要是 metrics-server 使用了新的 openapi-generator，导致生成的 openapi 格式与某些版本的 k8s 有差异，导致 kubectl 在解析 openapi 的 schema 时发生异常，以致只能回滚或重建集群。</p>
+<p>因为我们是使用 kOps 安装的集群，为了避免出现版本兼容性问题，以后要安装 metrics-server、dashboard 之类的插件，最好直接通过 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/tree/master/addons">kops/addons</a> 目录指引按需安装。</p>
+<h2 id="准备工作：部署-oob-server"><a href="#准备工作：部署-oob-server" class="headerlink" title="准备工作：部署 oob-server"></a>准备工作：部署 oob-server</h2><p>首先大概了解一下部署架构：</p>
+<p><img src="./04.png"></p>
+<p>如上图，oob-server 是在 AWS 手动申请的一台 EC2 服务器，我们在这台服务器上安装 awscli、kOps、kubectl 工具后，就可以以 oob（带外管理）方式调度 AWS 的资源（包括 EC2、S3、VPC、LB、安全组等）创建 k8s 集群。</p>
+<p>因为 oob-server 不属于集群的一部分，因此在 aws 申请一台低配的机器即可（本文为 2C4G 的 Ubuntu 18.04）。尔后所有操作均在 oob-server 上执行即可，无需登陆 k8s 集群的任何节点。</p>
+<h3 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h3><p>若了解 k8s 集群的同学可以知道，集群中有一个 kube-apiserver（由 kOps 负责安装），此处所安装的 kubectl 就是其客户端。</p>
+<p>安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+mv kubectl /usr/local/bin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>若要下载特定版本，只需把命令中的 <code>$(curl -L -s https://dl.k8s.io/release/stable.txt)</code> 部分替换为指定版本即可。建议一定要去看下当前最新的稳定版是什么，k8s 对版本兼容性是有严格要求的，一旦不匹配集群会跑不起来。</p>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kubectl version --short --client<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p><code>kubectl version</code> 可同时查看客户端和服务端版本，但现在服务端还没安装，查询会超时，故先查客户端。</p>
+</blockquote>
+<h3 id="安装-kOps"><a href="#安装-kOps" class="headerlink" title="安装 kOps"></a>安装 kOps</h3><p>安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops
+mv kops /usr/local/bin/kops<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>若要下载特定版本，只需把命令中的 <code>$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)</code> 部分替换为指定版本即可。建议一定要去看下当前最新的稳定版是什么，确保 kOps 支持安装的 k8s 集群版本与前面安装的 kubectl 版本一致。</p>
+<blockquote>
+<p>关于 kOps 支持安装的 k8s 版本可以参考《<a target="_blank" rel="noopener" href="https://kops.sigs.k8s.io/welcome/releases/">kOps版本和版本控制</a>》。</p>
+</blockquote>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kops version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="安装-awscli"><a href="#安装-awscli" class="headerlink" title="安装 awscli"></a>安装 awscli</h3><p>安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">apt-get update
+apt-get install awscli<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>验证安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>为了通过命令行执行 aws 控制台的部分功能，需要为其配置你个人 AWS 账号的 AccessKeyID 和 SecretAccessKey 进行授权。</p>
+<p>打开 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/iam/">IAM 控制面板</a>，点击左侧导航栏的【用户】便可找到你自己的个人账号，点击该账号，点击【安全证书】标签，点击【创建访问密钥】，即可得到 AccessKeyID 和 SecretAccessKey。</p>
+<blockquote>
+<p>这个密钥只是临时用的，下面创建了 kops 用户之后记得回来删除掉。</p>
+</blockquote>
+<p><img src="./05.png"></p>
+<p>执行命令 <code>aws configure</code> 配置 awscli 权限，会提问 4 个问题：</p>
+<ul>
+<li><code>AWS Access Key ID</code>    : 输入上面生成的 AccessKeyID</li>
+<li><code>AWS Secret Access Key</code>: 输入上面生成的 SecretAccessKey</li>
+<li><code>Default region name</code>  : 输入你期望 k8s 的 EC2 实例应该创建在哪个地区，本文统一为 <code>us-east-1</code></li>
+<li><code>Default output format</code>: awscli 执行结果回显到命令行界面的格式， 默认为 <code>text</code>， 本文统一为 <code>json</code></li>
+</ul>
+<blockquote>
+<p>注意 AWS 关于 《<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html">Regions, Availability Zones, and Local Zones</a>》 的区别。此处填的是 Regions（地区），例如 <code>us-east-1</code>。 后面会要求细化粒度到 Availability Zones（可用地区），例如 <code>us-east-1a</code>、<code>us-east-1b</code>、<code>us-east-1c</code> 等。</p>
+</blockquote>
+<h3 id="创建-kOps-专用的-IAM-用户"><a href="#创建-kOps-专用的-IAM-用户" class="headerlink" title="创建 kOps 专用的 IAM 用户"></a>创建 kOps 专用的 IAM 用户</h3><p>为了使用 kOps 部署集群，需要创建一个专用的 IAM 用户 <code>kops</code>，并分配这些权限：</p>
+<ul>
+<li>AmazonEC2FullAccess</li>
+<li>AmazonRoute53FullAccess</li>
+<li>AmazonS3FullAccess</li>
+<li>IAMFullAccess</li>
+<li>AmazonVPCFullAccess</li>
+</ul>
+<p>由于前面 awscli 已经拥有了你的 AWS 账号权限，因此可以直接在命令行创建 <code>kops</code> 用户并为其分配上述权限：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws iam create-group --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonRoute53FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/IAMFullAccess --group-name kops
+aws iam attach-group-policy --policy-arn arn:aws:iam::aws:policy/AmazonVPCFullAccess --group-name kops
+aws iam create-user --user-name kops
+aws iam add-user-to-group --user-name kops --group-name kops<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>创建成功后，可以在 AWS 的 IAM 控制台 UI 上看到用户 <code>kops</code> 。</p>
+</blockquote>
+<p><img src="./06.png"></p>
+<p>然后生成 <code>kops</code> 用户密钥：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws iam create-access-key --user-name kops<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此命令会返回 <code>kops</code> 用户的 AccessKeyID 和 SecretAccessKey （与在 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/iam/">IAM 控制面板</a>生成的效果是一样的）。</p>
+<p>执行命令 <code>aws configure</code> 更新 awscli 为 <code>kops</code> 用户的权限，依然会问 4 个问题：</p>
+<ul>
+<li><code>AWS Access Key ID</code>    : 输入 <code>kops</code> 用户的 AccessKeyID</li>
+<li><code>AWS Secret Access Key</code>: 输入 <code>kops</code> 用户的 SecretAccessKey</li>
+<li><code>Default region name</code>  : 保持不变即可</li>
+<li><code>Default output format</code>: a保持不变即可</li>
+</ul>
+<p>同时把 <code>kops</code> 用户的配置信息写入到 <code>~/.bashrc</code> 环境变量：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo 'export AWS_ACCESS_KEY_ID=...' >> ~/.bashrc
+echo 'export AWS_SECRET_ACCESS_KEY=...' >> ~/.bashrc
+echo 'export AWS_REGION=us-east-1' >> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>最后生成 ssh 密钥（会有几个问题，回车到底即可）：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>生成的密钥位置为 <code>~/.ssh/</code>，此密钥可用于之后直接 ssh 登陆 k8s 集群的任意节点。</p>
+</blockquote>
+<h3 id="创建-S3-Bucket"><a href="#创建-S3-Bucket" class="headerlink" title="创建 S3 Bucket"></a>创建 S3 Bucket</h3><p>S3 存储桶用于存储集群数据，其命名格式要求为: <code>&lt;custom_name&gt;.k8s.local-state</code> 。</p>
+<p>本文 S3 取名为 <code>exp.k8s.local-state</code> （注意后缀一个字符都不能改）。</p>
+<p>创建命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">aws s3 mb s3://exp.k8s.local-state --region us-east-1 --endpoint-url https://s3.us-east-1.amazonaws.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>命令中的 <code>--region</code> 和 <code>--endpoint-url</code> 参数均涉及 region 名称，和前面配置 awscli 时的 region 名称保持一致即可。</p>
+</blockquote>
+<p>存储桶名称要求全球唯一，如果创建失败了，注意看提示是否名称已经被占用了。</p>
+<p><img src="./07.png"></p>
+<p>创建成功后，访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 可以看到该存储桶：</p>
+<p><img src="./08.png"></p>
+<p><img src="./09.png"></p>
+<p>最后把 s3 的配置信息写入到 <code>~/.bashrc</code> 环境变量：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">echo 'export KOPS_STATE_STORE=s3://exp.k8s.local-state' >> ~/.bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="创建-k8s-集群"><a href="#创建-k8s-集群" class="headerlink" title="创建 k8s 集群"></a>创建 k8s 集群</h2><p>前面准备工作完成后，即可使用 kOps 创建集群。</p>
+<p>生成集群的配置文件：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kops create cluster \
+     --name=exp.k8s.local \
+     --zones=us-east-1c \
+     --master-size="t2.medium" \
+     --node-size="t2.medium" \
+     --ssh-public-key="~/.ssh/id_rsa.pub" \
+     --kubernetes-version="1.19.7"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数说明：</p>
+<ul>
+<li><code>--name</code>: 集群名称，为了让 kops 创建基于 gossip 的集群，固定格式为 <code>&lt;custom_name&gt;.k8s.local</code>，这样它就可以自动关联到前面的 S3 Bucket 名称 <code>exp.k8s.local-state</code> 。</li>
+<li><code>--zones</code>: 这里填的不是 Regions（地区），而是 Availability Zones（可用地区）即 Availability Zones，本文固定为 <code>us-east-1c</code> 。</li>
+<li><code>--master-size</code>: 为 k8s 集群的 master 节点申请的 EC2 实例类型，决定了实例的硬件配置，本文固定为 <code>t2.medium</code>，具体的 ec2 类型可参考<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/ec2/pricing/on-demand/">这里</a>。</li>
+<li><code>--node-size</code>: 同上，申请的是 k8s 集群的 worker 节点。</li>
+<li><code>--ssh-public-key</code>: 前面生成的 ssh 密钥路径，目的是把 oob-server 的 ssh 公钥写入 k8s 集群的每一个节点，以便之后可以直接通过 ssh 登陆。</li>
+<li><code>--kubernetes-version</code>: 期望创建的 k8s 集群版本，可以参考《<a target="_blank" rel="noopener" href="https://kops.sigs.k8s.io/welcome/releases/">kOps版本和版本控制</a>》查看当前所安装的 kOps 支持安装的版本范围，本文固定为 <code>1.19.7</code> 。</li>
+</ul>
+<p>create 命令执行成功后, 会提示执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令正式创建集群，<strong>但这里先不创建</strong>。</p>
+<p><img src="./03.png"></p>
+<p>我们需要执行命令 <code>kops edit cluster exp.k8s.local</code> 调整集群的配置文件，主要修改两处：</p>
+<ul>
+<li><del>修改 <code>kubelet.anonymousAuth: true</code>: 因为搭建的是测试用的集群，避免认证麻烦，这里把匿名打开。</del></li>
+<li>追加 <code>metricsServer.enabled: true</code>: 因为后面需要安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">dashboard</a>，所以这里要启用内置的 <a target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/metrics-server">metrics-server</a> 插件。</li>
+</ul>
+<p>修改后的集群配置文件如下（仅适用于 1.19.7 版本）：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Please edit the object below. Lines beginning with a '#' will be ignored,</span>
+<span class="token comment" spellcheck="true"># and an empty file will abort the edit. If an error occurs while saving this file will be</span>
+<span class="token comment" spellcheck="true"># reopened with the relevant failures.</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> kops.k8s.io/v1alpha2
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> Cluster
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">creationTimestamp</span><span class="token punctuation">:</span> <span class="token string">"2021-02-08T03:28:29Z"</span>
+  <span class="token key atrule">generation</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> exp.k8s.local
+<span class="token key atrule">spec</span><span class="token punctuation">:</span>
+  <span class="token key atrule">api</span><span class="token punctuation">:</span>
+    <span class="token key atrule">loadBalancer</span><span class="token punctuation">:</span>
+      <span class="token key atrule">class</span><span class="token punctuation">:</span> Classic
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> Public
+  <span class="token key atrule">authorization</span><span class="token punctuation">:</span>
+    <span class="token key atrule">rbac</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token key atrule">channel</span><span class="token punctuation">:</span> stable
+  <span class="token key atrule">cloudProvider</span><span class="token punctuation">:</span> aws
+  <span class="token key atrule">configBase</span><span class="token punctuation">:</span> s3<span class="token punctuation">:</span>//exp.k8s.local<span class="token punctuation">-</span>state/exp.k8s.local
+  <span class="token key atrule">containerRuntime</span><span class="token punctuation">:</span> docker
+  <span class="token key atrule">etcdClusters</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">cpuRequest</span><span class="token punctuation">:</span> 200m
+    <span class="token key atrule">etcdMembers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">instanceGroup</span><span class="token punctuation">:</span> master<span class="token punctuation">-</span>us<span class="token punctuation">-</span>east<span class="token punctuation">-</span>1c
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> c
+    <span class="token key atrule">memoryRequest</span><span class="token punctuation">:</span> 100Mi
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> main
+  <span class="token punctuation">-</span> <span class="token key atrule">cpuRequest</span><span class="token punctuation">:</span> 100m
+    <span class="token key atrule">etcdMembers</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">instanceGroup</span><span class="token punctuation">:</span> master<span class="token punctuation">-</span>us<span class="token punctuation">-</span>east<span class="token punctuation">-</span>1c
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> c
+    <span class="token key atrule">memoryRequest</span><span class="token punctuation">:</span> 100Mi
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> events
+  <span class="token key atrule">iam</span><span class="token punctuation">:</span>
+    <span class="token key atrule">allowContainerRegistry</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">legacy</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">kubelet</span><span class="token punctuation">:</span>
+    <span class="token key atrule">anonymousAuth</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">kubernetesApiAccess</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> 0.0.0.0/0
+  <span class="token key atrule">kubernetesVersion</span><span class="token punctuation">:</span> 1.19.7
+  <span class="token key atrule">masterInternalName</span><span class="token punctuation">:</span> api.internal.exp.k8s.local
+  <span class="token key atrule">masterPublicName</span><span class="token punctuation">:</span> api.exp.k8s.local
+  <span class="token key atrule">metricsServer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">networkCIDR</span><span class="token punctuation">:</span> 172.20.0.0/16
+  <span class="token key atrule">networking</span><span class="token punctuation">:</span>
+    <span class="token key atrule">kubenet</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token key atrule">nonMasqueradeCIDR</span><span class="token punctuation">:</span> 100.64.0.0/10
+  <span class="token key atrule">sshAccess</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> 0.0.0.0/0
+  <span class="token key atrule">subnets</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">cidr</span><span class="token punctuation">:</span> 172.20.32.0/19
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>east<span class="token punctuation">-</span>1c
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> Public
+    <span class="token key atrule">zone</span><span class="token punctuation">:</span> us<span class="token punctuation">-</span>east<span class="token punctuation">-</span>1c
+  <span class="token key atrule">topology</span><span class="token punctuation">:</span>
+    <span class="token key atrule">dns</span><span class="token punctuation">:</span>
+      <span class="token key atrule">type</span><span class="token punctuation">:</span> Public
+    <span class="token key atrule">masters</span><span class="token punctuation">:</span> public
+    <span class="token key atrule">nodes</span><span class="token punctuation">:</span> public<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>配置文件默认以 vim 模式编辑，只要格式符合 yaml ，并且配置项都是当前 k8s 版本支持的，就可以成功保存修改内容（否则会提示保存失败）。</p>
+</blockquote>
+<p>执行 <code>kops update cluster --name exp.k8s.local --yes --admin</code> 命令即可真正创建 k8s 集群。</p>
+<p><img src="./10.png"></p>
+<p>创建过程大概需要 10 分钟，此时切换到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看【实例】，可以看见 k8s 的实例正在创建中。</p>
+<blockquote>
+<p>当前版本的 kOps 所创建的集群只有 2 个节点（master 和 worker 节点各一），较旧的 kOps 版本所创建的集群有 3 个节点（1 个 master 节点和 2 个 worker 节点）。</p>
+</blockquote>
+<p><img src="./11.png"></p>
+<p>通过 <code>kops validate cluster</code> 命令可查看集群各个节点状态，若均为【Ready】即代表集群创建成功： </p>
+<p><img src="./15.png"></p>
+<h2 id="操作-k8s-集群"><a href="#操作-k8s-集群" class="headerlink" title="操作 k8s 集群"></a>操作 k8s 集群</h2><h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><p>以 kOps 方式部署的集群，可以在 oob-server 通过 kubectl 直接操作，无需登陆到集群的任何节点。常用命令如下：</p>
+<ul>
+<li><code>kubectl get nodes</code>： 查看集群节点</li>
+<li><code>kubectl cluster-info</code>： 查看集群域名地址信息</li>
+<li><code>kubectl version</code>： 查看集群版本</li>
+<li><code>kubectl config view</code>： 查看集群配置（脱敏），其实就是查看 <code>~/.kube/config</code> 文件（未脱敏）</li>
+<li><code>kubectl get deployments --all-namespaces</code>： 查看所有名字空间下的 Deployment</li>
+<li><code>kubectl get rs --all-namespaces</code>： 查看所有名字空间下的 ReplicaSet</li>
+<li><code>kubectl get pods --all-namespaces</code>： 查看所有名字空间下的 pod</li>
+<li><code>kubectl get svc --all-namespaces</code>： 查看所有名字空间下的 service</li>
+</ul>
+<h3 id="登陆到集群节点"><a href="#登陆到集群节点" class="headerlink" title="登陆到集群节点"></a>登陆到集群节点</h3><p>因为前面在 oob-server 创建集群时，已经通过 kOps 配置了 ssh 密钥，所以可以直接从 oob-server 登陆到集群的任意节点：从 EC2 控制台获取集群节点的 IP 后，直接 ssh 登陆即可（注意配置安全组策略）。</p>
+<p>旧版本的 kOps 所创建集群节点，其 ssh 的登陆账号默认都是 admin，但是新版本会以集群节点的操作系统名称作为 ssh 的登陆账号，例如 ubuntu、centos 等。 集群节点所使用的操作系统一般与 oob-server 服务器一致，也可在 EC2 控制台直接查看各个节点实例的操作系统名称。</p>
+<h2 id="访问-k8s-集群"><a href="#访问-k8s-集群" class="headerlink" title="访问 k8s 集群"></a>访问 k8s 集群</h2><h3 id="获取服务地址"><a href="#获取服务地址" class="headerlink" title="获取服务地址"></a>获取服务地址</h3><p>通过命令 <code>kubectl cluster-info</code> 可查看集群的域名地址信息，其中【Kubernetes master】即为 master 节点的服务地址，也是 kube-apiserver 的服务地址。</p>
+<p><img src="./17.png"></p>
+<p>在 AWS 环境中，该域名地址是由 LB （负载均衡器）提供的，可以在 AWS 控制台的【负载均衡器】找到它，可以发现它被解析到 master 节点：</p>
+<p><img src="./16.png"></p>
+<h3 id="获取账号密码"><a href="#获取账号密码" class="headerlink" title="获取账号密码"></a>获取账号密码</h3><p>当通过浏览器访问 kube-apiserver 时，会要求输入 BasicAuth 。</p>
+<p>默认情况下集群有两个系统账号 <code>admin</code> 和 <code>kube</code>，可以通过 kOps 获取其密码：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kops get secrets kube --type secret -oplaintext
+kops get secrets admin --type secret -oplaintext<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>某些旧版本的 kOps 有 BUG，获取到的密码是反的，就是说 kube 返回的是 admin 的密码， admin 返回的是 kube 的密码。</p>
+</blockquote>
+<h2 id="部署-dashboard"><a href="#部署-dashboard" class="headerlink" title="部署 dashboard"></a>部署 dashboard</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>为了方便从 GUI 管理 k8s ，推荐安装 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a>。又因为前面是通过 kOps 安装集群的，为了避免版本兼容性问题，可以直接从 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/kops/blob/master/addons/kubernetes-dashboard/addon.yaml">kops/addons/kubernetes-dashboard/addon.yaml</a> 获取匹配的版本，然后获取其 yaml 脚本进行安装。</p>
+<p>例如当前安装的 k8s 集群版本为 1.19.7 ，则应使用 2.0.1 版本的 <a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v2.0.1.yaml">dashboard</a>， 故而安装命令为：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kubectl apply -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v2.0.1.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>通过 <code>kubectl get pods --all-namespaces</code> 命令可验证是否安装成功： 当名为 <code>kubernetes-dashboard-xxxxx</code> 的 pod 其状态为 <code>READY=1/1</code>， <code>STATUS=Running</code> 时，即安装成功。</p>
+<h3 id="配置登陆账号"><a href="#配置登陆账号" class="headerlink" title="配置登陆账号"></a>配置登陆账号</h3><p>为了访问 dashboard，我们还需为其<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md">配置一个服务账号</a>。</p>
+<p>在 oob-server 创建名为 <code>eks-admin-service-account.yaml</code> 的配置文件（文件名随意），其内容为：</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> v1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> eks<span class="token punctuation">-</span>admin
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system
+<span class="token punctuation">---</span>
+<span class="token key atrule">apiVersion</span><span class="token punctuation">:</span> rbac.authorization.k8s.io/v1beta1
+<span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRoleBinding
+<span class="token key atrule">metadata</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> eks<span class="token punctuation">-</span>admin
+<span class="token key atrule">roleRef</span><span class="token punctuation">:</span>
+  <span class="token key atrule">apiGroup</span><span class="token punctuation">:</span> rbac.authorization.k8s.io
+  <span class="token key atrule">kind</span><span class="token punctuation">:</span> ClusterRole
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> cluster<span class="token punctuation">-</span>admin
+<span class="token key atrule">subjects</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">kind</span><span class="token punctuation">:</span> ServiceAccount
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> eks<span class="token punctuation">-</span>admin
+  <span class="token key atrule">namespace</span><span class="token punctuation">:</span> kube<span class="token punctuation">-</span>system<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该配置文件定义了一个服务账号 <code>eks-admin</code>（若需要自定义其他账号名称，修改 <code>eks-admin</code> 即可，下同）。</p>
+<p>然后执行命令 <code>kubectl apply -f eks-admin-service-account.yaml</code> 将其绑定到 k8s 集群即可。</p>
+<p>以后访问 dashboard 时，都需要提供 token 用于登陆，此时可在 oob-server 执行命令 <code>kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')</code>，该命令可生成用户 <code>eks-admin</code> 的临时 token， 将其填入登陆界面即可。</p>
+<blockquote>
+<p>注意 token 有效期只有半小时，过期后需要执行上述命令重新生成</p>
+</blockquote>
+<p><img src="./13.png"></p>
+<h2 id="访问-dashboard"><a href="#访问-dashboard" class="headerlink" title="访问 dashboard"></a>访问 dashboard</h2><p>根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，dashboard 的访问地址为：<code>https://&lt;cluster-address&gt;/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code>。</p>
+<p>其中 <code>&lt;cluster-address&gt;</code> 为 <code>kubectl cluster-info</code> 命令得到 Kubernetes master 地址。</p>
+<p>但是事实上无法访问，会一直报错 <code>401 Unauthorized</code>。</p>
+<p>原因是在 1.16 版本之后，如果不是从 localhost 访问 kube-apiserver，都必须要认证后方可访问的。但是我们部署集群时，因为是测试环境，既没有配置证书、也没有配置 BasicAuth，所以从公网是无法直接访问的。</p>
+<p>但是因为是测试用集群，不想过于麻烦，有没有办法绕过访问限制呢？下面提供两种绕过方法。</p>
+<h3 id="NodePort-访问方式"><a href="#NodePort-访问方式" class="headerlink" title="NodePort 访问方式"></a>NodePort 访问方式</h3><p>此方法参考自《<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/91731765">Web基础配置篇（十七）: Kubernetes dashboard 安装配置</a>》，执行起来较为简单。</p>
+<p>NodePort 原理是把 dashboard 的服务端口映射到 master 节点的宿主机的某个端口，然后直接访问 <code>https://&lt;master-ip&gt;:&lt;port&gt;/</code> 即可（注意配置 EC2 安全组策略）。</p>
+<p>这种访问方式绕过了 kube-apiserver，好处是访问 dashboard 服务时不需要再输入一串极长的地址，坏处是把端口暴露到公网，不但安全性下降，而且丧失了 LB 带来的好处，不建议在生产环境中使用。</p>
+<p>具体的配置方式如下：</p>
+<ul>
+<li>查看 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code>，可见当前服务类型为 ClusterIP</li>
+<li>编辑 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard edit service kubernetes-dashboard</code>，把 <code>type: ClusterIP</code> 修改为 <code>type: NodePort</code>，因为是 vim 编辑，故用 wq 保存即可</li>
+<li>再次查看 dashboard 服务：<code>kubectl --namespace=kubernetes-dashboard get service kubernetes-dashboard</code>，服务类型已变更为 NodePort，且服务端口从 443 映射到了 30689（<strong>随机的</strong>）</li>
+</ul>
+<p><img src="./12.png"></p>
+<p>记住映射的端口，然后我们到 AWS 的 <a target="_blank" rel="noopener" href="https://console.aws.amazon.com/ec2">EC2 控制面板</a> 查看集群 master 节点的公网 IP，访问 <code>https://&lt;master-ip&gt;:&lt;port&gt;/</code>，填入前面 <code>eks-admin</code> 账号的 token 即可登陆。</p>
+<blockquote>
+<p>注意端口是从 443 映射出来的，因此必须用 https 协议访问，但由于证书不可信，使用 chrome 访问该地址会拦截，可以鼠标点击页面空白处，键盘输入 <code>thisisunsafe</code> 强制访问。</p>
+</blockquote>
+<p><img src="./14.png"></p>
+<p><img src="./18.png"></p>
+<h3 id="代理转发访问方式"><a href="#代理转发访问方式" class="headerlink" title="代理转发访问方式"></a>代理转发访问方式</h3><p>这个方法会比前一个方法更复杂一些。</p>
+<p>需要知道，若 k8s 集群是部署在本地，那么通过 <code>kubectl proxy</code> 命令可以直接把 kube-apiserver 服务映射到本地 <code>http/8001</code> 端口的，再根据 <a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard">kubernetes-dashboard</a> 的官方说明，直接访问 <a target="_blank" rel="noopener" href="http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/">http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</a> 即可。</p>
+<p><img src="./21.png"></p>
+<p>但现在集群是部署在 AWS 上的，我们需要通过公网访问，才有了限制。</p>
+<p>于是我们尝试放开 <code>kubectl proxy</code> 限制条件，在 oob-server 执行命令：</p>
+<p><code>kubectl proxy --address='0.0.0.0' --port='8001' --accept-hosts='^*$'</code></p>
+<p>意即所有网卡（公网和内网）均转发了 8001 端口服务，而且接受所有来源的请求（注意配置 EC2 安全组策略）。</p>
+<p>此时从公网访问 <code>http://&lt;oob-server-ip&gt;:8001</code> 已可成功打开 kube-apiserver 服务，不会再报 <code>401 Unauthorized</code> 异常了。</p>
+<p><img src="./22.png"></p>
+<p>但是从公网访问 <code>http://&lt;oob-server-ip&gt;:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/</code> 时，虽然可以打开 dashboard 登陆页面，但是无法登陆（按钮变灰），报错为：Insecure access detected. Sign in will not be available. Access Dashboard securely over HTTPS or using localhost.</p>
+<p><img src="./20.png"></p>
+<p>详细原因见《<a target="_blank" rel="noopener" href="https://github.com/kubernetes/dashboard/blob/master/docs/user/accessing-dashboard/README.md#login-not-available">Accessing Dashboard</a>》，主要是 dashboard 为了安全起见，在 1.16 版本之后，如果使用 http 协议，只能从本地登陆（127.0.0.1 或 localhost）; 如果使用 https ，才可以从非本地登陆。</p>
+<p><img src="./19.png"></p>
+<p>简而言之，<code>kubectl proxy</code> 只是绕过了 kube-apiserver 的限制，没有绕过 dashboard 的限制。</p>
+<p>为此，这里参考了 《<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023130407">访问 K8s Dashboard 的几种方式</a>》，可以做一个 ssh 本地端口转发，把本地流量通过 ssh 转发到 oob-server 的 8001 端口，oob-server 再通过 <code>kubectl proxy</code> 把流量转发到 k8s 集群（生产环境不建议使用此方式）。 </p>
+<p>具体方法如下：</p>
+<ul>
+<li>修改 oob-server 的 sshd 服务，除了 22 端口外，增加监听一个端口用于本地端口转发，如 54322 ：<code>vim /etc/ssh/sshd_config</code>，取消 <code>Port 22</code> 注释，并添加一行 <code>Port 2222</code>， 重启 sshd 服务</li>
+<li>在 oob-server 执行命令  <code>kubectl proxy</code> （即只代理 127.0.0.1:8001， 不能是 0.0.0.0:8001）</li>
+<li>在本地终端执行命令： <code>ssh -L localhost:8001:localhost:8001 -NT ubuntu@&lt;oob-server-ip&gt; -p 2222</code></li>
+<li>在本地浏览器访问 <code>http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login</code>，此时 dashboard 的登陆按钮不再是灰色，可点击登陆</li>
+</ul>
+<h2 id="删除-k8s-集群"><a href="#删除-k8s-集群" class="headerlink" title="删除 k8s 集群"></a>删除 k8s 集群</h2><p>删除集群（会自动释放 EC2 实例、LB、安全组等资源，但 IAM 账号 和 S3 不会释放）：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">kops delete cluster exp.k8s.local --yes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./02.jpeg"></p>
+<p>删除配置（主要是集群的一些配置信息，包括登陆认证等，为了避免以后重建集群时出现各种原因不明的认证问题，最好是删掉）:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">rm -rf ~/.kube<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./01.png"></p>
+<blockquote>
+<p>k8s 集群数据是存储在 S3 Bucket 的，只能访问 AWS 的 <a target="_blank" rel="noopener" href="https://s3.console.aws.amazon.com/s3">S3 控制面板</a> 删除</p>
+</blockquote>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="集群部署过了一段时间后，kubectl-报错-Unauthorized"><a href="#集群部署过了一段时间后，kubectl-报错-Unauthorized" class="headerlink" title="集群部署过了一段时间后，kubectl 报错 Unauthorized"></a>集群部署过了一段时间后，kubectl 报错 Unauthorized</h3><p>例如在 oob-server 执行 <code>kubectl version</code> 命令后，只能查看 kubectl 的 Client 端版本，而 Server 端版本则要求登陆：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.7", GitCommit:"1dd5338295409edcfff11505e7bb246f0d325d15", GitTreeState:"clean", BuildDate:"2021-01-13T13:23:52Z", GoVersion:"go1.15.5", Compiler:"gc", Platform:"linux/amd64"}
+error: You must be logged in to the server (the server has asked for the client to provide credentials)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这是因为从 kOps 1.19 开始，kOps 从集群导出的证书仅在 18h 内有效，过期 oob-server 和集群就无法通讯了。此时需要在 oob-server 手动执行命令刷新证书：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 集群名称根据实际情况修改
+kops update cluster --name exp.k8s.local --yes --admin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>测试环境尚可接受，为了一劳永逸，在生产环境建议使用其他身份验证机制。</p>
+<blockquote>
+<p>此问题只存在于 oob-server，若直接登陆到集群节点执行 kubectl 命令，是不会有此问题的</p>
+</blockquote>
+<h3 id="登陆-dashboard-一段时间后，报错-Unauthorized"><a href="#登陆-dashboard-一段时间后，报错-Unauthorized" class="headerlink" title="登陆 dashboard 一段时间后，报错 Unauthorized"></a>登陆 dashboard 一段时间后，报错 Unauthorized</h3><p>前面已经说过，dashboard 的服务账号 <code>eks-admin</code> 的 token 是临时生成的，每次有效期只有半小时，过期后需要执行以下命令重新生成：</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 服务账号名称根据实际情况修改
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>《<a target="_blank" rel="noopener" href="https://aws.amazon.com/cn/blogs/china/how-to-build-kubernetes-based-on-ec2-in-aws-china/">如何在 AWS 中国区上基于 EC 2搭建 Kubernetes</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/7d448abae039">AWS EC2 上安装 Kubernetes 的示例</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://medium.com/@sanjay.chauhan164/https-medium-com-sanjay-chauhan164-kubernetes-with-kops-on-aws-20debcf3e1db">Kubernetes with KOPS on AWS - Clusters, Metrics Server, Dashboard (Web UI), Scaling HPA, Disruption Budget</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://kubernetes.io/zh/docs/tasks/tools/install-kubectl/">安装并配置 kubectl</a>》</li>
+<li>《<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/dashboard-tutorial.html">教程：部署 Kubernetes 控制面板 （Web UI）</a>》</li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/">https://exp-blog.com/container/li-yong-kops-zai-aws-bu-shu-k8s-ji-qun/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                    
+                                        <span class="chip bg-color">容器</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/kubernetes/">
+                                    
+                                        <span class="chip bg-color">kubernetes</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/k8s/">
+                                    
+                                        <span class="chip bg-color">k8s</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/kops/">
+                                    
+                                        <span class="chip bg-color">kops</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/aws/">
+                                    
+                                        <span class="chip bg-color">aws</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/scm/gitlfs-shi-yong-he-qian-yi/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/scm/05.jpg" class="responsive-img" alt="Git-LFS 的使用和迁移笔记">
+                        
+                        <span class="card-title">Git-LFS 的使用和迁移笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Git-LFS 是 Git 的扩展，是用于管理大文件的系统，避免仓库过大。本文详细说明了如何将现有仓库中的大文件迁移到 LFS 中进行管理。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-03-05
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" class="post-category">
+                                    软件配置管理
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                    <a href="/tags/LFS/">
+                        <span class="chip bg-color">LFS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/website/mstream-da-jian-si-ren-yun-yin-le-ku/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/website/mstream.webp" class="responsive-img" alt="使用 mstream 搭建私人云音乐库">
+                        
+                        <span class="card-title">使用 mstream 搭建私人云音乐库</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            mStream 是基于 NodeJS 的音乐流媒体服务器，支持多种格式，并提供 Web 界面访问。使用 mStream 搭建私人云音乐库可以解决音乐在线听、下载受限等问题。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-01-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%AB%99%E5%BB%BA%E8%AE%BE/" class="post-category">
+                                    网站建设
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/mstream/">
+                        <span class="chip bg-color">mstream</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%91%E9%9F%B3%E4%B9%90/">
+                        <span class="chip bg-color">云音乐</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

@@ -1,0 +1,2835 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="嵌入式开发学习笔记（Java – C/C++：从入门到入门）, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>嵌入式开发学习笔记（Java – C/C++：从入门到入门） | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/re/01.webp')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">嵌入式开发学习笔记（Java – C/C++：从入门到入门）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-C/">
+                                
+                                    <span class="chip bg-color">C/C++</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                
+                                    <span class="chip bg-color">Java</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                
+                                    <span class="chip bg-color">嵌入式</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                系统工程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2015-07-26
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    44 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>作为嵌入式开发的入门笔记，主要是为了记录我自己在过程中遇到的磕磕碰碰的问题以及解决方案，以便自己以后回顾，也希望大家少走弯路。</p>
+<p>其实也是苦于网上均无完整资料，不才以备一份罢了。</p>
+<p>不过此笔记换了一种叙述风格，除了记录了我在学习过程中的细节，有时还记录了当时的心理状态，可能显得相对啰嗦，不喜的同学可以直接跳过。</p>
+<p>本文<strong>适合有扎实的 Java 和 C/C++ 功底，且会一定的 Linux 基础</strong>的同学阅读。当然如果是浸淫在嵌入式开发多年的同学，可以不再往下读了，当然我很乐意你能对我提出指正。</p>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>本文的内容会围绕我的一个小程序 <strong>OTP动态令牌</strong> 进行讲解。</li>
+<li>它是一个 <font color="red"><strong>Java/C++ 的嵌入式程序</strong></font>，功能是提供 OTP（One-time Password）动态令牌 API。</li>
+<li>其作用类似于 QQ、新浪之类的登陆盾牌：<ol>
+<li>生成时效令牌</li>
+<li>校验时效令牌</li>
+</ol>
+</li>
+<li>其中 <font color="red">Java 项目名称为 dynamic-token</font>，通过内部调用 C++ 动态链接库对外提供 API。</li>
+<li>而 <font color="red">C++ 项目名称为 dt_otp</font>，是一个动态链接库项目，负责令牌的生成与校验。</li>
+<li>在<strong>本文的最后会提供其源码</strong>供大家下载参考。</li>
+</ul>
+<h2 id="2-缩略词-名词解释"><a href="#2-缩略词-名词解释" class="headerlink" title="2. 缩略词/名词解释"></a>2. 缩略词/名词解释</h2><table>
+<thead>
+<tr>
+<th align="center">缩略语/名词</th>
+<th align="center">英文全称</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">GCC</td>
+<td align="center">GNU Compiler Collection</td>
+<td align="center">C/C++ 编译器</td>
+</tr>
+<tr>
+<td align="center">JNI</td>
+<td align="center">Java Native Interface</td>
+<td align="center">Java 本地接口</td>
+</tr>
+<tr>
+<td align="center">JNA</td>
+<td align="center">Java Native Access</td>
+<td align="center">Java 本地访问</td>
+</tr>
+<tr>
+<td align="center">DLL</td>
+<td align="center">Dynamic Link Library</td>
+<td align="center">动态链接库（win 平台）</td>
+</tr>
+<tr>
+<td align="center">SO</td>
+<td align="center">Shared Object</td>
+<td align="center">共享对象（linux 平台的动态链接库）</td>
+</tr>
+<tr>
+<td align="center">ELF</td>
+<td align="center">Executable and Linkable Format</td>
+<td align="center">可执行链接格式</td>
+</tr>
+</tbody></table>
+<h2 id="3-开发环境-测试环境"><a href="#3-开发环境-测试环境" class="headerlink" title="3. 开发环境/测试环境"></a>3. 开发环境/测试环境</h2><p>这里仅列出我做嵌入式开发/测试时用到的环境，不一定照搬。</p>
+<p>还有就是，<strong>这里有一些工具其实是多余的，所以不必急着安装</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">环境</th>
+<th align="center">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">主机操作系统</td>
+<td align="center">win8 x64</td>
+</tr>
+<tr>
+<td align="center">虚拟机操作系统</td>
+<td align="center">Ubuntu x64</td>
+</tr>
+<tr>
+<td align="center">Java 开发环境</td>
+<td align="center">Eclipse Luna (4.4.1)</td>
+</tr>
+<tr>
+<td align="center">C/C++ 开发环境</td>
+<td align="center">VC6.0（弃用）<br>VCExpress（过渡）<br>VS2008 或 VS2010（推荐）</td>
+</tr>
+<tr>
+<td align="center">Java 编译环境</td>
+<td align="center">JDK 1.6 (x64/x86)</td>
+</tr>
+<tr>
+<td align="center">C/C++ 编译环境</td>
+<td align="center">GCC 4.9.2 (x64/x86)</td>
+</tr>
+<tr>
+<td align="center">交叉编译工具</td>
+<td align="center">Cygwin x64（弃用）</td>
+</tr>
+</tbody></table>
+<h2 id="4-开坑：提要"><a href="#4-开坑：提要" class="headerlink" title="4. 开坑：提要"></a>4. 开坑：提要</h2><p>这并不是我第一次接触嵌入式开发。</p>
+<p>最初使用到的是 [C/C++ - 汇编] 的嵌入式开发，我还记得是一个通过获取 CPU 时钟频率来运行闹钟。不过由于C和汇编都是比较底层的语言，且所开发的程序相对简单，当时也觉得“不过如此罢了”，就放下这段经历了。</p>
+<p>这次重拾嵌入式开发，诱因是工作项目需求，要实现一个安全校验的功能，且要支持 win 和 Linux 系统。</p>
+<p>由于该项目主要运行于 Java 平台，而出于安全性考虑，我立马就想到了 Java 易被反编译的缺陷。作为一个安全校验工具，其算法本身才是更重要的。我当机立断就想到了使用 C++ 作为算法的核心编程语言，提供API接口由Java调用（毕竟反汇编比反编译的复杂性要大得多）。</p>
+<p>简而言之，安全校验通过 C 实现，而参数的传递、参数的有效性过滤等则由 Java 负责。</p>
+<p>其实当时也是头脑发热。虽然我 Java 和 C++ 的功底都相对扎实，但联合编程的经验几乎为 0（只是几乎，真的）。不过人总是对依赖太久（其实是 YY 太久）的东西抱有不切实际的幻想，而当时让足矣支撑我 YY 的有两点：</p>
+<ol>
+<li>Java 必定已经考虑过 C 的嵌入式开发，绝对有提供相关的 API；</li>
+<li>万事度娘都知道。</li>
+</ol>
+<p>就是因为 YY 了这不切实际的两点，于是我给自己挖了一个大坑，足足填了两个星期…… 虽然过程中也是获益良多，但是为了避免自己重蹈覆辙，也为了大家少走弯路，最终决定写下这篇笔记。</p>
+<p>废话说到这里，下面入正题吧。</p>
+<h2 id="5-入坑：JNI"><a href="#5-入坑：JNI" class="headerlink" title="5. 入坑：JNI"></a>5. 入坑：JNI</h2><p>万事开头难，既然才入门，就问问度娘“如何在 Java 嵌入 C 编程”吧。</p>
+<p>度娘果然很快就回复了： <strong>JNI</strong> 。</p>
+<p>JNI（Java Native Interface），亦即 Java 本地接口，欲知其原理可查看<a target="_blank" rel="noopener" href="https://cnblogs.com/mandroid/archive/2011/06/15/2081093.html">这里</a>。</p>
+<p>其操作过程就是：</p>
+<ol>
+<li>在 Java 代码用通过 [native] 关键字声明一个本地接口。</li>
+<li>通过 [JNI 命令]，生成该接口对应 C/C++ 的头文件 [<code>*.h</code>]。</li>
+<li>编写 C/C++ 程序，实现该接口。</li>
+<li>编译 C/C++ 程序为 [<code>*.dll</code>] 动态链接库，由 Java 加载调用。</li>
+</ol>
+<p>有了操作过程指导，可以开始实践了。</p>
+<p><strong>注：</strong></p>
+<ul>
+<li>读到这里时，建议先找个简单的 Hello World 实例感受一下 JNI</li>
+<li>自己先实践一遍，如果有问题就带着问题，这样读到后面会更易理解</li>
+</ul>
+<h3 id="5-1-navicate-接口定义"><a href="#5-1-navicate-接口定义" class="headerlink" title="5.1. navicate 接口定义"></a>5.1. navicate 接口定义</h3><p>新建一个 Java 项目，随便建一个类（本文以 <code>exp.token.otp._OTP_CAPI.class</code> 为例），然后声明一个 navicat 接口即可：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> exp<span class="token punctuation">.</span>token<span class="token punctuation">.</span>otp<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * &lt;PRE>
+ * OTP API(c++)
+ * &lt;/PRE>
+ * &lt;br/>&lt;B>PROJECT : &lt;/B> dynamic-token
+ * &lt;br/>&lt;B>SUPPORT : &lt;/B> &lt;a href="https://exp-blog.com" target="_blank">exp-blog.com&lt;/a>
+ * @version   1.0 # 2015-07-08
+ * @author    EXP: 272629724@qq.com
+ * @since     jdk版本：jdk1.6
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">_OTP_CAPI</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取默认私钥.
+     * @return 默认私钥(保密)
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">native</span> String <span class="token function">getDefaultPrivateKey</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取默认时间偏移量.
+     * @return 默认时间偏移量(60000ms)
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">native</span> <span class="token keyword">long</span> <span class="token function">getDefaultTimeOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获取动态令牌.
+     * @param privateKey 私钥
+     * @param timeOffset 时间偏移量(ms)
+     * @return 动态令牌
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">native</span> String <span class="token function">getOtpToken</span><span class="token punctuation">(</span>
+            <span class="token keyword">final</span> String privateKey<span class="token punctuation">,</span> <span class="token keyword">final</span> <span class="token keyword">long</span> timeOffset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 校验动态令牌是否有效.
+     * @param otpToken 动态令牌
+     * @param privateKey 私钥
+     * @return true:有效; false:无效
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">native</span> <span class="token keyword">boolean</span> <span class="token function">isValid</span><span class="token punctuation">(</span>
+            <span class="token keyword">final</span> String otpToken<span class="token punctuation">,</span> <span class="token keyword">final</span> String privateKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="5-2-执行JNI命令生成C-C-的头文件"><a href="#5-2-执行JNI命令生成C-C-的头文件" class="headerlink" title="5.2. 执行JNI命令生成C/C++的头文件"></a>5.2. 执行JNI命令生成C/C++的头文件</h3><p>JNI 命令含义我就不详解了，大家可以自己去问度娘，样例如下：</p>
+<pre><code>javah  -classpath  .  -jni  exp.token.otp._OTP_CAPI</code></pre>
+<p><strong>这里有两个要点</strong>：</p>
+<ul>
+<li>这是 [DOS命令] ，即该命令要求在 DOS 框内执行</li>
+<li>该命令需要在 Java 的 [编译目录] 下执行</li>
+</ul>
+<p>关于 <strong>Java 的 [编译目录]</strong> ，相信大部分人都是用 Eclipse :</p>
+<ul>
+<li>Eclipse的普通项目的编译目录是 [./bin]</li>
+<li>Eclipse的Maven项目的编译目录是 [./target/classes]</li>
+</ul>
+<p>运行该命令后，就可以在编译目录下得到一个 [.h] 头文件：</p>
+<pre><code>exp_token_otp__OTP_CAPI.h</code></pre>
+<p>看到这个头文件，接下来就可以转向我们熟悉的C/C++编程了。</p>
+<h3 id="5-3-编写C-C-程序实现接口"><a href="#5-3-编写C-C-程序实现接口" class="headerlink" title="5.3. 编写C/C++程序实现接口"></a>5.3. 编写C/C++程序实现接口</h3><p>围绕 [.h] 头文件，我们要做的就是编写实现的 [.cpp] 代码，再编译成 [.dll] 动态链接库供Java调用。</p>
+<p>C/C++ 的编辑器比较多，我在学生时代最喜欢的就是 VC6.0，但到了如今，操作系统早已更新换代了，win7 开始对 VC6.0 的兼容性就非常差，在 win8 就属于装了也用不了的不稳定状态。而且 VC6.0 的库也相对过时了，当时我机器上除了 VC6.0，就剩下 VCExpress，也没多想就用了 VCExpress（至于后来为什么改为 VS2010，之后会提到）。</p>
+<p>我想用C编写 [.exe] 工程的同学比编写 [.dll] 工程的同学多得多，这里简单介绍下如何用 VCExpress 新建 [.dll] 工程（<strong>VS2010 是相同的步骤，不用担心</strong>）。</p>
+<p>新建项目时选择 [Win32 Project]：</p>
+<p><img src="./01.png" alt="新建 Win32 Project"></p>
+<p>再 Next 到最后，选择 [DLL] 即可：</p>
+<p><img src="./02.png" alt="选择创建 DLL 项目"></p>
+<blockquote>
+<p>至于 dll 项目结构我就不介绍了，还需要讲解的说明阁下的 C/C++ 功底不是做嵌入式的时候，先就此打住吧。</p>
+</blockquote>
+<p>接下来把 JNI 生成的头文件 <code>exp_token_otp__OTP_CAPI.h</code> 放到 DLL 项目，include 并实现它即可：</p>
+<p><img src="./03.png" alt="在 DLL 项目导入 JNI 接口的头文件"></p>
+<p>至于怎么编写实现代码、怎么生成 [.dll] ，其流程和生成 [.exe] 是一样的，却别在于 [.dll] 是一个 [库程序] ，需要依赖 [宿主程序] 才能运行调试，与 [.exe] 可直接调试相比是麻烦得多了。</p>
+<p>我当时是先在 [.exe] 项目调试完程序后，再把代码迁移到 [.dll] 中编译，纵然有点繁琐，也只是最后多了一步而已。</p>
+<blockquote>
+<p>VS 自身有提供把 DLL 程序附加到宿主进程调试的方法，有兴趣的同学可以问度娘</p>
+</blockquote>
+<p>在这里<strong>还有一个细节问题需要注意</strong>的，在<strong>编译时，可能会出现类似异常</strong>：</p>
+<blockquote>
+<p>1&gt;Compiling…<br>1&gt;stdafx.cpp<br>1&gt;d:\workspace\vc\dt_otp\dt_otp\<font color="red">exp_token_otp__OTP_CAPI.h(2) : fatal error C1083: 无法打开包括文件:"jni.h": No such file or directory</font><br>1&gt;Build log was saved at "file://d:\workspace\vc\dt_otp\dt_otp\Debug\BuildLog.htm"<br>1&gt;dll_project - 1 error(s), 0 warning(s)<br>========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========</p>
+</blockquote>
+<p>从异常可知，问题出现在 <code>exp_token_otp__OTP_CAPI.h</code> 头文件的第2行，先看一下第 2 行是什么：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* DO NOT EDIT THIS FILE - it is machine generated */</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;jni.h></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这里涉及到 C/C++ 的 include 机制：include 的文件用<strong>尖括号</strong>包围，表示<strong>从库目录开始找</strong>该文件；用<strong>双引号</strong>包围，表示<strong>从当前目录开始找</strong>该文件。</p>
+<p>[jni.h] 明显是 Java 的 JNI 功能的头文件，找不到可能是环境变量问题导致在库目录找不到，但与其排查环境变量的问题，还不如直接绕过去，将其直接复制到 DLL 项目的当前目录（与头文件 <code>exp_token_otp__OTP_CAPI.h</code> 同一个目录）就可以了。</p>
+<blockquote>
+<p>*在后面跨平台调用时会再次改动此文件，复制过来可便于操作。</p>
+</blockquote>
+<p>首先如下修改 <code>exp_token_otp__OTP_CAPI.h</code> 头文件的第2行，即使其查找当前目录的 [jni.h]：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"jni.h"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后在JDK目录 [%jdk_home%/include] 找到 [jni.h] 文件，复制过来即可。</p>
+<p>重新编译，出现新的异常：</p>
+<blockquote>
+<p>1&gt;Compiling…<br>1&gt;stdafx.cpp<br>1&gt;d:\workspace\vc\dt_otp\dt_otp\<font color="red">jni.h(27) : fatal error C1083: 无法打开包括文件:"jni_md.h": No such file or directory</font><br>1&gt;Build log was saved at "file://d:\workspace\VC\Other\dll_project\dll_project\Debug\BuildLog.htm"<br>1&gt;dll_project - 1 error(s), 0 warning(s)<br>========== Rebuild All: 0 succeeded, 1 failed, 0 skipped ==========</p>
+</blockquote>
+<p>这次问题源于 [jni.h] 第27行所引用的文件丢失：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">/* jni_md.h contains the machine-dependent typedefs for jbyte, jint and jlong */</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"jni_md.h"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>同样，在JDK目录 [%jdk_home%/include/win32] 找到 [jni_md.h] 文件，复制过来，重新编译，编译成功。</p>
+<blockquote>
+<p>这里先留一个待处理问题，其实 [jni_md.h] 还存在一个跨平台问题。后面会提到问题原因，并如何解决，这里先略过</p>
+</blockquote>
+<h3 id="5-4-Java-加载-DLL-动态链接库"><a href="#5-4-Java-加载-DLL-动态链接库" class="headerlink" title="5.4. Java 加载 DLL 动态链接库"></a>5.4. Java 加载 DLL 动态链接库</h3><p>由 VCExpress 编译成功的 [.dll] 文件可在 C++ 项目的 [./Debug] 文件下找到。将其复制到 Java 项目的 [./lib] 目录下（其实任意位置都可以，此处为了举例）。</p>
+<p>假如所编译的 [.dll] 文件名为 [dt_otp.dll]，那么在 Java 有两种加载方式：</p>
+<pre class="line-numbers language-java"><code class="language-java">System<span class="token punctuation">.</span><span class="token function">loadLibrary</span><span class="token punctuation">(</span><span class="token string">"./lib/dt_otp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token string">"D:/java/dynamic-token/lib/dt_otp.dll"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>任意选用一种即可，其中：</p>
+<ul>
+<li>[System.loadLibrary] 指定的是相对路径下的 dll 库名，不能带后缀</li>
+<li>[System.load] 指定的是绝对路径下的 dll 库文件，必须带后缀</li>
+</ul>
+<blockquote>
+<p>建议用 [System.loadLibrary] ，其之所以不能带后缀，是为了跨平台兼容，后面会提及</p>
+</blockquote>
+<h3 id="5-5-为什么不用-JNA"><a href="#5-5-为什么不用-JNA" class="headerlink" title="5.5. 为什么不用 JNA ?"></a>5.5. 为什么不用 JNA ?</h3><p>这不是本文的重点，本文也没采用过 JNA 技术，觉得本文信息量太大，可先跳过这节。</p>
+<p>JNA（Java Native Access）Java 本地访问（<a target="_blank" rel="noopener" href="https://blog.csdn.net/shendl/article/details/3589676/">传送门</a>），是基于 JNI 再封装一层的技术。我只看过 Demo，没真正用过，所以不莽下评论。</p>
+<p>JNA 相较于 JNI，简化了 Java To C 的嵌入过程（也仅仅是简化 JNI 命令、数据类型转换 等步骤，C 代码该写还得写）。但缺点是只支持 Java To C 的单向调用，不支持 C To Java 的调用。</p>
+<p>至于为什么我没采用 JNA，主要是两个原因：</p>
+<ol>
+<li>当时我还不知道这个东西</li>
+<li>知道也会选 JNI，学习是就应先学底层原理，再学怎么偷懒</li>
+</ol>
+<p>不过既然提到 Java To C 的 <font color="red">数据类型转换</font>，这里稍微扩充一下：</p>
+<p>刚才在通过 C 实现 JNI 生成的 [.h] 头文件的时候，想必都看到过 jstring、jlong 等等之类的数据类型，这些数据类型其实都在 [jni.h] 头文件中被声明了，需要转换到 C/C++ 的数据类型才能使用。具体怎么转换我就不贴代码了，这不是本文的重点，知道有这回事就可以了。度娘可以找到很多大神的分享，我就贴几个我参考过的传送门：</p>
+<table>
+<thead>
+<tr>
+<th align="center">文献</th>
+<th align="center">来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">JNI中java类型与C/C++类型对应关系</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cnblogs.com/nicholas_f/archive/2010/11/30/1892124.html">传送</a></td>
+</tr>
+<tr>
+<td align="center">Java基础知识——JNI入门介绍</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cnblogs.com/hoys/archive/2011/09/30/2196290.html">传送</a></td>
+</tr>
+<tr>
+<td align="center">JNI的某些数组和字符串类型转换（转）</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://provista.iteye.com/blog/839703">传送</a></td>
+</tr>
+<tr>
+<td align="center">JNI高级教程之数据类型转换</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/jinhill/article/details/6918821">传送</a></td>
+</tr>
+</tbody></table>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>数据类型转换要注意的点很多，例如数据截断、内存释放（C不像Java会自动回收）等</li>
+<li>比较隐含的还有不同运行平台的数据位长不同，导致运行结果不一致，等等后面均会提及</li>
+</ul>
+<h2 id="6-挖坑：跨平台编程"><a href="#6-挖坑：跨平台编程" class="headerlink" title="6. 挖坑：跨平台编程"></a>6. 挖坑：跨平台编程</h2><p>嵌入式编程，需要直面的问题就是 [跨平台] 的问题。</p>
+<p>经常用 Java 的同学可能已经被洗脑了，因为 Java 属于 [平台无关] 语言，所以在编程、编译时基本不会考虑任何平台特性。但是如果在嵌入了 C/C++ 还不考虑平台特性，你面临的只有进退无路的尴尬境地。</p>
+<p>只有做过跨平台编程的同学才会真正了解，[跨平台] 究竟意味着什么：</p>
+<ul>
+<li>Java 是 [跨平台语言]，但同时也是 [平台无关语言] ，所以它 [一次编译，到处运行]。</li>
+<li>C/C++ 是 [跨平台语言]，但它是 [平台相关语言] ，所以它是 [一次编码，到处编译]。</li>
+</ul>
+<p>读到本文后面，你会对这两句话有深刻了解。</p>
+<p>在上一节经已讲述了从 Java 生成 C/C++ 接口、到 C/C++ 实现接口、再编译成可被 Java 加载的 DLL 库文件的过程。</p>
+<p>本节主要讲述 Java 内嵌 C/C++ 后，跨平台调用若不考虑平台特性会发生的问题，以及如何解决。</p>
+<h3 id="6-1-DLL动态链接库的加载与调用"><a href="#6-1-DLL动态链接库的加载与调用" class="headerlink" title="6.1. DLL动态链接库的加载与调用"></a>6.1. DLL动态链接库的加载与调用</h3><p>按照前面所述的步骤，我用 Java 的 [System.loadLibrary] 加载 [dt_otp.dll] 文件所遭遇的第一个问题，就是无法加载，异常如下：</p>
+<blockquote>
+<p>java.lang.UnsatisfiedLinkError: ./lib/dt_otp.dll: <font color="red">Can’t load IA 32-bit .dll on a AMD 64-bit platform</font><br>　　at java.lang.ClassLoader$NativeLibrary.load(Native Method)<br>　　at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1807)<br>　　at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1703)<br>　　at java.lang.Runtime.load0(Runtime.java:770)<br>　　at java.lang.System.load(System.java:1003)</p>
+</blockquote>
+<p>异常信息很明显了：<strong>【无法在 64 位平台加载 32 位 dll 文件】</strong>。</p>
+<p>当然你遇到的可能是相反的问题， <strong>【无法在 32 位平台加载 64 位 dll 文件】</strong>，但问题根源是一样的：</p>
+<blockquote>
+<p>java.lang.UnsatisfiedLinkError: ./lib/dt_otp.dll: <font color="red">Can’t load AMD 64-bit .dll on a IA 32-bit platform</font><br>　　at java.lang.ClassLoader$NativeLibrary.load(Native Method)<br>　　at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1807)<br>　　at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1703)<br>　　at java.lang.Runtime.load0(Runtime.java:770)<br>　　at java.lang.System.load(System.java:1003)</p>
+</blockquote>
+<p>我马上就想到应该是JDK在作怪了。我是 win8_x64 的系统，默认使用 JDK 是 1.6_x64，但异常信息告诉我，我所生成的 dll 是 32 位……（至于为什么是 32 位？下面马上会解谜）。</p>
+<p>先不管这个，于是我切换到 JDK1.6_x86，重新运行 Java 程序，果然运行成功。但这个程序的初衷就是放之四海皆可跑的定位，天知道运行它的机器是 32 位还是 64 位，这种过份的使用限制条件是不可能被接受的。</p>
+<p>既然 [.dll] 文件是 32 位的，那<strong>是否存在 64 位平台向下兼容运行的方法？</strong>于是我带着这个天真的想法搜了度娘的身，但似乎所有的结果都指向一个答案“<strong>不存在</strong>”（如果有同学知道兼容的方法，请速度联系我）。</p>
+<p>64 位平台无法兼容 32 位 dll 的问题足足困扰了我两天，各种失败的尝试终究使我不得不放弃。于是我开始寻求另一个切入点：</p>
+<blockquote>
+<p><strong>同时编译 32 和 64 位版本的 dll，由 Java 判定操作系统位数后再加载</strong></p>
+</blockquote>
+<p>以后的事实证明，我这个想法是正确的，但这也是我挖坑的开始。。。</p>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>N-bit 平台只支持 N-bit 库，别人口里所谓的 [兼容] 都是因为他有多个库文件</li>
+<li>在 64 位的 windows 系统中，除了自身的 C:\Windows\SysWOW64 之外，还要保留以前 32 位系统的 C:\Windows\System32，以兼容 32 位程序的运行，就很好地证明了这个道理</li>
+</ul>
+<h3 id="6-2-DLL-的编译（x86-与-64）"><a href="#6-2-DLL-的编译（x86-与-64）" class="headerlink" title="6.2. DLL 的编译（x86 与 64）"></a>6.2. DLL 的编译（x86 与 64）</h3><p>既然确定了目标是生成 32-bit 和 64-bit 两个版本的 dll，马上就着手编译。</p>
+<p>但首先困扰我并不得不先解决的是，<strong>为什么我是 64 位的系统，编译出来的是 32 位 dll</strong>？</p>
+<blockquote>
+<p>这其实是一个误区，64 位操作系统不是编译 64 位程序的必要条件，只需有 64 位编译器即可，这也是 [交叉编译工具] 之所以存在的理由。当然这是后话</p>
+</blockquote>
+<p>度娘说是 GCC 编译器的问题，VCExpress 可以在 [Build] -&gt; [Configuration Manager] 菜单中查看当前所用的编译器位数，我查了一下，果然是 32 位：</p>
+<p><img src="./04.png" alt="VCExpress 的 32 位编译器"></p>
+<p>但当我想切换到 64 位编译环境时，发现 VCExpress 只包含 32 位编译器。而且最杯具的是 VCExpress 不允许安装 64 位编译器（各种的找插件、重新安装 VCExpress 等等又浪费了我大半天）。</p>
+<p>最后我不得不寻求 VS2010 的帮助（这也是我切换到 VS2010 的理由），因为它能同时编译出 32 和 64 位的 DLL 文件（事实上更新版本的 VS 也具备此功能，只是我个人不习惯太新的 C/C++ 库而已）。值得安慰的是 VS2010 可以直接导入 VCExpress 的项目，省了不少功夫。</p>
+<p>至于如何安装 VS2010 可参考<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_662234020100qwu3.html">这篇文章</a>，这里主要记得在安装时选择 [<strong>64 位编译工具</strong>]：</p>
+<p><img src="./05.png" alt="VS2008/VS2010 安装时选择 64 位编译器"></p>
+<p>然后在编译时切换到 x64 平台（若没有选项则直接 [新建] 一个即可），就可以编译出 64 位的 dll 了：</p>
+<p><img src="./06.png" alt="选择 64 位编译平台"></p>
+<p>发现 <font color="red">VS2010 所编译的 32 位 dll 在 C++ 项目 [./Debug/] 目录下，编译的 64 位 dll 在 C 项目 [./x64/Debug/] 目录下</font>。分别用 JDK1.6_x86 和 JDK1.6_x64 加载，成功！</p>
+<blockquote>
+<p>如果有安装 Cygwin 且部署好了 win 版 x86 和 x64 的 [交叉编译工具链]，就可以直接通过 g++ 命令编译出 32 和 64 位的dll。但[交叉编译工具链]的安装过于繁琐，且在 Cygwin 上编写 C 也不方便，图省事的同学还是像我一样直接用 VS2010 吧。</p>
+</blockquote>
+<h3 id="6-3-乱入的-ELF-头"><a href="#6-3-乱入的-ELF-头" class="headerlink" title="6.3. 乱入的 ELF 头"></a>6.3. 乱入的 ELF 头</h3><p>到目前为止，程序已经可以在 win 平台下运行成功了。以为大功告成的我，直接就把程序放到 Linux 平台上试水，毕竟双系统支持才是最终目标。</p>
+<p>其实当时也是有点小弱鸡，一如既往地被 Java 洗脑了。我虽知道这是一个嵌入了 C/C++ 的 Java 程序，但是脑子了净想着 Java 的好处：“既然 dll 库是 Java 负责加载的，那么 Java 肯定已经屏蔽了 dll 的平台差异性，只要 win 下可以跑，那只要有 JVM，这程序放到哪里都能跑了。”</p>
+<p>于是 Linux 当着 Java 的面给了我响亮的一巴掌清醒清醒：尼 mǎ 这是 [dll] !。</p>
+<p><strong>好吧，科普君又来了：</strong>：</p>
+<ul>
+<li>DLL（ Dynamic Link Library ）亦即动态链接库，就是在程序运行过程中才加载进来的</li>
+<li>如果 Java 是在编译时将其一同静态编译进代码的，理论上是能够直接在 Linux 上运行的</li>
+<li>但这是 DLL，强如 Java 也只能在运行时加载</li>
+<li>而当我们在 Linux 平台上跑 Java 时，Linux 不能识别 win 的 DLL，Java 也就不能动态加载</li>
+</ul>
+<p>多说无益，先看看我在 Linux 上直接加载 dll 出现的问题：</p>
+<blockquote>
+<p>java.lang.UnsatisfiedLinkError: ./lib/dt_otp_x64.dll : <font color="red">invalid ELF header</font> (Possible cause: endianness mismatch)<br>　　at java.lang.ClassLoader$NativeLibrary.load(Native Method)<br>　　at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1807)<br>　　at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1703)<br>　　at java.lang.Runtime.load0(Runtime.java:770)<br>　　at java.lang.System.load(System.java:1003)</p>
+</blockquote>
+<p>无效 ELF 头？ELF 头是什么？</p>
+<p>度娘说 ELF（Executable and Linkable Format）即可执行连接格式，是 Unix 为应用程序的二进制接口发布的（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Linux%20ELF?fr=aladdin">这里</a>有简介）。其实简单来说，ELF 就是 Linux 中文件对自身的自述声明，Linux 下可通过 file 命令可以查看其信息：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">file</span> dt_otp_x86.dll
+dt_otp_x86.dll:PE32 executable <span class="token punctuation">(</span>DLL<span class="token punctuation">)</span> <span class="token punctuation">(</span>GUI<span class="token punctuation">)</span> Intel 80386, <span class="token keyword">for</span> MS Windows
+
+$ <span class="token function">file</span> dt_otp_x64.dll
+dt_otp_x64.dll:PE32+ executable <span class="token punctuation">(</span>DLL<span class="token punctuation">)</span> <span class="token punctuation">(</span>GUI<span class="token punctuation">)</span> x86-64, <span class="token keyword">for</span> MS Windows<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>果不其然，我在 VS2010 编译的两份 dll 文件均是 [for MS Windows]，且分别声明了属于 x86-bit 还是 x64-bit。</p>
+<h3 id="6-4-SO-也是动态连接库"><a href="#6-4-SO-也是动态连接库" class="headerlink" title="6.4. SO 也是动态连接库"></a>6.4. SO 也是动态连接库</h3><p>但知道了 ELF 头的存在，也只是知道了 Java 在 Linux 加载 DLL 会报错的原因，未能切实解决问题。</p>
+<p>按照我既往的思维逻辑，我又去抱度娘大腿了：“告诉我怎么在 Linux 加载 DLL 的方法吧….”。这次连度娘都无语了。最后还是那些令我惊呆了的小伙伴给了我一个切入点：</p>
+<blockquote>
+<p><strong>dll 是 win 平台的动态链接库，so 是 Linux 平台的动态链接库</strong></p>
+</blockquote>
+<p>这回真是 “soですね （原来如此）”了。</p>
+<p><strong>so（Shared Object）亦即共享对象</strong>（科普可参看<a target="_blank" rel="noopener" href="https://blog.csdn.net/ytz_linuxer/article/details/4740512">这里</a>、<a target="_blank" rel="noopener" href="http://mypyg.iteye.com/blog/845915">这里</a>或<a target="_blank" rel="noopener" href="https://cnblogs.com/ardar/articles/357321.html">这里</a>），<strong>等价于 win 平台的动态链接库</strong>。既然如此，又有了 win 的经验，要解决这个问题的方法就找到了：</p>
+<blockquote>
+<p>再编译 Linux 平台的 32-bit 和 64-bit 版本的 so 动态链接库</p>
+</blockquote>
+<p>我不敢说这是最好的、唯一的解决方法，但这是我当时能想到的解决方案。</p>
+<p>读到这里的同学大概也开始了解我一开始在前面所说的两句话是什么意思了：</p>
+<ul>
+<li>Java 是 [跨平台语言]，但同时也是 [平台无关语言] ，所以它 [一次编译，到处运行]。</li>
+<li>C/C++ 是 [跨平台语言]，但它是 [平台相关语言] ，所以它是 [一次编码，到处编译]。</li>
+</ul>
+<h3 id="6-5-编译-SO-动态链接库（x64）"><a href="#6-5-编译-SO-动态链接库（x64）" class="headerlink" title="6.5.编译 SO 动态链接库（x64）"></a>6.5.编译 SO 动态链接库（x64）</h3><p>这部分对于有过 Linux 开发经验的同学就相对熟悉了，在 C/C++ 源码目录下，执行这条 GCC 命令就可以编译 [.o] 目标文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -c  *.cpp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>这里插句话，我当时的 Linux 编译环境是 Ubuntu14_x64, GCC 4.9.2。</p>
+</blockquote>
+<p>于是我把 VS2010 的 dll 项目工程上传到Linux机器，在项目的源码目录内执行前面的 g++ 命令，结果一堆莫名的报错，但其中关键的有几处重复报错：</p>
+<blockquote>
+<p>jni_md.h:17:31: error: expected constructor, destructor, or type conversion before<br>　　<font color="red">#define JNIIMPORT __declspec(dllimport)</font><br>jni_md.h:16:31: error: expected constructor, destructor, or type conversion before<br>　　<font color="red">#define JNIEXPORT __declspec(dllexport)</font><br>jni.h:1926:1: note: in expansion of macro JNIEXPORT<br>　　JNIEXPORT jint JNICALL</p>
+</blockquote>
+<p>从异常信息中挖掘关键字，隐约可以知道是 [jni.h] 这个文件的一些宏定义错误，而这些宏定义源于 [jni_md.h] 文件。</p>
+<p>打开 [jni_md.h] 文件，确实发现有 3 个相同的宏定义代码：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> JNIEXPORT __declspec(dllexport)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> JNIIMPORT __declspec(dllimport)</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> JNICALL __stdcall</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>同时打开 [jni.h] ，发现有多处用到了这些宏定义：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token function">jobject</span> <span class="token punctuation">(</span>JNICALL <span class="token operator">*</span>NewGlobalRef<span class="token punctuation">)</span> <span class="token punctuation">(</span>JNIEnv <span class="token operator">*</span>env<span class="token punctuation">,</span> jobject lobj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token punctuation">(</span>JNICALL <span class="token operator">*</span>DeleteGlobalRef<span class="token punctuation">)</span> <span class="token punctuation">(</span>JNIEnv <span class="token operator">*</span>env<span class="token punctuation">,</span> jobject gref<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>其实当时我看到 [dllexport] 和 [dllimport] 就知道有猫腻了，[dll] 不就是 win 的东西吗？ Linux 肯定不支持啊，但这个问题我想了很久也不得其解：“这是 JNI 提供的头文件，按道理不可能会出这种明知故犯的缺陷。况且如果 [dllexport] 和 [dllimport] 有问题，我该怎么改呢？”</p>
+<p>当机立断找度娘给自己科普了一下，原来 <code>__declspec(dllexport)</code> 是用于声明哪些函数可以导出（即对外使用），但<strong>仅限于 win 平台</strong>（科普看<a target="_blank" rel="noopener" href="https://blog.csdn.net/mniwc/article/details/7993361">这里</a>）；而相对地，<strong>Linux 则默认所有函数都是 public 的</strong>，即可以导出而无需声明，不过 Linux 有一个相似的声明 <code>__attribute__((visibility("hidden")))</code> 可以隐藏函数使其不能导出（科普看<a target="_blank" rel="noopener" href="https://blog.csdn.net/zdragon2002/article/details/6061962">这里</a>）。</p>
+<p>但科普了这些其实也是 然并卵，怎么改还是毫无头绪。而且当时我心里还有一份执念就是：“尽然因为平台的特性问题，C/C++ 程序我至少要编译 4 个版本（win 两个、Linux 两个），但代码必须只能有一份。”</p>
+<p>后来我才灵机一动， <font color="red">[jni.h] 和 [jni_md.h] 都是我在 win 的 JDK 下面复制的，会不会 Linux 有不同的版本？！</font></p>
+<p>果不其然！</p>
+<p>先看看 win 和 Linux 这两个文件的位置比较：</p>
+<table>
+<thead>
+<tr>
+<th align="center">平台</th>
+<th align="center">文件</th>
+<th align="center">位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">win</td>
+<td align="center">jni.h</td>
+<td align="center"><code>%jdk_home%/include</code></td>
+</tr>
+<tr>
+<td align="center">win</td>
+<td align="center">jni_md.h</td>
+<td align="center"><code>%jdk_home%/include/win32</code></td>
+</tr>
+<tr>
+<td align="center">Linux</td>
+<td align="center">jni.h</td>
+<td align="center"><code>%jdk_home%/include</code></td>
+</tr>
+<tr>
+<td align="center">Linux</td>
+<td align="center">jni_md.h</td>
+<td align="center"><code>%jdk_home%/include/linux</code></td>
+</tr>
+</tbody></table>
+<p>再对比文件内容， [jni.h] 是相同的，但是Linux版本下 [jni_md.h] 的这三个宏定义变成了这样：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> JNIEXPORT</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> JNIIMPORT</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> JNICALL</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>那么为了同时兼顾 win 和 Linux，可以直接修改 [jni_md.h] ，添加开关宏：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifdef</span> _WIN32</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNIEXPORT __declspec(dllexport)</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNIIMPORT __declspec(dllimport)</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNICALL __stdcall</span>
+<span class="token macro property">#<span class="token directive keyword">else</span></span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNIEXPORT</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNIIMPORT</span>
+    <span class="token macro property">#<span class="token directive keyword">define</span> JNICALL</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新执行 g++ 命令编译，虽然还是报错，但是宏错误的问题已经消失：</p>
+<blockquote>
+<p>&nbsp;<br><font color="red">stdafx.h</font>:13:85: fatal error: <font color="red">windows.h: No such file or directory</font><br>　　#include &lt;windows.h&gt;</p>
+</blockquote>
+<p>其实有了前面的经验，这个问题也变得很好解决了。VS2010 在创建非空的 dll 工程的时候，会自动生成 [stdafx.h] 头文件，并把 &lt;windows.h&gt; 包含进来，修改 [stdafx.h] ，同样地添加开关宏即可：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifdef</span> _WIN32</span>
+    <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>实际上 <code>#include &lt;windows.h&gt;</code> 的问题远没有这么简单就解决了</li>
+<li>当时我的程序没有考虑到 Linux 环境的问题，不少地方引用了 win 的 API，所以要一个个位置排查并修改为与 WinAPI 无关的代码，着实费了不少时间</li>
+</ul>
+<p>重新执行 g++ 命令编译，又报了新的错误，而且是项目的 dllmain 函数报错：</p>
+<blockquote>
+<p><font color="red">dllmain.cpp</font>:13:2: error: BOOL does not name a type<br>　　BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call,  LPVOID lpReserved)</p>
+</blockquote>
+<p>这个错误是因为我刚才在 Linux 下屏蔽了 [<code>#include &lt;windows.h&gt;</code>] 引起的。实际上 Linux 编译的 so 文件无需用到 dll 的 main 函数，修改 [dllmain.cpp] （这个文件同样是 VS2010 在创建非空的 dll 工程时自动生成的），同样地为其添加开关宏即可：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifdef</span> _WIN32</span>
+    <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"stdafx.h"</span></span>
+    BOOL APIENTRY <span class="token function">DllMain</span>
+        <span class="token punctuation">(</span>HMODULE hModule<span class="token punctuation">,</span> DWORD  ul_reason_for_call<span class="token punctuation">,</span>  LPVOID lpReserved<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> <span class="token punctuation">(</span>ul_reason_for_call<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">case</span> DLL_PROCESS_ATTACH<span class="token operator">:</span>
+            <span class="token keyword">case</span> DLL_THREAD_ATTACH<span class="token operator">:</span>
+            <span class="token keyword">case</span> DLL_THREAD_DETACH<span class="token operator">:</span>
+            <span class="token keyword">case</span> DLL_PROCESS_DETACH<span class="token operator">:</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> TRUE<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>dllmain.cpp 的问题有更好的方法去处理，就是<strong>编写 makefile 脚本</strong></li>
+<li>只要在构建时不将其添加进来，自然就不会编译它了</li>
+<li>其他不需被 Linux 编译的、或仅用于测试的 cpp 文件，也可以通过此方式过滤</li>
+</ul>
+<p>重新执行 g++ 命令编译，这次终于没有报错了，而且每份 [<code>*.cpp</code>] 源码都多了一份对应的 [<code>*.o</code>] 目标文件，如下图所示。至此编译 so 动态链接库的<strong>第一步完成</strong>。</p>
+<p><img src="./07.png" alt="g++ -c *.cpp 命令执行成功"></p>
+<p>最后执行以下命令生成 so 动态链接库：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -shared  -o  dt_otp.so  *.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>但是 Linux 还是很不友善地报错了：</p>
+<blockquote>
+<p>/usr/bin/ld: dt_otp.o: relocation R_X86_64_32 against '__gxx_personality_v0' can not be used when making a shared object; recompile with -fPIC<br>dt_otp.o: error adding symbols: Bad value<br>collect2: error: ld returned 1 exit status</p>
+</blockquote>
+<p>这个异常还是比较易懂的，就是说无法构造一个 [.so] 文件，请用 [-fPIC] 参数重新编译。度娘说 <strong>[-fPIC] 的作用是为了构造 [位置无关] 的程序</strong>，我想想也合理，毕竟是动态链接库。</p>
+<p>加入 [-fPIC] 参数重新执行编译和构建命令，成功创建 [.so] 文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -fPIC  -c  *.cpp
+$ g++  -fPIC  -shared  -o  dt_otp.so  *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>马上使用 file 命令查看其 ELF 头信息：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">file</span> dt_otp.dll
+
+dt_otp.so: ELF 64-bit LSB shared object, x86-64, version 1 <span class="token punctuation">(</span>SYSV<span class="token punctuation">)</span>, dynamically linked, BuildID<span class="token punctuation">[</span>sha1<span class="token punctuation">]</span><span class="token operator">=</span>8aa563514fb87d53815814d00f3387e1dca18a7e, not stripped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>看到这段 ELF 头信息，我内心是窃喜的 ~ 因为不再是 [for MS Windows] 了。</p>
+<p>马上让 Java 程序引用该 so 动态链接库（引用方式与dll相同），成功！</p>
+<h3 id="6-6-编译-SO-动态链接库（x86）"><a href="#6-6-编译-SO-动态链接库（x86）" class="headerlink" title="6.6. 编译 SO 动态链接库（x86）"></a>6.6. 编译 SO 动态链接库（x86）</h3><p>但问题又来了，还差一份 32-bit 的 so 库文件，我在 64 位的 Linux 应该如何编译出来呢？</p>
+<p>度娘说 <strong>GCC 所编译的文件位数默认与 GCC 编译器的位数相同</strong>，查了一下本地 GCC 版本信息，果然是 64-bit 的：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -v
+
+COLLECT_GCC<span class="token operator">=</span>g++
+COLLECT_LTO_WRAPPER<span class="token operator">=</span>/usr/lib/gcc/x86_64-linux-gnu/4.9/lto-wrapper
+Target: x86_64-linux-gnu
+<span class="token punctuation">..</span>.
+gcc version 4.9.2 <span class="token punctuation">(</span>Ubuntu 4.9.2-10ubuntu13<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>度娘还说，要想控制所编译的文件的位数，只需在 g++ 命令中加入声明参数 [-m32] 或 [-m64] 即可。</p>
+<p>但是我添加 [-m32] 参数后，编译又报错了：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -m32  -fPIC  -c  *.cpp
+
+/usr/include/features.h:364:25: fatal error: sys/cdefs.h: No such <span class="token function">file</span> or directory
+    <span class="token comment" spellcheck="true">#include &lt;sys/cdefs.h></span>
+/usr/include/c++/4.9/exception:37:28: fatal error: bits/c++config.h: No such <span class="token function">file</span> or directory
+    <span class="token comment" spellcheck="true">#include &lt;bits/c++config.h></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其实这个错误还是比较好解决的，原因是我的 <strong>64 位 Ubuntu 只有 64 位 GCC 编译环境，没有 32 位的 GCC 编译环境</strong>（其实和最开始我在 win 的 VCExpress 中遇到没有 64 位编译器的道理是一样的）。那么安装一个 32 位的 GCC 编译器就 OK 了，而 Ubuntu 的好处就是只需两条命令就可完成安装：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">sudo</span>  <span class="token function">apt-get</span>  <span class="token function">install</span>  lib32readline-gplv2-dev
+$ <span class="token function">sudo</span>  <span class="token function">apt-get</span>  <span class="token function">install</span>  gcc-multilib  g++-multilib<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>其中，第一条命令是安装 32 位的兼容库，第二条命令是安装 32 位 GCC 编译器。其他 Linux 系统的同学请自己去问度娘怎么安装（<a target="_blank" rel="noopener" href="https://cnblogs.com/mliudong/p/4086797.html">这里</a>是Ubuntu的安装方法）。</p>
+<p>编译 32-bit 的 [<code>*.o</code>] 目标文件成功后，则可用以下创建 [so] 文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -m32  -fPIC  -shared  -o  dt_otp_x86.so  *.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>再来看看其 ELF 头信息：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ <span class="token function">file</span> dt_otp_x86.dll
+
+dt_otp_x86.so: ELF 32-bit LSB shared object, Intel 80386, version 1 <span class="token punctuation">(</span>SYSV<span class="token punctuation">)</span>, dynamically linked, BuildID<span class="token punctuation">[</span>sha1<span class="token punctuation">]</span><span class="token operator">=</span>7343d60222fded19f18cbdaa0d24d0d0949bd4cd, not stripped<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>马上让 Java 程序引用该 so 动态链接库（注意要用 32 位 JDK），成功！</p>
+<h3 id="6-7-SO-的编译小结（x86-与-x64）"><a href="#6-7-SO-的编译小结（x86-与-x64）" class="headerlink" title="6.7. SO 的编译小结（x86 与 x64）"></a>6.7. SO 的编译小结（x86 与 x64）</h3><p>由于关于 SO 的内容比较多，这里小结一下。</p>
+<p>生成 64-bit 的 [so] 动态连接库文件的命令是：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -m64  -fPIC  -c  *.cpp
+$ g++  -m64  -fPIC  -shared  -o  <span class="token punctuation">[</span>so库名<span class="token punctuation">]</span>.so  *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>生成 32-bit 的 [so] 动态连接库文件的命令是：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">$ g++  -m32  -fPIC  -c  *.cpp
+$ g++  -m32  -fPIC  -shared  -o  <span class="token punctuation">[</span>so库名<span class="token punctuation">]</span>.so  *.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<blockquote>
+<p>有其他前辈已经归纳得比较详尽了，有兴趣的同学也不妨<a target="_blank" rel="noopener" href="https://blog.csdn.net/yutianzuijin/article/details/9501357">跳过去</a>看看。</p>
+</blockquote>
+<h3 id="6-8-make-构建更优雅"><a href="#6-8-make-构建更优雅" class="headerlink" title="6.8. make 构建更优雅"></a>6.8. make 构建更优雅</h3><p>前面介绍了如何把 [<code>*.cpp</code>] 生成 [so] 的过程，但是比较无脑，把所有 cpp 一股脑全部编译进去了，其实不必要，而且项目太大的话还浪费编译时间。</p>
+<p>为了使得编译过程显得更优雅，完全可以编写一份 makefile 脚本，然后通过 make 命令构建（不懂 make 的同学点<a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyang1943/article/details/5982163">这里</a>或者问度娘）。</p>
+<p>下面为我最终为编写的 makefile 脚本（本文最后会提供下载），脚本一共三份： <code>make.sh</code>、<code>makefile_x64</code>、<code>makefile_x86</code>：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment" spellcheck="true"># == make.sh ==</span>
+
+<span class="token function">export</span> lib_x64<span class="token operator">=</span>dt_otp_x64.so
+<span class="token function">export</span> mf_x64<span class="token operator">=</span>makefile_x64
+<span class="token function">export</span> lib_x86<span class="token operator">=</span>dt_otp_x86.so
+<span class="token function">export</span> mf_x86<span class="token operator">=</span>makefile_x86
+
+<span class="token keyword">echo</span> <span class="token string">"======================================="</span>
+<span class="token keyword">echo</span> <span class="token string">"make <span class="token variable">${lib_x64}</span> start: "</span>
+<span class="token function">make</span> --file<span class="token operator">=</span><span class="token variable">${mf_x64}</span> all 
+<span class="token function">make</span> --file<span class="token operator">=</span><span class="token variable">${mf_x64}</span> clean 
+<span class="token keyword">echo</span> <span class="token string">"make <span class="token variable">${lib_x64}</span> end. "</span>
+<span class="token function">file</span> <span class="token variable">${lib_x64}</span>
+<span class="token keyword">echo</span> <span class="token string">"======================================="</span>
+<span class="token keyword">echo</span> <span class="token string">"."</span>
+<span class="token keyword">echo</span> <span class="token string">"======================================="</span>
+<span class="token keyword">echo</span> <span class="token string">"make <span class="token variable">${lib_x86}</span> start: "</span>
+<span class="token function">make</span> --file<span class="token operator">=</span><span class="token variable">${mf_x86}</span> all 
+<span class="token function">make</span> --file<span class="token operator">=</span><span class="token variable">${mf_x86}</span> clean 
+<span class="token keyword">echo</span> <span class="token string">"make <span class="token variable">${lib_x86}</span> end. "</span>
+<span class="token function">file</span> <span class="token variable">${lib_x86}</span>
+<span class="token keyword">echo</span> <span class="token string">"======================================="</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># == makefile for : dt_otp_x64.so ==</span>
+
+<span class="token comment" spellcheck="true"># -------</span>
+<span class="token comment" spellcheck="true"># Variable declaration :                                 </span>
+<span class="token comment" spellcheck="true"># -------</span>
+  TAR_LIB_NAME :<span class="token operator">=</span> dt_otp_x64.so
+
+  O_MAIN_OBJS :<span class="token operator">=</span> dllmain.o dt_otp.o otp_impl.o
+  O_ALGORITHM_OBJS :<span class="token operator">=</span> md5.o digital_watermark.o
+  O_UTIL_OBJS :<span class="token operator">=</span> crypto_utils.o jni_utils.o str_utils.o num_utils.o time_utils.o
+  O_ALL_OBJS :<span class="token operator">=</span> <span class="token variable"><span class="token variable">$(</span>O_MAIN_OBJS<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_ALGORITHM_OBJS<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_UTIL_OBJS<span class="token variable">)</span></span>
+
+  COMPILE_CMD :<span class="token operator">=</span> g++ -m64 -fPIC 
+
+<span class="token comment" spellcheck="true"># -------</span>
+<span class="token comment" spellcheck="true"># Build libary :                                 </span>
+<span class="token comment" spellcheck="true"># -------</span>
+
+all <span class="token keyword">:</span> <span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span>
+
+<span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span> <span class="token keyword">:</span> <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span> 
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -shared -o <span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span> 
+    @echo <span class="token string">"> Build [<span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span>] finish."</span> 
+
+dllmain.o <span class="token keyword">:</span> dllmain.cpp stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c dllmain.cpp -o dllmain.o 
+    @echo <span class="token string">"> Compile [dllmain.o] finish."</span> 
+
+dt_otp.o <span class="token keyword">:</span> dt_otp.cpp dt_otp.h otp_impl.h jni_utils.h exp_token_otp__OTP_CAPI.h jni.h jni_md.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c dt_otp.cpp -o dt_otp.o 
+    @echo <span class="token string">"> Compile [dt_otp.o] finish."</span> 
+
+otp_impl.o <span class="token keyword">:</span> otp_impl.cpp otp_impl.h num_utils.h str_utils.h time_utils.h crypto_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c otp_impl.cpp -o otp_impl.o 
+    @echo <span class="token string">"> Compile [otp_impl.o] finish."</span> 
+
+md5.o <span class="token keyword">:</span> md5.cpp md5.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c md5.cpp -o md5.o 
+    @echo <span class="token string">"> Compile [md5.o] finish."</span> 
+
+digital_watermark.o <span class="token keyword">:</span> digital_watermark.cpp digital_watermark.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c digital_watermark.cpp -o digital_watermark.o 
+    @echo <span class="token string">"> Compile [digital_watermark.o] finish."</span> 
+
+crypto_utils.o <span class="token keyword">:</span> crypto_utils.cpp crypto_utils.h str_utils.h md5.h digital_watermark.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c crypto_utils.cpp -o crypto_utils.o 
+    @echo <span class="token string">"> Compile [crypto_utils.o] finish."</span> 
+
+jni_utils.o <span class="token keyword">:</span> jni_utils.cpp jni_utils.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c jni_utils.cpp -o jni_utils.o 
+    @echo <span class="token string">"> Compile [jni_utils.o] finish."</span> 
+
+num_utils.o <span class="token keyword">:</span> num_utils.cpp num_utils.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c num_utils.cpp -o num_utils.o 
+    @echo <span class="token string">"> Compile [num_utils.o] finish."</span> 
+
+str_utils.o <span class="token keyword">:</span> str_utils.cpp str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c str_utils.cpp -o str_utils.o 
+    @echo <span class="token string">"> Compile [str_utils.o] finish."</span> 
+
+time_utils.o <span class="token keyword">:</span> time_utils.cpp time_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c time_utils.cpp -o time_utils.o 
+    @echo <span class="token string">"> Compile [time_utils.o] finish."</span> 
+
+clean:
+    @rm -f <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span>
+    @echo <span class="token string">"> Clean [*.o] finish."</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># == makefile for : dt_otp_x86.so ==</span>
+
+<span class="token comment" spellcheck="true"># -------</span>
+<span class="token comment" spellcheck="true"># Variable declaration :                                 </span>
+<span class="token comment" spellcheck="true"># -------</span>
+  TAR_LIB_NAME :<span class="token operator">=</span> dt_otp_x86.so
+
+  O_MAIN_OBJS :<span class="token operator">=</span> dllmain.o dt_otp.o otp_impl.o
+  O_ALGORITHM_OBJS :<span class="token operator">=</span> md5.o digital_watermark.o
+  O_UTIL_OBJS :<span class="token operator">=</span> crypto_utils.o jni_utils.o str_utils.o num_utils.o time_utils.o
+  O_ALL_OBJS :<span class="token operator">=</span> <span class="token variable"><span class="token variable">$(</span>O_MAIN_OBJS<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_ALGORITHM_OBJS<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_UTIL_OBJS<span class="token variable">)</span></span>
+
+  COMPILE_CMD :<span class="token operator">=</span> g++ -m32 -fPIC 
+
+<span class="token comment" spellcheck="true"># -------</span>
+<span class="token comment" spellcheck="true"># Build libary :                                 </span>
+<span class="token comment" spellcheck="true"># -------</span>
+
+all <span class="token keyword">:</span> <span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span>
+
+<span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span> <span class="token keyword">:</span> <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span> 
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -shared -o <span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span> 
+    @echo <span class="token string">"> Build [<span class="token variable"><span class="token variable">$(</span>TAR_LIB_NAME<span class="token variable">)</span></span>] finish."</span> 
+
+dllmain.o <span class="token keyword">:</span> dllmain.cpp stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c dllmain.cpp -o dllmain.o 
+    @echo <span class="token string">"> Compile [dllmain.o] finish."</span> 
+
+dt_otp.o <span class="token keyword">:</span> dt_otp.cpp dt_otp.h otp_impl.h jni_utils.h exp_token_otp__OTP_CAPI.h jni.h jni_md.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c dt_otp.cpp -o dt_otp.o 
+    @echo <span class="token string">"> Compile [dt_otp.o] finish."</span> 
+
+otp_impl.o <span class="token keyword">:</span> otp_impl.cpp otp_impl.h num_utils.h str_utils.h time_utils.h crypto_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c otp_impl.cpp -o otp_impl.o 
+    @echo <span class="token string">"> Compile [otp_impl.o] finish."</span> 
+
+md5.o <span class="token keyword">:</span> md5.cpp md5.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c md5.cpp -o md5.o 
+    @echo <span class="token string">"> Compile [md5.o] finish."</span> 
+
+digital_watermark.o <span class="token keyword">:</span> digital_watermark.cpp digital_watermark.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c digital_watermark.cpp -o digital_watermark.o 
+    @echo <span class="token string">"> Compile [digital_watermark.o] finish."</span> 
+
+crypto_utils.o <span class="token keyword">:</span> crypto_utils.cpp crypto_utils.h str_utils.h md5.h digital_watermark.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c crypto_utils.cpp -o crypto_utils.o 
+    @echo <span class="token string">"> Compile [crypto_utils.o] finish."</span> 
+
+jni_utils.o <span class="token keyword">:</span> jni_utils.cpp jni_utils.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c jni_utils.cpp -o jni_utils.o 
+    @echo <span class="token string">"> Compile [jni_utils.o] finish."</span> 
+
+num_utils.o <span class="token keyword">:</span> num_utils.cpp num_utils.h str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c num_utils.cpp -o num_utils.o 
+    @echo <span class="token string">"> Compile [num_utils.o] finish."</span> 
+
+str_utils.o <span class="token keyword">:</span> str_utils.cpp str_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c str_utils.cpp -o str_utils.o 
+    @echo <span class="token string">"> Compile [str_utils.o] finish."</span> 
+
+time_utils.o <span class="token keyword">:</span> time_utils.cpp time_utils.h stdafx.h targetver.h
+    @<span class="token variable"><span class="token variable">$(</span>COMPILE_CMD<span class="token variable">)</span></span> -c time_utils.cpp -o time_utils.o 
+    @echo <span class="token string">"> Compile [time_utils.o] finish."</span> 
+
+clean:
+    @rm -f <span class="token variable"><span class="token variable">$(</span>O_ALL_OBJS<span class="token variable">)</span></span>
+    @echo <span class="token string">"> Clean [*.o] finish."</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中 <code>make.sh</code> 会自动调用 <code>makefile_x64</code> 和 <code>makefile_x86</code>，这样只需要执行一次 <code>make.sh</code> 就可以同时得到 64-bit 和 32-bit 的 [so] 动态连接库文件：</p>
+<p><img src="./08.png" alt="make 执行效果"></p>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>其实 [dll] 同样可以模仿 [so] ，通过make命令进行构建</li>
+<li>前面我一直提到一个 Cygwin 工具，其实它是 win 下的轻量级 Linux 模拟器</li>
+<li>只要在上面部署好 win 和 Linux 的 [交叉编译工具链]，就可以实现一键构建 [dll] 和 [so] </li>
+</ul>
+<h2 id="7-填坑：跨平台调试"><a href="#7-填坑：跨平台调试" class="headerlink" title="7. 填坑：跨平台调试"></a>7. 填坑：跨平台调试</h2><p>截至为此，我已经拥有了 [win_x86.dll]、[win_x64.dll]、[linux_86.so]、[linux_x64.so] 两个平台两种位长的四份动态链接库。</p>
+<p><strong>理论上</strong> Java 程序只需根据运行环境加载对应的库文件就可以了。</p>
+<p>但<strong>实际上</strong>总不会这么顺利的。</p>
+<h3 id="7-1-程序无法运行在其他-win-平台"><a href="#7-1-程序无法运行在其他-win-平台" class="headerlink" title="7.1. 程序无法运行在其他 win 平台"></a>7.1. 程序无法运行在其他 win 平台</h3><p>我把程序打包后，本地测试可以运行。然后部署到其他 windows 机器，却发现运行报错：</p>
+<pre><code>java.lang.UnsatisfiedLinkError: ./lib/dt_opt.dll: 应用程序无法启动，因为应用程序的并行配置不正确。有关详细信息，请参阅应用程序事件日志，或使用命令行 sxstrace.exe 工具。
+　　at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+　　at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1803)
+　　at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1699)
+　　at java.lang.Runtime.load0(Runtime.java:770)
+　　at java.lang.System.load(System.java:1003)
+java.lang.UnsatisfiedLinkError: ./lib/dt_opt.dll: 由于应用程序配置不正确，应用程序未能启动。有关详细信息，请参阅应用程序事件日志，或使用命令行 sxstrace.exe 工具。
+　　at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+　　at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1803)
+　　at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1699)
+　　at java.lang.Runtime.load0(Runtime.java:770)
+　　at java.lang.System.load(System.java:1003)</code></pre>
+<p>经历多番周折，我已经临危不乱了：我本地可以运行，第三方机器运行不了，这明显就是<strong>运行环境的问题</strong>。</p>
+<p>对运行环境条件做排除分析，很快就定位原因是第三方机器缺少了 VC 的运行库（类比的话就是 Java 的 JVM 虚拟机）。我尝试为第三方机器安装 VC 的运行库，再次运行，成功。</p>
+<p>但这不是我期望的答案：我不可能要求所有第三方机器都安装 VC 的运行库，这太荒谬了。</p>
+<p>问题回归本质：是否有办法把我程序所需的运行库一并编译到我的程序中？</p>
+<p>答案是肯定的，而且也很容易处理（详细参看<a target="_blank" rel="noopener" href="https://blog.csdn.net/slj_win/article/details/28242971">这里</a>）。</p>
+<p>只需在用 VS2010 编译 DLL 前，【右键项目-&gt; 属性-&gt; 配置属性-&gt; C/C++ -&gt; 代码生成-&gt; 运行时库-&gt; 选MTD】，即可把DLL所需的运行库<font color="red"><strong>静态编译</strong></font>到DLL中，如下图 9所示：</p>
+<p><img src="./09.png" alt="把运行库静态编译到 DLL"></p>
+<p><strong>【注意】</strong>：</p>
+<ul>
+<li>默认情况下是 [动态编译]， 即 [dll] 在运行时才去找 [运行库]</li>
+<li>而修改成 [静态编译] 后，[运行库] 已经被写入 [dll] ，也就无需再去找</li>
+<li>不过事到如今，也不需要我多说 [动态] 和 [静态] 了，副作用是 [dll] 文件增大了几百 K</li>
+</ul>
+<h3 id="7-2-x86-和-x64-运行结果不一致"><a href="#7-2-x86-和-x64-运行结果不一致" class="headerlink" title="7.2. x86 和 x64 运行结果不一致"></a>7.2. x86 和 x64 运行结果不一致</h3><p>程序运行问题解决了，运行结果的问题又接踵而来了。</p>
+<p>我发现程序运行在 x86 环境与 x64 环境完全不同，即使入参一模一样！</p>
+<p>问题一出现，根据经验很快就被我锁定是 <strong>C++ 代码出现的位长问题</strong>。但具体是哪个位置，就只能一步步调试并锁定范围了，因为这不是 BUG，不会抛异常定位，只能一步步跟踪数据调试，前前后后整整花了 3 天时间。。。至于具体的调试过程我就不说了，只说结果。</p>
+<blockquote>
+<p>老实说，这个 C++ 代码并不是完全由我执笔的，一些公共的模块是出自他人之手，对这部分代码不熟悉，加上该工程的代码量也相当多，这都是造成调试慢的原因</p>
+</blockquote>
+<p>最后找到的问题根源是，一个 [<code>_ulong</code>] 类型的数据，在执行位运算时，x86 和 x64 的机器得到了完全不同的结果。其中 x86 的结果完全是数值溢出。</p>
+<p>再追踪 [<code>_ulong</code>] 的类型定义，竟然是这样写的：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> _ulong<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>乍一看似乎没问题，但如果问 long 的位长是多少，很多同学未必答得出来。偶然情况下，我发现了这个同学的 sizeof 测试（<a target="_blank" rel="noopener" href="https://blog.csdn.net/xuexiacm/article/details/8122267">传送门</a>），我不能说他的测试结果是错的，只能说存在局限性。</p>
+<p>Java 与 C/C++ 在数据类型的字长定义上，最大的区别是 Java 是固定精度，C/C++ 则不然。</p>
+<p><strong>举个栗子</strong>：</p>
+<ul>
+<li>Java 的 int 类型，放到哪里都是 32 位（4 字节），long 类型放到哪里都是 64 为（8 字节），这就是固定精度。</li>
+<li>C/C++ 的 int 类型，一般情况下也都是 32 位（4 字节），但 long 类型的精度定义则为 [&gt;= int]，在 32-bit 平台上是 32 位（4 字节），在 64-bit 平台上则是 64 位（8 字节）。</li>
+</ul>
+<p>如下附一张字长模型表，大家会看得比较清晰。其中 [LP64]、[ILP64]、[LLP64] 是 64 位平台上的字长模型，[ILP32]、[LP32] 是 32 位平台上的字长模型。 I、L、P 分别代表 int，long，pointer（想知道更详细的请<a target="_blank" rel="noopener" href="http://blog.chinaunix.net/uid-25513153-id-182196.html">跳去看</a>这篇原文）。</p>
+<table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">LP64</th>
+<th align="center">ILP64</th>
+<th align="center">LLP64</th>
+<th align="center">ILP32</th>
+<th align="center">LP32</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">char</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+<td align="center">8</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">16</td>
+<td align="center">16</td>
+<td align="center">16</td>
+<td align="center">16</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center"><code>_int32</code></td>
+<td align="center">N/A</td>
+<td align="center">32</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">32</td>
+<td align="center">64</td>
+<td align="center">32</td>
+<td align="center">32</td>
+<td align="center">16</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">64</td>
+<td align="center">64</td>
+<td align="center">32</td>
+<td align="center">32</td>
+<td align="center">32</td>
+</tr>
+<tr>
+<td align="center">long long</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">64</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+</tr>
+<tr>
+<td align="center">pointer</td>
+<td align="center">64</td>
+<td align="center">64</td>
+<td align="center">64</td>
+<td align="center">32</td>
+<td align="center">32</td>
+</tr>
+</tbody></table>
+<p>回到运行结果不一致的问题本身，既然问题根源找到了，修改也就简单了，只需这样修改类型定义即可：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">ifdef</span> _LP64    </span>
+    <span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> _ulong<span class="token punctuation">;</span>
+<span class="token macro property">#<span class="token directive keyword">else</span></span>
+    <span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token keyword">long</span> _ulong<span class="token punctuation">;</span> 
+<span class="token macro property">#<span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>重新编译程序运行，问题解决。</p>
+<h2 id="8-回顾：嵌入式开发入门过程"><a href="#8-回顾：嵌入式开发入门过程" class="headerlink" title="8. 回顾：嵌入式开发入门过程"></a>8. 回顾：嵌入式开发入门过程</h2><p>到这里为止，我的嵌入式开发入门之路已经算告一段落。</p>
+<p>我自知前面讲述的内容较多，应该不少小伙伴还找不到重点看，我在这里简单梳理一下 java-cpp 的嵌入式开发过程：</p>
+<ol>
+<li>在 Java 程序定义JNI接口；</li>
+<li>利用 JNI 命令生成 C/C++ 的头文件；</li>
+<li>用 C/C++ 实现头文件中声明的接口（实现过程中，注意 Java 与 C/C++ 在参数传递时的类型转换，以及 C/C++ 的数据类型字长问题）；</li>
+<li>根据编写好的 C/C++ 程序代码，构建成 Win 平台的 32-bit 和 64-bit 动态链接库（dll 文件，推荐用 VS2010，并使用静态编译方式）；</li>
+<li>根据编写好的 C/C++ 程序代码，构建成 Linux 平台的 32-bit 和 64-bit 动态链接库（so 文件，推荐用 make + GCC）；</li>
+<li>Java 程序根据操作系统类型、位长选择动态链接库。</li>
+</ol>
+<h2 id="9-后话"><a href="#9-后话" class="headerlink" title="9.后话"></a>9.后话</h2><p>最后谈谈我在做完java-c的嵌入式开发入门后的个人感悟：</p>
+<ol>
+<li>真正了解了什么才是 [跨平台]，时刻谨记语言的平台特性，不要因为长期浸淫在 Java 的好处中就被它迷惑了，尤其是自认对 Java 经验越丰富的时候。</li>
+<li>Java 会自动回收内存，C/C++ 需要自我监管，内存泄露可不是好玩的。</li>
+<li>Java 字长都是固定的，C/C++ 则不然，数据截断足够你调试一个月。</li>
+<li>别再幻想兼容了，Java 是 [一次编译，到处运行]，C/C++ 是 [一次编码，到处编译]。</li>
+</ol>
+<p>另外就是，前面的题外话中我一直有提及 [Cygwin] ，但整篇文章都没有正式介绍，原因是我在过程中发现， [交叉编译] 的坑更大，所以被我早早抛弃了。</p>
+<p>我简单介绍一下吧。</p>
+<p>先说明下 [交叉编译] 是什么。交叉编译就是在机器 A 中编译可以让机器B运行的程序，但 A 和 B 是两套完全不同的系统平台。举个栗子就是那些做爪机开发的同学，其实做的就是 [交叉编译]。 更详细的自己去问度娘吧，有这个概念就可以了。</p>
+<p>接下来说明下 [Cygwin] 。Cygwin 是运行于 win 平台的 Linux 虚拟机，虽然功能受限，但是如果只用于 [交叉编译] 就足够用了。</p>
+<p>默认情况下， [Cygwin] 会调用 win 平台自身的 GCC 编译器，这时通过与 Linux 一样的 make 命令就可以构建出 dll 文件。然后再为 [Cygwin] 安装 Linux 平台的 GCC 编译器，同样地利用 make 命令就可以构建出 so 文件。</p>
+<p>因此在理论上，可以直接通过 Cygwin + GCC + make， 一键构建出 [win_x86.dll]、[win_x64.dll]、[Linux_x86.so]、[Linux_x64.so] 这四个动态链接库。</p>
+<p>但实际操作上，Cygwin 安装交叉编译工具链的过程冗长且容易出错，我最终选择了暂时放弃，有兴趣的同学可以自己去找找相关文档，我手上也有一些当时我参考过的，可以转发给大家：</p>
+<table>
+<thead>
+<tr>
+<th align="center">文献</th>
+<th align="center">来源</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">arm-linux-gcc 交叉编译工具链安装</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/666924c58bd63186bcebbca9.html">传送</a></td>
+</tr>
+<tr>
+<td align="center">Windows+cygwin 下构造 arm-linux 交叉编译环境最简单的方法</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/chief1985/article/details/4209928">传送</a></td>
+</tr>
+<tr>
+<td align="center">在 window 平台下模拟 Liunx 使用 GCC 环境进行编译 C 的 SO 库</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://blog.csdn.net/fengsh998/article/details/8136287">传送</a></td>
+</tr>
+<tr>
+<td align="center">(笔记) Ubuntu 下安装 arm-linux-gcc-4.4.3.tar.gz (交叉编译环境)</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cnblogs.com/tdyizhen1314/p/4124886.html">传送</a></td>
+</tr>
+<tr>
+<td align="center">eclipse 下使用 cygwin 的方法（Windows 下用 eclipse 玩 gcc/g++ 和 gdb）</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://cnblogs.com/skyofbitbit/p/3708216.html">传送</a></td>
+</tr>
+</tbody></table>
+<h2 id="10-资源下载"><a href="#10-资源下载" class="headerlink" title="10. 资源下载"></a>10. 资源下载</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://download.csdn.net/download/lyy289065406/10564244">本文全文下载（CSDN： PDF）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/EXP-Codes/dynamic-token">本文 Java 样例程序【OTP 动态令牌】 Github 完整源码（Eclipse Maven项目）</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/EXP-Codes/dt_otp">文本 C++ 样例程序【OTP 动态链接库】 Github 完整源码（VS2010 DLL项目）</a></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/re/qian-ru-shi-kai-fa-xue-xi-bi-ji/">https://exp-blog.com/re/qian-ru-shi-kai-fa-xue-xi-bi-ji/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-C/">
+                                    
+                                        <span class="chip bg-color">C/C++</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    
+                                        <span class="chip bg-color">Java</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/">
+                                    
+                                        <span class="chip bg-color">嵌入式</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/arch/2015-xi-tong-jia-gou-shi-fu-xi-zi-liao/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/arch/01.jpg" class="responsive-img" alt="2015 系统架构师复习资料">
+                        
+                        <span class="card-title">2015 系统架构师复习资料</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2016-01-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/" class="post-category">
+                                    系统架构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%B8%88/">
+                        <span class="chip bg-color">系统架构师</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AF%E8%80%83/">
+                        <span class="chip bg-color">软考</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/lang/ru-he-you-xiao-lu-di-zhui-qiu-nu-shen/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/lang/16.png" class="responsive-img" alt="「Java 性能调优」 如何有效率地追求女神？">
+                        
+                        <span class="card-title">「Java 性能调优」 如何有效率地追求女神？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2014-07-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    开发/语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%80%A7%E8%83%BD/">
+                        <span class="chip bg-color">性能</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B0%83%E4%BC%98/">
+                        <span class="chip bg-color">调优</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

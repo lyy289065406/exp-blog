@@ -1,0 +1,2483 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="获取 Windows 进程信息, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>获取 Windows 进程信息 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/lang/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">获取 Windows 进程信息</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-C/">
+                                
+                                    <span class="chip bg-color">C/C++</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/PowserShell/">
+                                
+                                    <span class="chip bg-color">PowserShell</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                
+                                    <span class="chip bg-color">进程</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E8%AF%AD%E8%A8%80/" class="post-category">
+                                开发/语言
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-12-15
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><ul>
+<li>PROCESSENTRY32 结构： <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32">https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32</a></li>
+<li>MODULEENTRY32 结构： <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32">https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32</a></li>
+</ul>
+<blockquote>
+<p><a href="../../download/GetProcInfo/get_process.zip">get_process.exe 下载</a></p>
+</blockquote>
+<h2 id="C-源码"><a href="#C-源码" class="headerlink" title="C++ 源码"></a>C++ 源码</h2><pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/***************************************************************************************
+ * get_process.cpp
+ *             
+ * 进程信息查询脚本，使用方法:
+ *   ./get_process.exe            :  查询当前所有进程信息
+ *   ./get_process.exe -id 1234   :  查询进程号为 1234 的进程信息
+ *   ./get_process.exe -name abcd :  查询进程名以 abcd 开头（忽略大小写）的进程信息
+ * 
+ ***************************************************************************************/</span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;windows.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tlhelp32.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;tchar.h></span></span>
+
+
+
+<span class="token comment" spellcheck="true">/* 进程信息结构体: https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-processentry32
+typedef struct tagPROCESSENTRY32 {
+　　DWORD dwSize;                    // 此进程的结构体大小（字节）
+　　DWORD cntUsage;                  // 进程的引用计数（已废弃，固定值0）
+　　DWORD th32ProcessID;             // 进程号
+　　ULONG_PTR th32DefaultHeapID;     // 默认堆ID（已废弃，固定值0）
+　　DWORD th32ModuleID;              // 进程模块ID（已废弃，固定值0）
+　　DWORD cntThreads;                // 此进程创建的线程数
+　　DWORD th32ParentProcessID;       // 父进程号
+　　LONG pcPriClassBase;             // 此进程所创建的线程优先级
+　　DWORD dwFlags;                   // （已废弃，固定值0）
+　　TCHAR szExeFile[MAX_PATH];       // 进程的可执行文件的名称（不含路径，完整路径可通过 MODULEENTRY32->szExePath 获取）
+} PROCESSENTRY32, *PPROCESSENTRY32;
+*/</span>
+
+<span class="token comment" spellcheck="true">/* 进程模块结构体: https://docs.microsoft.com/en-us/windows/win32/api/tlhelp32/ns-tlhelp32-moduleentry32
+typedef struct tagMODULEENTRY32 {
+  DWORD   dwSize;                           // 此模块的结构体大小（字节）
+  DWORD   th32ModuleID;                     // 模块ID（已废弃，固定值1）
+  DWORD   th32ProcessID;                    // 所属进程的进程号
+  DWORD   GlblcntUsage;                     // 负载计数（通常没有意义，一般情况下值为 0xFFFF）
+  DWORD   ProccntUsage;                     // 与 GlblcntUsage 相同
+  BYTE    *modBaseAddr;                     // 该模块在所属进程中的基址
+  DWORD   modBaseSize;                      // 模块大小（字节）
+  HMODULE hModule;                          // 该模块在所属进程中的句柄
+  char    szModule[MAX_MODULE_NAME32 + 1];  // 模块名称
+  char    szExePath[MAX_PATH];              // 模块路径
+} MODULEENTRY32;
+*/</span>
+
+
+
+<span class="token keyword">void</span> <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">// 打印系统异常</span>
+<span class="token keyword">void</span> <span class="token function">printProc</span><span class="token punctuation">(</span>PROCESSENTRY32 pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 打印进程信息到控制台</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>DWORD pid<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// 获取进程归属用户</span>
+bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// 宽字符 -> ASCII字符</span>
+bool <span class="token function">startwith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> substr<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 判断 str 是否以 substr 开头（忽略大小写）</span>
+
+
+
+<span class="token comment" spellcheck="true">/**
+ * argc: 入参个数(至少为1: 第0个为执行文件文件名)
+ * argv: 入参列表。当 argc!=3 时打印所有进程; 当 argc==3 时:
+ *   -id {pid} : 打印进程号为 pid 的进程信息
+ *   -name {pname} : 打印进程名为以 pname 开头的进程信息（忽略大小写，若有多个则只打印第一个）
+ */</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">// 提取入参</span>
+    <span class="token keyword">int</span> exPid <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// 期望查询的进程号</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> exPname <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// 期望查询的进程名</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>argc <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-id"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            exPid <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">equal</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"-name"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            exPname <span class="token operator">=</span> argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 拍摄当前系统所有进程快照</span>
+    HANDLE hProcess <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CreateToolhelp32Snapshot</span><span class="token punctuation">(</span>TH32CS_SNAPPROCESS<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Error] Fail to take processes snapshot.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    PROCESSENTRY32 pe32<span class="token punctuation">;</span>
+    pe32<span class="token punctuation">.</span>dwSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    BOOL hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32First</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 进程快照列表迭代器</span>
+
+    <span class="token comment" spellcheck="true">// 打印特定进程信息</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>exPid <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> <span class="token function">strlen</span><span class="token punctuation">(</span>exPname<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            DWORD pid <span class="token operator">=</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">;</span>
+            <span class="token keyword">char</span><span class="token operator">*</span> pname <span class="token operator">=</span> <span class="token function">toChar</span><span class="token punctuation">(</span>pe32<span class="token punctuation">.</span>szExeFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>DWORD<span class="token punctuation">)</span> exPid<span class="token punctuation">)</span> <span class="token operator">==</span> pid <span class="token operator">||</span> <span class="token function">startwith</span><span class="token punctuation">(</span>pname<span class="token punctuation">,</span> exPname<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">printProc</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                flag <span class="token operator">=</span> true<span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            delete<span class="token punctuation">[</span><span class="token punctuation">]</span> pname<span class="token punctuation">;</span>
+            hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32Next</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>flag <span class="token operator">==</span> false<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Error] The process is not exists.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 打印所有进程信息</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">printProc</span><span class="token punctuation">(</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            hasNext <span class="token operator">=</span> <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">Process32Next</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pe32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 清除快照对象</span>
+    <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CloseHandle</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// system("pause");</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 打印系统异常</span>
+<span class="token keyword">void</span> <span class="token function">printSysError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    DWORD errId<span class="token punctuation">;</span>
+    TCHAR errMsg<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    TCHAR<span class="token operator">*</span> p<span class="token punctuation">;</span>
+
+    errId <span class="token operator">=</span> <span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">FormatMessage</span><span class="token punctuation">(</span>FORMAT_MESSAGE_FROM_SYSTEM <span class="token operator">|</span> FORMAT_MESSAGE_IGNORE_INSERTS<span class="token punctuation">,</span> 
+                    <span class="token constant">NULL</span><span class="token punctuation">,</span> errId<span class="token punctuation">,</span> 
+                    <span class="token function">MAKELANGID</span><span class="token punctuation">(</span>LANG_NEUTRAL<span class="token punctuation">,</span> SUBLANG_DEFAULT<span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    errMsg<span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    p <span class="token operator">=</span> errMsg<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">></span> <span class="token number">31</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">==</span> <span class="token number">9</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">++</span>p<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+    <span class="token keyword">do</span> <span class="token punctuation">{</span> <span class="token operator">*</span>p<span class="token operator">--</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">while</span><span class="token punctuation">(</span>p <span class="token operator">>=</span> errMsg <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">*</span>p <span class="token operator">==</span> <span class="token string">'.'</span> <span class="token operator">||</span> <span class="token operator">*</span>p <span class="token operator">&lt;</span> <span class="token number">33</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">_tprintf</span><span class="token punctuation">(</span><span class="token function">TEXT</span><span class="token punctuation">(</span><span class="token string">"[Error %d] %s\n"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> errId<span class="token punctuation">,</span> errMsg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 打印进程信息到控制台</span>
+<span class="token keyword">void</span> <span class="token function">printProc</span><span class="token punctuation">(</span>PROCESSENTRY32 pe32<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"[Process Info]\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"name: %s\n"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>pe32<span class="token punctuation">.</span>szExeFile<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"pid: %u\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"ppid: %u\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>th32ParentProcessID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"owner: %s\n"</span><span class="token punctuation">,</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"dwSize: %u\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"cntThreads: %u\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>cntThreads<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"pcPriClassBase: %ld\n"</span><span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>pcPriClassBase<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 拍摄当前进程模块列表快照</span>
+    HANDLE hModule <span class="token operator">=</span> <span class="token function">CreateToolhelp32Snapshot</span><span class="token punctuation">(</span>TH32CS_SNAPMODULE<span class="token punctuation">,</span> pe32<span class="token punctuation">.</span>th32ProcessID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hModule <span class="token operator">==</span> INVALID_HANDLE_VALUE<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// printf("[Error] Fail to take process snapshot\n");</span>
+        <span class="token comment" spellcheck="true">// printSysError();</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"path: \n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        MODULEENTRY32 me<span class="token punctuation">;</span>
+        me<span class="token punctuation">.</span>dwSize <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>MODULEENTRY32<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        BOOL hasNext <span class="token operator">=</span> <span class="token function">Module32First</span><span class="token punctuation">(</span>hModule<span class="token punctuation">,</span> <span class="token operator">&amp;</span>me<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 进程模块列表迭代器</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>hasNext<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 第一个模块即进程自身, 可从中提取其可执行文件的完整路径</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"path: %s\n"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>me<span class="token punctuation">.</span>szExePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">CloseHandle</span><span class="token punctuation">(</span>hModule<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"==================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 获取进程归属用户</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">getProcessOwner</span><span class="token punctuation">(</span>DWORD pid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> owner <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token number">513</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token operator">*</span>owner <span class="token operator">=</span> <span class="token string">'\0'</span><span class="token punctuation">;</span>
+
+    HANDLE hProcess <span class="token operator">=</span> <span class="token function">OpenProcess</span><span class="token punctuation">(</span>PROCESS_QUERY_INFORMATION<span class="token punctuation">,</span> FALSE<span class="token punctuation">,</span> pid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>hProcess <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> owner<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    HANDLE hToken <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    DWORD dwSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    TCHAR szUserName<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    TCHAR szDomain<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    DWORD dwDomainSize <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">;</span>
+    DWORD dwNameSize <span class="token operator">=</span> <span class="token number">256</span><span class="token punctuation">;</span>
+    SID_NAME_USE SNU<span class="token punctuation">;</span>
+    PTOKEN_USER pTokenUser <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+
+    __try <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">OpenProcessToken</span><span class="token punctuation">(</span>hProcess<span class="token punctuation">,</span> TOKEN_QUERY<span class="token punctuation">,</span> <span class="token operator">&amp;</span>hToken<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            __leave<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GetLastError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> ERROR_INSUFFICIENT_BUFFER<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                __leave<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        pTokenUser <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+        pTokenUser <span class="token operator">=</span> <span class="token punctuation">(</span>PTOKEN_USER<span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            __leave<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">GetTokenInformation</span><span class="token punctuation">(</span>hToken<span class="token punctuation">,</span> TokenUser<span class="token punctuation">,</span> pTokenUser<span class="token punctuation">,</span> dwSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwSize<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            __leave<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">LookupAccountSid</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> pTokenUser<span class="token operator">-></span>User<span class="token punctuation">.</span>Sid<span class="token punctuation">,</span> szUserName<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwNameSize<span class="token punctuation">,</span> szDomain<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dwDomainSize<span class="token punctuation">,</span> <span class="token operator">&amp;</span>SNU<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">sprintf</span><span class="token punctuation">(</span>owner<span class="token punctuation">,</span> <span class="token string">"%s\\%s\0"</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>szDomain<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">toChar</span><span class="token punctuation">(</span>szUserName<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span> __finally <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pTokenUser <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">free</span><span class="token punctuation">(</span>pTokenUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> owner<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 比较两个字符串是否相同（忽略大小写）</span>
+bool <span class="token function">equal</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">==</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        flag <span class="token operator">=</span> true<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>a <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> b <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        flag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">stricmp</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 宽字符 -> ASCII字符</span>
+<span class="token keyword">char</span><span class="token operator">*</span> <span class="token function">toChar</span><span class="token punctuation">(</span><span class="token keyword">const</span> wchar_t<span class="token operator">*</span> _wchar<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">WideCharToMultiByte</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _wchar<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> _char <span class="token operator">=</span> new <span class="token keyword">char</span><span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">WideCharToMultiByte</span><span class="token punctuation">(</span>CP_ACP<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> _wchar<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> _char<span class="token punctuation">,</span> len<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+    <span class="token keyword">return</span> _char<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+
+<span class="token comment" spellcheck="true">// 判断 str 是否以 substr 开头（忽略大小写）</span>
+bool <span class="token function">startwith</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> substr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    bool flag <span class="token operator">=</span> false<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>str <span class="token operator">!=</span> <span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> substr <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> len <span class="token operator">=</span> <span class="token function">strlen</span><span class="token punctuation">(</span>substr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>len <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            flag <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">strnicmp</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> substr<span class="token punctuation">,</span> len<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="PowserShell-源码"><a href="#PowserShell-源码" class="headerlink" title="PowserShell 源码"></a>PowserShell 源码</h2><pre class="line-numbers language-powershell"><code class="language-powershell"><span class="token comment" spellcheck="true"># get_process.ps1 </span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># 进程信息查询脚本</span>
+<span class="token comment" spellcheck="true"># Powershell Script 3.0+</span>
+<span class="token comment" spellcheck="true"># ---------------------------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true"># 脚本使用方式:</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true">#   通过进程号查询:</span>
+<span class="token comment" spellcheck="true">#     .\get_process.ps1 -id 0</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true">#   通过进程名查询:</span>
+<span class="token comment" spellcheck="true">#     .\get_process.ps1 -name "powershell"</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># ---------------------------------------------------------------------------------------</span>
+
+<span class="token comment" spellcheck="true"># id: 进程ID（二选一）</span>
+<span class="token comment" spellcheck="true"># name: 进程名称（二选一）</span>
+<span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=<span class="token operator">-</span>1<span class="token punctuation">,</span> <span class="token namespace">[string]</span><span class="token variable">$name</span>=<span class="token string">""</span><span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 获取进程对象</span>
+<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc <span class="token punctuation">{</span>
+    <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=<span class="token operator">-</span>1<span class="token punctuation">,</span> <span class="token namespace">[string]</span><span class="token variable">$name</span>=<span class="token string">""</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">Try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$id</span> <span class="token operator">-gt</span> <span class="token operator">-</span>1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$process</span> = <span class="token function">Get-Process</span> <span class="token operator">-</span>Id <span class="token variable">$id</span> <span class="token operator">-</span>ErrorAction Stop
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span>  <span class="token punctuation">{</span>
+            <span class="token variable">$process</span> = <span class="token function">Get-Process</span> <span class="token operator">-</span>Name <span class="token variable">$name</span> <span class="token operator">-</span>ErrorAction Stop
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token namespace">[Microsoft.PowerShell.Commands.ProcessCommandException]</span> <span class="token punctuation">{</span>
+        <span class="token function">Write-Warning</span> <span class="token string">"Process [id=<span class="token variable">$id</span>][name=<span class="token variable">$name</span>] has not exist"</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span>
+        <span class="token function">Write-Warning</span> <span class="token string">"Find Process[id=<span class="token variable">$id</span>][name=<span class="token variable">$name</span>] Error"</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$process</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># 获取进程属主</span>
+<span class="token keyword">function</span> Get<span class="token operator">-</span>Proc<span class="token operator">-</span>Owner <span class="token punctuation">{</span>
+    <span class="token keyword">param</span><span class="token punctuation">(</span><span class="token namespace">[int]</span><span class="token variable">$id</span>=<span class="token operator">-</span>1<span class="token punctuation">)</span>
+
+    <span class="token variable">$owner</span> = <span class="token string">""</span>
+    <span class="token keyword">Try</span> <span class="token punctuation">{</span>
+        <span class="token variable">$info</span> = <span class="token punctuation">(</span><span class="token function">Get-WmiObject</span> <span class="token operator">-</span><span class="token keyword">Class</span> Win32_Process <span class="token operator">-</span><span class="token keyword">Filter</span> <span class="token string">"Handle=<span class="token variable">$id</span>"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>GetOwner<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">.</span>ReturnValue <span class="token operator">-eq</span> 2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$owner</span> = <span class="token string">'Unknow/Unknow'</span>
+
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$owner</span> = <span class="token string">'{0}/{1}'</span> <span class="token operator">-</span>f <span class="token variable">$info</span><span class="token punctuation">.</span>Domain<span class="token punctuation">,</span> <span class="token variable">$info</span><span class="token punctuation">.</span>User
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">{</span>
+        <span class="token function">Write-Warning</span> <span class="token string">"Find Process[id=<span class="token variable">$id</span>]'s owner Error"</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token variable">$owner</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token variable">$process</span> = Get<span class="token operator">-</span>Proc <span class="token operator">-</span>id <span class="token variable">$id</span> <span class="token operator">-</span>name <span class="token variable">$name</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$process</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token variable">$owner</span> = Get<span class="token operator">-</span>Proc<span class="token operator">-</span>Owner <span class="token operator">-</span>id <span class="token variable">$id</span>
+    <span class="token variable">$process_inst</span> = Get<span class="token operator">-</span>CimInstance Win32_Process <span class="token operator">-</span><span class="token keyword">Filter</span> <span class="token string">"ProcessId = '<span class="token variable">$id</span>'"</span>
+    <span class="token variable">$fid</span> = <span class="token variable">$process_inst</span><span class="token punctuation">.</span>ParentProcessId
+
+    <span class="token function">Write-Host</span> <span class="token string">"---------------------------------------"</span>
+    <span class="token function">Write-Host</span> <span class="token string">"PID ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Id
+    <span class="token function">Write-Host</span> <span class="token string">"PPID ="</span> <span class="token variable">$fid</span>
+    <span class="token function">Write-Host</span> <span class="token string">"Name(ProcessName) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Name
+    <span class="token function">Write-Host</span> <span class="token string">"Path ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Path
+    <span class="token function">Write-Host</span> <span class="token string">"Owner ="</span> <span class="token variable">$owner</span>
+    <span class="token function">Write-Host</span> <span class="token string">"Handle ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Handle
+    <span class="token function">Write-Host</span> <span class="token string">"Handles(Handlecount) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Handles
+    <span class="token function">Write-Host</span> <span class="token string">"NPM(NonpagedSystemMemorySize) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>NPM
+    <span class="token function">Write-Host</span> <span class="token string">"PM(PagedMemorySize) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PM
+    <span class="token function">Write-Host</span> <span class="token string">"VM(VirtualMemorySize) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>VM
+    <span class="token function">Write-Host</span> <span class="token string">"WS(WorkingSet) ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>WS
+    <span class="token function">Write-Host</span> <span class="token string">"BasePriority ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>BasePriority
+    <span class="token function">Write-Host</span> <span class="token string">"Container ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Container
+    <span class="token function">Write-Host</span> <span class="token string">"EnableRaisingEvents ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>EnableRaisingEvents
+    <span class="token function">Write-Host</span> <span class="token string">"ExitCode ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>ExitCode
+    <span class="token function">Write-Host</span> <span class="token string">"ExitTime ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>ExitTime
+    <span class="token function">Write-Host</span> <span class="token string">"HasExited ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>HasExited
+    <span class="token function">Write-Host</span> <span class="token string">"MachineName ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MachineName
+    <span class="token function">Write-Host</span> <span class="token string">"MainModule ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MainModule
+    <span class="token function">Write-Host</span> <span class="token string">"MainWindowHandle ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MainWindowHandle
+    <span class="token function">Write-Host</span> <span class="token string">"MainWindowTitle ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MainWindowTitle
+    <span class="token function">Write-Host</span> <span class="token string">"MaxWorkingSet ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MaxWorkingSet
+    <span class="token function">Write-Host</span> <span class="token string">"MinWorkingSet ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>MinWorkingSet
+    <span class="token comment" spellcheck="true"># Write-Host "Modules =" $process.Modules</span>
+    <span class="token function">Write-Host</span> <span class="token string">"NonpagedSystemMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>NonpagedSystemMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"NonpagedSystemMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>NonpagedSystemMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"NonPagedMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>NonPagedMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"PagedMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PagedMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"PagedSystemMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PagedSystemMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"PagedSystemMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PagedSystemMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"PeakPagedMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakPagedMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"PeakPagedMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakPagedMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"PeakVirtualMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakVirtualMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"PeakVirtualMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakVirtualMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"PeakWorkingSet ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakWorkingSet
+    <span class="token function">Write-Host</span> <span class="token string">"PeakWorkingSet64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PeakWorkingSet64
+    <span class="token function">Write-Host</span> <span class="token string">"PriorityBoostEnabled ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PriorityBoostEnabled
+    <span class="token function">Write-Host</span> <span class="token string">"PriorityClass ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PriorityClass
+    <span class="token function">Write-Host</span> <span class="token string">"PrivateMemorySize ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PrivateMemorySize
+    <span class="token function">Write-Host</span> <span class="token string">"PrivateMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PrivateMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"PrivilegedProcessorTime ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>PrivilegedProcessorTime
+    <span class="token function">Write-Host</span> <span class="token string">"ProcessorAffinity ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>ProcessorAffinity
+    <span class="token function">Write-Host</span> <span class="token string">"Responding ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Responding
+    <span class="token function">Write-Host</span> <span class="token string">"SessionId ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>SessionId
+    <span class="token function">Write-Host</span> <span class="token string">"Site ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Site
+    <span class="token function">Write-Host</span> <span class="token string">"StandardError ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>StandardError
+    <span class="token function">Write-Host</span> <span class="token string">"StandardInput ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>StandardInput
+    <span class="token function">Write-Host</span> <span class="token string">"StandardOutput ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>StandardOutput
+    <span class="token function">Write-Host</span> <span class="token string">"StartInfo ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>StartInfo
+    <span class="token function">Write-Host</span> <span class="token string">"StartTime ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>StartTime
+    <span class="token function">Write-Host</span> <span class="token string">"SynchronizingObject ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>SynchronizingObject
+    <span class="token comment" spellcheck="true"># Write-Host "Threads =" $process.Threads</span>
+    <span class="token function">Write-Host</span> <span class="token string">"Threads.Count ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Threads<span class="token punctuation">.</span>Count
+    <span class="token function">Write-Host</span> <span class="token string">"TotalProcessorTime ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>TotalProcessorTime
+    <span class="token function">Write-Host</span> <span class="token string">"UserProcessorTime ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>UserProcessorTime
+    <span class="token function">Write-Host</span> <span class="token string">"VirtualMemorySize64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>VirtualMemorySize64
+    <span class="token function">Write-Host</span> <span class="token string">"WorkingSet ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>WorkingSet
+    <span class="token function">Write-Host</span> <span class="token string">"WorkingSet64 ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>WorkingSet64
+    <span class="token function">Write-Host</span> <span class="token string">"Company ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Company
+    <span class="token function">Write-Host</span> <span class="token string">"CPU ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>CPU
+    <span class="token function">Write-Host</span> <span class="token string">"Description ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Description
+    <span class="token function">Write-Host</span> <span class="token string">"FileVersion ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>FileVersion
+    <span class="token function">Write-Host</span> <span class="token string">"Product ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>Product
+    <span class="token function">Write-Host</span> <span class="token string">"ProductVersion ="</span> <span class="token variable">$process</span><span class="token punctuation">.</span>ProductVersion
+    <span class="token comment" spellcheck="true"># Write-Host "PSConfiguration =" $process.PSConfiguration</span>
+    <span class="token comment" spellcheck="true"># Write-Host "PSResources =" $process.PSResources</span>
+<span class="token punctuation">}</span>
+
+
+
+
+<span class="token comment" spellcheck="true"># ---------------------------------------------------------------------------------------</span>
+<span class="token comment" spellcheck="true"># 通过 Get-Member 命令可以获得 process 对象的所有属性</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true">#    TypeName: System.Diagnostics.Process</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># Name                       MemberType     Definition</span>
+<span class="token comment" spellcheck="true"># ----                       ----------     ----------</span>
+<span class="token comment" spellcheck="true"># Handles                    AliasProperty  Handles = Handlecount</span>
+<span class="token comment" spellcheck="true"># Name                       AliasProperty  Name = ProcessName</span>
+<span class="token comment" spellcheck="true"># NPM                        AliasProperty  NPM = NonpagedSystemMemorySize</span>
+<span class="token comment" spellcheck="true"># PM                         AliasProperty  PM = PagedMemorySize</span>
+<span class="token comment" spellcheck="true"># VM                         AliasProperty  VM = VirtualMemorySize</span>
+<span class="token comment" spellcheck="true"># WS                         AliasProperty  WS = WorkingSet</span>
+<span class="token comment" spellcheck="true"># Disposed                   Event          System.EventHandler Disposed(System.Object, System.EventArgs)</span>
+<span class="token comment" spellcheck="true"># ErrorDataReceived          Event          System.Diagnostics.DataReceivedEventHandler ErrorDataReceived(System.Objec...</span>
+<span class="token comment" spellcheck="true"># Exited                     Event          System.EventHandler Exited(System.Object, System.EventArgs)</span>
+<span class="token comment" spellcheck="true"># OutputDataReceived         Event          System.Diagnostics.DataReceivedEventHandler OutputDataReceived(System.Obje...</span>
+<span class="token comment" spellcheck="true"># BeginErrorReadLine         Method         void BeginErrorReadLine()</span>
+<span class="token comment" spellcheck="true"># BeginOutputReadLine        Method         void BeginOutputReadLine()</span>
+<span class="token comment" spellcheck="true"># CancelErrorRead            Method         void CancelErrorRead()</span>
+<span class="token comment" spellcheck="true"># CancelOutputRead           Method         void CancelOutputRead()</span>
+<span class="token comment" spellcheck="true"># Close                      Method         void Close()</span>
+<span class="token comment" spellcheck="true"># CloseMainWindow            Method         bool CloseMainWindow()</span>
+<span class="token comment" spellcheck="true"># CreateObjRef               Method         System.Runtime.Remoting.ObjRef CreateObjRef(type requestedType)</span>
+<span class="token comment" spellcheck="true"># Dispose                    Method         void Dispose(), void IDisposable.Dispose()</span>
+<span class="token comment" spellcheck="true"># Equals                     Method         bool Equals(System.Object obj)</span>
+<span class="token comment" spellcheck="true"># GetHashCode                Method         int GetHashCode()</span>
+<span class="token comment" spellcheck="true"># GetLifetimeService         Method         System.Object GetLifetimeService()</span>
+<span class="token comment" spellcheck="true"># GetType                    Method         type GetType()</span>
+<span class="token comment" spellcheck="true"># InitializeLifetimeService  Method         System.Object InitializeLifetimeService()</span>
+<span class="token comment" spellcheck="true"># Kill                       Method         void Kill()</span>
+<span class="token comment" spellcheck="true"># Refresh                    Method         void Refresh()</span>
+<span class="token comment" spellcheck="true"># Start                      Method         bool Start()</span>
+<span class="token comment" spellcheck="true"># ToString                   Method         string ToString()</span>
+<span class="token comment" spellcheck="true"># WaitForExit                Method         bool WaitForExit(int milliseconds), void WaitForExit()</span>
+<span class="token comment" spellcheck="true"># WaitForInputIdle           Method         bool WaitForInputIdle(int milliseconds), bool WaitForInputIdle()</span>
+<span class="token comment" spellcheck="true"># __NounName                 NoteProperty   System.String __NounName=Process</span>
+<span class="token comment" spellcheck="true"># BasePriority               Property       int BasePriority {get;}</span>
+<span class="token comment" spellcheck="true"># Container                  Property       System.ComponentModel.IContainer Container {get;}</span>
+<span class="token comment" spellcheck="true"># EnableRaisingEvents        Property       bool EnableRaisingEvents {get;set;}</span>
+<span class="token comment" spellcheck="true"># ExitCode                   Property       int ExitCode {get;}</span>
+<span class="token comment" spellcheck="true"># ExitTime                   Property       datetime ExitTime {get;}</span>
+<span class="token comment" spellcheck="true"># Handle                     Property       System.IntPtr Handle {get;}</span>
+<span class="token comment" spellcheck="true"># HandleCount                Property       int HandleCount {get;}</span>
+<span class="token comment" spellcheck="true"># HasExited                  Property       bool HasExited {get;}</span>
+<span class="token comment" spellcheck="true"># Id                         Property       int Id {get;}</span>
+<span class="token comment" spellcheck="true"># MachineName                Property       string MachineName {get;}</span>
+<span class="token comment" spellcheck="true"># MainModule                 Property       System.Diagnostics.ProcessModule MainModule {get;}</span>
+<span class="token comment" spellcheck="true"># MainWindowHandle           Property       System.IntPtr MainWindowHandle {get;}</span>
+<span class="token comment" spellcheck="true"># MainWindowTitle            Property       string MainWindowTitle {get;}</span>
+<span class="token comment" spellcheck="true"># MaxWorkingSet              Property       System.IntPtr MaxWorkingSet {get;set;}</span>
+<span class="token comment" spellcheck="true"># MinWorkingSet              Property       System.IntPtr MinWorkingSet {get;set;}</span>
+<span class="token comment" spellcheck="true"># Modules                    Property       System.Diagnostics.ProcessModuleCollection Modules {get;}</span>
+<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize   Property       int NonpagedSystemMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># NonpagedSystemMemorySize64 Property       long NonpagedSystemMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PagedMemorySize            Property       int PagedMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># PagedMemorySize64          Property       long PagedMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PagedSystemMemorySize      Property       int PagedSystemMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># PagedSystemMemorySize64    Property       long PagedSystemMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PeakPagedMemorySize        Property       int PeakPagedMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># PeakPagedMemorySize64      Property       long PeakPagedMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PeakVirtualMemorySize      Property       int PeakVirtualMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># PeakVirtualMemorySize64    Property       long PeakVirtualMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PeakWorkingSet             Property       int PeakWorkingSet {get;}</span>
+<span class="token comment" spellcheck="true"># PeakWorkingSet64           Property       long PeakWorkingSet64 {get;}</span>
+<span class="token comment" spellcheck="true"># PriorityBoostEnabled       Property       bool PriorityBoostEnabled {get;set;}</span>
+<span class="token comment" spellcheck="true"># PriorityClass              Property       System.Diagnostics.ProcessPriorityClass PriorityClass {get;set;}</span>
+<span class="token comment" spellcheck="true"># PrivateMemorySize          Property       int PrivateMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># PrivateMemorySize64        Property       long PrivateMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># PrivilegedProcessorTime    Property       timespan PrivilegedProcessorTime {get;}</span>
+<span class="token comment" spellcheck="true"># ProcessName                Property       string ProcessName {get;}</span>
+<span class="token comment" spellcheck="true"># ProcessorAffinity          Property       System.IntPtr ProcessorAffinity {get;set;}</span>
+<span class="token comment" spellcheck="true"># Responding                 Property       bool Responding {get;}</span>
+<span class="token comment" spellcheck="true"># SessionId                  Property       int SessionId {get;}</span>
+<span class="token comment" spellcheck="true"># Site                       Property       System.ComponentModel.ISite Site {get;set;}</span>
+<span class="token comment" spellcheck="true"># StandardError              Property       System.IO.StreamReader StandardError {get;}</span>
+<span class="token comment" spellcheck="true"># StandardInput              Property       System.IO.StreamWriter StandardInput {get;}</span>
+<span class="token comment" spellcheck="true"># StandardOutput             Property       System.IO.StreamReader StandardOutput {get;}</span>
+<span class="token comment" spellcheck="true"># StartInfo                  Property       System.Diagnostics.ProcessStartInfo StartInfo {get;set;}</span>
+<span class="token comment" spellcheck="true"># StartTime                  Property       datetime StartTime {get;}</span>
+<span class="token comment" spellcheck="true"># SynchronizingObject        Property       System.ComponentModel.ISynchronizeInvoke SynchronizingObject {get;set;}</span>
+<span class="token comment" spellcheck="true"># Threads                    Property       System.Diagnostics.ProcessThreadCollection Threads {get;}</span>
+<span class="token comment" spellcheck="true"># TotalProcessorTime         Property       timespan TotalProcessorTime {get;}</span>
+<span class="token comment" spellcheck="true"># UserProcessorTime          Property       timespan UserProcessorTime {get;}</span>
+<span class="token comment" spellcheck="true"># VirtualMemorySize          Property       int VirtualMemorySize {get;}</span>
+<span class="token comment" spellcheck="true"># VirtualMemorySize64        Property       long VirtualMemorySize64 {get;}</span>
+<span class="token comment" spellcheck="true"># WorkingSet                 Property       int WorkingSet {get;}</span>
+<span class="token comment" spellcheck="true"># WorkingSet64               Property       long WorkingSet64 {get;}</span>
+<span class="token comment" spellcheck="true"># PSConfiguration            PropertySet    PSConfiguration {Name, Id, PriorityClass, FileVersion}</span>
+<span class="token comment" spellcheck="true"># PSResources                PropertySet    PSResources {Name, Id, Handlecount, WorkingSet, NonPagedMemorySize, PagedM...</span>
+<span class="token comment" spellcheck="true"># Company                    ScriptProperty System.Object Company {get=$this.Mainmodule.FileVersionInfo.CompanyName;}</span>
+<span class="token comment" spellcheck="true"># CPU                        ScriptProperty System.Object CPU {get=$this.TotalProcessorTime.TotalSeconds;}</span>
+<span class="token comment" spellcheck="true"># Description                ScriptProperty System.Object Description {get=$this.Mainmodule.FileVersionInfo.FileDescri...</span>
+<span class="token comment" spellcheck="true"># FileVersion                ScriptProperty System.Object FileVersion {get=$this.Mainmodule.FileVersionInfo.FileVersion;}</span>
+<span class="token comment" spellcheck="true"># Path                       ScriptProperty System.Object Path {get=$this.Mainmodule.FileName;}</span>
+<span class="token comment" spellcheck="true"># Product                    ScriptProperty System.Object Product {get=$this.Mainmodule.FileVersionInfo.ProductName;}</span>
+<span class="token comment" spellcheck="true"># ProductVersion             ScriptProperty System.Object ProductVersion {get=$this.Mainmodule.FileVersionInfo.Product...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/lang/getprocinfo/">https://exp-blog.com/lang/getprocinfo/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-C/">
+                                    
+                                        <span class="chip bg-color">C/C++</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/PowserShell/">
+                                    
+                                        <span class="chip bg-color">PowserShell</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                                    
+                                        <span class="chip bg-color">进程</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/lang/getsysmon/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/lang/13.png" class="responsive-img" alt="获取 Sysmon 事件信息">
+                        
+                        <span class="card-title">获取 Sysmon 事件信息</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BC%80%E5%8F%91-%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    开发/语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C-C/">
+                        <span class="chip bg-color">C/C++</span>
+                    </a>
+                    
+                    <a href="/tags/PowerShell/">
+                        <span class="chip bg-color">PowerShell</span>
+                    </a>
+                    
+                    <a href="/tags/Sysmon/">
+                        <span class="chip bg-color">Sysmon</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/safe/ctf/rootme/programming/quick-response-code/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/featureimages/16.jpg" class="responsive-img" alt="【Root-Me】 Quick Response Code">
+                        
+                        <span class="card-title">【Root-Me】 Quick Response Code</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF/" class="post-category">
+                                    CTF
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/">
+                        <span class="chip bg-color">解题报告</span>
+                    </a>
+                    
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                    <a href="/tags/Root-Me/">
+                        <span class="chip bg-color">Root-Me</span>
+                    </a>
+                    
+                    <a href="/tags/Programming/">
+                        <span class="chip bg-color">Programming</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>

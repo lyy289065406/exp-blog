@@ -1,0 +1,2404 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="驱动开发入门 – 之二：Win7-x64 + VMWare (Win7-x64) + WinDbg 双机调试环境搭建, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>驱动开发入门 – 之二：Win7-x64 + VMWare (Win7-x64) + WinDbg 双机调试环境搭建 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/re/03.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">驱动开发入门 – 之二：Win7-x64 + VMWare (Win7-x64) + WinDbg 双机调试环境搭建</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E9%A9%B1%E5%8A%A8/">
+                                
+                                    <span class="chip bg-color">驱动</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/%E5%86%85%E6%A0%B8/">
+                                
+                                    <span class="chip bg-color">内核</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/WinDBG/">
+                                
+                                    <span class="chip bg-color">WinDBG</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                系统工程
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-10-13
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-02
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    27 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1.  概述"></a>1.  概述</h2><h3 id="1-1-前言"><a href="#1-1-前言" class="headerlink" title="1.1. 前言"></a>1.1. 前言</h3><p><strong>适读人群</strong>：具备良好的C/C++开发经验，一定的逆向工程基础。</p>
+<p><strong>前置阅读</strong>：<a href="../qu-dong-kai-fa-ru-men-1/">《驱动开发入门 - 之一 ：Win7 SP1 x64 驱动开发环境搭建》</a></p>
+<p>为方便起见，<font color="blue">在下文中使用【HostOS】指代【物理机/宿主机/调试机】，用【GuestOS】指代【虚拟机/客户机/被调试机】</font>。</p>
+<p>WinDbg是一款双机调试工具，它安装在HostOS上，HostOS与GuestOS通过串口相连接，使用时需要在HostOS用WinDbg调试GuestOS上运行的内核程序。</p>
+<p>由于使用两台物理机做双机调试的成本较高、可操作性较低，因此<font color="red">本文双机调试的环境是基于物理机（HostOS）与VMWare虚拟机（GuestOS）搭建的</font>。</p>
+<p>之所以使用虚拟机搭建双机调试环境，主要出于以下几个方面考虑：</p>
+<ul>
+<li>① 驱动程序运行在系统内核，在调测时需要把操作系统设置到测试模式，极大降低安全性。</li>
+<li>② 经验不足的情况下编写内核程序很容易导致系统蓝屏，在HostOS调试风险过大。</li>
+<li>③ HostOS无法调试自己。到VS2010为止的IDE均不支持驱动程序的调试功能，只能在操作系统中加载驱动时调试，而加载驱动程序的操作系统是无法调试自身的（遇到INT3中断的时候整个系统会进入假死状态），因此需要借助GuestOS。</li>
+</ul>
+<h3 id="1-2-名词解析"><a href="#1-2-名词解析" class="headerlink" title="1.2. 名词解析"></a>1.2. 名词解析</h3><table>
+<thead>
+<tr>
+<th align="center">名词</th>
+<th align="center">英文原文</th>
+<th align="center">解析</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">HostOS</td>
+<td align="center">Host Operating System</td>
+<td align="center">物理机/宿主机/调试机</td>
+</tr>
+<tr>
+<td align="center">GuestOS</td>
+<td align="center">Guest Operating System</td>
+<td align="center">虚拟机/客户机/被调试机</td>
+</tr>
+<tr>
+<td align="center">COM</td>
+<td align="center">Cluster Communication Port</td>
+<td align="center">串行通讯端口</td>
+</tr>
+<tr>
+<td align="center">KD</td>
+<td align="center">Kernel Debug</td>
+<td align="center">内核调试</td>
+</tr>
+</tbody></table>
+<h3 id="1-3-WinDbg简介"><a href="#1-3-WinDbg简介" class="headerlink" title="1.3 WinDbg简介"></a>1.3 WinDbg简介</h3><p><i>——部分内容摘于博文：<a target="_blank" rel="noopener" href="http://blog.csdn.net/keidoekd2345/article/details/50125747">http://blog.csdn.net/keidoekd2345/article/details/50125747</a></i></p>
+<p>在安装微软Windows调试工具集后，可以在安装目录下发现四个调试器程序，分别是：cdb、ntsd、kd和WinDbg。</p>
+<p>其中cdb和ntsd只能调试用户程序，kd主要用于内核调试（有时候也用于用户态调试）。这三者的一个共同特点是都只有控制台界面，以命令行形式工作。</p>
+<p>而WinDbg在用户态、内核态下都能够发挥调试功能，特别地，它采用了可视化的用户界面。所以绝大部分情况下，我们在谈及Windows调试工具时都直接指向WinDbg，而不谈及其他三者。</p>
+<p>WinDbg支持源码级的调试（类似于VC自带的调试器），而且在用户态和内核态下，都支持两种调试模式，即“实时调试模式（Living）”和“事后调试模式（Postmortem）”。</p>
+<p><b>实时调试模式（Living）</b>：是被调试的目标对象（Target）当前正在运行当中，调试器可以实时分析、修改被调试目标的状态，如寄存器、内存、变量，调试exe可执行程序或双机实时调试都属于这种模式。</p>
+<p><b>事后调试模式（Postmortem）</b>：是被调试的目标对象（Target）已经结束了，现在只是事后对它保留的快照进行分析，这个快照称为转储文件（Dump文件）。</p>
+<h2 id="2-操作系统与预装组件"><a href="#2-操作系统与预装组件" class="headerlink" title="2. 操作系统与预装组件"></a>2. 操作系统与预装组件</h2><ul>
+<li>① HostOS系统版本： Win7  SP1  x64 （必须升级到SP1版本）</li>
+<li>② GuestOS系统版本： Win7  SP1  x64 （必须升级到SP1版本）</li>
+<li>③ 在HostOS安装VS2010驱动开发环境的相关组件（详见《<a href="../qu-dong-kai-fa-ru-men-1/">驱动开发入门 - 之一</a>》，此处不再复述），<b>之所以选择VS2010环境，是因为VS2008在x64环境下的混合汇编能力较弱，不便于后续的开发调试工作</b>。</li>
+</ul>
+<h2 id="3-相关工具安装"><a href="#3-相关工具安装" class="headerlink" title="3. 相关工具安装"></a>3. 相关工具安装</h2><center>表 1 工具清单</center>
+
+<table>
+<thead>
+<tr>
+<th>目标机器</th>
+<th>工具</th>
+<th>版本</th>
+<th>用途</th>
+<th>备注</th>
+<th align="center">下载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HostOS</td>
+<td>VS2010驱动开发<br>环境的相关组件</td>
+<td></td>
+<td></td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>HostOS</td>
+<td>VMWare</td>
+<td>11.1.2</td>
+<td>安装GuestOS<br>的虚拟机</td>
+<td>用于搭建隔离环境<br>调试驱动程序</td>
+<td align="center">&nbsp;</td>
+</tr>
+<tr>
+<td>HostOS</td>
+<td>WinDbg</td>
+<td>6.11</td>
+<td>Windows平台下的<br>驱动程序调试工具</td>
+<td>用于配合GuestOS<br>双机调试驱动程序</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/windows/hardware/download-windbg">官方地址</a><br><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10013026">CSDN</a></td>
+</tr>
+<tr>
+<td>HostOS</td>
+<td>windbg-双机调试.bat</td>
+<td>6.11</td>
+<td>使得windbg连接到<br>GuestOS的启动脚本</td>
+<td>配合WinDbg使用，<br>已固化启动参数</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10013026">CSDN</a></td>
+</tr>
+<tr>
+<td>HostOS</td>
+<td>Win7符号文件</td>
+<td>Win7<br>SP1x64</td>
+<td>WinDbg调试代码用</td>
+<td>相当于Win系统内核<br>程序的源码文件</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/windows/hardware/download-symbols">官方地址</a></td>
+</tr>
+<tr>
+<td>GuestOS</td>
+<td>开启win测试环境.bat<br>关闭win测试环境.bat</td>
+<td></td>
+<td>调测环境变更脚本</td>
+<td>把操作系统永久切换到测试<br>模式并关闭驱动签名校验</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10013175">CSDN</a></td>
+</tr>
+<tr>
+<td>GuestOS</td>
+<td>DriverMonitor</td>
+<td>3.2.0</td>
+<td>驱动程序装载器</td>
+<td>XP x86用于安装、启动内核<br>程序的调试工具，<br>Win7 x64可能不兼容</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10009896">CSDN</a></td>
+</tr>
+<tr>
+<td>GuestOS</td>
+<td>InstDrv</td>
+<td>1.3.0</td>
+<td>驱动程序装载器</td>
+<td>Win7用于安装、启动<br>内核程序的调试工具</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10009898">CSDN</a></td>
+</tr>
+<tr>
+<td>GuestOS</td>
+<td>DebugView</td>
+<td>4.81</td>
+<td>内核驱动消息捕获器</td>
+<td>配合DriverMonitor或InstDrv<br>使用，用于捕获内核程序的<br>DbgPrint / KdPrint语句<br>所打印消息</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10009900">CSDN</a></td>
+</tr>
+<tr>
+<td>HostOS<br>GuestOS</td>
+<td>VirtualKD</td>
+<td>3.0</td>
+<td>内核调试加速器</td>
+<td>配合WinDbg使用，提高<br>HostOS与GuestOS传输速率</td>
+<td align="center"><a target="_blank" rel="noopener" href="http://virtualkd.sysprogs.org/">官方地址</a></td>
+</tr>
+</tbody></table>
+<h2 id="4-安装VMware虚拟机及GuestOS"><a href="#4-安装VMware虚拟机及GuestOS" class="headerlink" title="4. 安装VMware虚拟机及GuestOS"></a>4. 安装VMware虚拟机及GuestOS</h2><p>由于VMWare11之后的虚拟机和系统安装都比较简单，此处就不详述了，仅说明一下步骤：</p>
+<ul>
+<li>① 在HostOS安装VMWare虚拟机</li>
+<li>② 在虚拟机安装Win7 x64 SP1操作系统（GuestOS）</li>
+<li>③ 为了便于HostOS与GuestOS的文件交互，安装VMWare Tools（VMWare 已自带：【菜单】 –&gt; 【虚拟机】 –&gt; 【安装VMWare Tools】）</li>
+<li>④ 在GuestOS中执行【开启Windows测试环境.bat】脚本<font color="red">使GuestOS关闭驱动签名校验，并进入测试模式</font></li>
+<li>⑤ 在GuestOS中安装 DriverMonitor / InstDrv 和 DebugView</li>
+</ul>
+<blockquote>
+<p><strong>【注意】</strong><br>若第 ④ 步的脚本下载地址已失效，可手动在GuestOS的DOS控制台输入以下命令：<br>【开启Windows测试环境.bat】脚本主要是两个指令：<br><em>bcdedit -set loadoptions DDISABLE_INTEGRITY_CHECKS  // 关闭驱动数字签名校验</em><br><em>bcdedit /set testsigning on  // 开启系统测试模式</em><br>&nbsp;<br>【关闭Windows测试环境.bat】脚本是配套的两个还原指令：<br><em>bcdedit -set loadoptions DENABLE_INTEGRITY_CHECKS  // 启动驱动数字签名校验</em><br><em>bcdedit /set testsigning off  // 关闭系统测试模式</em></p>
+</blockquote>
+<h2 id="5-配置VMWare的虚拟管道串口"><a href="#5-配置VMWare的虚拟管道串口" class="headerlink" title="5. 配置VMWare的虚拟管道串口"></a>5. 配置VMWare的虚拟管道串口</h2><p>当双机都是物理机时，HostOS与GuestOS是用物理串口连接的。</p>
+<p>但是在GuestOS是虚拟机的情况下，就不可能使用物理串口了，此时需要在GuestOS上设置一个用虚拟的管道串口，步骤如下：</p>
+<p>① 在虚拟机关机状态下，选择【编辑虚拟机设置】：</p>
+<p><img src="./31.png" alt="编辑虚拟机设置"></p>
+<p>② 在【硬件】选项卡【移除打印机】：</p>
+<p>这是因为打印机默认占用了串口COM_1，为了使得下文的配置无需修改，这里建议删除打印机（不删除打印机也可以，但后面的配置请自行修改为COM_2作为管道串口命名）</p>
+<p><img src="./32.png" alt="移除打印机"></p>
+<p>③ 添加一个串行端口：【添加】 –&gt; 【串行端口】 –&gt; 【下一步】 –&gt; 【输出到命名管道】 –&gt; 【下一步】：</p>
+<p><img src="./33.png" alt="添加串行端口"></p>
+<p><img src="./34.png" alt="设置为管道串口"></p>
+<p>④ 设置如下值，点击【完成】按钮。</p>
+<p>命名管道：<font color="red">\.\pipe\com_1</font>  （会自动填上编号最小的可用串口）</p>
+<ul>
+<li>【该端是服务器。】</li>
+<li>【另一端是应用程序。】</li>
+<li>【勾上】启动时连接。</li>
+</ul>
+<p><img src="./35.png" alt="设置虚拟管道串口参数"></p>
+<p>⑤ 最后回到如下所示的界面，选中刚才新建的【串行端口】，在I/O模式【勾选】轮询时主动放弃 CPU(Y)，点击【确定】即可。</p>
+<p><img src="./36.png" alt="设置串口IO模式"></p>
+<h2 id="6-在GuestOS增设调试模式的操作系统"><a href="#6-在GuestOS增设调试模式的操作系统" class="headerlink" title="6. 在GuestOS增设调试模式的操作系统"></a>6. 在GuestOS增设调试模式的操作系统</h2><p>首先区分GuestOS中操作系统的几种模式：</p>
+<ul>
+<li><font color="red">正常模式</font>：初装操作系统时的默认状态</li>
+<li><font color="red">测试模式</font>：利用bcdedit命令打开系统的TestSigning开关，使系统处于可以装载未认证驱动程序的状态<i>（若已按上文所述操作，当前的GuestOS已处于此状态）</i></li>
+<li><font color="red">调试模式</font>：利用bcdedit命令打开系统的debug和bootdebug 开关，使系统上运行的程序处于可以被另一个系统调试的状态</li>
+</ul>
+<p>本节的<b>最终目标</b>就是在 [测试模式] 的基础上再增加 [调试模式]，更具体地描述，就是在开机的操作系统列表中<font color="red">新增一个被标识为【启用调试程序】的操作系统</font>（其中“Win-7双击调试模式”是自定义的系统名称，<font color="red"><b>“启用调试程序”</b>表示该系统处于调试模式</font>）</p>
+<p>在XP时代，通过修改C:\boot.ini配置文件可以实现此目的。但Win7系统已经没有这个文件了，需要通过bcdedit命令进行配置。</p>
+<p><img src="./37.png" alt="系统列表"></p>
+<p>详细的配置方式如下：</p>
+<p>① 虚拟机开机后，正常登陆到Win7系统桌面（若已按照上文配置，当前所登陆到的Win7系统正处于【测试模式】，可以通过桌面右下角的水印验证。某些系统会屏蔽这个水印，此时可以通过命令【bcdedit /enum】确认testsigning的值是否为Yes以判断系统当前是否处于测试模式）。</p>
+<p><img src="./38.png" alt="测试模式水印"></p>
+<p>② 以管理员身份运行DOS控制台在控制台中依次输入以下命令：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /copy <span class="token punctuation">{</span>current<span class="token punctuation">}</span> /d <span class="token string">"Win7-双机调试模式"</span>    // 这是系统副本的名字，任意即可
+bcdedit /timeout 10<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这两条命令的作用是把当前所登陆的操作系统，复制一份副本，命名为【Win7-双机调试模式】。新的系统会出现在开机时的操作系统列表中，该列表的呈现时间为10秒。</p>
+<p><img src="./39.png" alt="使用管理员运行DOS"></p>
+<p><img src="./40.png" alt="复制当前操作系统"></p>
+<p>③ 重启GuestOS，此时可以看到在操作系统列表中多出第一项【Win7-双机调试模式】，这就是刚才复制的系统副本。选择这个系统登陆到桌面。</p>
+<p><img src="./41.png" alt="操作系统列表"></p>
+<p>④ 以管理员身份运行DOS控制台，在控制台中依次输入以下命令使得系统进入调试模式：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /debug ON
+bcdedit /bootdebug ON<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>再输入以下命令可查看操作系统在调试模式下使用的串口配置：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /dbgsettings<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如下图所示为调试模式的配置参数，其中【debugtype=Serial】表示使用串口做调试，【debugport=1】表示串口端口为COM_1，【baudrate=115200】为波特率，表示HostOS与GuestOS通过此虚拟串口交换数据的传输速率（约等效于10KB/s，暂时保持默认值即可）。</p>
+<p><img src="./42.png" alt="设置当前系统为调试模式"></p>
+<p>这里需要注意的是，若上文小节【5 配置VMWare的虚拟的管道串口】中所配置的串口<b>不是COM_1</b>，这里可以使用以下命令 修改串口号等 调试模式的参数：</p>
+<blockquote>
+<p><b>bcdedit /dbgsettings <font color="red">serial</font> debugport:<font color="red">1</font> baudrate:<font color="red">115200</font></b></p>
+</blockquote>
+<p>⑤ 到此就已经成功添加了一个调试模式的操作系统了，重启后可在系列列表中看见<font color="red">【Win-7双击调试模式 [启用调试程序]】</font>，这个就是之后要用来调试驱动用的系统。</p>
+<p><img src="./43.png" alt="操作系统列表"></p>
+<p>⑥ 为了便于之后开机后都处于调试模式，可以通过右键【计算机】 –&gt; 【属性】 –&gt; 【高级系统设置】 –&gt; 【高级】 –&gt; 【启动和故障恢复】 –&gt; 【设置】 修改默认的操作系统、以及操作系统列表的显示时间：</p>
+<p><img src="./44.png" alt="修改默认的操作系统"></p>
+<h2 id="7-WinDbg的安装与配置"><a href="#7-WinDbg的安装与配置" class="headerlink" title="7. WinDbg的安装与配置"></a>7. WinDbg的安装与配置</h2><p>只有HostOS需要安装WinDbg，步骤如下：</p>
+<ul>
+<li>① 安装dbg_x86_6.11.1.404.msi到HostOS任意位置</li>
+<li>② 复制windbg_cn.exe到安装目录（此为汉化界面入口）</li>
+<li>③ 复制 [windbg_cn-双机调试.bat] 和 [windbg-双机调试.bat] 脚本到安装目录（这两个脚本功能相同，区别只是一个汉化版、一个英文版）</li>
+<li>④ 根据上文设置的虚拟管道串口，右键编辑bat脚本的启动参数（若使用COM_1串口则无需修改）：</li>
+</ul>
+<blockquote>
+<p>start “” windbg_cn.exe -b -k com:pipe,<font color="red">port=\.\pipe\com_1,baud=115200</font>,reconnect -y    　　// 中文脚本<br>start “” windbg.exe -b -k com:pipe,<font color="red">port=\.\pipe\com_1,baud=115200</font>,reconnect -y       　　// 英文脚本</p>
+</blockquote>
+<h2 id="8-验证WinDbg配置（连接GuestOS）"><a href="#8-验证WinDbg配置（连接GuestOS）" class="headerlink" title="8. 验证WinDbg配置（连接GuestOS）"></a>8. 验证WinDbg配置（连接GuestOS）</h2><ul>
+<li>① 启动虚拟机，进入【win7-双机调试模式 [启动调试程序]】系统（注：调试模式的系统在启动过程有两个系统断点，若不通过WinDbg跳过断点，系统会陷入中断状态无法进入桌面）。</li>
+<li>② 运行 [windbg_cn-双机调试.bat] 脚本，若脚本配置的启动参数与GuestOS设置的虚拟管道串口参数一致，则可以明显看到宿主系统和虚拟系统连接成功的提示。</li>
+<li>③ 在系统启动过程中，会出现多次【int 3】系统中断，需要在WinDbg的【kd&gt;】中输入命令【g】以跳过中断，直到登陆到桌面。</li>
+<li>④ 成功进入桌面后，就可以开始使用WinDbg做双机调试。</li>
+</ul>
+<p><img src="./45.png" alt="WinDbg连接GuestOS"></p>
+<h2 id="9-双机调试"><a href="#9-双机调试" class="headerlink" title="9. 双机调试"></a>9. 双机调试</h2><h3 id="9-1-什么是符号文件"><a href="#9-1-什么是符号文件" class="headerlink" title="9.1. 什么是符号文件"></a>9.1. 什么是符号文件</h3><p>类似于在C/Java的IDE中调试源码，WinDbg在调试驱动程序时也需要用到源码，在Windows中把这种源码称之为<b><font color="red">符号文件</font>（Symbol Files）</b>。</p>
+<p>符号文件是一个数据信息文件，以*.pdb扩展名标识。它包含了应用程序二进制文件（如*.sys、*.dll、*.exe）的调试信息（如程序中所有变量信息），专用于调试。符号文件与<b>二进制文件</b>的编译版本密切，当二进制文件被重新编译时，上次编译所产生的pdb文件就过时了，不能再用于调试工作。</p>
+<p>用 Visual C++ 和 WinDbg 调试程序时都要用到符号文件，但最终生成的可执行文件在运行时并不需要符号文件。</p>
+<p>例如每个 Windows 操作系统下有一个 GDI32.dll 文件，编译器在编译该 DLL 的时候会产生一个 GDI32.pdb 文件。一旦我们拥有了这个GDI32.pdb文件，那么便可以用它来调试并跟踪到 GDI32.dll 内部。</p>
+<h3 id="9-2-符号文件路径设置"><a href="#9-2-符号文件路径设置" class="headerlink" title="9.2. 符号文件路径设置"></a>9.2. 符号文件路径设置</h3><p>WinDbg是支持在调试时自动在线下载对应符号文件的。但是符号文件内容也不少（某些符号文件在线下载需要几分钟，不便于调试），建议把离线安装包下载到本地先预安装。</p>
+<p>这个是微软提供的各个Windows版本的符号路径下载的站点：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.microsoft.com/en-us/windows/hardware/download-symbols">https://developer.microsoft.com/en-us/windows/hardware/download-symbols</a></p>
+</blockquote>
+<p>以本文所采用的操作系统版本为例，选择【Windows 7 Service Pack 1 x64 retail symbols, all languages】下载：</p>
+<p><img src="./46.png" alt="选择合适的符号文件版本"></p>
+<p>下载成功后，将其安装到HostOS的任意位置即可。</p>
+<p>本文所选择的符号文件安装目录为：<font color="red">E:\04_work\re\Symbol</font></p>
+<p>安装成功后，配置环境变量：</p>
+<ul>
+<li>① 右击【计算机】–&gt;【属性】–&gt;【高级系统设置】–&gt;【高级选项卡】–&gt;【环境变量】</li>
+<li>② 在【系统变量】中新建四个变量：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>变量值</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_NT_SYMBOL_DIR</td>
+<td><font color="red">E:\04_work\re\Symbol</font></td>
+<td>符号文件安装目录</td>
+</tr>
+<tr>
+<td>_NT_SYMBOL_PATH</td>
+<td>%_NT_SYMBOL_DIR%;symsrv*symsrv.dll*<br>%_NT_SYMBOL_DIR%*<a target="_blank" rel="noopener" href="http://msdl.microsoft.com/download/symbols">http://msdl.microsoft.com/download/symbols</a></td>
+<td>符号文件检索位置</td>
+</tr>
+<tr>
+<td>_NT_SOURCE_PATH</td>
+<td><i>根据实际情况按需配置（可不配）</i></td>
+<td>编译驱动生成的符号文件目录</td>
+</tr>
+<tr>
+<td>_NT_ALT_SYMBOL_PATH</td>
+<td><i>根据实际情况按需配置（可不配）</i></td>
+<td>其他符号文件目录</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong><em>注：</em></strong><br><em>在环境变量 _NT_SYMBOL_PATH 指定了两个路径:第一个是本地符号文件安装目录，第二个是在线符号文件站点。 它表示如果在本地安装目录%_NT_SYMBOL_DIR%下找不到所需的Symbol File，就从微软的Symbol Server上下载并保存到%_NT_SYMBOL_DIR%目录。</em></p>
+</blockquote>
+<p>重新运行WinDbg连接到GuestOS，从控制台的连接信息可以看到WinDbg已成功找到符号文件路径位置。点击【文件】 –&gt; 【符号文件路径】 可以发现系统变量 _NT_SYMBOL_PATH 所指定的符号文件路径已被加载到WinDbg：</p>
+<p><img src="./47.png" alt="符号文件路径设置"></p>
+<h3 id="9-3-调试一个驱动程序"><a href="#9-3-调试一个驱动程序" class="headerlink" title="9.3. 调试一个驱动程序"></a>9.3. 调试一个驱动程序</h3><p>以之前的VS2010_WDK_Demo驱动项目为例（该项目通过EasySYSchs生成，已生成模板代码，编译后可直接被系统加载运行，详见《<a href="../qu-dong-kai-fa-ru-men-1/">驱动开发入门 - 之一</a>》，此处不再复述）。</p>
+<p>在VS2010_WDK_Demo.cpp中找到入口函数DriverEntry，使用DbgPrint函数打印一句内核调试消息：</p>
+<p><img src="./48.png" alt="添加内核调试消息语句"></p>
+<p>重新编译并签名VS2010_WDK_Demo驱动项目，拷贝VS2010_WDK_Demo.sys到GuestOS中，并使用DriverMonitor / InstDrv装载并启动该驱动，则可以在WinDbg中捕获到刚才添加的内核消息“Hello, Driver By VS2010”：</p>
+<p><img src="./49.png" alt="调试一个简单的驱动程序"></p>
+<h3 id="9-4-加入断点调试"><a href="#9-4-加入断点调试" class="headerlink" title="9.4. 加入断点调试"></a>9.4. 加入断点调试</h3><p>由于驱动程序中没有断点，驱动程序被装载后转瞬就运行完了。</p>
+<p>为了便于调试，这次在驱动程序的入口函数DriverEntry中加入INT 3系统中断的汇编代码（<em>此处只演示效果，暂不说明如何在x64系统中嵌入汇编代码，若有需要了解可见附录</em>）：</p>
+<p><img src="./50.png" alt="添加系统中断"></p>
+<p>重新编译并签名VS2010_WDK_Demo驱动项目。</p>
+<p>把HostOS编译目录中生成的<font color="red">符号文件VS2010_WDK_Demo.pdb</font>设置到WinDbg中（【文件】 –&gt; 【源文件路径】），使得WinDbg可以在调试过程中查看驱动程序的源码。</p>
+<p>然后拷贝<font color="red">驱动程序VS2010_WDK_Demo.sys</font>到GuestOS中，签名后使用DriverMonitor / InstDrv装载并启动该驱动，此时GuestOS因为系统中断会陷入假死状态，按【Ctrl+Alt】释放鼠标到HostOS，发现WinDbg已运行到断点位置并暂停。</p>
+<p>在<font color="red">WinDbg上方的工具栏提供了对驱动程序做调试的按钮，左侧为源码区，右侧则是控制台</font>，如下所示为单步调试的过程。</p>
+<p>熟悉WinDbg的使用后，其他驱动程序的调试方式也是大同小异，此处就不再一一叙述了。</p>
+<p><img src="./51.png" alt="设置源文件路径"></p>
+<p><img src="./52.png" alt="驱动程序陷入中断"></p>
+<p><img src="./53.png" alt="驱动程序调试"></p>
+<h2 id="10-附录1：利用VirtualKD提高调试的传输速率"><a href="#10-附录1：利用VirtualKD提高调试的传输速率" class="headerlink" title="10. 附录1：利用VirtualKD提高调试的传输速率"></a>10. 附录1：利用VirtualKD提高调试的传输速率</h2><p>在调试的过程中可能会发现WinDbg经常会不断打印一堆意义不明XML stream消息刷屏，<b>在打印期间WinDbg与GuestOS均处于无法操作的假死状态</b>。</p>
+<pre><code>SXS.DLL: Read 0 bytes from XML stream; HRESULT returned = 0x00000001
+SXS.DLL: Creating 8828 byte file mapping
+C:\Users\Administrator\Desktop\DriverGenius\security\kxescan\kfc_dps.datSXS.DLL: Read 756 bytes from XML stream; HRESULT returned = 0x00000000
+　00000000: 3c-3f-78-6d-6c-20-76-65-72-73-69-6f-6e-3d-22-31 (&amp;lt;?xml version="1)
+　00000010: 2e-30-22-20-65-6e-63-6f-64-69-6e-67-3d-22-55-54 (.0" encoding="UT)
+　00000020: 46-2d-38-22-20-73-74-61-6e-64-61-6c-6f-6e-65-3d (F-8" standalone=)
+　00000030: 22-79-65-73-22-3f-3e-0d-0a-3c-21-2d-2d-20-43-6f ("yes"?&amp;gt;..&amp;lt;!-- Co)
+　00000040: 70-79-72-69-67-68-74-20-28-63-29-20-4d-69-63-72 (pyright (c) Micr)
+　00000050: 6f-73-6f-66-74-20-43-6f-72-70-6f-72-61-74-69-6f (osoft Corporatio)
+　00000060: 6e-20-2d-2d-3e-0d-0a-3c-61-73-73-65-6d-62-6c-79 (n --&amp;gt;..&amp;lt;!assembly)</code></pre>
+<p><img src="./54.png" alt="HostOS与GuestOS交互数据刷屏"></p>
+<p>这种消息实际上是HostOS与GuestOS在交互数据，当在GuestOS打开某些进程时就可能会触发。当需要交互的数据量很大的时候，就会造成WinDbg与GuestOS双双陷入假死状态，直到数据交互完成。那么要解决假死状态的方法自然就是想办法使得HostOS与GuestOS尽快完成数据交互。</p>
+<p>在前面配置虚拟管道串口的时候，有一个波特率参数，默认值就是【baudrate=115200】，该值直接制约了HostOS与GuestOS交互数据的传输速率（115200 baudrate等效于115200 bit per secon，约为10KB/s）。但是串口波特率的取值范围为300、600、1200、2400、4800、9600、19200、38400、43000、56000、57600、115200，可以发现默认值已经是最大值了，无法再上调波特率。</p>
+<p>为此需要借助MS提供的另一个工具VirtualKD：其原理是先在HostOS与GuestOS预装后门进程，然后利用KD的扩展DLL功能向GuestOS附加到这个进程产生一条虚拟管道，WinDbg可以借助该管道在HostOS与GuestOS之间进行调试。相比于使用串口，VirtualKD的数据交互速率有极大的提升（微软官方测试速率最高为6MB/S，即使在VMWare平台也可达到150KB/s）。</p>
+<p>VirtualKD的安装和使用都比较简单，具体步骤如下：</p>
+<ul>
+<li>① 把从官方下载的VirtualKD.exe在HostOS与GuestOS中分别拷贝一份。</li>
+<li>② 分别在HostOS与GuestOS中运行VirtualKD.exe解压</li>
+<li>③ 在GuestOS中运行解压目录中的 \target\vminstall.exe，<font color="red">由于是非Win10系统，必须取消勾选【Replace kdcom.dll】</font>，其他参数可以不修改，点击【install】按钮安装，安装成功后会提示重启</li>
+<li>④ 重启后在操作系统列表会新增一个系统副本，副本名称就是刚才定义的名称，使用它进入系统</li>
+<li>⑤ 在HostOS中运行解压目录中的vmmon64.exe，点击【Debugger path…】按钮选择WinDbg安装目录下的【windbg.exe】（此方式不支持选择汉化版的入口），最后点击【Run debugger】，VirtualKD会自动启动WinDbg并连接到GuestOS。</li>
+<li>⑥ 在WinDbg调试期间不能关闭VirtualKD进程</li>
+</ul>
+<p><img src="./55.png" alt="在GuestOS安装VirtualKD"></p>
+<p><img src="./56.png" alt="操作系统列表新增VirtualKD调试系统"></p>
+<p><img src="./57.png" alt="在HostOS配置VirtualKD运行WinDbg"></p>
+<h2 id="11-附录2-WinDbg常用命令-操作"><a href="#11-附录2-WinDbg常用命令-操作" class="headerlink" title="11. 附录2: WinDbg常用命令/操作"></a>11. 附录2: WinDbg常用命令/操作</h2><p>可跳转到此页面查询：</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/windbg_cheat_sheet.html">WinDbg 命令手册</a></p>
+</blockquote>
+<h3 id="12-附录3：WDK（x64）-汇编的混合编译"><a href="#12-附录3：WDK（x64）-汇编的混合编译" class="headerlink" title="12. 附录3：WDK（x64）+汇编的混合编译"></a>12. 附录3：WDK（x64）+汇编的混合编译</h3><p><i>——部分内容摘于博文：<a target="_blank" rel="noopener" href="http://blog.csdn.net/cosmoslife/article/details/9071949">http://blog.csdn.net/cosmoslife/article/details/9071949</a></i></p>
+<p>使用WinDbg调试驱动程序的时候，已经涉及代码编写了。而其中一个泛用的特例就是在C/C++代码中嵌套汇编的INT3系统中断指令。</p>
+<p>因此此节详细说明一下如何在x64的C/C++驱动程序中嵌入汇编代码，并将其编译到一起。</p>
+<p>在<font color="red">x86的编译平台</font>中是支持使用<font color="red">__asm{ … }</font>语法进行<font color="red">内联汇编</font>的，亦即可以直接把汇编代码直接写到C/C++代码之中，例如：</p>
+<pre><code>NTSTATUS DriverEntry(PDRIVER_OBJECT driver,PUNICODE_STRING reg_path) 
+{ 
+    DbgPrint("This is x86 C/C++"); 
+
+    __asm {
+        int 3         ; 系统中断
+    }
+
+    DbgPrint("This is x86 C/C++"); 
+    return STATUS_SUCCESS; 
+}</code></pre>
+<p>但是<b><font color="red">在x64编译平台是不支持内联汇编的</font></b>。</p>
+<p>x64平台要求把汇编代码统一写到<font color="red"> *.asm </font>文件中，通过汇编编译器（VS默认为ml64.exe）编译成 *.obj 目标文件，最后与 C/C++ 代码的目标文件link到一起生成*.exe可执行文件（或*.sys驱动文件）。</p>
+<p>在WDK驱动项目中，详细的操作方式如下<em>（这里还是以在之前的VS2010_WDK_Demo驱动项目中添加INT3系统中断为例）</em>：</p>
+<p>① 在WDK项目中新建文件夹asm，再新建文件fun.asm（<b>文件名任意，后缀必须为*.asm</b>）</p>
+<p>② 在fun.asm中编写INT3系统中断汇编代码：</p>
+<pre><code>.CODE            ; 声明为代码段，类似的还有.DATA数据段
+
+int_3 PROC        ; 函数/过程，红色部分是其名称，可被C/C++声明后直接调用
+    int 3
+    ret
+int_3 ENDP
+
+END</code></pre>
+<p>③ 在VS2010_WDK_Demo.h 头文件的 <font color="red">extern “C” { … } </font>代码块中添加汇编函数的外部声明，使其可以被调用C/C++代码<i>（至于为什么要在<b>extern “C”</b>修饰符内做函数声明，可见<font color="blue">附录4的【13.1 [error LNK 2019] 】</font>）</i>：</p>
+<pre><code>extern "C" { 
+    ......
+    void int_3(void);
+    ......
+} </code></pre>
+<p><img src="./58.png" alt="在*.h头文件声明*.asm的外部函数"></p>
+<p>④ 之后就可以在VS2010_WDK_Demo.cpp 源文件中直接调用 int_3() 函数了：</p>
+<p><img src="./59.png" alt="在*.cpp源文件调用*.asm的外部函数"></p>
+<p>⑤ 但是现在WDK工程还不能编译成功，原因是WDK不知道如何编译fun.asm文件。<b>为此需要再为*.asm文件指定一套编译规则</b>，方法如下：</p>
+<p>右键【项目】 –&gt; 【生成自定义】 –&gt; 勾选【masm】，这组操作意为为WDK项目增加汇编文件的编译规则MASM：</p>
+<p><img src="./60.png" alt="为WDK工程添加新的编译规则（MASM）"></p>
+<p>⑥ 右键【fun.asm】 –&gt; 【属性】 –&gt; 【配置属性】 –&gt; 【常规】 –&gt; 【项类型】 –&gt; 【 <font color="red">Microsoft Macro Assembler</font>】（此选项只有在执行第⑤步后才会出现） –&gt; 【应用】，这组操作意为使用默认的MASM编译器编译*.asm文件：</p>
+<p><img src="./61.png" alt="为*.asm汇编文件指定MASM编译器"></p>
+<p>⑦ 之后左侧会增加一项【Microsoft Macro Assembler】，这就是MASM编译器的配置项。</p>
+<p>点击【Command Line】查看编译脚本： <font color="red">x64平台的编译脚本为ml64.exe</font>， Win32平台的编译脚本为ml.exe。</p>
+<p>由于当前工程是64位WDK项目，因此若编译脚本不是ml64.exe，需要在配置管理器新增x64平台。</p>
+<p><img src="./62.png" alt="确认MASM编译器的汇编编译脚本是否正确"></p>
+<p>⑧ <font color="red">（重要）</font>点击【Object File】查看*.asm文件编译所生成的目标文件*.obj的输出位置。由于配置值使用了宏变量，可【点击配置值】 –&gt; 【下拉】 –&gt; 【编辑】 –&gt; 【宏】，找到对应的变量查看其真实值。</p>
+<p>如下图所示，配置值为【<font color="red">$(IntDir)</font><font color="blue">%(FileName)</font>.obj】。</p>
+<p>其中<font color="red">$(IntDir)</font>为宏变量，查得其值为<font color="red">x64\amd64&lt;/font&gt;</font></p><font color="red">
+<p><font color="blue">%(FileName)</font>泛指所编译的*.asm文件名称（不含后缀），如当前所编译的fun.asm文件，<font color="blue">%(FileName)</font>的值则为<font color="blue">fun</font>。</p>
+<p>因此对于fun.asm汇编文件而言，$(IntDir)%(FileName).obj的真实值为<font color="red">x64\amd64\fun.obj</font>，记下这个值。</p>
+<p><img src="./63.png" alt="确认*.asm汇编文件编译所生成的目标文件位置"></p>
+<p>⑨ 驱动工程是通过WDK的build命令进行编译的（在VS2010中是驱动工程目录下的BuildDrv.bat脚本），但是build命令不会自动LINK到*.asm汇编文件的目标文件，直接影响就是在编译*.cpp源文件时，找不到*.asm汇编文件所声明的函数。</p>
+<p>为此需要告诉build脚本，在编译*.cpp的时候要和哪些*.asm的目标文件进行LINK。</p>
+<p>事实上，<font color="red">*.asm是先于*.cpp被编译成目标文件的</font>，亦即在编译*.cpp的时候，<font color="red">可以把*.asm的目标文件作为*.cpp的库文件</font>，而*.asm的目标文件位置，在第⑧步的时候已经查到了。</p>
+<p>尔后只需要<font color="red">修改</font>WDK的<font color="red">sources文件</font>，添加属性项【<font color="red">TARGETLIBS</font>】，指定值为*.asm的目标文件（在本例中就是<font color="red">x64\amd64\fun.obj</font>）：</p>
+<p><img src="./64.png" alt="为驱动工程指定*.asm的目标文件作为链接库文件"></p>
+<p>⑩ 最后编译项目：【生成】–&gt;【（重新）生成解决方案】，如无意外则编译成功：</p>
+<p><img src="./65.png" alt="成功编译含*.asm汇编文件的驱动工程"></p>
+<blockquote>
+<p><strong><em>注：</em></strong><br><em>在64位驱动工程中混合汇编编译的方式，暂时只适用于VS2010。</em><br><em>在VS2008的驱动工程中，即使使用相同步骤配置，其DDK的build.bat脚本却无法调用MASM编译器ml64.exe对\</em>.asm汇编文件进行编译，亦即在编译*.cpp时无法自动得到*.asm的目标文件并进行LINK。*</p>
+</blockquote>
+<h2 id="13-附录4：常见异常解决方案"><a href="#13-附录4：常见异常解决方案" class="headerlink" title="13. 附录4：常见异常解决方案"></a>13. 附录4：常见异常解决方案</h2><h3 id="13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8"><a href="#13-1-error-LNK-2019-unresolved-external-symbol-DriverEntry-8-referenced-in-function-GsDriverEntry-8" class="headerlink" title="13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8"></a>13.1. [error LNK 2019] - unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h></span> </span>
+
+VOID <span class="token function">DriverUnload</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+    <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"load Driver\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+
+NTSTATUS <span class="token function">DriverEntry</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">,</span>PUNICODE_STRING reg_path<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+    <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"Hello, WDK Demo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    driver<span class="token operator">-</span><span class="token operator">></span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> STATUS_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上述驱动程序源码为例，在使用VS2008 / VS2010 编译时报错如下：</p>
+<blockquote>
+<p>1&gt;DDKBLD: ================ Build warnings =======================<br>1&gt;1&gt;BufferOverflowK.lib(gs_support.obj) : <font color="red">error LNK2019: unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8</font><br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\bufferoverflowk.lib(gs_support.obj) : error LNK2019: unresolved external symbol _DriverEntry@8 referenced in function _GsDriverEntry@8<br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\objchk_win7_x86\i386\HelloDDK.sys : fatal error LNK1120: 1 unresolved externals<br>1&gt;1&gt;d:\01_wor~1\c\vs2008\re\helloddk\helloddk\objchk_win7_x86\i386\helloddk.sys : error LNK1120: 1 unresolved externals<br>1&gt;DDKBLD: =======================================================</p>
+</blockquote>
+<p><b>异常原因：</b></p>
+<p>这是一个链接错误，表示系统在链接时找不到入口函数_DriverEntry@8。</p>
+<p>在VS2008 / VS2010中默认的编译方式是采用C++方式的，而这个错误意思是C编译器对DriverEntry进行编译后的结果，前缀“_”是C编译器特有的，后缀“@8”是所有参数的长度。所以C++编译器一定是把DriverEntry编译成了系统无法认识的另一副模样了（实际上，C++编译器会把它编译成以“?DriverEntry@@”开头的一串很长的符号）。</p>
+<p><b>解决方案：</b></p>
+<p>在报错的函数DriverEntry前面加上extern “C”修饰符即可。</p>
+<p>extern “C”提醒编译器要使用C编译格式编译DriverEntry函数，这样编译生成的函数名称为“_DriverEntry@8”，链接器即可正确地识别出符号了。</p>
+<p>需要注意的是，若报错的不是函数DriverEntry ，而是其他函数XXX，则也需要在前面添加extern “C”修饰符。</p>
+<p>修改后的代码如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;ntddk.h></span> </span>
+
+VOID <span class="token function">DriverUnload</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+    <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"load Driver\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">extern</span> <span class="token string">"C"</span>
+NTSTATUS <span class="token function">DriverEntry</span><span class="token punctuation">(</span>PDRIVER_OBJECT driver<span class="token punctuation">,</span>PUNICODE_STRING reg_path<span class="token punctuation">)</span> 
+<span class="token punctuation">{</span> 
+    <span class="token function">DbgPrint</span><span class="token punctuation">(</span><span class="token string">"Hello, WDK Demo!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    driver<span class="token operator">-</span><span class="token operator">></span>DriverUnload<span class="token operator">=</span>DriverUnload<span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> STATUS_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="13-2-GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows"><a href="#13-2-GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows" class="headerlink" title="13.2. GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows"></a>13.2. GuestOS安装VirtualKD后若退出TestSigning模式则无法启动Windows</h3><p>GuestOS安装VirtualKD后，若再使用以下命令关闭系统的测试模式，则会出现如下图所示的情况，无法登入系统，错误代码为<font color="red">0xc0000428</font>。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">bcdedit /set testsigning off    // 关闭系统测试模式<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./66.png" alt="无法启动Windows"></p>
+<p><b>异常原因：</b></p>
+<p>GuestOS安装VirtualKD后，<font color="red">C:\Windows\System32\kdcom.dll</font>会被替换成供VirtualKD使用的另一个同名文件kdcom.dll，<font color="red">原kdcom.dll会被备份为kdcom_old.dll</font>。</p>
+<p>需知kdcom.dll是Windows中极其重要的文件，负责调试驱动程序以及内核模块，它在windows开机时就会被加载到内存中，如果损坏会导致蓝屏。</p>
+<p>而由于VirtualKD的kdcom.dll签名可能是过期失效（或未被认可）的，此后若关闭系统的测试模式，系统在启动时会重新发起对kdcom.dll文件的签名校验，最终因校验不通过导致系统启动失败。</p>
+<p><b>解决方案：</b></p>
+<p>在系统关闭测试模式之前，恢复原有的kdcom.dll文件即可 （若很不幸地你的GuestOS在恢复kdcom.dll前已经关闭了测试模式，可以尝试还原VM快照或者用PE登陆系统替换kdcom.dll文件）。</p>
+<p>打开C:\Windows\System32目录，可以发现有两个文件：kdcom.dll与kdcom_old.dll</p>
+<p>右键查看kdcom.dll属性，在详细信息一栏可知这是VirtualKD使用的文件，而另一个kdcom_old.dll原文件。只需备份kdcom.dll，然后把kdcom_old.dll重命名为kdcom.dll即可。</p>
+<p>需要注意的是，恢复kdcom.dll文件后VirtualKD就会失效了，若下次需要使用VirtualKD则还得把这两个文件再次交换。</p>
+<p><img src="./67.png" alt="C:\Windows\System32\kdcom.dll"></p>
+<p><img src="./68.png" alt="VirtualKD的kdcom.dll"></p>
+<h2 id="14-资源下载"><a href="#14-资源下载" class="headerlink" title="14. 资源下载"></a>14. 资源下载</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="http://download.csdn.net/download/lyy289065406/10021427">本文全文下载</a></p>
+</blockquote>
+</font><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/re/qu-dong-kai-fa-ru-men-2/">https://exp-blog.com/re/qu-dong-kai-fa-ru-men-2/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E9%A9%B1%E5%8A%A8/">
+                                    
+                                        <span class="chip bg-color">驱动</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/%E5%86%85%E6%A0%B8/">
+                                    
+                                        <span class="chip bg-color">内核</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/WinDBG/">
+                                    
+                                        <span class="chip bg-color">WinDBG</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/algorithm/n-huang-hou-wen-ti/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/algorithm/04.png" class="responsive-img" alt="N 皇后问题 – 构造法原理与证明： 时间复杂度 O(1)">
+                        
+                        <span class="card-title">N 皇后问题 – 构造法原理与证明： 时间复杂度 O(1)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-01-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/ACM/">
+                        <span class="chip bg-color">ACM</span>
+                    </a>
+                    
+                    <a href="/tags/N-%E7%9A%87%E5%90%8E/">
+                        <span class="chip bg-color">N 皇后</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/re/qu-dong-kai-fa-ru-men-1/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/re/02.jpg" class="responsive-img" alt="驱动开发入门 – 之一：Win7 SP1 x64 驱动开发环境搭建">
+                        
+                        <span class="card-title">驱动开发入门 – 之一：Win7 SP1 x64 驱动开发环境搭建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-10-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B/" class="post-category">
+                                    系统工程
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E9%A9%B1%E5%8A%A8/">
+                        <span class="chip bg-color">驱动</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%86%85%E6%A0%B8/">
+                        <span class="chip bg-color">内核</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">875.8k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>
