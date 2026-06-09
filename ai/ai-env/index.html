@@ -1,0 +1,2925 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="从零开始搭建 AI 环境, EXP BLOG IT SHARE">
+    <meta name="description" content="EXP 技术博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>从零开始搭建 AI 环境 | 眈眈探求</title>
+    <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/my.css">
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/jquery/jquery.min.js"></script>
+
+    <!-- 谷歌自动广告 -->
+    
+        <!-- 谷歌自动广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+
+    
+
+    <!-- 加载页面效果 -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/css/loading.css">
+<meta name="generator" content="Hexo 5.1.1"><link rel="alternate" href="/atom.xml" title="眈眈探求" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+
+
+<body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">眈眈探求</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/tags">
+          
+          <i class="fas fa-tags" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>标签</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/categories">
+          
+          <i class="fas fa-bookmark" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>分类</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/archives">
+          
+          <i class="fas fa-archive" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>归档</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>站长工具</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-wind" style="zoom: 0.6;"></i>
+      
+      <span>爬虫工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/">
+          
+          <i class="fas fa-bug" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>威胁情报</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/">
+          
+          <i class="fab fa-steam" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>STEAM 特惠</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-dice-six" style="zoom: 0.6;"></i>
+      
+      <span>娱乐资源</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>怀旧游戏</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/">
+          
+          <i class="fas fa-paw" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>口袋妖怪</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/">
+          
+          <i class="fas fa-film" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>经典影视</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-chalkboard-teacher" style="zoom: 0.6;"></i>
+      
+      <span>专题教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/">
+          
+          <i class="fas fa-gamepad" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>仙境传说</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/AI/">
+          
+          <i class="fas fa-robot" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>人工智能</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/">
+          
+          <i class="fas fa-music" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>流行声乐</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/">
+          
+          <i class="fas fa-skull-crossbones" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>CTF 解题报告</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/">
+          
+          <i class="fas fa-square-root-alt" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>POJ 解题报告</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/about">
+          
+          <i class="fas fa-user-circle" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>关于我</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/contact">
+          
+          <i class="fas fa-lock" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文章解锁指引</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406">
+          
+          <i class="fas fa-donate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我舔冻柠</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/">
+          
+          <i class="fas fa-yen-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我饮早茶</span>
+        </a>
+      </li>
+      
+      <li>
+        <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc">
+          
+          <i class="fas fa-dollar-sign" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>请我喝咖啡</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fab fa-gg" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">眈眈探求</div>
+        <div class="logo-desc">
+            
+            EXP 技术博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-home"></i>
+			
+			首页
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/tags " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tags" style="position: absolute;left:50px" ></i>
+			      
+		          <span>标签</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/categories " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bookmark" style="position: absolute;left:50px" ></i>
+			      
+		          <span>分类</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/archives " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-archive" style="position: absolute;left:50px" ></i>
+			      
+		          <span>归档</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a target="_blank" rel="noopener" href="https://exp-tools.github.io/site-package/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tools"></i>
+			
+			站长工具
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-wind"></i>
+			
+			爬虫工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/threat-broadcast/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bug" style="position: absolute;left:50px" ></i>
+			      
+		          <span>威胁情报</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-tools.github.io/steam-discount/ " style="margin-left:75px">
+				  
+				   <i class="fa fab fa-steam" style="position: absolute;left:50px" ></i>
+			      
+		          <span>STEAM 特惠</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-dice-six"></i>
+			
+			娱乐资源
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/OldGame-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>怀旧游戏</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-games.github.io/Pokemon-Roms/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-paw" style="position: absolute;left:50px" ></i>
+			      
+		          <span>口袋妖怪</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://exp-res.github.io/film-tv/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-film" style="position: absolute;left:50px" ></i>
+			      
+		          <span>经典影视</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-chalkboard-teacher"></i>
+			
+			专题教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E4%BB%99%E5%A2%83%E4%BC%A0%E8%AF%B4/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-gamepad" style="position: absolute;left:50px" ></i>
+			      
+		          <span>仙境传说</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/AI/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-robot" style="position: absolute;left:50px" ></i>
+			      
+		          <span>人工智能</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/categories/%E9%9F%B3%E4%B9%90/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-music" style="position: absolute;left:50px" ></i>
+			      
+		          <span>流行声乐</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/safe/ctf/ctf-jie-ti-bao-gao-dao-hang/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-skull-crossbones" style="position: absolute;left:50px" ></i>
+			      
+		          <span>CTF 解题报告</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="https://exp-blog.com/algorithm/poj-shi-ti-fen-lei/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-square-root-alt" style="position: absolute;left:50px" ></i>
+			      
+		          <span>POJ 解题报告</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/about " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-circle" style="position: absolute;left:50px" ></i>
+			      
+		          <span>关于我</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/contact " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-lock" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文章解锁指引</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://github.com/sponsors/lyy289065406 " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-donate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我舔冻柠</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://lyy289065406.github.io/sponsor/ " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-yen-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我饮早茶</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a target="_blank" rel="noopener" href="https://ko-fi.com/exppoc " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-dollar-sign" style="position: absolute;left:50px" ></i>
+			      
+		          <span>请我喝咖啡</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fab fa-gg"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/lyy289065406/exp-blog" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/lyy289065406/exp-blog" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('此为非公开文章，可通过顶部导航的【关于 -> 解锁指引】获取密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/article/ai/ai-env.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">从零开始搭建 AI 环境</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #0a8cca;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/AI/">
+                                
+                                    <span class="chip bg-color">AI</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/Agent/">
+                                
+                                    <span class="chip bg-color">Agent</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/new-api/">
+                                
+                                    <span class="chip bg-color">new-api</span>
+                                
+                            </a>
+                        
+                            <a href="/tags/skill/">
+                                
+                                    <span class="chip bg-color">skill</span>
+                                
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="info-break-policy">
+                    
+                        <span class="post-original-label">原创</span>
+                    
+                </div>
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-05-05
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-06-09
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    10.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    39 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="0x00-背景"><a href="#0x00-背景" class="headerlink" title="0x00 背景"></a>0x00 背景</h2><p>这是一个 AI 横行的时代，但很多人对 AI 的认知仍停留在「打开 ChatGPT 一问一答聊天」这个层面。</p>
+<p>大家都知道 AI 很强，也隐约感觉它应该能参与工作、学习和生活里的具体场景，但真要落到自己的电脑、自己的流程、自己的数据上，却往往不知道第一步该从哪里开始。</p>
+<p>与此同时，各大媒体平台每天都在抛出一堆新名词：Claude、OpenCode、Agent、Skill、MCP、FastGPT、LLM、RAG、小龙虾……它们究竟是什么？能解决什么问题？彼此之间是什么关系？如果只靠自媒体或短视频来理解，最后大概率只会得到一锅夹生饭 —— 名词听过不少，原理一窍不通。</p>
+<p>其实本质概念不多，大多数新概念只是某一层概念上的迭代。</p>
+<p>本文将抛弃那些花里胡哨的东西，从零开始，把搭建 AI 环境这件事讲清楚，让不管是文科还是理科背景的同学，都能在自己的电脑上跑起来一套实用的 AI 工具链。</p>
+<blockquote>
+<p>本文不是 OpenClaw/小龙虾 部署教学。在我看来，它只是一个被媒体包装出来的概念，一个不成熟、不安全、不可信的半成品。AI 发展太快，媒体又擅长放大个体被时代淘汰的焦虑，于是这只恰好被风口吹起来的「毒虾」就有了流量。但等你真正理解并搭建出自己的 AI 环境后，会发现所谓的小龙虾并没有什么神秘之处 —— 它不过是用这些工具临时拼出来的、粗制滥造的产物罢了。</p>
+</blockquote>
+<h2 id="0x10-先旨声明"><a href="#0x10-先旨声明" class="headerlink" title="0x10 先旨声明"></a>0x10 先旨声明</h2><p>从客观的技术现状来看，在大部分 AI 应用场景里，海外模型、工具链和生态成熟度仍然领先于国内。</p>
+<p>这不是立场站队，而是工程事实：谁的模型能力更强、工具更稳定、生态更完整，谁就更值得学习使用。</p>
+<p>因此，本文后续介绍的 AI 工具、模型服务和相关文档，很多都需要能够科学上网才能获取或使用。建议先参考《<a href="../net/trojan-zheng-yan-kan-shi-jie-jiao-cheng/">trojan 睁眼看世界教程</a>》或通过其他方式，<strong>确保你的电脑可以访问境外网站</strong>。否则很多步骤会卡在下载、登录、鉴权或 API 调用上，后面的内容也就无从谈起。</p>
+<blockquote>
+<p>我一直认为技术无国界，但技术优势从来不会自动流向落后者。别人掌握更好的工具、更强的模型和更完整的生态时，封锁与壁垒就是很自然的结果。与其被某些假爱国口嗨的自媒体道德绑架/遮蔽认知，不如脚踏实地去学、去用、去追赶 —— 「师夷长技以制夷」，才是今时今日的唯一出路。</p>
+</blockquote>
+<h2 id="0x20-基础环境安装"><a href="#0x20-基础环境安装" class="headerlink" title="0x20 基础环境安装"></a>0x20 基础环境安装</h2><p>在开始部署 AI 环境之前，需要先安装两个基础环境：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download">Node.js</a>: 用于运行部分 AI Agent 生态</li>
+<li><a target="_blank" rel="noopener" href="https://www.python.org/downloads/">Python3</a>: AI 交互操作的万能粘合剂</li>
+</ul>
+<h2 id="0x30-AI-环境演进"><a href="#0x30-AI-环境演进" class="headerlink" title="0x30 AI 环境演进"></a>0x30 AI 环境演进</h2><p><img src="./00a.jpg"></p>
+<p>乍看之下，这几年 AI 生态日益繁杂，但 AI 环境的本质，就一条从「本地入口」到「上游模型」的调用链。</p>
+<p>截至目前，这个调用链大体经历了 4 个演进阶段：</p>
+<table>
+<thead>
+<tr>
+<th align="center">阶段</th>
+<th align="left">架构变化</th>
+<th align="left">原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">一</td>
+<td align="left">本地 Agent 直连大模型</td>
+<td align="left">用户使用 AI 的最简单结构，链路短、理解成本低</td>
+</tr>
+<tr>
+<td align="center">二</td>
+<td align="left">引入大模型网关</td>
+<td align="left">上游模型越来越多，需要统一 Key、计费、模型名和接口协议</td>
+</tr>
+<tr>
+<td align="center">三</td>
+<td align="left">引入 cc-switch</td>
+<td align="left">不同 Agent 的配置方式不同，频繁切换模型和 Provider 很麻烦</td>
+</tr>
+<tr>
+<td align="center">四</td>
+<td align="left">引入 Skill</td>
+<td align="left">重复任务需要沉淀成可复用能力，减少随机输出和 Token 浪费</td>
+</tr>
+</tbody></table>
+<p>这四个阶段没有严格的时间线，而是 AI 从简单到复杂、从能用到好用的自然演进路径。</p>
+<p>下文会按这个演进顺序展开：</p>
+<ol>
+<li>先安装 Agent，让 AI 能在本地跑起来</li>
+<li>再引入大模型网关，解决多模型接入问题</li>
+<li>然后处理模型切换和配置管理</li>
+<li>最后再谈 Skill，把重复任务沉淀成稳定能力</li>
+</ol>
+<hr>
+<h2 id="0x40-AI-Agent"><a href="#0x40-AI-Agent" class="headerlink" title="0x40 AI Agent"></a>0x40 AI Agent</h2><h3 id="0x41-为什么是-Agent"><a href="#0x41-为什么是-Agent" class="headerlink" title="0x41 为什么是 Agent"></a>0x41 为什么是 Agent</h3><p>在以 ChatGPT 为代表的网页对话式 AI 出现之后不久，大家很快就意识到一个问题：仅能网页对话的交互方式极大地限制了 AI 的真正能力。</p>
+<p>网页对话交互适合问答和写作，但不适合深度参与本地工作流。而我们需要的是真正的工程化使用、让 AI 能读取本地项目上下文、调用本地工具，甚至直接修改代码和文件。</p>
+<p>最早的本地调用方式是直接使用 OpenAI 这类供应商提供的 API 接口。大模型 API 的出现，意味着 AI 开始从「网页产品」进入「工程组件」阶段，可以被程序调用、集成和自动化。</p>
+<p>但 API 本身并不适合普通用户。它要求用户理解接口、鉴权、请求参数、上下文管理和工具调用，大部分人还没开始用 AI 就被拦在门外了。</p>
+<p>于是 Agent 出现了。</p>
+<p>所谓的 Agent 可以理解为「<strong>用户（你）和大模型之间的操作入口</strong>」。它不仅是一个聊天窗口，而且是一个能读取上下文、调用工具、修改文件、执行命令，并把结果反馈给模型继续推理的本地执行器。</p>
+<p>此时，只要本地安装一个 AI Agent，AI 就可以直接通过 Agent 参与本地工作。它不再只是回答问题，而是开始具备「动手能力」。</p>
+<p>于是，为了抢占用户入口，各大模型供应商都先后推出自己的专用 Agent：</p>
+<table>
+<thead>
+<tr>
+<th align="center">大模型</th>
+<th align="center">供应商</th>
+<th align="center">Agent</th>
+<th align="left">擅长处理场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Claude</td>
+<td align="center">Anthropic</td>
+<td align="center">Claude Code</td>
+<td align="left">编码</td>
+</tr>
+<tr>
+<td align="center">Gemini</td>
+<td align="center">Google</td>
+<td align="center">Gemini CLI</td>
+<td align="left">视觉效果（图像等）</td>
+</tr>
+<tr>
+<td align="center">GPT</td>
+<td align="center">OpenAI</td>
+<td align="center">Codex</td>
+<td align="left">通用</td>
+</tr>
+<tr>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="center">…</td>
+<td align="left">…</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>为了便于初学者理解，本文从广义上认为 <code>Agent = Claude Code / Gemini CLI / Codex / ...</code>。实际上他们都是一个整合了 <code>Agent + Skill + MCP</code> 的 Harness 工程 … —— <em>详见文末的 FAQ</em></p>
+</blockquote>
+<h3 id="0x42-安装-Agent"><a href="#0x42-安装-Agent" class="headerlink" title="0x42 安装 Agent"></a>0x42 安装 Agent</h3><p>前面提到的 Claude Code、Gemini CLI、Codex 等 Agent，都深度绑定了自家的模型生态，好处是毋须配置开箱即用。</p>
+<p>如果只是体验某一家模型，这当然没问题。但真实工作场景往往更复杂：编码场景用 Claude，图像处理场景用 Gemini，通用场景用 GPT。而为了切换模型而切换 Agent，不仅操作成本高，还要不断重新交代项目背景和上下文，就有点低效了。</p>
+<p>有没有一种 Agent，既能保留工作区和会话上下文，又能按场景自由切换不同模型？</p>
+<p>有的，<a target="_blank" rel="noopener" href="https://opencode.ai/">OpenCode</a> 就是一个比较合适的选择。它是开源 Agent，不强制绑定某一家模型生态，也更适合作为个人 AI 环境的统一入口。</p>
+<p>首先去官网下载并安装桌面版 <a target="_blank" rel="noopener" href="https://opencode.ai/zh/download">OpenCode Desktop</a>：</p>
+<p><img src="./05.jpg"></p>
+<p>装完后运行，你会得到这样的操作界面：</p>
+<p><img src="./06.jpg"></p>
+<p>界面布局主要有三栏（如果没有就点一下右上角布局切换按钮）：</p>
+<ol>
+<li><strong>左栏</strong>：选择工作区目录（Agent 默认可访问的本地目录），以及基于该工作区的会话列表</li>
+<li><strong>右栏</strong>：当前工作区的文件目录树</li>
+<li><strong>中栏</strong>：与 Agent 对话的操作窗口，底部可以切换 AI 大模型，这也是后续最常用的核心操作区</li>
+</ol>
+<h3 id="0x43-购买-AI-大模型"><a href="#0x43-购买-AI-大模型" class="headerlink" title="0x43 购买 AI 大模型"></a>0x43 购买 AI 大模型</h3><p>Agent 只是入口，现在希望 OpenCode 可以调用 DeepSeek 大模型，则需要在 DeepSeek 开放平台购买 API 调用额度。</p>
+<p>首先注册并登录 <a target="_blank" rel="noopener" href="https://platform.deepseek.com/">DeepSeek 开放平台</a>，充值 10 元即可：</p>
+<p><img src="./07.jpg"></p>
+<p>然后进入 <a target="_blank" rel="noopener" href="https://platform.deepseek.com/api_keys">API Keys 页面</a>，<strong>创建一个 API Key</strong> 并保存好备用。</p>
+<p><img src="./08.jpg"></p>
+<p>至此，你就拥有了调用 DeepSeek 大模型的使用资格。</p>
+<p>注意 API Key 就是调用大模型的钥匙，不要泄露给任何人。别人拿到你的 Key，就可以直接消耗你的余额。</p>
+<blockquote>
+<p>也别再纠结本地私有化部署大模型了。现在几乎所有好用的大模型都要付费，差别只是按量付费还是包月付费。私有化部署看似免费，实际性价比往往最低 … —— <em>详见文末 FAQ</em></p>
+</blockquote>
+<h3 id="0x44-配置-AI-大模型"><a href="#0x44-配置-AI-大模型" class="headerlink" title="0x44 配置 AI 大模型"></a>0x44 配置 AI 大模型</h3><p>购买模型额度之后，下一步就是把 DeepSeek 配置到 OpenCode 里。</p>
+<p>回到 OpenCode，依次点击左下角的 设置 <code>-&gt;</code> 供应商/Provider <code>-&gt;</code> 查看更多供应商 <code>-&gt;</code> 搜索 DeepSeek <code>-&gt;</code> 输入前面创建的 API Key：</p>
+<p><img src="./10.jpg"></p>
+<p>保存后，OpenCode 会通过这个 API Key 自动拉取 DeepSeek 支持的模型列表。</p>
+<p>接着继续配置模型显示列表：依次点击 设置 <code>-&gt;</code> 模型/Model <code>-&gt;</code> 搜索 DeepSeek，筛选出 DeepSeek 模型。</p>
+<p>点击模型后面的开关，可以控制该模型是否显示在界面底部的模型切换列表中：</p>
+<p><img src="./11.jpg"></p>
+<p>不难注意到，DeepSeek 模型后面还有 Low、Medium、High、Max 这样的选项。它们对应的是推理强度 <code>variant</code>：</p>
+<ul>
+<li><strong>Low</strong>：几乎不推理，直接输出，速度最快</li>
+<li><strong>Medium</strong>：适度推理，平衡速度与质量</li>
+<li><strong>High</strong>：深度推理，适合复杂逻辑</li>
+<li><strong>Max</strong>：最大推理预算，最慢但思考最充分</li>
+</ul>
+<p>并不是所有模型都支持配置 <code>variant</code>，但对于支持的模型来说，它会直接影响推理质量、响应速度和费用。</p>
+<p>一般情况下，推理强度越大，输出质量越高，但消耗的 <strong>输出 token</strong> 也越多，费用自然也更高。所以到底选择 Low、Medium 还是 Max，本质是在质量、速度、费用之间做取舍。</p>
+<p>日常简单问答用 Low 或 Medium 就够了；涉及复杂代码分析、方案设计、长上下文推理时，再考虑 High 或 Max。</p>
+<h3 id="0x45-token-如何计费"><a href="#0x45-token-如何计费" class="headerlink" title="0x45 token 如何计费"></a>0x45 token 如何计费</h3><p>这里插入一个所有人都关心的问题：AI 到底是怎么收费的？</p>
+<p>在 DeepSeek 官方的 <a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing/">产品定价</a> 页面，可以看到当前支持模型的计费信息：</p>
+<p><img src="./09.jpg"></p>
+<p>以 <code>deepseek-v4-flash</code> 模型为例，价格表里通常会出现三类费用：</p>
+<table>
+<thead>
+<tr>
+<th align="left">计费项</th>
+<th align="left">含义</th>
+<th align="center">单价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">输入 token（缓存命中）</td>
+<td align="left">重复上下文被缓存复用</td>
+<td align="center"><code>0.02</code> 元 / 百万 tokens</td>
+</tr>
+<tr>
+<td align="left">输入 token（缓存未命中）</td>
+<td align="left">新输入的上下文内容</td>
+<td align="center"><code>1</code> 元 / 百万 tokens</td>
+</tr>
+<tr>
+<td align="left">输出 token</td>
+<td align="left">模型生成的回答内容，包含推理消耗</td>
+<td align="center"><code>2</code> 元 / 百万 tokens</td>
+</tr>
+</tbody></table>
+<p>最坏情况下，假设输入完全没有命中缓存，那么每百万 tokens 的成本大约就是：</p>
+<pre class="line-numbers language-text"><code class="language-text">输入 1 元 + 输出 2 元 = 3 元 / 百万 tokens<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这里面隐含了两个影响费用的关键变量：</p>
+<ul>
+<li><strong>推理强度 <code>variant</code>（烧钱）</strong>：影响 AI 在生成最终回答之前的内部思考深度，这部分消耗通常会计入输出 tokens</li>
+<li><strong>缓存命中 <code>Cached</code>（省钱）</strong>：同一个会话中，历史上下文、固定提示词、长文档内容如果被复用，就可能命中缓存，从而降低输入成本</li>
+</ul>
+<p>那 <strong>每百万 tokens</strong> 又是什么意思？</p>
+<p>token 是模型处理文本的基本单位，可以理解为一段文字被拆分后的最小片段。</p>
+<p>具体拆分方式取决于模型的分词算法（Tokenizer），例如：</p>
+<ul>
+<li>英文：1 个 token 大致接近 1 个单词或标点，例如 <code>Hello, world!</code> 可能被拆成 <code>["Hello", ",", "world", "!"]</code></li>
+<li>中文：1 个 token 大致接近 1-2 个汉字或词语，例如 <code>你好，世界！</code> 可能被拆成 <code>["你", "好", "，", "世界", "！"]</code></li>
+</ul>
+<p>为了更形象地理解，可以粗略认为：<strong>100 万 tokens 大约相当于 50-80 万字中文文本</strong>，差不多是一本长篇小说的体量：</p>
+<ul>
+<li>《三国演义》约 64 万字</li>
+<li>《红楼梦》约 73 万字</li>
+<li>《西游记》约 82 万字</li>
+<li>《水浒传》约 96 万字</li>
+</ul>
+<p>也就是说，在最坏计费情况下，你和 AI 合作处理一本《西游记》体量的文本，成本大概也就几块钱。</p>
+<h3 id="0x46-安装-CLI"><a href="#0x46-安装-CLI" class="headerlink" title="0x46 安装 CLI"></a>0x46 安装 CLI</h3><p>OpenCode Desktop 已经足够普通用户使用了，但如果你是开发人员，最好再安装 CLI 版本。</p>
+<p>原因很简单：桌面版适合可视化操作，CLI 更适合嵌入真实工作流。比如在项目目录里直接启动 Agent、配合终端执行命令、让 AI 读写当前工程文件，这些都是 CLI 更顺手。</p>
+<p>最简单的安装方式，是直接让 OpenCode Desktop 帮你安装。在对话框里输入：</p>
+<pre class="line-numbers language-text"><code class="language-text">帮我安装 opencode 命令行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./12.jpg"></p>
+<p>因为前面已经安装过 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download">Node.js</a>，所以 Desktop 本质上只是帮我们执行下面这条命令：</p>
+<pre class="line-numbers language-sh"><code class="language-sh">npm i -g opencode-ai<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>安装完成后，打开系统终端并输入 <code>opencode</code>，即可进入 OpenCode CLI：</p>
+<p><img src="./13.jpg"></p>
+<p>CLI 的基本操作是：</p>
+<ul>
+<li>直接输入任意内容：和大模型对话</li>
+<li>输入 <code>/models</code>：切换大模型</li>
+<li>连续按下 <code>Tab</code>：切换 Agent 角色（默认只有 Plan / Build）</li>
+<li>输入 <code>/exit</code>：退出 CLI</li>
+</ul>
+<blockquote>
+<p>Agent 角色默认只有 Plan / Build，可以粗略理解为任务拆解时的自动分工：Plan 负责分析和规划，Build 负责执行和修改。后续也可以通过安装 <a target="_blank" rel="noopener" href="https://github.com/code-yeongyu/oh-my-openagent">oh-my-openagent</a> 扩展更多角色 … —— <em>详见文末 FAQ</em></p>
+</blockquote>
+<h3 id="0x47-配置-OpenCode"><a href="#0x47-配置-OpenCode" class="headerlink" title="0x47 配置 OpenCode"></a>0x47 配置 OpenCode</h3><p>OpenCode CLI 的全局配置文件路径如下（如果不存在就手动创建）：</p>
+<ul>
+<li>绝对路径：<code>%USERPROFILE%/.config/opencode/opencode.json</code></li>
+<li>相对路径：<code>~/.config/opencode/opencode.json</code></li>
+</ul>
+<blockquote>
+<p>Desktop 和 CLI 共用同一份全局配置</p>
+</blockquote>
+<p>最简单的 DeepSeek 配置如下：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://opencode.ai/config.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"provider"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"deepseek"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/openai-compatible"</span><span class="token punctuation">,</span>
+      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"https://api.deepseek.com/v1"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-deepseek-api-key-xxx"</span><span class="token punctuation">,</span>
+        <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"deepseek-v4-pro"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Pro（按量|文本）"
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"deepseek-v4-flash"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Flash（按量|文本）"
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中几个关键配置项的含义如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">配置项</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>deepseek</code></td>
+<td align="left">自定义 Provider 名称，后续用它标识 DeepSeek</td>
+</tr>
+<tr>
+<td align="left"><code>npm</code></td>
+<td align="left">使用 OpenAI 兼容协议适配器</td>
+</tr>
+<tr>
+<td align="left"><code>baseURL</code></td>
+<td align="left">DeepSeek API 地址：<code>https://api.deepseek.com/v1</code></td>
+</tr>
+<tr>
+<td align="left"><code>apiKey</code></td>
+<td align="left">在 DeepSeek 创建的 Key，例如 <code>sk-deepseek-api-key-xxx</code></td>
+</tr>
+<tr>
+<td align="left"><code>models</code></td>
+<td align="left">暴露给 OpenCode 使用的模型列表</td>
+</tr>
+<tr>
+<td align="left"><code>setCacheKey</code></td>
+<td align="left">开启缓存 Key，有助于复用上下文缓存</td>
+</tr>
+</tbody></table>
+<p>这些配置信息都可以在模型供应商的官网找到（如 DeepSeek 在 <a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/quick_start/pricing/">产品定价</a> 页面）。尤其注意不同平台的模型名经常会变，配置时应以官方文档为准。</p>
+<p>初学者可能现在看不懂某些配置项，譬如 <code>@ai-sdk/openai-compatible</code> 是什么意思？但是没关系，先按照这个配置格式复制使用即可，后面我们介绍 cc-switch 时会详细说明。</p>
+<p>配置好 <code>opencode.json</code> 后，重启 CLI / Desktop，OpenCode 就会自动重载配置。</p>
+<p>到目前为止，我们已经完成了 <strong>第一阶段</strong>：安装本地 Agent，并让它直接调用大模型。</p>
+<p><img src="./01.jpg"></p>
+<p>现在可以回到 Desktop，随便打开一个本地目录，然后选择 DeepSeek 大模型，让 AI 试着读取文件、修改文件、执行命令，感受一下 Agent 和网页聊天机器人的区别：它不是只会回答问题，而是已经开始具备本地操作能力。</p>
+<hr>
+<h2 id="0x50-大模型网关-new-api"><a href="#0x50-大模型网关-new-api" class="headerlink" title="0x50 大模型网关 new-api"></a>0x50 大模型网关 new-api</h2><p>前面介绍的是最简单的一条链路： Agent（OpenCode） 直连某个大模型供应商。</p>
+<p>这条链路足以覆盖日常编码、写作、资料整理和简单自动化任务。但随着使用深入，你很快会发现单一模型不够用：有些任务 DeepSeek 性价比高，有些复杂编码更适合 Claude，有些通用问答或资料处理可能更适合 GPT / Gemini。</p>
+<p>于是你开始购买多个模型服务，新的问题也随之出现：</p>
+<ul>
+<li>不同模型供应商的接口协议不同，Agent 需要分别适配</li>
+<li>模型名、版本、价格散落在各个平台，难以统一管理</li>
+<li>每个供应商都有自己的 API Key，配置和泄露风险都会变高</li>
+</ul>
+<p>有没有办法屏蔽这些差异，把所有模型统一接入 OpenCode，然后按需切换？</p>
+<p>有的，大模型网关就是为了解决这个问题而存在的。</p>
+<p><img src="./02.jpg"></p>
+<p>大模型网关位于 Agent 和模型供应商之间。对外，它提供统一的 OpenAI 兼容接口；对内，它根据模型名称把请求路由到不同的上游供应商。</p>
+<p>使用网关之后，OpenCode 只需要配置一个 <code>Base URL</code> 和一个网关 <code>API Key</code>。至于请求最终转发给 DeepSeek、OpenAI、Claude 还是 Gemini，交给网关处理即可。</p>
+<h3 id="0x51-部署"><a href="#0x51-部署" class="headerlink" title="0x51 部署"></a>0x51 部署</h3><p>这里推荐使用 Docker 部署开源大模型网关 <a target="_blank" rel="noopener" href="https://github.com/Calcium-Ion/new-api">new-api</a>。</p>
+<p>先到官网下载并安装 <a target="_blank" rel="noopener" href="https://www.docker.com/">Docker Desktop</a>。</p>
+<p>由于后面会在 new-api 中配置海外模型供应商，因此需要先处理 Docker 容器的网络代理。否则 new-api 在容器里启动了，但容器内部访问不了上游模型 API，最后还是会调用失败。</p>
+<p>代理需在 Docker Desktop 设置。</p>
+<p>依次选择 Settings <code>-&gt;</code> Resources <code>-&gt;</code> Proxies：</p>
+<ul>
+<li><code>Docker Desktop proxy</code>：主机代理，主要用于访问 DockerHub 镜像</li>
+<li><code>Containers proxy</code>：建议选择 <code>Same as host proxy</code>，让容器网络出口复用主机代理，也就是让后面部署的 new-api 容器可以正常访问境外模型服务</li>
+</ul>
+<blockquote>
+<p>版本太旧的 Docker Desktop 可能没有 <code>Containers proxy</code> 配置项，建议直接升级。不要在这里硬刚网络问题，没意义。</p>
+</blockquote>
+<p><img src="./14.jpg"></p>
+<p>然后到 GitHub 拉取 <code>new-api</code> 工程到本地，按项目文档使用 Docker 部署即可：</p>
+<pre class="line-numbers language-text"><code class="language-text">https://github.com/Calcium-Ion/new-api<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<blockquote>
+<p>不知道 Docker 怎么部署 new-api？你的 OpenCode 呢？问 AI 啦。既然都在搭 AI 环境了，这种细节就别再手搓了。</p>
+</blockquote>
+<p>new-api 启动后，即可访问控制台（首次访问需要设置管理员账号和密码）：</p>
+<pre class="line-numbers language-text"><code class="language-text">http://localhost:3000/console<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./15.jpg"></p>
+<h3 id="0x52-配置"><a href="#0x52-配置" class="headerlink" title="0x52 配置"></a>0x52 配置</h3><p>new-api 里的核心概念有三个：渠道、模型、令牌。</p>
+<table>
+<thead>
+<tr>
+<th align="left">概念</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">渠道</td>
+<td align="left">上游模型供应商，例如 DeepSeek / OpenAI / Claude</td>
+</tr>
+<tr>
+<td align="left">模型</td>
+<td align="left">对外暴露给 Agent 调用的模型名称</td>
+</tr>
+<tr>
+<td align="left">令牌</td>
+<td align="left">new-api 自己签发的 API Key，供 OpenCode 等 Agent 调用</td>
+</tr>
+</tbody></table>
+<p>第一步，进入「渠道管理」，添加上游真正的大模型服务供应商。</p>
+<p>添加渠道时，只需要先配置带 <code>*</code> 的必填项：</p>
+<ul>
+<li><strong>类型</strong>：从下拉框选择你购买的模型供应商</li>
+<li><strong>名称</strong>：自定义名称，能看懂这是哪个渠道即可</li>
+<li><strong>密钥</strong>：在模型供应商处创建的 API Key，后续由 new-api 代替 Agent 去调用上游模型</li>
+<li><strong>模型</strong>：填写常用模型名称即可，不要贪多；模型名以供应商官方文档为准</li>
+<li><strong>代理地址</strong>：如果前面已经配置了 <code>Containers proxy</code>，这里可以留空</li>
+</ul>
+<blockquote>
+<p>如果没有配置 <code>Containers proxy</code>，这里就需要填写容器可达的代理地址。注意不能填 <code>127.0.0.1</code>，因为这是容器自己的回环地址，不是宿主机地址。你需要把本地代理暴露到局域网，再填写类似 <code>http://192.168.x.x:端口</code> 的地址。</p>
+</blockquote>
+<p><img src="./27.jpg"></p>
+<p><img src="./17.jpg"></p>
+<p>第二步，进入「模型管理」，添加同名模型。</p>
+<p>注意，「渠道管理」里填写的 <strong>模型</strong> 只是告诉 new-api 这个渠道支持哪些上游模型；它还不能直接被 Agent 调用。你还需要在「模型管理」里一一添加同名模型。</p>
+<p>这里 <strong>名称匹配类型</strong> 选择 <code>精确名称匹配</code>。配置正确后，<strong>已绑定渠道</strong> 会自动关联对应渠道。之后 Agent 调用该模型名时，new-api 就会自动走这个渠道转发请求：</p>
+<p><img src="./16.jpg"></p>
+<p>第三步，配置模型价格。</p>
+<p>进入「系统设置」 <code>-&gt;</code> 分组与模型定价设置 <code>-&gt;</code> 价格设置，依次添加同名模型，并根据模型供应商的报价设置 <code>输入价格</code>，最后点击 <strong>应用更改</strong>：</p>
+<p><img src="./18.jpg"></p>
+<p>第四步，在「令牌管理」添加一个令牌，这就是 new-api 签发给 OpenCode 使用的 API Key：</p>
+<p><img src="./22.jpg"></p>
+<p>到这里，new-api 的核心配置就完成了。</p>
+<p>之后只要 OpenCode 使用 new-api 令牌调用某个模型，new-api 就会根据模型名找到绑定渠道，再由该渠道代理调用真正的大模型供应商。</p>
+<h3 id="0x53-对接"><a href="#0x53-对接" class="headerlink" title="0x53 对接"></a>0x53 对接</h3><p>现在编辑 OpenCode 的配置文件 <code>opencode.json</code>。</p>
+<p>前面在 new-api 里配置了多个上游渠道，这里也对应配置多组 <code>provider</code> ：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://opencode.ai/config.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"provider"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+
+    <span class="token property">"deepseek"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/openai-compatible"</span><span class="token punctuation">,</span>
+      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/v1"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-new-api-key-xxx"</span><span class="token punctuation">,</span>
+        <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"deepseek-v4-pro"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Pro（按量|文本）"
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">"deepseek-v4-flash"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Flash（按量|文本）"
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"openai"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/openai-compatible"</span><span class="token punctuation">,</span>
+      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/v1"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-new-api-key-xxx"</span><span class="token punctuation">,</span>
+        <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"gpt-5.4"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "GPT <span class="token number">5.4</span>（按量|文本）"
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"codex"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/openai"</span><span class="token punctuation">,</span>
+      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/v1"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-new-api-key-xxx"</span><span class="token punctuation">,</span>
+        <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"gpt-5.5"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "GPT <span class="token number">5.5</span>（包月|文本）"
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token property">"anthropic"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/anthropic"</span><span class="token punctuation">,</span>
+      <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/v1"</span><span class="token punctuation">,</span>
+        <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-new-api-key-xxx"</span><span class="token punctuation">,</span>
+        <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"claude-sonnet-4-6"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"name"</span><span class="token operator">:</span> "Claude Sonnet <span class="token number">4.6</span>（按量|文本）"
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>细心的同学应该已经发现：这 4 组配置的 <code>baseURL</code> 和 <code>apiKey</code> 完全一样，都是 new-api 的接入地址和令牌。</p>
+<p>区别只在 <code>provider</code> 名称、适配器 <code>npm</code> 和暴露出来的 <code>models</code> 不同。</p>
+<p>换句话说，现在 OpenCode 已经不需要分别直连 DeepSeek、OpenAI、Claude 这些上游供应商了，而是统一连接 new-api，由 new-api 再转发到真正的大模型服务：</p>
+<p><img src="./02.jpg"></p>
+<hr>
+<h2 id="0x60-cc-switch"><a href="#0x60-cc-switch" class="headerlink" title="0x60 cc-switch"></a>0x60 cc-switch</h2><p>上一章已经把大模型网关搭起来了，但新的问题也随之出现：<code>opencode.json</code> 变得越来越复杂。</p>
+<p>单独配置一个 DeepSeek 还好，一旦接入 DeepSeek、OpenAI、Claude、Gemini 等多个渠道，每个渠道又有不同的 <code>provider</code>、<code>npm</code>、<code>baseURL</code>、<code>apiKey</code>、<code>models</code>，非技术出身的同学想必越来越难理解复杂的 json 结构。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch">cc-switch</a> 的出现就是为了解决这个问题的。</p>
+<p>它可以把不同 Agent 的模型配置可视化管理起来，通过界面生成和维护 <code>opencode.json</code>，不需要每次都手写一大段 JSON。</p>
+<p><img src="./03.jpg"></p>
+<h3 id="0x61-安装"><a href="#0x61-安装" class="headerlink" title="0x61 安装"></a>0x61 安装</h3><p>进入 cc-switch 的 GitHub 发布页，下载对应系统版本并安装即可：</p>
+<pre class="line-numbers language-text"><code class="language-text">https://github.com/farion1231/cc-switch/releases<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>初始状态下，cc-switch 顶部会显示一排支持的 Agent：</p>
+<p><img src="./30.jpg"></p>
+<p>由于本文目前只安装了 OpenCode 一个 Agent ，因此可以先从左上角设置里隐藏暂时用不到的 Agent，避免界面干扰：</p>
+<p><img src="./29.jpg"></p>
+<h3 id="0x62-配置"><a href="#0x62-配置" class="headerlink" title="0x62 配置"></a>0x62 配置</h3><p>下面以配置 OpenCode 为例。</p>
+<p>先在 cc-switch 顶部选中 OpenCode，然后点击右上角的 <code>+</code> 添加模型供应商：</p>
+<p><img src="./28.jpg"></p>
+<p>这里的界面，本质上就是把 <code>opencode.json</code> 里的每个配置项拆成表单字段。你从上到下依次填写，cc-switch 会在底部实时生成对应的 JSON 配置。</p>
+<p>由于本文使用的是自己搭建的 new-api，所以 <strong>预设供应商</strong> 选择 <code>自定义配置</code>。</p>
+<p><strong>图标</strong>、<strong>供应商名称</strong>、<strong>备注</strong>、<strong>官网链接</strong> 都不会写入 <code>opencode.json</code>，它们只是 cc-switch 自己用来展示的关联信息，按个人喜好填写或留空都可以。</p>
+<p><img src="./31.jpg"></p>
+<p><strong>供应商标识</strong> 对应 <code>opencode.json</code> 里的 <code>provider</code> 名称，保持唯一即可。这里建议直接填写 new-api 中对应的渠道名，例如 <code>deepseek</code>。</p>
+<p><strong>API key</strong> 对应 <code>apiKey</code>，这里填写 new-api 签发的令牌，例如 <code>sk-new-api-key-xxx</code>。</p>
+<p><strong>Base URL</strong> 对应 <code>baseURL</code>，这里填写 new-api 的固定接入地址：<code>http://localhost:3000/v1</code>。</p>
+<p><strong>接口格式</strong> 对应 <code>npm</code>，它决定 OpenCode 用哪一种协议适配器去请求模型。cc-switch 目前支持的格式如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">接口格式</th>
+<th align="center">npm 包</th>
+<th align="center">端点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">OpenAI Compatible</td>
+<td align="center"><code>@ai-sdk/openai-compatible</code></td>
+<td align="center"><code>/chat/completions</code></td>
+</tr>
+<tr>
+<td align="center">OpenAI Responses</td>
+<td align="center"><code>@ai-sdk/openai</code></td>
+<td align="center"><code>/responses</code></td>
+</tr>
+<tr>
+<td align="center">Anthropic</td>
+<td align="center"><code>@ai-sdk/anthropic</code></td>
+<td align="center"><code>/messages</code></td>
+</tr>
+<tr>
+<td align="center">Amazon Bedrock</td>
+<td align="center"><code>@ai-sdk/amazon-bedrock</code></td>
+<td align="center"><code>/model/{modelId}/converse</code></td>
+</tr>
+<tr>
+<td align="center">Google Gemini</td>
+<td align="center"><code>@ai-sdk/google</code></td>
+<td align="center"><code>/models/{model}:generateContent</code></td>
+</tr>
+</tbody></table>
+<p>为什么需要这个 <code>npm</code> 配置？根因是不同模型提供商的协议格式、请求路径、鉴权方式、请求体结构都不完全一样。<code>npm</code> 适配器的作用，就是把这些差异封装掉。</p>
+<p>以 <code>OpenAI Compatible</code> 为例，适配器会把 <code>baseURL</code> 和端点拼成真正的请求路径：</p>
+<pre class="line-numbers language-text"><code class="language-text">http://localhost:3000/v1/chat/completions<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后再把 prompt 包装成标准请求体发送给大模型：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"gpt-5.5"</span><span class="token punctuation">,</span>
+  <span class="token property">"messages"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token property">"role"</span><span class="token operator">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span> <span class="token property">"content"</span><span class="token operator">:</span> <span class="token string">"用户输入的 prompt"</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这种格式就是经典的 ChatGPT 聊天模型的接口交互格式。</p>
+<p>后来 OpenAI 又推出了更适合 Agent 工具调用场景的 <code>OpenAI Responses</code> 格式：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"gpt-5.5"</span><span class="token punctuation">,</span>
+  <span class="token property">"input"</span><span class="token operator">:</span> <span class="token string">"用户输入的 prompt"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>目前业界大多数模型服务都会兼容 OpenAI 协议，但 OpenAI 的竞争对手出于商业和生态考虑，也会维护自己的接口格式，所以才会看到 Anthropic、Amazon Bedrock、Google Gemini 这些不同选项。</p>
+<p>DeepSeek 为了降低接入成本，直接兼容 OpenAI 协议。因此这里选择 <code>OpenAI Compatible</code> 即可。</p>
+<p><img src="./32.jpg"></p>
+<p><strong>额外选项</strong> 是适配器支持的附加参数，不确定含义时可以留空。一般建议加上 <code>setCacheKey: true</code>，让上下文尽量命中缓存，从而节省 token 成本。</p>
+<p><strong>模型配置</strong> 选择 new-api「模型管理」中已经绑定到当前渠道的模型即可。注意 <strong>模型 ID</strong> 必须与 new-api 里的模型名称完全一致；<strong>显示名称</strong> 只是给自己看的，按喜好填写即可。</p>
+<p>完成前面的配置后，cc-switch 会实时生成一段 <code>opencode.json</code> 配置预览：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"npm"</span><span class="token operator">:</span> <span class="token string">"@ai-sdk/openai-compatible"</span><span class="token punctuation">,</span>
+  <span class="token property">"options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"baseURL"</span><span class="token operator">:</span> <span class="token string">"http://localhost:3000/v1"</span><span class="token punctuation">,</span>
+    <span class="token property">"apiKey"</span><span class="token operator">:</span> <span class="token string">"sk-new-api-key-xxx"</span><span class="token punctuation">,</span>
+    <span class="token property">"setCacheKey"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"models"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"deepseek-v4-pro"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Pro（按量|文本）"
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"deepseek-v4-flash"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"name"</span><span class="token operator">:</span> "DeepSeek V4 Flash（按量|文本）"
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="0x63-使用"><a href="#0x63-使用" class="headerlink" title="0x63 使用"></a>0x63 使用</h3><p>确认配置无误后，点击 <strong>保存</strong>，返回模型渠道的供应商列表；然后再点击 <strong>添加</strong>，这组 Provider 配置就会追加到 <code>opencode.json</code>。</p>
+<p><img src="./33.jpg"></p>
+<p>最后重启 OpenCode，新的模型配置就会生效：</p>
+<p><img src="./34.jpg"></p>
+<p>到这里，你应该已经理解到， cc-switch 并不实际参与到运行时调用链里。它更像是一个配置生成器和配置管理器，帮用户把复杂的 <code>opencode.json</code> 管起来。</p>
+<hr>
+<h2 id="0x70-AI-Skill"><a href="#0x70-AI-Skill" class="headerlink" title="0x70 AI Skill"></a>0x70 AI Skill</h2><p>前三个阶段解决的都是入口问题：让 AI 能在本地跑起来，能接入多个模型，能更方便地维护模型配置。</p>
+<p>但随着使用深入，另一个更本质的问题会暴露出来：<strong>AI 在重复任务上缺乏积累</strong>。</p>
+<ul>
+<li>同样是写博客文章，你每次都要提醒 Agent 使用 Markdown、Front Matter、十六进制章节编号、图片路径规范</li>
+<li>同样是代码审查，你每次都要提醒它检查 SQL 注入、XSS、SSRF、权限控制、硬编码密钥</li>
+<li>同样是写技术方案，你每次都要告诉它先写背景、目标、方案对比、安全考量、风险降级</li>
+</ul>
+<p>这些规则不是模型不知道，而是它不会自动知道「你这里」应该怎么做。每次重新解释一遍，既浪费时间，也浪费 Token。</p>
+<p>而 <strong>Skill</strong> 就是来解决这个问题的。</p>
+<p>Skill 本质上是一份结构化的任务指令集，用来沉淀某类任务的目标、规则、约束、流程和参考材料。安装 Skill 后，Agent 在遇到对应任务时可以自动加载这份上下文，不需要你每次从零交代。</p>
+<p>简而言之，Agent 解决「谁来干活」，Model 解决「脑子聪不聪明」，Skill 解决「这类活应该怎么干」。</p>
+<p><img src="./04.jpg"></p>
+<h3 id="0x71-Skill-结构"><a href="#0x71-Skill-结构" class="headerlink" title="0x71 Skill 结构"></a>0x71 Skill 结构</h3><p>以 OpenCode 为例，一个 Skill 通常放在 <code>~/.config/opencode/skills/</code> 目录下。典型结构如下：</p>
+<pre class="line-numbers language-text"><code class="language-text">skills/
+├── skill-name/
+│   ├── SKILL.md      # 必选，Skill 定义文件
+│   ├── references/   # 可选，长文档/规范/资料
+│   ├── assets/       # 可选，图片/模板/示例文件
+│   └── scripts/      # 可选，可执行脚本
+│       └── check.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>其中最关键的是 <code>SKILL.md</code>。它不是普通说明文档，而是给 Agent 读的任务说明书，通常需要包含：</p>
+<table>
+<thead>
+<tr>
+<th align="left">模块</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Skill 名称</td>
+<td align="left">让 Agent 知道这个 Skill 是干什么的</td>
+</tr>
+<tr>
+<td align="left">触发场景</td>
+<td align="left">说明什么时候应该使用这个 Skill</td>
+</tr>
+<tr>
+<td align="left">工作流程</td>
+<td align="left">告诉 Agent 遇到任务后按什么步骤执行</td>
+</tr>
+<tr>
+<td align="left">约束规则</td>
+<td align="left">明确不能做什么、必须做什么</td>
+</tr>
+<tr>
+<td align="left">输出格式</td>
+<td align="left">规定最终结果应该长什么样</td>
+</tr>
+<tr>
+<td align="left">参考资料</td>
+<td align="left">必要时指向 <code>references/</code> 里的长文档</td>
+</tr>
+</tbody></table>
+<p>Skill 最核心的设计是 <strong>渐进式披露</strong>： 它不是一开始就把所有资料都塞进上下文窗口，而是先让 Agent 读取 <code>SKILL.md</code> 里的概要规则；只有当任务确实需要更细的材料时，再继续读取 <code>references/</code>、<code>assets/</code> 或 <code>scripts/</code>。</p>
+<p>推荐观看这个教程更深入地学习 Skill 的原理和技巧：</p>
+<iframe src="https://player.bilibili.com/player.html?autoplay=0&amp;bvid=BV1G3FNznEiS" width="100%" height="460" title="手把手彻底学会 Agent Skills！【小白教程】" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="true">
+</iframe>
+
+
+
+<h3 id="0x72-使用-Skill"><a href="#0x72-使用-Skill" class="headerlink" title="0x72 使用 Skill"></a>0x72 使用 Skill</h3><p>一开始不知道怎么写 Skill，建议先用别人已经写好的。</p>
+<p>鹅厂已经在国内做了一个 SkillHub 镜像库：</p>
+<pre class="line-numbers language-text"><code class="language-text">https://skillhub.cn/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以在里面搜索现成 Skill，下载后放到 OpenCode 的 <code>skills</code> 目录里使用。</p>
+<p>但这里要注意：<strong>不要随便安装来路不明的 Skill</strong>。</p>
+<p>因为 Skill 不只是提示词，它还可能包含脚本、命令、工具调用说明，甚至诱导 Agent 执行危险操作。一个恶意 Skill 完全可以让 Agent 读取你的环境变量、扫描本地文件、上传敏感信息。</p>
+<blockquote>
+<p>不要把 Skill 当成 Agent 的主题皮肤，它更像 Agent 的插件，而插件就有供应链投毒风险。</p>
+</blockquote>
+<p>所以安装第三方 Skill 前，建议先安装一个专门用来检查 Skill 安全性的 Skill：</p>
+<p><strong>下载</strong> <a href="./skill-vetter-1.0.0.zip">skill-vetter</a> 并解压到 <code>~/.config/opencode/skills/</code> 目录（需重启 OpenCode 以重载）。</p>
+<p>它的作用是在安装第三方 Skill 前，主动检查其中是否存在危险指令、异常权限要求、可疑脚本和过度宽泛的触发条件。</p>
+<p>以后准备安装新的 Skill 时，就可以像这样直接触发安全检查：</p>
+<pre class="line-numbers language-text"><code class="language-text">/skill-vetter 帮我审查这个 Skill 是否安全：<Skill 位置><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="./35.jpg"></p>
+<blockquote>
+<p>skill-vetter 预设了触发场景和触发词。一般情况下，只要你让 Agent 帮忙安装 Skill，它就会自动触发安全检查。</p>
+</blockquote>
+<h3 id="0x73-创建-Skill"><a href="#0x73-创建-Skill" class="headerlink" title="0x73 创建 Skill"></a>0x73 创建 Skill</h3><p>当你在 SkillHub 上找不到合适的 Skill，或者找到了却不好用，就可以考虑自己创建或优化 Skill。</p>
+<p>尤其是当你开始反复做同一类任务时，就更应该把它沉淀成自己的 Skill。</p>
+<p>更进一步，如果某个动作已经足够标准化，就不要只停留在 Skill 指令层，而应该继续沉淀成 Skill  的 <code>script</code>。</p>
+<p>Skill 适合描述「该怎么做」，script 适合执行「固定动作」。前者负责流程和判断，后者负责稳定执行。把可重复、可验证、输入输出明确的步骤下沉成脚本，不仅能节省 Token，还能减少模型随机性。</p>
+<p>所以一个成熟 Skill 更像工作流：<code>SKILL.md</code> 负责调度和规则，<code>references/</code> 提供知识材料，<code>scripts/</code> 执行标准动作。</p>
+<p>如果不知道怎么写 Skill，可以安装一个专门创建 Skill 的 Skill：</p>
+<p><strong>下载</strong> <a href="./qiuzhi-skill-creator.zip">qiuzhi-skill-creator</a> 并解压到 <code>~/.config/opencode/skills/</code> 目录（需重启 OpenCode 以重载）</p>
+<blockquote>
+<p>99% 的 Skill 都不应该靠人工写，而应该让 AI 先生成，再由人审查和修正。</p>
+</blockquote>
+<p>安装后可以直接在 OpenCode 像这样调用：</p>
+<pre class="line-numbers language-text"><code class="language-text">/qiuzhi-skill-creator 帮我创建一个用于写博客的 Skill<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>它会通过提问的方式帮你梳理：这个 Skill 解决什么问题、什么时候触发、应该遵守什么规则、输出格式是什么、需要哪些参考资料。</p>
+<p><img src="./36.jpg"></p>
+<blockquote>
+<p>建议最开始不要急着设计 Skill。先让 AI 帮你解决一个具体问题，陪着它完整走一遍流程，等流程跑通后，再让 AI 把这套过程提炼成 Skill。先有实践经验，再抽象规则，这才是最合理的步骤。</p>
+</blockquote>
+<h2 id="0x80-总结"><a href="#0x80-总结" class="headerlink" title="0x80 总结"></a>0x80 总结</h2><p>到这里为止，基础 AI 环境就从头到尾解释清楚了：</p>
+<table>
+<thead>
+<tr>
+<th align="center">阶段</th>
+<th align="left">架构</th>
+<th align="left">解决的问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">一</td>
+<td align="left">Agent</td>
+<td align="left">让 AI 从网页聊天进入本地工作流</td>
+</tr>
+<tr>
+<td align="center">二</td>
+<td align="left">大模型网关</td>
+<td align="left">统一接入多个上游模型</td>
+</tr>
+<tr>
+<td align="center">三</td>
+<td align="left">cc-switch</td>
+<td align="left">降低多模型配置的理解和维护成本</td>
+</tr>
+<tr>
+<td align="center">四</td>
+<td align="left">Skill</td>
+<td align="left">把重复任务沉淀成可复用能力</td>
+</tr>
+</tbody></table>
+<p><img src="./00.jpg"></p>
+<p>很多人折腾 AI 环境时，只停留在「装了什么工具」「接了什么模型」这个层面。</p>
+<p>但真正决定长期效率的，不是今天用了哪个模型，而是你有没有理解这条调用链的原理，有没有把自己的工作方式沉淀下来。</p>
+<p>工具会过时，模型会换代，只有沉淀下来的知识和工作流，才是自己的核心价值和竞争力。</p>
+<blockquote>
+<p>好比我开始写这篇文章的时候，整个圈子还在追捧 OpenClaw，仿佛每个人都必须装一只小龙虾。当时我就劝身边的人别装。待我写完这篇文章后，OpenClaw 的热度已经趋近于 0 了。恰恰应了那句话：海水退潮后，才知道谁在裸泳。</p>
+</blockquote>
+<hr>
+<h2 id="0xF0-FAQ"><a href="#0xF0-FAQ" class="headerlink" title="0xF0 FAQ"></a>0xF0 FAQ</h2><h3 id="0xF1-什么是-Harness-工程"><a href="#0xF1-什么是-Harness-工程" class="headerlink" title="0xF1 什么是 Harness 工程"></a>0xF1 什么是 Harness 工程</h3><p>OpenCode 官方文档里提到它是一个 <strong>Harness 工程</strong>。这个词看起来很抽象，其实可以先粗暴理解成「整合器」。</p>
+<p>它不是一个单纯的聊天窗口，也不是一个单纯的命令行工具，而是把 Agent、Skill、MCP 这些能力打包到一起，给用户提供一个能直接使用的 AI 工作环境。</p>
+<p>打个比方：如果把 AI 环境比作一台电脑，那么：</p>
+<table>
+<thead>
+<tr>
+<th align="left">组件</th>
+<th align="left">作用</th>
+<th align="left">类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Agent</td>
+<td align="left">操作入口，负责理解任务、调用模型、执行动作</td>
+<td align="left">使用电脑的人</td>
+</tr>
+<tr>
+<td align="left">Skill</td>
+<td align="left">任务说明书，告诉 Agent 某类任务应该怎么做</td>
+<td align="left">操作手册 / SOP</td>
+</tr>
+<tr>
+<td align="left">MCP</td>
+<td align="left">工具连接协议，让 Agent 能访问外部系统</td>
+<td align="left">USB 接口 / 驱动程序</td>
+</tr>
+<tr>
+<td align="left">Harness</td>
+<td align="left">把这些东西整合起来的运行环境</td>
+<td align="left">整台电脑</td>
+</tr>
+</tbody></table>
+<p>所以 Harness 工程的重点不是「某一个功能特别强」，而是 <strong>把一堆分散能力组合成一个可用系统</strong>。</p>
+<p>如果没有 Harness，你可能需要自己分别处理：怎么和模型对话、怎么管理 Skill、怎么接 MCP、怎么读写文件、怎么执行命令。OpenCode 直接把这些能力整合好，你打开就能用。</p>
+<p>再换个更日常的类比：Chrome 也可以看成一个 Harness。它不是只有一个网页渲染功能，而是整合了标签页、书签、V8 引擎、扩展系统、Web API。你不需要分别安装这些东西，打开 Chrome 就全有了。</p>
+<p>OpenCode 也是这个思路：把 AI Agent 所需的关键能力整合在一起，让你不用从零拼装。</p>
+<h3 id="0xF2-Agent-与-Skill-与-MCP-的关系"><a href="#0xF2-Agent-与-Skill-与-MCP-的关系" class="headerlink" title="0xF2 Agent 与 Skill 与 MCP 的关系"></a>0xF2 Agent 与 Skill 与 MCP 的关系</h3><p>这三个概念最容易混在一起。直接给结论：</p>
+<table>
+<thead>
+<tr>
+<th align="left">概念</th>
+<th align="left">解决的问题</th>
+<th align="left">一句话理解</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Agent</td>
+<td align="left">谁来执行任务</td>
+<td align="left">干活的人</td>
+</tr>
+<tr>
+<td align="left">Skill</td>
+<td align="left">任务应该怎么做</td>
+<td align="left">操作手册</td>
+</tr>
+<tr>
+<td align="left">MCP</td>
+<td align="left">怎么连接外部工具和数据</td>
+<td align="left">工具接口</td>
+</tr>
+</tbody></table>
+<ol>
+<li><strong>MCP 解决连接性问题</strong>： MCP 的职责是让 Agent 能够连接外部世界，比如文件系统、数据库、浏览器、GitHub、API 服务。它回答的是「能不能访问」「怎么调用」的问题。</li>
+<li><strong>Skill 解决能力问题</strong>： Skill 的职责是提供领域知识、操作流程和最佳实践。它回答的是「拿到工具后应该怎么做」的问题。比如同样是访问数据库，MCP 只负责让 Agent 能查库；Skill 才会告诉它怎么写安全 SQL、怎么理解业务指标、怎么输出分析结论。</li>
+<li><strong>Skill 和 MCP 不是竞争关系，而是分层关系</strong>： MCP 像工具接口，Skill 像操作手册。一个负责「够得着」，一个负责「用得对」。真正好用的 Agent 往往是两者结合：Skill 负责拆解任务和提供方法论，MCP 负责执行具体工具调用。</li>
+</ol>
+<p>用代码审查举例：</p>
+<pre class="line-numbers language-text"><code class="language-text">用户：审查这个项目的安全问题
+
+Agent：理解任务，决定要做安全审查
+Skill：加载安全审查规则，知道要检查 SQL 注入、XSS、SSRF、硬编码密钥、权限绕过
+MCP：提供文件读取、搜索、命令执行等工具接口
+Agent：按 Skill 的流程调用 MCP 工具，最后输出审查报告<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>没有 Agent，没人调度；没有 Skill，Agent 不知道审什么；没有 MCP，Agent 只能纸上谈兵，碰不到真实文件和系统。</p>
+<p>这就是三者的关系。</p>
+<blockquote>
+<p>参考文章《<a target="_blank" rel="noopener" href="https://github.com/datawhalechina/hello-agents/blob/main/Extra-Chapter/Extra05-AgentSkills%E8%A7%A3%E8%AF%BB.md">Agent Skills 与 MCP：智能体能力扩展的两种范式</a>》</p>
+</blockquote>
+<h3 id="0xF3-为什么不推荐个人私有化部署大模型"><a href="#0xF3-为什么不推荐个人私有化部署大模型" class="headerlink" title="0xF3 为什么不推荐个人私有化部署大模型"></a>0xF3 为什么不推荐个人私有化部署大模型</h3><p>很多人觉得「大模型能本地跑就免费了，何必买 API」，这个想法坑过不少人。根因是只看到了 API 账单，没看到本地部署的隐性成本。</p>
+<table>
+<thead>
+<tr>
+<th align="left">成本</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">输出质量</td>
+<td align="left">小模型能跑不等于好用，很多复杂推理、长上下文、代码任务最后还是要回到云端强模型</td>
+</tr>
+<tr>
+<td align="left">硬件成本</td>
+<td align="left">能流畅运行 7B 模型的 GPU 至少需要 8GB 显存，70B 模型需要 80GB+ 显存；一张显卡动辄大几千，够个人 API 用很久</td>
+</tr>
+<tr>
+<td align="left">性能差距</td>
+<td align="left">本地开源模型和云端顶级商用模型不是一个量级，Claude、GPT、DeepSeek 顶级版本本地基本跑不动</td>
+</tr>
+<tr>
+<td align="left">维护成本</td>
+<td align="left">本地部署需要自己处理模型文件、推理框架、CUDA、显卡驱动、依赖版本和升级兼容</td>
+</tr>
+<tr>
+<td align="left">电力成本</td>
+<td align="left">GPU 满载功耗两三百瓦，长时间运行的电费和噪音都不是 0</td>
+</tr>
+</tbody></table>
+<p>可能适合个人本地部署的场景：<strong>数据敏感且必须离线</strong>，或者你纯粹想学习模型部署和推理原理。</p>
+<p>否则，买 API 才是最务实的选择。</p>
+<h3 id="0xF4-new-api-非自用怎么计费"><a href="#0xF4-new-api-非自用怎么计费" class="headerlink" title="0xF4 new-api 非自用怎么计费"></a>0xF4 new-api 非自用怎么计费</h3><p>new-api 不只是个人中转工具，它本身也支持多人使用和运营计费。因此它签发的令牌，可以面向不同用户、不同场景设置额度。</p>
+<p>若要开启令牌计费模式，需进入「系统设置」 <code>-&gt;</code> 运营设置 <code>-&gt;</code> 自动模式，关闭开关并点击 <strong>保存通用设置</strong>：</p>
+<p><img src="./21.jpg"></p>
+<p>然后在「兑换码管理」中添加不同额度的兑换码：</p>
+<p><img src="./19.jpg"></p>
+<p>再到「钱包管理」中使用兑换码为令牌充值：</p>
+<p><img src="./20.jpg"></p>
+<p>这样就形成了一套最基本的用户计费闭环。</p>
+<p>如果要做成真正面向用户的系统，还可以基于 <a target="_blank" rel="noopener" href="https://docs.newapi.pro/zh/docs/api">new-api 接口文档</a> 串联注册、充值、发放令牌、消费统计等流程。</p>
+<h3 id="0xF5-prompt-怎么输入图片"><a href="#0xF5-prompt-怎么输入图片" class="headerlink" title="0xF5 prompt 怎么输入图片"></a>0xF5 prompt 怎么输入图片</h3><p>使用过程中，你可能会发现 OpenCode 无法识别图片：</p>
+<p><img src="./42.jpg"></p>
+<p>这个问题的根因通常不在 OpenCode，而在模型能力。</p>
+<p>不是所有模型都能看图。文本模型只能处理文字；多模态模型才能同时处理文字和图片。比如 DeepSeek 大多数模型主要是文本模型，而 GPT / Gemini / Claude 的部分模型支持视觉输入。</p>
+<p>所以排查顺序应该是：</p>
+<ol>
+<li>先确认当前模型是否支持多模态输入</li>
+<li>再确认 OpenCode 配置里是否声明了图片输入能力</li>
+<li>最后再测试图片是否能被正确传给模型</li>
+</ol>
+<p>除了模型本身要支持视觉输入之外，还需要在 <code>opencode.json</code> 中打开模型的多模态声明。</p>
+<p>用 cc-switch 配置时，可以这样操作：</p>
+<ol>
+<li>编辑模型配置，点击右侧 <code>+</code> 添加 <strong>模型属性</strong></li>
+<li>新增属性 <code>modalities</code></li>
+<li>设置属性值为：</li>
+</ol>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"input"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">,</span><span class="token string">"image"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token property">"output"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>其含义是：该模型输入支持文本和图像，输出支持文本。</p>
+<p>配置完成后再测试图片识别：</p>
+<p><img src="./41.jpg"></p>
+<p>如果这时能正确识别图片内容，就说明识图链路打通了。</p>
+<h3 id="0xF6-一人成团：Oh-My-OpenAgent"><a href="#0xF6-一人成团：Oh-My-OpenAgent" class="headerlink" title="0xF6 一人成团：Oh-My-OpenAgent"></a>0xF6 一人成团：Oh-My-OpenAgent</h3><p>OpenCode 默认只有 Plan / Build 两个基础角色，可以粗略理解为：</p>
+<ul>
+<li><strong>Plan</strong>：负责分析问题、拆解任务、制定方案</li>
+<li><strong>Build</strong>：负责执行方案、修改文件、运行命令</li>
+</ul>
+<p>对于简单任务，这两个角色已经够用。但如果你希望 AI 像一个小团队一样分工协作，就可以考虑安装 <a target="_blank" rel="noopener" href="https://github.com/code-yeongyu/oh-my-openagent">Oh-My-OpenAgent</a>。</p>
+<p>Oh-My-OpenAgent 的定位不是普通 Skill，而是一个多 Agent 编排 Harness。它会给 OpenCode 扩展一组专业角色，让不同任务交给不同 Agent 处理。</p>
+<p>根据官方说明，它提供了多类专业 Agent，例如：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Agent</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Sisyphus</td>
+<td align="left">主协调者，负责理解意图、拆解任务、调度其他 Agent</td>
+</tr>
+<tr>
+<td align="left">Prometheus</td>
+<td align="left">规划者，适合需求不清晰、需要先制定方案的任务</td>
+</tr>
+<tr>
+<td align="left">Oracle</td>
+<td align="left">架构 / Debug 顾问，适合复杂设计和疑难问题</td>
+</tr>
+<tr>
+<td align="left">Librarian</td>
+<td align="left">文档和开源代码检索，适合查库、查 API、查最佳实践</td>
+</tr>
+<tr>
+<td align="left">Explore</td>
+<td align="left">代码库搜索，适合快速理解项目结构和已有实现</td>
+</tr>
+<tr>
+<td align="left">Multimodal Looker</td>
+<td align="left">图片 / PDF 等多模态内容分析</td>
+</tr>
+<tr>
+<td align="left">Sisyphus-Junior</td>
+<td align="left">分类执行器，根据任务类型执行具体修改</td>
+</tr>
+</tbody></table>
+<p>它的本质是把「一个 AI 干所有事」变成「多个专业 AI 分工协作」。</p>
+<p>比如你让它改一个复杂功能，它可能会先让 Planner 分析需求，再让 Explore 查项目结构，让 Librarian 查外部文档，让 Build 类 Agent 执行修改，最后再做验证。这个体验就很像一个人带着一支虚拟小队干活。</p>
+<p>安装方法也很简单，让 OpenCode 帮你装就好啦 ~ </p>
+<p><img src="./43.jpg"></p>
+<p>甚至还可以让 AI 直接为不同的角色分配不同的模型：</p>
+<table>
+<thead>
+<tr>
+<th align="center">任务层级</th>
+<th align="center">模型</th>
+<th align="left">Agent 角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">编码任务</td>
+<td align="center"><code>codex/gpt-5.5</code></td>
+<td align="left">hephaestus, atlas, visual-engineering</td>
+</tr>
+<tr>
+<td align="center">复杂任务</td>
+<td align="center"><code>deepseek/deepseek-v4-pro</code></td>
+<td align="left">sisyphus, oracle, prometheus, momus, metis, deep, ultrabrain, unspecified-high</td>
+</tr>
+<tr>
+<td align="center">简单任务</td>
+<td align="center"><code>deepseek/deepseek-v4-flash</code></td>
+<td align="left">librarian, explore, sisyphus-junior, multimodal-looker, quick, writing, artistry, unspecified-low</td>
+</tr>
+</tbody></table>
+<p>最终得到配置 <code>~/.config/opencode/oh-my-openagent.json</code> ：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/dev/assets/oh-my-opencode.schema.json"</span><span class="token punctuation">,</span>
+  <span class="token property">"agents"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"sisyphus"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"hephaestus"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"codex/gpt-5.5"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"oracle"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"prometheus"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"atlas"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"codex/gpt-5.5"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"momus"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"metis"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"librarian"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"explore"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"sisyphus-junior"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"multimodal-looker"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"categories"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"quick"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"unspecified-low"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"unspecified-high"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"deep"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"ultrabrain"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-pro"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"visual-engineering"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"codex/gpt-5.5"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"writing"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"artistry"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"model"</span><span class="token operator">:</span> <span class="token string">"deepseek/deepseek-v4-flash"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">EXP</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://exp-blog.com/ai/ai-env/">https://exp-blog.com/ai/ai-env/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">EXP</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/AI/">
+                                    
+                                        <span class="chip bg-color">AI</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/Agent/">
+                                    
+                                        <span class="chip bg-color">Agent</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/new-api/">
+                                    
+                                        <span class="chip bg-color">new-api</span>
+                                    
+                                </a>
+                            
+                                <a href="/tags/skill/">
+                                    
+                                        <span class="chip bg-color">skill</span>
+                                    
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 360px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 300px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .paypal-tab .active {
+        color: #fff !important;
+        background-color: #053146 !important;
+    }
+
+    .reward-tabs .kofi-tab .active {
+        color: #fff !important;
+        background-color: #e80180 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                        <li class="tab col s6 kofi-tab waves-effect waves-light"><a href="#kofi">KO-FI</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="kofi">
+                        <img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/reward/kofi.png" class="reward-img" alt="KO-FI 打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+
+        <!-- 底部评论区广告 -->
+        
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/ai/new-api-link-copilot/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/ai/copilot.jpg" class="responsive-img" alt="new-api 对接 Copilot 笔记">
+                        
+                        <span class="card-title">new-api 对接 Copilot 笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            记录如何通过 copilot-api 将 GitHub Copilot 转换为 OpenAI Compatible 接口，再作为 new-api 渠道接入 OpenCode，从而让 OpenCode 使用 Copilot 订阅中的 Claude、Gemini、GPT 等模型。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-05-31
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/GitHub/">
+                        <span class="chip bg-color">GitHub</span>
+                    </a>
+                    
+                    <a href="/tags/Copilot/">
+                        <span class="chip bg-color">Copilot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/travel/ru-he-shi-yong-ai-yi-jian-gui-hua-lu-xing-xing-cheng/">
+                    <div class="card-image">
+                        
+                        <img src="/images/article/travel/ai.jpg" class="responsive-img" alt="如何使用 AI 一键规划旅行行程">
+                        
+                        <span class="card-title">如何使用 AI 一键规划旅行行程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            春节带家人自由行，最怕的不是人多，是“没攻略还订不到房”。用 AI 一条提示词出攻略，一键导入手机随时打开，地图路线行程预算清清楚楚，从此旅行再也不用担心迷路了呢 ~
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-02
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%97%85%E8%A1%8C/" class="post-category">
+                                    旅行
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%97%85%E8%A1%8C%E8%A1%8C%E7%A8%8B/">
+                        <span class="chip bg-color">旅行行程</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%97%85%E8%A1%8C%E6%94%BB%E7%95%A5/">
+                        <span class="chip bg-color">旅行攻略</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 眈眈探求<br />'
+            + '文章作者: EXP<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+<!-- 昼夜更替按钮 -->
+<!-- 白天和黑夜主题 -->
+<div id="sum-moon-box" class="sum-moon-box">
+    <a class="btn-floating btn-large waves-effect waves-light" onclick="switchNightMode()" title="昼夜更替">
+        <i id="sum-moon-icon" class="fas fa-sun" style="width:48px; height:48px; font-size: 28px;"></i>
+    </a>
+</div>
+
+<!-- 昼夜切换 -->
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+            setTimeout(function () {
+                $('body').hasClass('DarkMode')
+                    ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon'))
+                    : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+
+                    setTimeout(function () {
+                        $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                            $(this).remove()
+                        })
+                    }, 2e3)
+            })
+    }
+</script>
+
+
+<!-- 黑夜模式持久化 -->
+<script>
+    /* 模式判断 */
+    if (localStorage.getItem('isDark') === '1') {
+        document.body.classList.add('DarkMode');
+        $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')
+    } else {
+        document.body.classList.remove('DarkMode');
+        $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')
+    }
+</script>
+
+
+<!-- 移动端不显示昼夜切换按钮 -->
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        if(isMobile()) {
+            document.querySelector('#sum-moon-box').style.display = 'none';
+        }
+    })();
+</script>
+
+
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+</div>
+
+
+<!-- 侧栏浮动广告 -->
+
+    <div id="google-ad-post-left" style="position: fixed; left: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-左 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="1280613842"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<div id="google-ad-post-right" style="position: fixed; right: 0%; top: 42%; width: 250px; z-index: -1;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4642672915857408" crossorigin="anonymous"></script>
+    <!-- 侧栏广告-右 -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-4642672915857408"
+        data-ad-slot="2059343046"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+<script type="text/javascript">
+    (function() {
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // 移动端不显示侧栏广告
+        if(isMobile()) {
+            document.querySelector('#google-ad-post-left ins').style.display = 'none';
+            document.querySelector('#google-ad-post-right ins').style.display = 'none';
+
+        // 加载广告
+        } else {
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        }
+    })();
+</script>
+
+
+<!-- 当页面向下滚动超过半屏时才开始显示广告 -->
+<script type="text/javascript">
+    
+    /*监听滚动条位置*/
+    let $nav = $('#headNav');
+    let $leftAd = $('#google-ad-post-left');
+    let $rightAd = $('#google-ad-post-right');
+    var haltHeight = $(window).height() / 2;
+
+    // 当页面处于文章中部的时候刷新页面，因为此时无滚动，所以需要判断位置
+    showOrHideSidebarAD($(window).scrollTop());
+    $(window).scroll(function () {
+        /* 广告根据滚动条的位置的显示和隐藏.*/
+        let scroll = $(window).scrollTop();
+        showOrHideSidebarAD(scroll);
+    });
+
+    function showOrHideSidebarAD(position) {
+        let showPosition = haltHeight;
+        if (position < showPosition) {
+            $nav.addClass('nav-transparent');
+            $leftAd.slideUp(300);
+            $rightAd.slideUp(300);
+        } else {
+            $nav.removeClass('nav-transparent');
+            $leftAd.slideDown(300);
+            $rightAd.slideDown(300);
+        }
+    }
+</script>
+    
+
+
+<!-- 看板娘 https://github.com/stevenjoezhang/live2d-widget -->
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2018-2026</span>
+            
+            <span id="year">2018</span>
+            <a href="/about" target="_blank">EXP</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">908.2k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2018";
+                    var startMonth = "7";
+                    var startDate = "1";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="https://beian.miit.gov.cn/" target="_blank">粤 ICP 备 00000000 号</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/lyy289065406" class="tooltipped" target="_blank" data-tooltip="访问我的 GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:exp.lqb@foxmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=289065406" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 289065406" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="javascript:;" class="wechat-link">
+        <i class="fab fa-weixin"></i>
+        <div class="wechat-qrcode">
+            关注我的微信：
+            <img src="/images/logo/exp-blog-wechat.jpg" alt="微信二维码">
+        </div>
+    </a>
+      
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/materialize/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/aos/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    <!-- 上升气泡特效 -->
+    
+        <!-- 上升气泡特效 -->
+<script type="text/javascript">
+    var windowWidth = $(window).width();
+    document.write(
+        '<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/lyy289065406/exp-blog@master/libs/others/buble.js"><\/script>'
+    );
+</script>
+    
+</body>
+
+</html>
